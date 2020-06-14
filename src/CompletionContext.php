@@ -15,15 +15,15 @@ class CompletionContext
      * The trigger character (a single character) that has trigger code complete.
      * Is undefined if `triggerKind !== CompletionTriggerKind.TriggerCharacter`
      *
-     * @var string
+     * @var string|null
      */
     public $triggerCharacter;
 
     /**
      * @param 1|2|3 $triggerKind
-     * @param string $triggerCharacter
+     * @param string|null $triggerCharacter
      */
-    public function __construct($triggerKind, string $triggerCharacter)
+    public function __construct($triggerKind, ?string $triggerCharacter)
     {
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;

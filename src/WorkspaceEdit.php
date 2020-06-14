@@ -7,7 +7,7 @@ class WorkspaceEdit
     /**
      * Holds changes to existing resources.
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $changes;
 
@@ -23,15 +23,15 @@ class WorkspaceEdit
      * If a client neither supports `documentChanges` nor `workspace.workspaceEdit.resourceOperations` then
      * only plain `TextEdit`s using the `changes` property are supported.
      *
-     * @var array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>
+     * @var array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>|null
      */
     public $documentChanges;
 
     /**
-     * @param array<mixed> $changes
-     * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)> $documentChanges
+     * @param array<mixed>|null $changes
+     * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>|null $documentChanges
      */
-    public function __construct($changes, array $documentChanges)
+    public function __construct($changes, ?array $documentChanges)
     {
         $this->changes = $changes;
         $this->documentChanges = $documentChanges;

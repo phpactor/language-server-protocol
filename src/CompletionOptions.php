@@ -14,7 +14,7 @@ class CompletionOptions
      * If code complete should automatically be trigger on characters not being valid inside
      * an identifier (for example `.` in JavaScript) list them in `triggerCharacters`.
      *
-     * @var array<string>
+     * @var array<string>|null
      */
     public $triggerCharacters;
 
@@ -26,7 +26,7 @@ class CompletionOptions
      * If a server provides both `allCommitCharacters` and commit characters on an individual
      * completion item the ones on the completion item win.
      *
-     * @var array<string>
+     * @var array<string>|null
      */
     public $allCommitCharacters;
 
@@ -34,16 +34,16 @@ class CompletionOptions
      * The server provides support to resolve additional
      * information for a completion item.
      *
-     * @var string
+     * @var string|null
      */
     public $resolveProvider;
 
     /**
-     * @param array<string> $triggerCharacters
-     * @param array<string> $allCommitCharacters
-     * @param string $resolveProvider
+     * @param array<string>|null $triggerCharacters
+     * @param array<string>|null $allCommitCharacters
+     * @param string|null $resolveProvider
      */
-    public function __construct(array $triggerCharacters, array $allCommitCharacters, string $resolveProvider)
+    public function __construct(?array $triggerCharacters, ?array $allCommitCharacters, ?string $resolveProvider)
     {
         $this->triggerCharacters = $triggerCharacters;
         $this->allCommitCharacters = $allCommitCharacters;

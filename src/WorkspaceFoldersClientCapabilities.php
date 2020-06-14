@@ -7,12 +7,12 @@ class WorkspaceFoldersClientCapabilities
     /**
      * The workspace client capabilities
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $workspace;
 
     /**
-     * @param array<mixed> $workspace
+     * @param array<mixed>|null $workspace
      */
     public function __construct($workspace)
     {

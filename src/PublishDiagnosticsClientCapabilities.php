@@ -7,7 +7,7 @@ class PublishDiagnosticsClientCapabilities
     /**
      * Whether the clients accepts diagnostics with related information.
      *
-     * @var string
+     * @var string|null
      */
     public $relatedInformation;
 
@@ -15,7 +15,7 @@ class PublishDiagnosticsClientCapabilities
      * Client supports the tag property to provide meta data about a diagnostic.
      * Clients supporting tags have to handle unknown tags gracefully.
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $tagSupport;
 
@@ -23,16 +23,16 @@ class PublishDiagnosticsClientCapabilities
      * Whether the client interprets the version property of the
      * `textDocument/publishDiagnostics` notification`s parameter.
      *
-     * @var string
+     * @var string|null
      */
     public $versionSupport;
 
     /**
-     * @param string $relatedInformation
-     * @param array<mixed> $tagSupport
-     * @param string $versionSupport
+     * @param string|null $relatedInformation
+     * @param array<mixed>|null $tagSupport
+     * @param string|null $versionSupport
      */
-    public function __construct(string $relatedInformation, $tagSupport, string $versionSupport)
+    public function __construct(?string $relatedInformation, $tagSupport, ?string $versionSupport)
     {
         $this->relatedInformation = $relatedInformation;
         $this->tagSupport = $tagSupport;

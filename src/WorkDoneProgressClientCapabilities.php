@@ -7,12 +7,12 @@ class WorkDoneProgressClientCapabilities
     /**
      * Window specific client capabilities.
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $window;
 
     /**
-     * @param array<mixed> $window
+     * @param array<mixed>|null $window
      */
     public function __construct($window)
     {

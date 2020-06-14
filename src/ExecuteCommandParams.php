@@ -14,15 +14,15 @@ class ExecuteCommandParams
     /**
      * Arguments that the command should be invoked with.
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $arguments;
 
     /**
      * @param string $command
-     * @param array<mixed> $arguments
+     * @param array<mixed>|null $arguments
      */
-    public function __construct(string $command, array $arguments)
+    public function __construct(string $command, ?array $arguments)
     {
         $this->command = $command;
         $this->arguments = $arguments;

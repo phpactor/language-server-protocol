@@ -14,13 +14,13 @@ class DocumentHighlight
     /**
      * The highlight kind, default is [text](#DocumentHighlightKind.Text).
      *
-     * @var 1|2|3
+     * @var 1|2|3|null
      */
     public $kind;
 
     /**
      * @param Range $range
-     * @param 1|2|3 $kind
+     * @param 1|2|3|null $kind
      */
     public function __construct(Range $range, $kind)
     {

@@ -7,22 +7,22 @@ class DeleteFileOptions
     /**
      * Delete the content recursively if a folder is denoted.
      *
-     * @var string
+     * @var string|null
      */
     public $recursive;
 
     /**
      * Ignore the operation if the file doesn't exist.
      *
-     * @var string
+     * @var string|null
      */
     public $ignoreIfNotExists;
 
     /**
-     * @param string $recursive
-     * @param string $ignoreIfNotExists
+     * @param string|null $recursive
+     * @param string|null $ignoreIfNotExists
      */
-    public function __construct(string $recursive, string $ignoreIfNotExists)
+    public function __construct(?string $recursive, ?string $ignoreIfNotExists)
     {
         $this->recursive = $recursive;
         $this->ignoreIfNotExists = $ignoreIfNotExists;

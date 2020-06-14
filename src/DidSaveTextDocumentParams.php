@@ -15,15 +15,15 @@ class DidSaveTextDocumentParams
      * Optional the content when saved. Depends on the includeText value
      * when the save notification was requested.
      *
-     * @var string
+     * @var string|null
      */
     public $text;
 
     /**
      * @param VersionedTextDocumentIdentifier $textDocument
-     * @param string $text
+     * @param string|null $text
      */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, string $text)
+    public function __construct(VersionedTextDocumentIdentifier $textDocument, ?string $text)
     {
         $this->textDocument = $textDocument;
         $this->text = $text;

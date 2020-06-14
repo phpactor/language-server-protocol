@@ -10,7 +10,7 @@ class LocationLink
      * Used as the underlined span for mouse definition hover. Defaults to the word range at
      * the definition position.
      *
-     * @var Range
+     * @var Range|null
      */
     public $originSelectionRange;
 
@@ -39,12 +39,12 @@ class LocationLink
     public $targetSelectionRange;
 
     /**
-     * @param Range $originSelectionRange
+     * @param Range|null $originSelectionRange
      * @param string $targetUri
      * @param Range $targetRange
      * @param Range $targetSelectionRange
      */
-    public function __construct(Range $originSelectionRange, string $targetUri, Range $targetRange, Range $targetSelectionRange)
+    public function __construct(?Range $originSelectionRange, string $targetUri, Range $targetRange, Range $targetSelectionRange)
     {
         $this->originSelectionRange = $originSelectionRange;
         $this->targetUri = $targetUri;

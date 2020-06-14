@@ -9,7 +9,7 @@ class ApplyWorkspaceEditParams
      * presented in the user interface for example on an undo
      * stack to undo the workspace edit.
      *
-     * @var string
+     * @var string|null
      */
     public $label;
 
@@ -21,10 +21,10 @@ class ApplyWorkspaceEditParams
     public $edit;
 
     /**
-     * @param string $label
+     * @param string|null $label
      * @param WorkspaceEdit $edit
      */
-    public function __construct(string $label, WorkspaceEdit $edit)
+    public function __construct(?string $label, WorkspaceEdit $edit)
     {
         $this->label = $label;
         $this->edit = $edit;

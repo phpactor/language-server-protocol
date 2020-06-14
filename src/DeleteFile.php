@@ -21,16 +21,16 @@ class DeleteFile
     /**
      * Delete options.
      *
-     * @var DeleteFileOptions
+     * @var DeleteFileOptions|null
      */
     public $options;
 
     /**
      * @param 'delete' $kind
      * @param string $uri
-     * @param DeleteFileOptions $options
+     * @param DeleteFileOptions|null $options
      */
-    public function __construct($kind, string $uri, DeleteFileOptions $options)
+    public function __construct($kind, string $uri, ?DeleteFileOptions $options)
     {
         $this->kind = $kind;
         $this->uri = $uri;

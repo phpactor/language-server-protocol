@@ -14,13 +14,13 @@ class InitializeResult
     /**
      * Information about the server.
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $serverInfo;
 
     /**
      * @param _ServerCapabilities&WorkspaceFoldersServerCapabilities $capabilities
-     * @param array<mixed> $serverInfo
+     * @param array<mixed>|null $serverInfo
      */
     public function __construct($capabilities, $serverInfo)
     {

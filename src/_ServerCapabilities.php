@@ -8,77 +8,77 @@ class _ServerCapabilities
      * Defines how text documents are synced. Is either a detailed structure defining each notification or
      * for backwards compatibility the TextDocumentSyncKind number.
      *
-     * @var TextDocumentSyncOptions|0|1|2
+     * @var TextDocumentSyncOptions|0|1|2|null
      */
     public $textDocumentSync;
 
     /**
      * The server provides completion support.
      *
-     * @var CompletionOptions
+     * @var CompletionOptions|null
      */
     public $completionProvider;
 
     /**
      * The server provides hover support.
      *
-     * @var string|HoverOptions
+     * @var string|HoverOptions|null
      */
     public $hoverProvider;
 
     /**
      * The server provides signature help support.
      *
-     * @var SignatureHelpOptions
+     * @var SignatureHelpOptions|null
      */
     public $signatureHelpProvider;
 
     /**
      * The server provides Goto Declaration support.
      *
-     * @var string|DeclarationOptions|DeclarationRegistrationOptions
+     * @var string|DeclarationOptions|DeclarationRegistrationOptions|null
      */
     public $declarationProvider;
 
     /**
      * The server provides goto definition support.
      *
-     * @var string|DefinitionOptions
+     * @var string|DefinitionOptions|null
      */
     public $definitionProvider;
 
     /**
      * The server provides Goto Type Definition support.
      *
-     * @var string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions
+     * @var string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions|null
      */
     public $typeDefinitionProvider;
 
     /**
      * The server provides Goto Implementation support.
      *
-     * @var string|ImplementationOptions|ImplementationRegistrationOptions
+     * @var string|ImplementationOptions|ImplementationRegistrationOptions|null
      */
     public $implementationProvider;
 
     /**
      * The server provides find references support.
      *
-     * @var string|ReferenceOptions
+     * @var string|ReferenceOptions|null
      */
     public $referencesProvider;
 
     /**
      * The server provides document highlight support.
      *
-     * @var string|DocumentHighlightOptions
+     * @var string|DocumentHighlightOptions|null
      */
     public $documentHighlightProvider;
 
     /**
      * The server provides document symbol support.
      *
-     * @var string|DocumentSymbolOptions
+     * @var string|DocumentSymbolOptions|null
      */
     public $documentSymbolProvider;
 
@@ -87,56 +87,56 @@ class _ServerCapabilities
      * specified if the client states that it supports
      * `codeActionLiteralSupport` in its initial `initialize` request.
      *
-     * @var string|CodeActionOptions
+     * @var string|CodeActionOptions|null
      */
     public $codeActionProvider;
 
     /**
      * The server provides code lens.
      *
-     * @var CodeLensOptions
+     * @var CodeLensOptions|null
      */
     public $codeLensProvider;
 
     /**
      * The server provides document link support.
      *
-     * @var DocumentLinkOptions
+     * @var DocumentLinkOptions|null
      */
     public $documentLinkProvider;
 
     /**
      * The server provides color provider support.
      *
-     * @var string|DocumentColorOptions|DocumentColorRegistrationOptions
+     * @var string|DocumentColorOptions|DocumentColorRegistrationOptions|null
      */
     public $colorProvider;
 
     /**
      * The server provides workspace symbol support.
      *
-     * @var string|WorkspaceSymbolOptions
+     * @var string|WorkspaceSymbolOptions|null
      */
     public $workspaceSymbolProvider;
 
     /**
      * The server provides document formatting.
      *
-     * @var string|DocumentFormattingOptions
+     * @var string|DocumentFormattingOptions|null
      */
     public $documentFormattingProvider;
 
     /**
      * The server provides document range formatting.
      *
-     * @var string|DocumentRangeFormattingOptions
+     * @var string|DocumentRangeFormattingOptions|null
      */
     public $documentRangeFormattingProvider;
 
     /**
      * The server provides document formatting on typing.
      *
-     * @var DocumentOnTypeFormattingOptions
+     * @var DocumentOnTypeFormattingOptions|null
      */
     public $documentOnTypeFormattingProvider;
 
@@ -145,65 +145,90 @@ class _ServerCapabilities
      * specified if the client states that it supports
      * `prepareSupport` in its initial `initialize` request.
      *
-     * @var string|RenameOptions
+     * @var string|RenameOptions|null
      */
     public $renameProvider;
 
     /**
      * The server provides folding provider support.
      *
-     * @var string|FoldingRangeOptions|FoldingRangeRegistrationOptions
+     * @var string|FoldingRangeOptions|FoldingRangeRegistrationOptions|null
      */
     public $foldingRangeProvider;
 
     /**
      * The server provides selection range support.
      *
-     * @var string|SelectionRangeOptions|SelectionRangeRegistrationOptions
+     * @var string|SelectionRangeOptions|SelectionRangeRegistrationOptions|null
      */
     public $selectionRangeProvider;
 
     /**
      * The server provides execute command support.
      *
-     * @var ExecuteCommandOptions
+     * @var ExecuteCommandOptions|null
      */
     public $executeCommandProvider;
 
     /**
      * Experimental server capabilities.
      *
-     * @var T
+     * @var T|null
      */
     public $experimental;
 
     /**
-     * @param TextDocumentSyncOptions|0|1|2 $textDocumentSync
-     * @param CompletionOptions $completionProvider
-     * @param string|HoverOptions $hoverProvider
-     * @param SignatureHelpOptions $signatureHelpProvider
-     * @param string|DeclarationOptions|DeclarationRegistrationOptions $declarationProvider
-     * @param string|DefinitionOptions $definitionProvider
-     * @param string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions $typeDefinitionProvider
-     * @param string|ImplementationOptions|ImplementationRegistrationOptions $implementationProvider
-     * @param string|ReferenceOptions $referencesProvider
-     * @param string|DocumentHighlightOptions $documentHighlightProvider
-     * @param string|DocumentSymbolOptions $documentSymbolProvider
-     * @param string|CodeActionOptions $codeActionProvider
-     * @param CodeLensOptions $codeLensProvider
-     * @param DocumentLinkOptions $documentLinkProvider
-     * @param string|DocumentColorOptions|DocumentColorRegistrationOptions $colorProvider
-     * @param string|WorkspaceSymbolOptions $workspaceSymbolProvider
-     * @param string|DocumentFormattingOptions $documentFormattingProvider
-     * @param string|DocumentRangeFormattingOptions $documentRangeFormattingProvider
-     * @param DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider
-     * @param string|RenameOptions $renameProvider
-     * @param string|FoldingRangeOptions|FoldingRangeRegistrationOptions $foldingRangeProvider
-     * @param string|SelectionRangeOptions|SelectionRangeRegistrationOptions $selectionRangeProvider
-     * @param ExecuteCommandOptions $executeCommandProvider
-     * @param T $experimental
+     * @param TextDocumentSyncOptions|0|1|2|null $textDocumentSync
+     * @param CompletionOptions|null $completionProvider
+     * @param string|HoverOptions|null $hoverProvider
+     * @param SignatureHelpOptions|null $signatureHelpProvider
+     * @param string|DeclarationOptions|DeclarationRegistrationOptions|null $declarationProvider
+     * @param string|DefinitionOptions|null $definitionProvider
+     * @param string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions|null $typeDefinitionProvider
+     * @param string|ImplementationOptions|ImplementationRegistrationOptions|null $implementationProvider
+     * @param string|ReferenceOptions|null $referencesProvider
+     * @param string|DocumentHighlightOptions|null $documentHighlightProvider
+     * @param string|DocumentSymbolOptions|null $documentSymbolProvider
+     * @param string|CodeActionOptions|null $codeActionProvider
+     * @param CodeLensOptions|null $codeLensProvider
+     * @param DocumentLinkOptions|null $documentLinkProvider
+     * @param string|DocumentColorOptions|DocumentColorRegistrationOptions|null $colorProvider
+     * @param string|WorkspaceSymbolOptions|null $workspaceSymbolProvider
+     * @param string|DocumentFormattingOptions|null $documentFormattingProvider
+     * @param string|DocumentRangeFormattingOptions|null $documentRangeFormattingProvider
+     * @param DocumentOnTypeFormattingOptions|null $documentOnTypeFormattingProvider
+     * @param string|RenameOptions|null $renameProvider
+     * @param string|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
+     * @param string|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
+     * @param ExecuteCommandOptions|null $executeCommandProvider
+     * @param T|null $experimental
      */
-    public function __construct($textDocumentSync, CompletionOptions $completionProvider, $hoverProvider, SignatureHelpOptions $signatureHelpProvider, $declarationProvider, $definitionProvider, $typeDefinitionProvider, $implementationProvider, $referencesProvider, $documentHighlightProvider, $documentSymbolProvider, $codeActionProvider, CodeLensOptions $codeLensProvider, DocumentLinkOptions $documentLinkProvider, $colorProvider, $workspaceSymbolProvider, $documentFormattingProvider, $documentRangeFormattingProvider, DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, $renameProvider, $foldingRangeProvider, $selectionRangeProvider, ExecuteCommandOptions $executeCommandProvider, T $experimental)
+    public function __construct(
+        $textDocumentSync,
+        ?CompletionOptions $completionProvider,
+        $hoverProvider,
+        ?SignatureHelpOptions $signatureHelpProvider,
+        $declarationProvider,
+        $definitionProvider,
+        $typeDefinitionProvider,
+        $implementationProvider,
+        $referencesProvider,
+        $documentHighlightProvider,
+        $documentSymbolProvider,
+        $codeActionProvider,
+        ?CodeLensOptions $codeLensProvider,
+        ?DocumentLinkOptions $documentLinkProvider,
+        $colorProvider,
+        $workspaceSymbolProvider,
+        $documentFormattingProvider,
+        $documentRangeFormattingProvider,
+        ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider,
+        $renameProvider,
+        $foldingRangeProvider,
+        $selectionRangeProvider,
+        ?ExecuteCommandOptions $executeCommandProvider,
+        ?T $experimental
+    )
     {
         $this->textDocumentSync = $textDocumentSync;
         $this->completionProvider = $completionProvider;

@@ -22,16 +22,16 @@ class Command
      * Arguments that the command handler should be
      * invoked with.
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $arguments;
 
     /**
      * @param string $title
      * @param string $command
-     * @param array<mixed> $arguments
+     * @param array<mixed>|null $arguments
      */
-    public function __construct(string $title, string $command, array $arguments)
+    public function __construct(string $title, string $command, ?array $arguments)
     {
         $this->title = $title;
         $this->command = $command;

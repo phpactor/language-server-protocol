@@ -14,15 +14,15 @@ class DocumentOnTypeFormattingOptions
     /**
      * More trigger characters.
      *
-     * @var array<string>
+     * @var array<string>|null
      */
     public $moreTriggerCharacter;
 
     /**
      * @param string $firstTriggerCharacter
-     * @param array<string> $moreTriggerCharacter
+     * @param array<string>|null $moreTriggerCharacter
      */
-    public function __construct(string $firstTriggerCharacter, array $moreTriggerCharacter)
+    public function __construct(string $firstTriggerCharacter, ?array $moreTriggerCharacter)
     {
         $this->firstTriggerCharacter = $firstTriggerCharacter;
         $this->moreTriggerCharacter = $moreTriggerCharacter;

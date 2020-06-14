@@ -22,13 +22,13 @@ class ParameterInformation
      * The human-readable doc-comment of this signature. Will be shown
      * in the UI but can be omitted.
      *
-     * @var string|MarkupContent
+     * @var string|MarkupContent|null
      */
     public $documentation;
 
     /**
      * @param string|array{int,int} $label
-     * @param string|MarkupContent $documentation
+     * @param string|MarkupContent|null $documentation
      */
     public function __construct($label, $documentation)
     {

@@ -18,7 +18,7 @@ class ColorPresentation
      * this presentation for the color.  When `falsy` the [label](#ColorPresentation.label)
      * is used.
      *
-     * @var TextEdit
+     * @var TextEdit|null
      */
     public $textEdit;
 
@@ -26,16 +26,16 @@ class ColorPresentation
      * An optional array of additional [text edits](#TextEdit) that are applied when
      * selecting this color presentation. Edits must not overlap with the main [edit](#ColorPresentation.textEdit) nor with themselves.
      *
-     * @var array<TextEdit>
+     * @var array<TextEdit>|null
      */
     public $additionalTextEdits;
 
     /**
      * @param string $label
-     * @param TextEdit $textEdit
-     * @param array<TextEdit> $additionalTextEdits
+     * @param TextEdit|null $textEdit
+     * @param array<TextEdit>|null $additionalTextEdits
      */
-    public function __construct(string $label, TextEdit $textEdit, array $additionalTextEdits)
+    public function __construct(string $label, ?TextEdit $textEdit, ?array $additionalTextEdits)
     {
         $this->label = $label;
         $this->textEdit = $textEdit;

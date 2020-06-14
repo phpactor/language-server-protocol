@@ -25,7 +25,7 @@ class WorkDoneProgressBegin
      * long running operation. Clients that don't support cancellation are allowed
      * to ignore the setting.
      *
-     * @var string
+     * @var string|null
      */
     public $cancellable;
 
@@ -36,7 +36,7 @@ class WorkDoneProgressBegin
      * Examples: "3/25 files", "project/src/module2", "node_modules/some_dep".
      * If unset, the previous progress message (if any) is still valid.
      *
-     * @var string
+     * @var string|null
      */
     public $message;
 
@@ -48,18 +48,18 @@ class WorkDoneProgressBegin
      * The value should be steadily rising. Clients are free to ignore values
      * that are not following this rule.
      *
-     * @var int
+     * @var int|null
      */
     public $percentage;
 
     /**
      * @param 'begin' $kind
      * @param string $title
-     * @param string $cancellable
-     * @param string $message
-     * @param int $percentage
+     * @param string|null $cancellable
+     * @param string|null $message
+     * @param int|null $percentage
      */
-    public function __construct($kind, string $title, string $cancellable, string $message, int $percentage)
+    public function __construct($kind, string $title, ?string $cancellable, ?string $message, ?int $percentage)
     {
         $this->kind = $kind;
         $this->title = $title;

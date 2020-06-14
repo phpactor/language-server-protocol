@@ -17,14 +17,14 @@ class CompletionItem
      * The kind of this completion item. Based of the kind
      * an icon is chosen by the editor.
      *
-     * @var 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25
+     * @var 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|null
      */
     public $kind;
 
     /**
      * Tags for this completion item.
      *
-     * @var array<1>
+     * @var array<1>|null
      */
     public $tags;
 
@@ -32,21 +32,21 @@ class CompletionItem
      * A human-readable string with additional information
      * about this item, like type or symbol information.
      *
-     * @var string
+     * @var string|null
      */
     public $detail;
 
     /**
      * A human-readable string that represents a doc-comment.
      *
-     * @var string|MarkupContent
+     * @var string|MarkupContent|null
      */
     public $documentation;
 
     /**
      * Indicates if this item is deprecated.
      *
-     * @var string
+     * @var string|null
      */
     public $deprecated;
 
@@ -57,7 +57,7 @@ class CompletionItem
      * tool / client decides which item that is. The rule is that the *first*
      * item of those that match best is selected.
      *
-     * @var string
+     * @var string|null
      */
     public $preselect;
 
@@ -66,7 +66,7 @@ class CompletionItem
      * with other items. When `falsy` the [label](#CompletionItem.label)
      * is used.
      *
-     * @var string
+     * @var string|null
      */
     public $sortText;
 
@@ -75,7 +75,7 @@ class CompletionItem
      * completion items. When `falsy` the [label](#CompletionItem.label)
      * is used.
      *
-     * @var string
+     * @var string|null
      */
     public $filterText;
 
@@ -91,7 +91,7 @@ class CompletionItem
      * will only insert `sole`. Therefore it is recommended to use `textEdit` instead
      * since it avoids additional client side interpretation.
      *
-     * @var string
+     * @var string|null
      */
     public $insertText;
 
@@ -100,7 +100,7 @@ class CompletionItem
      * and the `newText` property of a provided `textEdit`. If ommitted defaults to
      * `InsertTextFormat.PlainText`.
      *
-     * @var 1|2
+     * @var 1|2|null
      */
     public $insertTextFormat;
 
@@ -112,7 +112,7 @@ class CompletionItem
      * *Note:* The text edit's range must be a [single line] and it must contain the position
      * at which completion has been requested.
      *
-     * @var TextEdit
+     * @var TextEdit|null
      */
     public $textEdit;
 
@@ -125,7 +125,7 @@ class CompletionItem
      * (for example adding an import statement at the top of the file if the completion item will
      * insert an unqualified type).
      *
-     * @var array<TextEdit>
+     * @var array<TextEdit>|null
      */
     public $additionalTextEdits;
 
@@ -134,7 +134,7 @@ class CompletionItem
      * then type that character. *Note* that all commit characters should have `length=1` and that superfluous
      * characters will be ignored.
      *
-     * @var array<string>
+     * @var array<string>|null
      */
     public $commitCharacters;
 
@@ -143,7 +143,7 @@ class CompletionItem
      * additional modifications to the current document should be described with the
      * [additionalTextEdits](#CompletionItem.additionalTextEdits)-property.
      *
-     * @var Command
+     * @var Command|null
      */
     public $command;
 
@@ -152,29 +152,29 @@ class CompletionItem
      * a [CompletionRequest](#CompletionRequest) and a [CompletionResolveRequest]
      * (#CompletionResolveRequest)
      *
-     * @var mixed
+     * @var mixed|null
      */
     public $data;
 
     /**
      * @param string $label
-     * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25 $kind
-     * @param array<1> $tags
-     * @param string $detail
-     * @param string|MarkupContent $documentation
-     * @param string $deprecated
-     * @param string $preselect
-     * @param string $sortText
-     * @param string $filterText
-     * @param string $insertText
-     * @param 1|2 $insertTextFormat
-     * @param TextEdit $textEdit
-     * @param array<TextEdit> $additionalTextEdits
-     * @param array<string> $commitCharacters
-     * @param Command $command
-     * @param mixed $data
+     * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|null $kind
+     * @param array<1>|null $tags
+     * @param string|null $detail
+     * @param string|MarkupContent|null $documentation
+     * @param string|null $deprecated
+     * @param string|null $preselect
+     * @param string|null $sortText
+     * @param string|null $filterText
+     * @param string|null $insertText
+     * @param 1|2|null $insertTextFormat
+     * @param TextEdit|null $textEdit
+     * @param array<TextEdit>|null $additionalTextEdits
+     * @param array<string>|null $commitCharacters
+     * @param Command|null $command
+     * @param mixed|null $data
      */
-    public function __construct(string $label, $kind, array $tags, string $detail, $documentation, string $deprecated, string $preselect, string $sortText, string $filterText, string $insertText, $insertTextFormat, TextEdit $textEdit, array $additionalTextEdits, array $commitCharacters, Command $command, $data)
+    public function __construct(string $label, $kind, ?array $tags, ?string $detail, $documentation, ?string $deprecated, ?string $preselect, ?string $sortText, ?string $filterText, ?string $insertText, $insertTextFormat, ?TextEdit $textEdit, ?array $additionalTextEdits, ?array $commitCharacters, ?Command $command, $data)
     {
         $this->label = $label;
         $this->kind = $kind;

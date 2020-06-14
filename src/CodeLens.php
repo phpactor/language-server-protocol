@@ -14,7 +14,7 @@ class CodeLens
     /**
      * The command this code lens represents.
      *
-     * @var Command
+     * @var Command|null
      */
     public $command;
 
@@ -23,16 +23,16 @@ class CodeLens
      * a [CodeLensRequest](#CodeLensRequest) and a [CodeLensResolveRequest]
      * (#CodeLensResolveRequest)
      *
-     * @var mixed
+     * @var mixed|null
      */
     public $data;
 
     /**
      * @param Range $range
-     * @param Command $command
-     * @param mixed $data
+     * @param Command|null $command
+     * @param mixed|null $data
      */
-    public function __construct(Range $range, Command $command, $data)
+    public function __construct(Range $range, ?Command $command, $data)
     {
         $this->range = $range;
         $this->command = $command;

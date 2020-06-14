@@ -9,14 +9,14 @@ class DidChangeWatchedFilesClientCapabilities
      * that the current protocol doesn't support static configuration for file changes
      * from the server side.
      *
-     * @var string
+     * @var string|null
      */
     public $dynamicRegistration;
 
     /**
-     * @param string $dynamicRegistration
+     * @param string|null $dynamicRegistration
      */
-    public function __construct(string $dynamicRegistration)
+    public function __construct(?string $dynamicRegistration)
     {
         $this->dynamicRegistration = $dynamicRegistration;
     }

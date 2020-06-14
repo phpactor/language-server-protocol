@@ -9,54 +9,54 @@ class WorkspaceClientCapabilities
      * to the workspace by supporting the request
      * 'workspace/applyEdit'
      *
-     * @var string
+     * @var string|null
      */
     public $applyEdit;
 
     /**
      * Capabilities specific to `WorkspaceEdit`s
      *
-     * @var WorkspaceEditClientCapabilities
+     * @var WorkspaceEditClientCapabilities|null
      */
     public $workspaceEdit;
 
     /**
      * Capabilities specific to the `workspace/didChangeConfiguration` notification.
      *
-     * @var DidChangeConfigurationClientCapabilities
+     * @var DidChangeConfigurationClientCapabilities|null
      */
     public $didChangeConfiguration;
 
     /**
      * Capabilities specific to the `workspace/didChangeWatchedFiles` notification.
      *
-     * @var DidChangeWatchedFilesClientCapabilities
+     * @var DidChangeWatchedFilesClientCapabilities|null
      */
     public $didChangeWatchedFiles;
 
     /**
      * Capabilities specific to the `workspace/symbol` request.
      *
-     * @var WorkspaceSymbolClientCapabilities
+     * @var WorkspaceSymbolClientCapabilities|null
      */
     public $symbol;
 
     /**
      * Capabilities specific to the `workspace/executeCommand` request.
      *
-     * @var ExecuteCommandClientCapabilities
+     * @var ExecuteCommandClientCapabilities|null
      */
     public $executeCommand;
 
     /**
-     * @param string $applyEdit
-     * @param WorkspaceEditClientCapabilities $workspaceEdit
-     * @param DidChangeConfigurationClientCapabilities $didChangeConfiguration
-     * @param DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles
-     * @param WorkspaceSymbolClientCapabilities $symbol
-     * @param ExecuteCommandClientCapabilities $executeCommand
+     * @param string|null $applyEdit
+     * @param WorkspaceEditClientCapabilities|null $workspaceEdit
+     * @param DidChangeConfigurationClientCapabilities|null $didChangeConfiguration
+     * @param DidChangeWatchedFilesClientCapabilities|null $didChangeWatchedFiles
+     * @param WorkspaceSymbolClientCapabilities|null $symbol
+     * @param ExecuteCommandClientCapabilities|null $executeCommand
      */
-    public function __construct(string $applyEdit, WorkspaceEditClientCapabilities $workspaceEdit, DidChangeConfigurationClientCapabilities $didChangeConfiguration, DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, WorkspaceSymbolClientCapabilities $symbol, ExecuteCommandClientCapabilities $executeCommand)
+    public function __construct(?string $applyEdit, ?WorkspaceEditClientCapabilities $workspaceEdit, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, ?WorkspaceSymbolClientCapabilities $symbol, ?ExecuteCommandClientCapabilities $executeCommand)
     {
         $this->applyEdit = $applyEdit;
         $this->workspaceEdit = $workspaceEdit;

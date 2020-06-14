@@ -15,14 +15,14 @@ class Diagnostic
      * The diagnostic's severity. Can be omitted. If omitted it is up to the
      * client to interpret diagnostics as error, warning, info or hint.
      *
-     * @var 1|2|3|4
+     * @var 1|2|3|4|null
      */
     public $severity;
 
     /**
      * The diagnostic's code, which usually appear in the user interface.
      *
-     * @var int|string
+     * @var int|string|null
      */
     public $code;
 
@@ -31,7 +31,7 @@ class Diagnostic
      * diagnostic, e.g. 'typescript' or 'super lint'. It usually
      * appears in the user interface.
      *
-     * @var string
+     * @var string|null
      */
     public $source;
 
@@ -45,7 +45,7 @@ class Diagnostic
     /**
      * Additional metadata about the diagnostic.
      *
-     * @var array<1|2>
+     * @var array<1|2>|null
      */
     public $tags;
 
@@ -53,20 +53,20 @@ class Diagnostic
      * An array of related diagnostic information, e.g. when symbol-names within
      * a scope collide all definitions can be marked via this property.
      *
-     * @var array<DiagnosticRelatedInformation>
+     * @var array<DiagnosticRelatedInformation>|null
      */
     public $relatedInformation;
 
     /**
      * @param Range $range
-     * @param 1|2|3|4 $severity
-     * @param int|string $code
-     * @param string $source
+     * @param 1|2|3|4|null $severity
+     * @param int|string|null $code
+     * @param string|null $source
      * @param string $message
-     * @param array<1|2> $tags
-     * @param array<DiagnosticRelatedInformation> $relatedInformation
+     * @param array<1|2>|null $tags
+     * @param array<DiagnosticRelatedInformation>|null $relatedInformation
      */
-    public function __construct(Range $range, $severity, $code, string $source, string $message, array $tags, array $relatedInformation)
+    public function __construct(Range $range, $severity, $code, ?string $source, string $message, ?array $tags, ?array $relatedInformation)
     {
         $this->range = $range;
         $this->severity = $severity;

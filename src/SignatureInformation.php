@@ -16,23 +16,23 @@ class SignatureInformation
      * The human-readable doc-comment of this signature. Will be shown
      * in the UI but can be omitted.
      *
-     * @var string|MarkupContent
+     * @var string|MarkupContent|null
      */
     public $documentation;
 
     /**
      * The parameters of this signature.
      *
-     * @var array<ParameterInformation>
+     * @var array<ParameterInformation>|null
      */
     public $parameters;
 
     /**
      * @param string $label
-     * @param string|MarkupContent $documentation
-     * @param array<ParameterInformation> $parameters
+     * @param string|MarkupContent|null $documentation
+     * @param array<ParameterInformation>|null $parameters
      */
-    public function __construct(string $label, $documentation, array $parameters)
+    public function __construct(string $label, $documentation, ?array $parameters)
     {
         $this->label = $label;
         $this->documentation = $documentation;

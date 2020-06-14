@@ -22,14 +22,14 @@ class Registration
     /**
      * Options necessary for the registration.
      *
-     * @var mixed
+     * @var mixed|null
      */
     public $registerOptions;
 
     /**
      * @param string $id
      * @param string $method
-     * @param mixed $registerOptions
+     * @param mixed|null $registerOptions
      */
     public function __construct(string $id, string $method, $registerOptions)
     {

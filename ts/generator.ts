@@ -29,7 +29,7 @@ export class Generator
         this.buildConstructorDefinition(declaration, source);
 
         source.push(`}`);
-        //console.log(source);
+        console.log(source);
 
         return source.join("\n");
     }
@@ -49,11 +49,19 @@ export class Generator
                 source.push(`     * ${docLine}`);
             }
             source.push(`     *`);
-            source.push(`     * @var ${this.converter.phpType(property.type).documented}`);
+            source.push(`     * @var ${this.renderPropertyType(property)}`);
             source.push(`     */`);
             source.push(`    public $${property.name.escapedText};`);
             source.push(``);
         }
+    }
+
+    renderPropertyType(property: PropertySignature): string {
+        let documentedType = this.converter.phpType(property.type).documented;
+        if (property.questionToken) {
+            documentedType = documentedType + '|null';
+        }
+        return documentedType;
     }
 
     buildConstructorDefinition(declaration: InterfaceDeclaration, source: string[]): void {
@@ -68,12 +76,18 @@ export class Generator
             }
 
             const phpType = this.converter.phpType(property.type).real;
+            const arg = [];
+
+            if (property.questionToken && phpType) {
+                arg.push('?');
+            }
 
             if (phpType) {
-                args.push(`${phpType} $${property.name.escapedText}`);
-            } else {
-                args.push(`$${property.name.escapedText}`);
+                arg.push(`${phpType} `);
             }
+
+            arg.push(`$${property.name.escapedText}`);
+            args.push(arg.join(''));
         }
 
         if (args.length === 0) {
@@ -90,8 +104,7 @@ export class Generator
                 continue;
             }
 
-            const phpType = this.converter.phpType(property.type).documented;
-            source.push(`     * @param ${phpType} $${property.name.escapedText}`);
+            source.push(`     * @param ${this.renderPropertyType(property)} $${property.name.escapedText}`);
         }
         source.push('     */');
 

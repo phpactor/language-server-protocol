@@ -7,38 +7,38 @@ class _ClientCapabilities
     /**
      * Workspace specific client capabilities.
      *
-     * @var WorkspaceClientCapabilities
+     * @var WorkspaceClientCapabilities|null
      */
     public $workspace;
 
     /**
      * Text document specific client capabilities.
      *
-     * @var TextDocumentClientCapabilities
+     * @var TextDocumentClientCapabilities|null
      */
     public $textDocument;
 
     /**
      * Window specific client capabilities.
      *
-     * @var object
+     * @var object|null
      */
     public $window;
 
     /**
      * Experimental client capabilities.
      *
-     * @var object
+     * @var object|null
      */
     public $experimental;
 
     /**
-     * @param WorkspaceClientCapabilities $workspace
-     * @param TextDocumentClientCapabilities $textDocument
-     * @param object $window
-     * @param object $experimental
+     * @param WorkspaceClientCapabilities|null $workspace
+     * @param TextDocumentClientCapabilities|null $textDocument
+     * @param object|null $window
+     * @param object|null $experimental
      */
-    public function __construct(WorkspaceClientCapabilities $workspace, TextDocumentClientCapabilities $textDocument, object $window, object $experimental)
+    public function __construct(?WorkspaceClientCapabilities $workspace, ?TextDocumentClientCapabilities $textDocument, ?object $window, ?object $experimental)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;

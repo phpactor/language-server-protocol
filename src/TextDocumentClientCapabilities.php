@@ -7,182 +7,182 @@ class TextDocumentClientCapabilities
     /**
      * Defines which synchronization capabilities the client supports.
      *
-     * @var TextDocumentSyncClientCapabilities
+     * @var TextDocumentSyncClientCapabilities|null
      */
     public $synchronization;
 
     /**
      * Capabilities specific to the `textDocument/completion`
      *
-     * @var CompletionClientCapabilities
+     * @var CompletionClientCapabilities|null
      */
     public $completion;
 
     /**
      * Capabilities specific to the `textDocument/hover`
      *
-     * @var HoverClientCapabilities
+     * @var HoverClientCapabilities|null
      */
     public $hover;
 
     /**
      * Capabilities specific to the `textDocument/signatureHelp`
      *
-     * @var SignatureHelpClientCapabilities
+     * @var SignatureHelpClientCapabilities|null
      */
     public $signatureHelp;
 
     /**
      * Capabilities specific to the `textDocument/declaration`
      *
-     * @var DeclarationClientCapabilities
+     * @var DeclarationClientCapabilities|null
      */
     public $declaration;
 
     /**
      * Capabilities specific to the `textDocument/definition`
      *
-     * @var DefinitionClientCapabilities
+     * @var DefinitionClientCapabilities|null
      */
     public $definition;
 
     /**
      * Capabilities specific to the `textDocument/typeDefinition`
      *
-     * @var TypeDefinitionClientCapabilities
+     * @var TypeDefinitionClientCapabilities|null
      */
     public $typeDefinition;
 
     /**
      * Capabilities specific to the `textDocument/implementation`
      *
-     * @var ImplementationClientCapabilities
+     * @var ImplementationClientCapabilities|null
      */
     public $implementation;
 
     /**
      * Capabilities specific to the `textDocument/references`
      *
-     * @var ReferenceClientCapabilities
+     * @var ReferenceClientCapabilities|null
      */
     public $references;
 
     /**
      * Capabilities specific to the `textDocument/documentHighlight`
      *
-     * @var DocumentHighlightClientCapabilities
+     * @var DocumentHighlightClientCapabilities|null
      */
     public $documentHighlight;
 
     /**
      * Capabilities specific to the `textDocument/documentSymbol`
      *
-     * @var DocumentSymbolClientCapabilities
+     * @var DocumentSymbolClientCapabilities|null
      */
     public $documentSymbol;
 
     /**
      * Capabilities specific to the `textDocument/codeAction`
      *
-     * @var CodeActionClientCapabilities
+     * @var CodeActionClientCapabilities|null
      */
     public $codeAction;
 
     /**
      * Capabilities specific to the `textDocument/codeLens`
      *
-     * @var CodeLensClientCapabilities
+     * @var CodeLensClientCapabilities|null
      */
     public $codeLens;
 
     /**
      * Capabilities specific to the `textDocument/documentLink`
      *
-     * @var DocumentLinkClientCapabilities
+     * @var DocumentLinkClientCapabilities|null
      */
     public $documentLink;
 
     /**
      * Capabilities specific to the `textDocument/documentColor`
      *
-     * @var DocumentColorClientCapabilities
+     * @var DocumentColorClientCapabilities|null
      */
     public $colorProvider;
 
     /**
      * Capabilities specific to the `textDocument/formatting`
      *
-     * @var DocumentFormattingClientCapabilities
+     * @var DocumentFormattingClientCapabilities|null
      */
     public $formatting;
 
     /**
      * Capabilities specific to the `textDocument/rangeFormatting`
      *
-     * @var DocumentRangeFormattingClientCapabilities
+     * @var DocumentRangeFormattingClientCapabilities|null
      */
     public $rangeFormatting;
 
     /**
      * Capabilities specific to the `textDocument/onTypeFormatting`
      *
-     * @var DocumentOnTypeFormattingClientCapabilities
+     * @var DocumentOnTypeFormattingClientCapabilities|null
      */
     public $onTypeFormatting;
 
     /**
      * Capabilities specific to the `textDocument/rename`
      *
-     * @var RenameClientCapabilities
+     * @var RenameClientCapabilities|null
      */
     public $rename;
 
     /**
      * Capabilities specific to `textDocument/foldingRange` requests.
      *
-     * @var FoldingRangeClientCapabilities
+     * @var FoldingRangeClientCapabilities|null
      */
     public $foldingRange;
 
     /**
      * Capabilities specific to `textDocument/selectionRange` requests
      *
-     * @var SelectionRangeClientCapabilities
+     * @var SelectionRangeClientCapabilities|null
      */
     public $selectionRange;
 
     /**
      * Capabilities specific to `textDocument/publishDiagnostics`.
      *
-     * @var PublishDiagnosticsClientCapabilities
+     * @var PublishDiagnosticsClientCapabilities|null
      */
     public $publishDiagnostics;
 
     /**
-     * @param TextDocumentSyncClientCapabilities $synchronization
-     * @param CompletionClientCapabilities $completion
-     * @param HoverClientCapabilities $hover
-     * @param SignatureHelpClientCapabilities $signatureHelp
-     * @param DeclarationClientCapabilities $declaration
-     * @param DefinitionClientCapabilities $definition
-     * @param TypeDefinitionClientCapabilities $typeDefinition
-     * @param ImplementationClientCapabilities $implementation
-     * @param ReferenceClientCapabilities $references
-     * @param DocumentHighlightClientCapabilities $documentHighlight
-     * @param DocumentSymbolClientCapabilities $documentSymbol
-     * @param CodeActionClientCapabilities $codeAction
-     * @param CodeLensClientCapabilities $codeLens
-     * @param DocumentLinkClientCapabilities $documentLink
-     * @param DocumentColorClientCapabilities $colorProvider
-     * @param DocumentFormattingClientCapabilities $formatting
-     * @param DocumentRangeFormattingClientCapabilities $rangeFormatting
-     * @param DocumentOnTypeFormattingClientCapabilities $onTypeFormatting
-     * @param RenameClientCapabilities $rename
-     * @param FoldingRangeClientCapabilities $foldingRange
-     * @param SelectionRangeClientCapabilities $selectionRange
-     * @param PublishDiagnosticsClientCapabilities $publishDiagnostics
+     * @param TextDocumentSyncClientCapabilities|null $synchronization
+     * @param CompletionClientCapabilities|null $completion
+     * @param HoverClientCapabilities|null $hover
+     * @param SignatureHelpClientCapabilities|null $signatureHelp
+     * @param DeclarationClientCapabilities|null $declaration
+     * @param DefinitionClientCapabilities|null $definition
+     * @param TypeDefinitionClientCapabilities|null $typeDefinition
+     * @param ImplementationClientCapabilities|null $implementation
+     * @param ReferenceClientCapabilities|null $references
+     * @param DocumentHighlightClientCapabilities|null $documentHighlight
+     * @param DocumentSymbolClientCapabilities|null $documentSymbol
+     * @param CodeActionClientCapabilities|null $codeAction
+     * @param CodeLensClientCapabilities|null $codeLens
+     * @param DocumentLinkClientCapabilities|null $documentLink
+     * @param DocumentColorClientCapabilities|null $colorProvider
+     * @param DocumentFormattingClientCapabilities|null $formatting
+     * @param DocumentRangeFormattingClientCapabilities|null $rangeFormatting
+     * @param DocumentOnTypeFormattingClientCapabilities|null $onTypeFormatting
+     * @param RenameClientCapabilities|null $rename
+     * @param FoldingRangeClientCapabilities|null $foldingRange
+     * @param SelectionRangeClientCapabilities|null $selectionRange
+     * @param PublishDiagnosticsClientCapabilities|null $publishDiagnostics
      */
-    public function __construct(TextDocumentSyncClientCapabilities $synchronization, CompletionClientCapabilities $completion, HoverClientCapabilities $hover, SignatureHelpClientCapabilities $signatureHelp, DeclarationClientCapabilities $declaration, DefinitionClientCapabilities $definition, TypeDefinitionClientCapabilities $typeDefinition, ImplementationClientCapabilities $implementation, ReferenceClientCapabilities $references, DocumentHighlightClientCapabilities $documentHighlight, DocumentSymbolClientCapabilities $documentSymbol, CodeActionClientCapabilities $codeAction, CodeLensClientCapabilities $codeLens, DocumentLinkClientCapabilities $documentLink, DocumentColorClientCapabilities $colorProvider, DocumentFormattingClientCapabilities $formatting, DocumentRangeFormattingClientCapabilities $rangeFormatting, DocumentOnTypeFormattingClientCapabilities $onTypeFormatting, RenameClientCapabilities $rename, FoldingRangeClientCapabilities $foldingRange, SelectionRangeClientCapabilities $selectionRange, PublishDiagnosticsClientCapabilities $publishDiagnostics)
+    public function __construct(?TextDocumentSyncClientCapabilities $synchronization, ?CompletionClientCapabilities $completion, ?HoverClientCapabilities $hover, ?SignatureHelpClientCapabilities $signatureHelp, ?DeclarationClientCapabilities $declaration, ?DefinitionClientCapabilities $definition, ?TypeDefinitionClientCapabilities $typeDefinition, ?ImplementationClientCapabilities $implementation, ?ReferenceClientCapabilities $references, ?DocumentHighlightClientCapabilities $documentHighlight, ?DocumentSymbolClientCapabilities $documentSymbol, ?CodeActionClientCapabilities $codeAction, ?CodeLensClientCapabilities $codeLens, ?DocumentLinkClientCapabilities $documentLink, ?DocumentColorClientCapabilities $colorProvider, ?DocumentFormattingClientCapabilities $formatting, ?DocumentRangeFormattingClientCapabilities $rangeFormatting, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting, ?RenameClientCapabilities $rename, ?FoldingRangeClientCapabilities $foldingRange, ?SelectionRangeClientCapabilities $selectionRange, ?PublishDiagnosticsClientCapabilities $publishDiagnostics)
     {
         $this->synchronization = $synchronization;
         $this->completion = $completion;

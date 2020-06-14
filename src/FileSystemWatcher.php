@@ -22,15 +22,15 @@ class FileSystemWatcher
      * to WatchKind.Create | WatchKind.Change | WatchKind.Delete
      * which is 7.
      *
-     * @var int
+     * @var int|null
      */
     public $kind;
 
     /**
      * @param string $globPattern
-     * @param int $kind
+     * @param int|null $kind
      */
-    public function __construct(string $globPattern, int $kind)
+    public function __construct(string $globPattern, ?int $kind)
     {
         $this->globPattern = $globPattern;
         $this->kind = $kind;

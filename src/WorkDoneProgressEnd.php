@@ -14,15 +14,15 @@ class WorkDoneProgressEnd
      * Optional, a final message indicating to for example indicate the outcome
      * of the operation.
      *
-     * @var string
+     * @var string|null
      */
     public $message;
 
     /**
      * @param 'end' $kind
-     * @param string $message
+     * @param string|null $message
      */
-    public function __construct($kind, string $message)
+    public function __construct($kind, ?string $message)
     {
         $this->kind = $kind;
         $this->message = $message;

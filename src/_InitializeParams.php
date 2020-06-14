@@ -15,7 +15,7 @@ class _InitializeParams
     /**
      * Information about the client
      *
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
     public $clientInfo;
 
@@ -23,7 +23,7 @@ class _InitializeParams
      * The rootPath of the workspace. Is null
      * if no folder is open.
      *
-     * @var string|null
+     * @var string|null|null
      */
     public $rootPath;
 
@@ -46,25 +46,25 @@ class _InitializeParams
     /**
      * User provided initialization options.
      *
-     * @var mixed
+     * @var mixed|null
      */
     public $initializationOptions;
 
     /**
      * The initial trace setting. If omitted trace is disabled ('off').
      *
-     * @var 'off'|'messages'|'verbose'
+     * @var 'off'|'messages'|'verbose'|null
      */
     public $trace;
 
     /**
      * @param int|null $processId
-     * @param array<mixed> $clientInfo
-     * @param string|null $rootPath
+     * @param array<mixed>|null $clientInfo
+     * @param string|null|null $rootPath
      * @param string|null $rootUri
      * @param _ClientCapabilities&WorkspaceFoldersClientCapabilities&ConfigurationClientCapabilities&WorkDoneProgressClientCapabilities $capabilities
-     * @param mixed $initializationOptions
-     * @param 'off'|'messages'|'verbose' $trace
+     * @param mixed|null $initializationOptions
+     * @param 'off'|'messages'|'verbose'|null $trace
      */
     public function __construct($processId, $clientInfo, $rootPath, $rootUri, $capabilities, $initializationOptions, $trace)
     {

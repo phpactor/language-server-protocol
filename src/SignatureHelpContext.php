@@ -16,7 +16,7 @@ class SignatureHelpContext
      * 
      * This is undefined when `triggerKind !== SignatureHelpTriggerKind.TriggerCharacter`
      *
-     * @var string
+     * @var string|null
      */
     public $triggerCharacter;
 
@@ -36,17 +36,17 @@ class SignatureHelpContext
      * The `activeSignatureHelp` has its `SignatureHelp.activeSignature` field updated based on
      * the user navigating through available signatures.
      *
-     * @var SignatureHelp
+     * @var SignatureHelp|null
      */
     public $activeSignatureHelp;
 
     /**
      * @param 1|2|3 $triggerKind
-     * @param string $triggerCharacter
+     * @param string|null $triggerCharacter
      * @param string $isRetrigger
-     * @param SignatureHelp $activeSignatureHelp
+     * @param SignatureHelp|null $activeSignatureHelp
      */
-    public function __construct($triggerKind, string $triggerCharacter, string $isRetrigger, SignatureHelp $activeSignatureHelp)
+    public function __construct($triggerKind, ?string $triggerCharacter, string $isRetrigger, ?SignatureHelp $activeSignatureHelp)
     {
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;

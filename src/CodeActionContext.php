@@ -21,15 +21,15 @@ class CodeActionContext
      * Actions not of this kind are filtered out by the client before being shown. So servers
      * can omit computing them.
      *
-     * @var array<string>
+     * @var array<string>|null
      */
     public $only;
 
     /**
      * @param array<Diagnostic> $diagnostics
-     * @param array<string> $only
+     * @param array<string>|null $only
      */
-    public function __construct(array $diagnostics, array $only)
+    public function __construct(array $diagnostics, ?array $only)
     {
         $this->diagnostics = $diagnostics;
         $this->only = $only;

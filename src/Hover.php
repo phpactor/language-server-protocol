@@ -14,15 +14,15 @@ class Hover
     /**
      * An optional range
      *
-     * @var Range
+     * @var Range|null
      */
     public $range;
 
     /**
      * @param MarkupContent|string|array<mixed>|array<string|array<mixed>> $contents
-     * @param Range $range
+     * @param Range|null $range
      */
-    public function __construct($contents, Range $range)
+    public function __construct($contents, ?Range $range)
     {
         $this->contents = $contents;
         $this->range = $range;

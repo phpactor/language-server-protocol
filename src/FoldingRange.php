@@ -14,7 +14,7 @@ class FoldingRange
     /**
      * The zero-based character offset from where the folded range starts. If not defined, defaults to the length of the start line.
      *
-     * @var int
+     * @var int|null
      */
     public $startCharacter;
 
@@ -28,7 +28,7 @@ class FoldingRange
     /**
      * The zero-based character offset before the folded range ends. If not defined, defaults to the length of the end line.
      *
-     * @var int
+     * @var int|null
      */
     public $endCharacter;
 
@@ -37,18 +37,18 @@ class FoldingRange
      * is used to categorize folding ranges and used by commands like 'Fold all comments'. See
      * [FoldingRangeKind](#FoldingRangeKind) for an enumeration of standardized kinds.
      *
-     * @var string
+     * @var string|null
      */
     public $kind;
 
     /**
      * @param int $startLine
-     * @param int $startCharacter
+     * @param int|null $startCharacter
      * @param int $endLine
-     * @param int $endCharacter
-     * @param string $kind
+     * @param int|null $endCharacter
+     * @param string|null $kind
      */
-    public function __construct(int $startLine, int $startCharacter, int $endLine, int $endCharacter, string $kind)
+    public function __construct(int $startLine, ?int $startCharacter, int $endLine, ?int $endCharacter, ?string $kind)
     {
         $this->startLine = $startLine;
         $this->startCharacter = $startCharacter;

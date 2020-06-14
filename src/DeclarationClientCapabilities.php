@@ -9,22 +9,22 @@ class DeclarationClientCapabilities
      * the client supports the new `DeclarationRegistrationOptions` return value
      * for the corresponding server capability as well.
      *
-     * @var string
+     * @var string|null
      */
     public $dynamicRegistration;
 
     /**
      * The client supports additional metadata in the form of declaration links.
      *
-     * @var string
+     * @var string|null
      */
     public $linkSupport;
 
     /**
-     * @param string $dynamicRegistration
-     * @param string $linkSupport
+     * @param string|null $dynamicRegistration
+     * @param string|null $linkSupport
      */
-    public function __construct(string $dynamicRegistration, string $linkSupport)
+    public function __construct(?string $dynamicRegistration, ?string $linkSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->linkSupport = $linkSupport;

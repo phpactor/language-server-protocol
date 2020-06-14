@@ -14,15 +14,15 @@ class SelectionRange
     /**
      * The parent selection range containing this range. Therefore `parent.range` must contain `this.range`.
      *
-     * @var SelectionRange
+     * @var SelectionRange|null
      */
     public $parent;
 
     /**
      * @param Range $range
-     * @param SelectionRange $parent
+     * @param SelectionRange|null $parent
      */
-    public function __construct(Range $range, SelectionRange $parent)
+    public function __construct(Range $range, ?SelectionRange $parent)
     {
         $this->range = $range;
         $this->parent = $parent;

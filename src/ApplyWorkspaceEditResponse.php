@@ -16,7 +16,7 @@ class ApplyWorkspaceEditResponse
      * This may be used by the server for diagnostic logging or to provide
      * a suitable error for a request that triggered the edit.
      *
-     * @var string
+     * @var string|null
      */
     public $failureReason;
 
@@ -25,16 +25,16 @@ class ApplyWorkspaceEditResponse
      * contain the index of the change that failed. This property is only available
      * if the client signals a `failureHandlingStrategy` in its client capabilities.
      *
-     * @var int
+     * @var int|null
      */
     public $failedChange;
 
     /**
      * @param string $applied
-     * @param string $failureReason
-     * @param int $failedChange
+     * @param string|null $failureReason
+     * @param int|null $failedChange
      */
-    public function __construct(string $applied, string $failureReason, int $failedChange)
+    public function __construct(string $applied, ?string $failureReason, ?int $failedChange)
     {
         $this->applied = $applied;
         $this->failureReason = $failureReason;

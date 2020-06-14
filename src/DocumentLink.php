@@ -14,7 +14,7 @@ class DocumentLink
     /**
      * The uri this link points to.
      *
-     * @var string
+     * @var string|null
      */
     public $target;
 
@@ -25,7 +25,7 @@ class DocumentLink
      * trigger the link, such as `{0} (ctrl + click)`. The specific instructions vary depending on OS,
      * user settings, and localization.
      *
-     * @var string
+     * @var string|null
      */
     public $tooltip;
 
@@ -33,17 +33,17 @@ class DocumentLink
      * A data entry field that is preserved on a document link between a
      * DocumentLinkRequest and a DocumentLinkResolveRequest.
      *
-     * @var mixed
+     * @var mixed|null
      */
     public $data;
 
     /**
      * @param Range $range
-     * @param string $target
-     * @param string $tooltip
-     * @param mixed $data
+     * @param string|null $target
+     * @param string|null $tooltip
+     * @param mixed|null $data
      */
-    public function __construct(Range $range, string $target, string $tooltip, $data)
+    public function __construct(Range $range, ?string $target, ?string $tooltip, $data)
     {
         $this->range = $range;
         $this->target = $target;

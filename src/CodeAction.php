@@ -16,14 +16,14 @@ class CodeAction
      * 
      * Used to filter code actions.
      *
-     * @var string
+     * @var string|null
      */
     public $kind;
 
     /**
      * The diagnostics that this code action resolves.
      *
-     * @var array<Diagnostic>
+     * @var array<Diagnostic>|null
      */
     public $diagnostics;
 
@@ -34,14 +34,14 @@ class CodeAction
      * A quick fix should be marked preferred if it properly addresses the underlying error.
      * A refactoring should be marked preferred if it is the most reasonable choice of actions to take.
      *
-     * @var string
+     * @var string|null
      */
     public $isPreferred;
 
     /**
      * The workspace edit this code action performs.
      *
-     * @var WorkspaceEdit
+     * @var WorkspaceEdit|null
      */
     public $edit;
 
@@ -50,19 +50,19 @@ class CodeAction
      * provides a edit and a command, first the edit is
      * executed and then the command.
      *
-     * @var Command
+     * @var Command|null
      */
     public $command;
 
     /**
      * @param string $title
-     * @param string $kind
-     * @param array<Diagnostic> $diagnostics
-     * @param string $isPreferred
-     * @param WorkspaceEdit $edit
-     * @param Command $command
+     * @param string|null $kind
+     * @param array<Diagnostic>|null $diagnostics
+     * @param string|null $isPreferred
+     * @param WorkspaceEdit|null $edit
+     * @param Command|null $command
      */
-    public function __construct(string $title, string $kind, array $diagnostics, string $isPreferred, WorkspaceEdit $edit, Command $command)
+    public function __construct(string $title, ?string $kind, ?array $diagnostics, ?string $isPreferred, ?WorkspaceEdit $edit, ?Command $command)
     {
         $this->title = $title;
         $this->kind = $kind;
