@@ -27,7 +27,6 @@ export class Generator
         this.buildConstructorDefinition(declaration, source);
 
         source.push(`}`);
-        console.log(source);
 
         return source.join("\n");
     }
@@ -75,7 +74,7 @@ export class Generator
                 continue;
             }
 
-            source.push(`        $this->$${property.name.escapedText} = $this->$${property.name.escapedText};`);
+            source.push(`        $this->${property.name.escapedText} = $this->$${property.name.escapedText};`);
         }
         source.push('    }');
     }

@@ -8,7 +8,7 @@
         "clean": "rimraf lib",
         "build": "tsc -p tsconfig.json",
         "watch": "tsc -w -p tsconfig.json",
-        "run": "tsc -p tsconfig.json && node build/transpile.js"
+        "generate": "tsc -p tsconfig.json && node build/transpile.js"
     },
     "author": "Daniel Leech",
     "license": "MIT",
