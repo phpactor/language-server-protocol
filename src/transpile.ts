@@ -3,6 +3,7 @@ import path = require('path');
 import {Generator} from "./generator";
 import {Writer} from './writer';
 import {readFileSync} from 'fs';
+import {TypeConverter} from './typeConverter';
 
 class Transpiler
 {
@@ -21,6 +22,7 @@ class Transpiler
             ScriptTarget.Latest,
             true
         );
+
         node.forEachChild(node => {
             if (SyntaxKind[node.kind] == 'InterfaceDeclaration') {
                 this.generator.interfaceDeclaration(node);
@@ -32,7 +34,7 @@ class Transpiler
 (async () => {
     const transpiler = new Transpiler(
         new Writer(path.resolve(__dirname, '..', 'php')),
-        new Generator()
+        new Generator(new TypeConverter())
     );
     await transpiler.transpile(path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.d.ts'));
     await transpiler.transpile(path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.foldingRange.d.ts'));
