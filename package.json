@@ -1,0 +1,22 @@
+{
+    "name": "php-lanaguage-server-protocol",
+    "version": "1.0.0",
+    "description": "Generate PHP protocol classes from typescript protocol",
+    "main": "src/transpile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "clean": "rimraf lib",
+        "build": "tsc -p tsconfig.json",
+        "run": "tsc -p tsconfig.json && node lib/transpile.js"
+    },
+    "author": "Daniel Leech",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^14.0.13",
+        "typescript": "^3.9.5"
+    },
+    "dependencies": {
+        "typescript-parser": "^2.6.1",
+        "vscode-languageserver-protocol": "^3.15.0-next.4"
+    }
+}
