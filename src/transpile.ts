@@ -1,37 +1,39 @@
-import {TypescriptParser} from "typescript-parser/TypescriptParser";
-import {InterfaceDeclaration} from "typescript-parser/declarations";
+import {createSourceFile, ScriptTarget, SyntaxKind, InterfaceDeclaration}  from "typescript"
 import path = require('path');
 import {Generator} from "./generator";
 import {Writer} from './writer';
-
-const parser = new TypescriptParser();
+import {readFileSync} from 'fs';
 
 class Transpiler
 {
     writer: Writer;
+    generator: Generator;
 
-    constructor (writer: Writer) {
+    constructor (writer: Writer, generator: Generator) {
         this.writer = writer;
+        this.generator = generator;
     }
 
     async transpile(file: string): Promise<void> {
-        const parsed = await parser.parseFile(
-            path.resolve(file),
-            path.resolve(__dirname, '/..')
+        const node = createSourceFile(
+            file,
+            readFileSync(file, 'utf8'),
+            ScriptTarget.Latest,
+            true
         );
-
-        const generator = new Generator();
-
-        for (let declaration of parsed.declarations) {
-            if (declaration instanceof InterfaceDeclaration) {
-                this.writer.write(declaration.name, generator.interfaceDeclaration(declaration));
+        node.forEachChild(node => {
+            if (SyntaxKind[node.kind] == 'InterfaceDeclaration') {
+                this.generator.interfaceDeclaration(node);
             }
-        }
+        });
     }
 }
 
 (async () => {
-    const transpiler = new Transpiler(new Writer(path.resolve(__dirname, '..', 'php')));
+    const transpiler = new Transpiler(
+        new Writer(path.resolve(__dirname, '..', 'php')),
+        new Generator()
+    );
     await transpiler.transpile(path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.d.ts'));
     await transpiler.transpile(path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.foldingRange.d.ts'));
     await transpiler.transpile(path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-types', 'lib', 'umd', 'main.d.ts'));
