@@ -14,11 +14,11 @@ class DocumentHighlight
     /**
      * The highlight kind, default is [text](#DocumentHighlightKind.Text).
      *
-     * @var DocumentHighlightKind
+     * @var 1|2|3
      */
     public $kind;
 
-    public function __construct(Range $range, DocumentHighlightKind $kind)
+    public function __construct(Range $range, null $kind)
     {
         $this->range = $range;
         $this->kind = $kind;

@@ -14,11 +14,11 @@ class WillSaveTextDocumentParams
     /**
      * The 'TextDocumentSaveReason'.
      *
-     * @var TextDocumentSaveReason
+     * @var 1|2|3
      */
     public $reason;
 
-    public function __construct(TextDocumentIdentifier $textDocument, TextDocumentSaveReason $reason)
+    public function __construct(TextDocumentIdentifier $textDocument, null $reason)
     {
         $this->textDocument = $textDocument;
         $this->reason = $reason;

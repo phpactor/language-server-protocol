@@ -7,7 +7,7 @@ class ShowMessageParams
     /**
      * The message type. See {@link MessageType}
      *
-     * @var MessageType
+     * @var 1|2|3|4
      */
     public $type;
 
@@ -18,7 +18,7 @@ class ShowMessageParams
      */
     public $message;
 
-    public function __construct(MessageType $type, string $message)
+    public function __construct(null $type, string $message)
     {
         $this->type = $type;
         $this->message = $message;

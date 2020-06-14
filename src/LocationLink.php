@@ -17,7 +17,7 @@ class LocationLink
     /**
      * The target resource identifier of this link.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $targetUri;
 
@@ -38,7 +38,7 @@ class LocationLink
      */
     public $targetSelectionRange;
 
-    public function __construct(Range $originSelectionRange, DocumentUri $targetUri, Range $targetRange, Range $targetSelectionRange)
+    public function __construct(Range $originSelectionRange, string $targetUri, Range $targetRange, Range $targetSelectionRange)
     {
         $this->originSelectionRange = $originSelectionRange;
         $this->targetUri = $targetUri;

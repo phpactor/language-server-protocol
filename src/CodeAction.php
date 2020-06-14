@@ -16,7 +16,7 @@ class CodeAction
      * 
      * Used to filter code actions.
      *
-     * @var CodeActionKind
+     * @var string
      */
     public $kind;
 
@@ -54,7 +54,7 @@ class CodeAction
      */
     public $command;
 
-    public function __construct(string $title, CodeActionKind $kind, array $diagnostics, string $isPreferred, WorkspaceEdit $edit, Command $command)
+    public function __construct(string $title, string $kind, array $diagnostics, string $isPreferred, WorkspaceEdit $edit, Command $command)
     {
         $this->title = $title;
         $this->kind = $kind;

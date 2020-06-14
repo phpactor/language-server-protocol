@@ -26,7 +26,7 @@ class DidChangeTextDocumentParams
      * - apply the `TextDocumentContentChangeEvent`s in a single notification in the order
      *    you receive them.
      *
-     * @var array<TextDocumentContentChangeEvent>
+     * @var array<type literal ...|type literal ...>
      */
     public $contentChanges;
 

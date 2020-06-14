@@ -26,7 +26,7 @@ class ParameterInformation
      */
     public $documentation;
 
-    public function __construct(object $label, object $documentation)
+    public function __construct(null $label, null $documentation)
     {
         $this->label = $label;
         $this->documentation = $documentation;

@@ -7,18 +7,18 @@ class FileEvent
     /**
      * The file's uri.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
     /**
      * The change type.
      *
-     * @var FileChangeType
+     * @var 1|2|3
      */
     public $type;
 
-    public function __construct(DocumentUri $uri, FileChangeType $type)
+    public function __construct(string $uri, null $type)
     {
         $this->uri = $uri;
         $this->type = $type;

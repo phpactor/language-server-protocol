@@ -8,7 +8,7 @@ class _ServerCapabilities
      * Defines how text documents are synced. Is either a detailed structure defining each notification or
      * for backwards compatibility the TextDocumentSyncKind number.
      *
-     * @var TextDocumentSyncOptions|TextDocumentSyncKind
+     * @var TextDocumentSyncOptions|0|1|2
      */
     public $textDocumentSync;
 
@@ -177,7 +177,7 @@ class _ServerCapabilities
      */
     public $experimental;
 
-    public function __construct(object $textDocumentSync, CompletionOptions $completionProvider, object $hoverProvider, SignatureHelpOptions $signatureHelpProvider, object $declarationProvider, object $definitionProvider, object $typeDefinitionProvider, object $implementationProvider, object $referencesProvider, object $documentHighlightProvider, object $documentSymbolProvider, object $codeActionProvider, CodeLensOptions $codeLensProvider, DocumentLinkOptions $documentLinkProvider, object $colorProvider, object $workspaceSymbolProvider, object $documentFormattingProvider, object $documentRangeFormattingProvider, DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, object $renameProvider, object $foldingRangeProvider, object $selectionRangeProvider, ExecuteCommandOptions $executeCommandProvider, T $experimental)
+    public function __construct(null $textDocumentSync, CompletionOptions $completionProvider, null $hoverProvider, SignatureHelpOptions $signatureHelpProvider, null $declarationProvider, null $definitionProvider, null $typeDefinitionProvider, null $implementationProvider, null $referencesProvider, null $documentHighlightProvider, null $documentSymbolProvider, null $codeActionProvider, CodeLensOptions $codeLensProvider, DocumentLinkOptions $documentLinkProvider, null $colorProvider, null $workspaceSymbolProvider, null $documentFormattingProvider, null $documentRangeFormattingProvider, DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, null $renameProvider, null $foldingRangeProvider, null $selectionRangeProvider, ExecuteCommandOptions $executeCommandProvider, T $experimental)
     {
         $this->textDocumentSync = $textDocumentSync;
         $this->completionProvider = $completionProvider;

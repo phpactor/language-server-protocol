@@ -7,11 +7,11 @@ class TextDocumentIdentifier
     /**
      * The text document's uri.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
-    public function __construct(DocumentUri $uri)
+    public function __construct(string $uri)
     {
         $this->uri = $uri;
     }

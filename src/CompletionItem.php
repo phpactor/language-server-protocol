@@ -17,14 +17,14 @@ class CompletionItem
      * The kind of this completion item. Based of the kind
      * an icon is chosen by the editor.
      *
-     * @var CompletionItemKind
+     * @var 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25
      */
     public $kind;
 
     /**
      * Tags for this completion item.
      *
-     * @var array<CompletionItemTag>
+     * @var array<1>
      */
     public $tags;
 
@@ -100,7 +100,7 @@ class CompletionItem
      * and the `newText` property of a provided `textEdit`. If ommitted defaults to
      * `InsertTextFormat.PlainText`.
      *
-     * @var InsertTextFormat
+     * @var 1|2
      */
     public $insertTextFormat;
 
@@ -156,7 +156,7 @@ class CompletionItem
      */
     public $data;
 
-    public function __construct(string $label, CompletionItemKind $kind, array $tags, string $detail, object $documentation, string $deprecated, string $preselect, string $sortText, string $filterText, string $insertText, InsertTextFormat $insertTextFormat, TextEdit $textEdit, array $additionalTextEdits, array $commitCharacters, Command $command, null $data)
+    public function __construct(string $label, null $kind, array $tags, string $detail, null $documentation, string $deprecated, string $preselect, string $sortText, string $filterText, string $insertText, null $insertTextFormat, TextEdit $textEdit, array $additionalTextEdits, array $commitCharacters, Command $command, null $data)
     {
         $this->label = $label;
         $this->kind = $kind;

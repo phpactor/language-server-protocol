@@ -9,7 +9,7 @@ class TextDocument
      * represent files on disk. However, some documents may have other schemes indicating that they are not
      * available on disk.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
@@ -35,7 +35,7 @@ class TextDocument
      */
     public $lineCount;
 
-    public function __construct(DocumentUri $uri, string $languageId, int $version, int $lineCount)
+    public function __construct(string $uri, string $languageId, int $version, int $lineCount)
     {
         $this->uri = $uri;
         $this->languageId = $languageId;

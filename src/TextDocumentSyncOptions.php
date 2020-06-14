@@ -16,7 +16,7 @@ class TextDocumentSyncOptions
      * Change notifications are sent to the server. See TextDocumentSyncKind.None, TextDocumentSyncKind.Full
      * and TextDocumentSyncKind.Incremental. If omitted it defaults to TextDocumentSyncKind.None.
      *
-     * @var TextDocumentSyncKind
+     * @var 0|1|2
      */
     public $change;
 
@@ -44,7 +44,7 @@ class TextDocumentSyncOptions
      */
     public $save;
 
-    public function __construct(string $openClose, TextDocumentSyncKind $change, string $willSave, string $willSaveWaitUntil, SaveOptions $save)
+    public function __construct(string $openClose, null $change, string $willSave, string $willSaveWaitUntil, SaveOptions $save)
     {
         $this->openClose = $openClose;
         $this->change = $change;

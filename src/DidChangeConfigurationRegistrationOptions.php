@@ -10,7 +10,7 @@ class DidChangeConfigurationRegistrationOptions
      */
     public $section;
 
-    public function __construct(object $section)
+    public function __construct(null $section)
     {
         $this->section = $section;
     }

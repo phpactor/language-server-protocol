@@ -14,7 +14,7 @@ class CreateFile
     /**
      * The resource to create.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
@@ -25,7 +25,7 @@ class CreateFile
      */
     public $options;
 
-    public function __construct(null $kind, DocumentUri $uri, CreateFileOptions $options)
+    public function __construct(null $kind, string $uri, CreateFileOptions $options)
     {
         $this->kind = $kind;
         $this->uri = $uri;

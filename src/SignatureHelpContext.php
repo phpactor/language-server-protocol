@@ -7,7 +7,7 @@ class SignatureHelpContext
     /**
      * Action that caused signature help to be triggered.
      *
-     * @var SignatureHelpTriggerKind
+     * @var 1|2|3
      */
     public $triggerKind;
 
@@ -40,7 +40,7 @@ class SignatureHelpContext
      */
     public $activeSignatureHelp;
 
-    public function __construct(SignatureHelpTriggerKind $triggerKind, string $triggerCharacter, string $isRetrigger, SignatureHelp $activeSignatureHelp)
+    public function __construct(null $triggerKind, string $triggerCharacter, string $isRetrigger, SignatureHelp $activeSignatureHelp)
     {
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;

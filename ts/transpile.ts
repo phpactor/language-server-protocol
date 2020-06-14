@@ -1,7 +1,7 @@
 import path = require('path');
 import {Generator} from "./generator";
 import {Writer} from './writer';
-import {TypeConverter} from './typeConverter';
+import {TypeConverter,createTypeAliasMap} from './typeConverter';
 import {Transpiler} from './transpiler';
 import {ScriptTarget, createSourceFile}  from "typescript"
 import {readFileSync} from 'fs';
@@ -21,9 +21,11 @@ const nodes = paths.map((file: string) => {
     );
 });
 
+const typeAliasMap = createTypeAliasMap(nodes);
+
 const transpiler = new Transpiler(
     new Writer(path.resolve(__dirname, '..', 'src')),
-    new Generator(new TypeConverter())
+    new Generator(new TypeConverter(typeAliasMap))
 );
 
 transpiler.transpile(nodes);

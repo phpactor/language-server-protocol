@@ -21,7 +21,7 @@ class CodeActionContext
      * Actions not of this kind are filtered out by the client before being shown. So servers
      * can omit computing them.
      *
-     * @var array<CodeActionKind>
+     * @var array<string>
      */
     public $only;
 

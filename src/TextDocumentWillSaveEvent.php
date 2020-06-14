@@ -18,7 +18,7 @@ class TextDocumentWillSaveEvent
      */
     public $reason;
 
-    public function __construct(TextDocument $document, object $reason)
+    public function __construct(TextDocument $document, null $reason)
     {
         $this->document = $document;
         $this->reason = $reason;

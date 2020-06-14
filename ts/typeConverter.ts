@@ -9,7 +9,8 @@ import {
     TypeReferenceNode,
     isTypeNode,
     isTypeReferenceNode,
-    isIdentifier
+    isIdentifier,
+    isTypeAliasDeclaration
 } from 'typescript';
 
 export class PhpType
@@ -24,8 +25,19 @@ export class PhpType
     }
 }
 
+interface TypeAliasMap {
+    [key: string]: PhpType
+}
+
 export class TypeConverter
 {
+    typeAliasMap: TypeAliasMap;
+
+    constructor(typeAliasMap: TypeAliasMap)
+    {
+        this.typeAliasMap = typeAliasMap;
+    }
+
     phpType(type: TypeNode|TypeReferenceNode|null): PhpType {
         if (null === type) {
             return new PhpType(null,'');
@@ -80,8 +92,12 @@ export class TypeConverter
         }
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
+            if (this.typeAliasMap[type.typeName.escapedText.toString()]) {
+                return this.typeAliasMap[type.typeName.escapedText.toString()];
+            }
             return new PhpType(type.typeName.escapedText.toString(), type.typeName.escapedText.toString());
         }
+
 
         return new PhpType(null,'');
     }
@@ -95,11 +111,13 @@ export class TypeConverter
     }
 
     private phpTypeUnion(type: UnionTypeNode): PhpType {
+        const phpTypes = type.types.map((type: TypeNode) => {
+            return this.phpType(type);
+        });
+
         return new PhpType(
-            'object',
-            type.types.map((type: TypeNode) => {
-                return this.phpType(type).documented
-            }).join('|')
+            null,
+            phpTypes.map((type: PhpType) => { return type.documented; }).join('|')
         );
     }
 
@@ -113,4 +131,24 @@ export class TypeConverter
             `array{${types}}`
         );
     }
+}
+
+export function createTypeAliasMap(nodes: Node[]): TypeAliasMap {
+
+    const typeConverter = new TypeConverter({} as TypeAliasMap);
+    const aliases = {};
+
+    nodes.forEach((node: Node) => {
+
+
+        node.forEachChild(node => {
+            if (!isTypeAliasDeclaration(node)) {
+                return;
+            }
+            aliases[node.name.escapedText.toString()] = typeConverter.phpType(node.type);
+        });
+
+    });
+
+    return aliases as TypeAliasMap;
 }

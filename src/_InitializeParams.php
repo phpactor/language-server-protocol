@@ -32,14 +32,14 @@ class _InitializeParams
      * folder is open. If both `rootPath` and `rootUri` are set
      * `rootUri` wins.
      *
-     * @var DocumentUri|null
+     * @var string|null
      */
     public $rootUri;
 
     /**
      * The capabilities provided by the client (editor or tool)
      *
-     * @var ClientCapabilities
+     * @var 
      */
     public $capabilities;
 
@@ -57,7 +57,7 @@ class _InitializeParams
      */
     public $trace;
 
-    public function __construct(object $processId, null $clientInfo, object $rootPath, object $rootUri, ClientCapabilities $capabilities, null $initializationOptions, object $trace)
+    public function __construct(null $processId, null $clientInfo, null $rootPath, null $rootUri, null $capabilities, null $initializationOptions, null $trace)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;

@@ -15,7 +15,7 @@ class WorkspaceEditClientCapabilities
      * The resource operations the client supports. Clients should at least
      * support 'create', 'rename' and 'delete' files and folders.
      *
-     * @var array<ResourceOperationKind>
+     * @var array<'create'|'rename'|'delete'>
      */
     public $resourceOperations;
 
@@ -23,11 +23,11 @@ class WorkspaceEditClientCapabilities
      * The failure handling strategy of a client if applying the workspace edit
      * fails.
      *
-     * @var FailureHandlingKind
+     * @var 'abort'|'transactional'|'undo'|'textOnlyTransactional'
      */
     public $failureHandling;
 
-    public function __construct(string $documentChanges, array $resourceOperations, FailureHandlingKind $failureHandling)
+    public function __construct(string $documentChanges, array $resourceOperations, null $failureHandling)
     {
         $this->documentChanges = $documentChanges;
         $this->resourceOperations = $resourceOperations;

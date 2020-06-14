@@ -15,7 +15,7 @@ class HoverClientCapabilities
      * Client supports the follow content formats for the content
      * property. The order describes the preferred format of the client.
      *
-     * @var array<MarkupKind>
+     * @var array<'plaintext'|'markdown'>
      */
     public $contentFormat;
 

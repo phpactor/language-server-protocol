@@ -6,7 +6,7 @@ class Location
 {
     /**
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
@@ -16,7 +16,7 @@ class Location
      */
     public $range;
 
-    public function __construct(DocumentUri $uri, Range $range)
+    public function __construct(string $uri, Range $range)
     {
         $this->uri = $uri;
         $this->range = $range;

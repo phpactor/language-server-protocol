@@ -7,7 +7,7 @@ class PublishDiagnosticsParams
     /**
      * The URI for which diagnostic information is reported.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
@@ -25,7 +25,7 @@ class PublishDiagnosticsParams
      */
     public $diagnostics;
 
-    public function __construct(DocumentUri $uri, int $version, array $diagnostics)
+    public function __construct(string $uri, int $version, array $diagnostics)
     {
         $this->uri = $uri;
         $this->version = $version;

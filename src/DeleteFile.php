@@ -14,7 +14,7 @@ class DeleteFile
     /**
      * The file to delete.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $uri;
 
@@ -25,7 +25,7 @@ class DeleteFile
      */
     public $options;
 
-    public function __construct(null $kind, DocumentUri $uri, DeleteFileOptions $options)
+    public function __construct(null $kind, string $uri, DeleteFileOptions $options)
     {
         $this->kind = $kind;
         $this->uri = $uri;

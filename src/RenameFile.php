@@ -14,14 +14,14 @@ class RenameFile
     /**
      * The old (existing) location.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $oldUri;
 
     /**
      * The new location.
      *
-     * @var DocumentUri
+     * @var string
      */
     public $newUri;
 
@@ -32,7 +32,7 @@ class RenameFile
      */
     public $options;
 
-    public function __construct(null $kind, DocumentUri $oldUri, DocumentUri $newUri, RenameFileOptions $options)
+    public function __construct(null $kind, string $oldUri, string $newUri, RenameFileOptions $options)
     {
         $this->kind = $kind;
         $this->oldUri = $oldUri;
