@@ -1,4 +1,4 @@
-import {createSourceFile, ScriptTarget, SyntaxKind, InterfaceDeclaration, isInterfaceDeclaration}  from "typescript"
+import {createSourceFile, ScriptTarget, SyntaxKind, InterfaceDeclaration, isInterfaceDeclaration, Node}  from "typescript"
 import {readFileSync} from 'fs';
 import {Writer} from './writer';
 import {Generator} from "./generator";
@@ -13,14 +13,9 @@ export class Transpiler
         this.generator = generator;
     }
 
-    transpile(file: string[]): void {
-        file.forEach((file) => {
-            const node = createSourceFile(
-                file,
-                readFileSync(file, 'utf8'),
-                ScriptTarget.Latest,
-                true
-            );
+    transpile(nodes: Node[]): void {
+
+        nodes.forEach((node: Node) => {
 
             node.forEachChild(node => {
                 if (isInterfaceDeclaration(node)) {
@@ -28,6 +23,7 @@ export class Transpiler
                     this.writer.write(node.name.escapedText.toString(), code);
                 }
             });
+
         });
     }
 }
