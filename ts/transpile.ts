@@ -34,7 +34,7 @@ class Transpiler
 
 (async () => {
     const transpiler = new Transpiler(
-        new Writer(path.resolve(__dirname, '..', 'php')),
+        new Writer(path.resolve(__dirname, '..', 'src')),
         new Generator(new TypeConverter())
     );
     await transpiler.transpile(path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.d.ts'));
