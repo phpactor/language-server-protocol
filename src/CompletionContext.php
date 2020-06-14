@@ -19,7 +19,11 @@ class CompletionContext
      */
     public $triggerCharacter;
 
-    public function __construct(null $triggerKind, string $triggerCharacter)
+    /**
+     * @param 1|2|3 $triggerKind
+     * @param string $triggerCharacter
+     */
+    public function __construct($triggerKind, string $triggerCharacter)
     {
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;

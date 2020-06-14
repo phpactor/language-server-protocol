@@ -11,6 +11,9 @@ class MessageActionItem
      */
     public $title;
 
+    /**
+     * @param string $title
+     */
     public function __construct(string $title)
     {
         $this->title = $title;

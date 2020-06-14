@@ -29,6 +29,11 @@ class FoldingRangeClientCapabilities
      */
     public $lineFoldingOnly;
 
+    /**
+     * @param string $dynamicRegistration
+     * @param int $rangeLimit
+     * @param string $lineFoldingOnly
+     */
     public function __construct(string $dynamicRegistration, int $rangeLimit, string $lineFoldingOnly)
     {
         $this->dynamicRegistration = $dynamicRegistration;

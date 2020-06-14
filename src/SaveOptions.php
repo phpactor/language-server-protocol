@@ -11,6 +11,9 @@ class SaveOptions
      */
     public $includeText;
 
+    /**
+     * @param string $includeText
+     */
     public function __construct(string $includeText)
     {
         $this->includeText = $includeText;

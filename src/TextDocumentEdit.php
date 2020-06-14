@@ -18,6 +18,10 @@ class TextDocumentEdit
      */
     public $edits;
 
+    /**
+     * @param VersionedTextDocumentIdentifier $textDocument
+     * @param array<TextEdit> $edits
+     */
     public function __construct(VersionedTextDocumentIdentifier $textDocument, array $edits)
     {
         $this->textDocument = $textDocument;

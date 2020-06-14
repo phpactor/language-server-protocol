@@ -7,7 +7,7 @@ class WorkspaceEdit
     /**
      * Holds changes to existing resources.
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $changes;
 
@@ -27,7 +27,11 @@ class WorkspaceEdit
      */
     public $documentChanges;
 
-    public function __construct(null $changes, array $documentChanges)
+    /**
+     * @param array<mixed> $changes
+     * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)> $documentChanges
+     */
+    public function __construct($changes, array $documentChanges)
     {
         $this->changes = $changes;
         $this->documentChanges = $documentChanges;

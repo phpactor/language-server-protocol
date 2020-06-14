@@ -156,7 +156,25 @@ class CompletionItem
      */
     public $data;
 
-    public function __construct(string $label, null $kind, array $tags, string $detail, null $documentation, string $deprecated, string $preselect, string $sortText, string $filterText, string $insertText, null $insertTextFormat, TextEdit $textEdit, array $additionalTextEdits, array $commitCharacters, Command $command, null $data)
+    /**
+     * @param string $label
+     * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25 $kind
+     * @param array<1> $tags
+     * @param string $detail
+     * @param string|MarkupContent $documentation
+     * @param string $deprecated
+     * @param string $preselect
+     * @param string $sortText
+     * @param string $filterText
+     * @param string $insertText
+     * @param 1|2 $insertTextFormat
+     * @param TextEdit $textEdit
+     * @param array<TextEdit> $additionalTextEdits
+     * @param array<string> $commitCharacters
+     * @param Command $command
+     * @param mixed $data
+     */
+    public function __construct(string $label, $kind, array $tags, string $detail, $documentation, string $deprecated, string $preselect, string $sortText, string $filterText, string $insertText, $insertTextFormat, TextEdit $textEdit, array $additionalTextEdits, array $commitCharacters, Command $command, $data)
     {
         $this->label = $label;
         $this->kind = $kind;

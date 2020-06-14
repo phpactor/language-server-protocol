@@ -158,6 +158,30 @@ class TextDocumentClientCapabilities
      */
     public $publishDiagnostics;
 
+    /**
+     * @param TextDocumentSyncClientCapabilities $synchronization
+     * @param CompletionClientCapabilities $completion
+     * @param HoverClientCapabilities $hover
+     * @param SignatureHelpClientCapabilities $signatureHelp
+     * @param DeclarationClientCapabilities $declaration
+     * @param DefinitionClientCapabilities $definition
+     * @param TypeDefinitionClientCapabilities $typeDefinition
+     * @param ImplementationClientCapabilities $implementation
+     * @param ReferenceClientCapabilities $references
+     * @param DocumentHighlightClientCapabilities $documentHighlight
+     * @param DocumentSymbolClientCapabilities $documentSymbol
+     * @param CodeActionClientCapabilities $codeAction
+     * @param CodeLensClientCapabilities $codeLens
+     * @param DocumentLinkClientCapabilities $documentLink
+     * @param DocumentColorClientCapabilities $colorProvider
+     * @param DocumentFormattingClientCapabilities $formatting
+     * @param DocumentRangeFormattingClientCapabilities $rangeFormatting
+     * @param DocumentOnTypeFormattingClientCapabilities $onTypeFormatting
+     * @param RenameClientCapabilities $rename
+     * @param FoldingRangeClientCapabilities $foldingRange
+     * @param SelectionRangeClientCapabilities $selectionRange
+     * @param PublishDiagnosticsClientCapabilities $publishDiagnostics
+     */
     public function __construct(TextDocumentSyncClientCapabilities $synchronization, CompletionClientCapabilities $completion, HoverClientCapabilities $hover, SignatureHelpClientCapabilities $signatureHelp, DeclarationClientCapabilities $declaration, DefinitionClientCapabilities $definition, TypeDefinitionClientCapabilities $typeDefinition, ImplementationClientCapabilities $implementation, ReferenceClientCapabilities $references, DocumentHighlightClientCapabilities $documentHighlight, DocumentSymbolClientCapabilities $documentSymbol, CodeActionClientCapabilities $codeAction, CodeLensClientCapabilities $codeLens, DocumentLinkClientCapabilities $documentLink, DocumentColorClientCapabilities $colorProvider, DocumentFormattingClientCapabilities $formatting, DocumentRangeFormattingClientCapabilities $rangeFormatting, DocumentOnTypeFormattingClientCapabilities $onTypeFormatting, RenameClientCapabilities $rename, FoldingRangeClientCapabilities $foldingRange, SelectionRangeClientCapabilities $selectionRange, PublishDiagnosticsClientCapabilities $publishDiagnostics)
     {
         $this->synchronization = $synchronization;

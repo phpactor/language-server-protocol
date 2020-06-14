@@ -32,7 +32,13 @@ class RenameFile
      */
     public $options;
 
-    public function __construct(null $kind, string $oldUri, string $newUri, RenameFileOptions $options)
+    /**
+     * @param 'rename' $kind
+     * @param string $oldUri
+     * @param string $newUri
+     * @param RenameFileOptions $options
+     */
+    public function __construct($kind, string $oldUri, string $newUri, RenameFileOptions $options)
     {
         $this->kind = $kind;
         $this->oldUri = $oldUri;

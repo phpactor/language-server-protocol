@@ -11,6 +11,9 @@ class RenameOptions
      */
     public $prepareProvider;
 
+    /**
+     * @param string $prepareProvider
+     */
     public function __construct(string $prepareProvider)
     {
         $this->prepareProvider = $prepareProvider;

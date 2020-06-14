@@ -20,6 +20,10 @@ class ApplyWorkspaceEditParams
      */
     public $edit;
 
+    /**
+     * @param string $label
+     * @param WorkspaceEdit $edit
+     */
     public function __construct(string $label, WorkspaceEdit $edit)
     {
         $this->label = $label;

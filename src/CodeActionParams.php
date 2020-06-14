@@ -25,6 +25,11 @@ class CodeActionParams
      */
     public $context;
 
+    /**
+     * @param TextDocumentIdentifier $textDocument
+     * @param Range $range
+     * @param CodeActionContext $context
+     */
     public function __construct(TextDocumentIdentifier $textDocument, Range $range, CodeActionContext $context)
     {
         $this->textDocument = $textDocument;

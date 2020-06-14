@@ -10,7 +10,9 @@ import {
     isTypeNode,
     isTypeReferenceNode,
     isIdentifier,
-    isTypeAliasDeclaration
+    isTypeAliasDeclaration,
+    isIntersectionTypeNode,
+    IntersectionTypeNode
 } from 'typescript';
 
 export class PhpType
@@ -72,7 +74,7 @@ export class TypeConverter
         }
 
         if (SyntaxKind[type.kind] == 'TypeLiteral') {
-            return new PhpType(null, 'type literal ...');
+            return new PhpType(null, 'array<mixed>');
         }
 
         if (SyntaxKind[type.kind] == 'ParenthesizedType') {
@@ -89,6 +91,10 @@ export class TypeConverter
 
         if (SyntaxKind[type.kind] == 'UnionType') {
             return this.phpTypeUnion(type as UnionTypeNode);
+        }
+
+        if (isIntersectionTypeNode(type) {
+            return this.phpTypeIntersection(type);
         }
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
@@ -118,6 +124,17 @@ export class TypeConverter
         return new PhpType(
             null,
             phpTypes.map((type: PhpType) => { return type.documented; }).join('|')
+        );
+    }
+
+    private phpTypeIntersection(type: IntersectionTypeNode): PhpType {
+        const phpTypes = type.types.map((type: TypeNode) => {
+            return this.phpType(type);
+        });
+
+        return new PhpType(
+            null,
+            phpTypes.map((type: PhpType) => { return type.documented; }).join('&')
         );
     }
 

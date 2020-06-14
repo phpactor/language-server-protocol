@@ -18,7 +18,11 @@ class MarkupContent
      */
     public $value;
 
-    public function __construct(null $kind, string $value)
+    /**
+     * @param 'plaintext'|'markdown' $kind
+     * @param string $value
+     */
+    public function __construct($kind, string $value)
     {
         $this->kind = $kind;
         $this->value = $value;

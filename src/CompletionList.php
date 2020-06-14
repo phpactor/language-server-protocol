@@ -18,6 +18,10 @@ class CompletionList
      */
     public $items;
 
+    /**
+     * @param string $isIncomplete
+     * @param array<CompletionItem> $items
+     */
     public function __construct(string $isIncomplete, array $items)
     {
         $this->isIncomplete = $isIncomplete;

@@ -38,6 +38,11 @@ class CompletionOptions
      */
     public $resolveProvider;
 
+    /**
+     * @param array<string> $triggerCharacters
+     * @param array<string> $allCommitCharacters
+     * @param string $resolveProvider
+     */
     public function __construct(array $triggerCharacters, array $allCommitCharacters, string $resolveProvider)
     {
         $this->triggerCharacters = $triggerCharacters;

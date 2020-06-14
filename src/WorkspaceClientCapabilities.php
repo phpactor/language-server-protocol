@@ -48,6 +48,14 @@ class WorkspaceClientCapabilities
      */
     public $executeCommand;
 
+    /**
+     * @param string $applyEdit
+     * @param WorkspaceEditClientCapabilities $workspaceEdit
+     * @param DidChangeConfigurationClientCapabilities $didChangeConfiguration
+     * @param DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles
+     * @param WorkspaceSymbolClientCapabilities $symbol
+     * @param ExecuteCommandClientCapabilities $executeCommand
+     */
     public function __construct(string $applyEdit, WorkspaceEditClientCapabilities $workspaceEdit, DidChangeConfigurationClientCapabilities $didChangeConfiguration, DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, WorkspaceSymbolClientCapabilities $symbol, ExecuteCommandClientCapabilities $executeCommand)
     {
         $this->applyEdit = $applyEdit;

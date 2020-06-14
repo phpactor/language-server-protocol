@@ -20,6 +20,10 @@ class TextEdit
      */
     public $newText;
 
+    /**
+     * @param Range $range
+     * @param string $newText
+     */
     public function __construct(Range $range, string $newText)
     {
         $this->range = $range;

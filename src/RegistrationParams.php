@@ -10,6 +10,9 @@ class RegistrationParams
      */
     public $registrations;
 
+    /**
+     * @param array<Registration> $registrations
+     */
     public function __construct(array $registrations)
     {
         $this->registrations = $registrations;

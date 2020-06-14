@@ -7,11 +7,14 @@ class WorkDoneProgressParams
     /**
      * An optional token that a server can use to report work done progress.
      *
-     * @var ProgressToken
+     * @var int|string
      */
     public $workDoneToken;
 
-    public function __construct(ProgressToken $workDoneToken)
+    /**
+     * @param int|string $workDoneToken
+     */
+    public function __construct($workDoneToken)
     {
         $this->workDoneToken = $workDoneToken;
     }

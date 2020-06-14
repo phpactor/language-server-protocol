@@ -41,6 +41,13 @@ class FoldingRange
      */
     public $kind;
 
+    /**
+     * @param int $startLine
+     * @param int $startCharacter
+     * @param int $endLine
+     * @param int $endCharacter
+     * @param string $kind
+     */
     public function __construct(int $startLine, int $startCharacter, int $endLine, int $endCharacter, string $kind)
     {
         $this->startLine = $startLine;

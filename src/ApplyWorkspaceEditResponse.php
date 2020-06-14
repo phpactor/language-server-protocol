@@ -29,6 +29,11 @@ class ApplyWorkspaceEditResponse
      */
     public $failedChange;
 
+    /**
+     * @param string $applied
+     * @param string $failureReason
+     * @param int $failedChange
+     */
     public function __construct(string $applied, string $failureReason, int $failedChange)
     {
         $this->applied = $applied;

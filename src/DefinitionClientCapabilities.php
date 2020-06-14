@@ -18,6 +18,10 @@ class DefinitionClientCapabilities
      */
     public $linkSupport;
 
+    /**
+     * @param string $dynamicRegistration
+     * @param string $linkSupport
+     */
     public function __construct(string $dynamicRegistration, string $linkSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;

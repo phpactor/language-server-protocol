@@ -14,6 +14,9 @@ class CodeActionOptions
      */
     public $codeActionKinds;
 
+    /**
+     * @param array<string> $codeActionKinds
+     */
     public function __construct(array $codeActionKinds)
     {
         $this->codeActionKinds = $codeActionKinds;

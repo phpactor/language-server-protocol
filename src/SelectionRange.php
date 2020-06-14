@@ -18,6 +18,10 @@ class SelectionRange
      */
     public $parent;
 
+    /**
+     * @param Range $range
+     * @param SelectionRange $parent
+     */
     public function __construct(Range $range, SelectionRange $parent)
     {
         $this->range = $range;

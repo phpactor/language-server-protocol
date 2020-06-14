@@ -18,6 +18,10 @@ class DocumentLinkClientCapabilities
      */
     public $tooltipSupport;
 
+    /**
+     * @param string $dynamicRegistration
+     * @param string $tooltipSupport
+     */
     public function __construct(string $dynamicRegistration, string $tooltipSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;

@@ -18,6 +18,10 @@ class DiagnosticRelatedInformation
      */
     public $message;
 
+    /**
+     * @param Location $location
+     * @param string $message
+     */
     public function __construct(Location $location, string $message)
     {
         $this->location = $location;

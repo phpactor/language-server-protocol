@@ -25,6 +25,11 @@ class PublishDiagnosticsParams
      */
     public $diagnostics;
 
+    /**
+     * @param string $uri
+     * @param int $version
+     * @param array<Diagnostic> $diagnostics
+     */
     public function __construct(string $uri, int $version, array $diagnostics)
     {
         $this->uri = $uri;

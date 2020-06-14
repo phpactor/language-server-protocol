@@ -11,7 +11,10 @@ class DidChangeConfigurationParams
      */
     public $settings;
 
-    public function __construct(null $settings)
+    /**
+     * @param mixed $settings
+     */
+    public function __construct($settings)
     {
         $this->settings = $settings;
     }

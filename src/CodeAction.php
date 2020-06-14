@@ -54,6 +54,14 @@ class CodeAction
      */
     public $command;
 
+    /**
+     * @param string $title
+     * @param string $kind
+     * @param array<Diagnostic> $diagnostics
+     * @param string $isPreferred
+     * @param WorkspaceEdit $edit
+     * @param Command $command
+     */
     public function __construct(string $title, string $kind, array $diagnostics, string $isPreferred, WorkspaceEdit $edit, Command $command)
     {
         $this->title = $title;

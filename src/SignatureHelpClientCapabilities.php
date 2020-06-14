@@ -15,7 +15,7 @@ class SignatureHelpClientCapabilities
      * The client supports the following `SignatureInformation`
      * specific properties.
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $signatureInformation;
 
@@ -29,7 +29,12 @@ class SignatureHelpClientCapabilities
      */
     public $contextSupport;
 
-    public function __construct(string $dynamicRegistration, null $signatureInformation, string $contextSupport)
+    /**
+     * @param string $dynamicRegistration
+     * @param array<mixed> $signatureInformation
+     * @param string $contextSupport
+     */
+    public function __construct(string $dynamicRegistration, $signatureInformation, string $contextSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->signatureInformation = $signatureInformation;

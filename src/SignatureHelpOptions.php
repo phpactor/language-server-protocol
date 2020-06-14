@@ -21,6 +21,10 @@ class SignatureHelpOptions
      */
     public $retriggerCharacters;
 
+    /**
+     * @param array<string> $triggerCharacters
+     * @param array<string> $retriggerCharacters
+     */
     public function __construct(array $triggerCharacters, array $retriggerCharacters)
     {
         $this->triggerCharacters = $triggerCharacters;

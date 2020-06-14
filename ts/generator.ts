@@ -29,7 +29,7 @@ export class Generator
         this.buildConstructorDefinition(declaration, source);
 
         source.push(`}`);
-        console.log(source);
+        //console.log(source);
 
         return source.join("\n");
     }
@@ -69,12 +69,31 @@ export class Generator
 
             const phpType = this.converter.phpType(property.type).real;
 
-            args.push(`${phpType} $${property.name.escapedText}`);
+            if (phpType) {
+                args.push(`${phpType} $${property.name.escapedText}`);
+            } else {
+                args.push(`$${property.name.escapedText}`);
+            }
         }
 
         if (args.length === 0) {
             return;
         }
+
+        source.push('    /**');
+        for (const property of declaration.members) {
+            if (!isPropertySignature(property)) {
+                continue;
+            }
+
+            if (!isIdentifier(property.name)) {
+                continue;
+            }
+
+            const phpType = this.converter.phpType(property.type).documented;
+            source.push(`     * @param ${phpType} $${property.name.escapedText}`);
+        }
+        source.push('     */');
 
         const argsString = args.join(', ');
         source.push(`    public function __construct(${argsString})`);

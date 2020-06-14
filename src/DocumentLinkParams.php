@@ -11,6 +11,9 @@ class DocumentLinkParams
      */
     public $textDocument;
 
+    /**
+     * @param TextDocumentIdentifier $textDocument
+     */
     public function __construct(TextDocumentIdentifier $textDocument)
     {
         $this->textDocument = $textDocument;

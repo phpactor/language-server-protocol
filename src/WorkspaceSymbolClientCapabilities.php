@@ -14,11 +14,15 @@ class WorkspaceSymbolClientCapabilities
     /**
      * Specific capabilities for the `SymbolKind` in the `workspace/symbol` request.
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $symbolKind;
 
-    public function __construct(string $dynamicRegistration, null $symbolKind)
+    /**
+     * @param string $dynamicRegistration
+     * @param array<mixed> $symbolKind
+     */
+    public function __construct(string $dynamicRegistration, $symbolKind)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;

@@ -33,6 +33,12 @@ class TextDocumentItem
      */
     public $text;
 
+    /**
+     * @param string $uri
+     * @param string $languageId
+     * @param int $version
+     * @param string $text
+     */
     public function __construct(string $uri, string $languageId, int $version, string $text)
     {
         $this->uri = $uri;

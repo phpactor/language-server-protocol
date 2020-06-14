@@ -25,7 +25,12 @@ class CreateFile
      */
     public $options;
 
-    public function __construct(null $kind, string $uri, CreateFileOptions $options)
+    /**
+     * @param 'create' $kind
+     * @param string $uri
+     * @param CreateFileOptions $options
+     */
+    public function __construct($kind, string $uri, CreateFileOptions $options)
     {
         $this->kind = $kind;
         $this->uri = $uri;

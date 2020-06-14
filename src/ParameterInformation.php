@@ -26,7 +26,11 @@ class ParameterInformation
      */
     public $documentation;
 
-    public function __construct(null $label, null $documentation)
+    /**
+     * @param string|array{int,int} $label
+     * @param string|MarkupContent $documentation
+     */
+    public function __construct($label, $documentation)
     {
         $this->label = $label;
         $this->documentation = $documentation;

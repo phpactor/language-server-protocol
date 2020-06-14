@@ -11,7 +11,10 @@ class TextDocumentChangeRegistrationOptions
      */
     public $syncKind;
 
-    public function __construct(null $syncKind)
+    /**
+     * @param 0|1|2 $syncKind
+     */
+    public function __construct($syncKind)
     {
         $this->syncKind = $syncKind;
     }

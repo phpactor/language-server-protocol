@@ -18,6 +18,10 @@ class RenameFileOptions
      */
     public $ignoreIfExists;
 
+    /**
+     * @param string $overwrite
+     * @param string $ignoreIfExists
+     */
     public function __construct(string $overwrite, string $ignoreIfExists)
     {
         $this->overwrite = $overwrite;

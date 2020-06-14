@@ -15,13 +15,13 @@ class CompletionClientCapabilities
      * The client supports the following `CompletionItem` specific
      * capabilities.
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $completionItem;
 
     /**
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $completionItemKind;
 
@@ -33,7 +33,13 @@ class CompletionClientCapabilities
      */
     public $contextSupport;
 
-    public function __construct(string $dynamicRegistration, null $completionItem, null $completionItemKind, string $contextSupport)
+    /**
+     * @param string $dynamicRegistration
+     * @param array<mixed> $completionItem
+     * @param array<mixed> $completionItemKind
+     * @param string $contextSupport
+     */
+    public function __construct(string $dynamicRegistration, $completionItem, $completionItemKind, string $contextSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->completionItem = $completionItem;

@@ -177,7 +177,33 @@ class _ServerCapabilities
      */
     public $experimental;
 
-    public function __construct(null $textDocumentSync, CompletionOptions $completionProvider, null $hoverProvider, SignatureHelpOptions $signatureHelpProvider, null $declarationProvider, null $definitionProvider, null $typeDefinitionProvider, null $implementationProvider, null $referencesProvider, null $documentHighlightProvider, null $documentSymbolProvider, null $codeActionProvider, CodeLensOptions $codeLensProvider, DocumentLinkOptions $documentLinkProvider, null $colorProvider, null $workspaceSymbolProvider, null $documentFormattingProvider, null $documentRangeFormattingProvider, DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, null $renameProvider, null $foldingRangeProvider, null $selectionRangeProvider, ExecuteCommandOptions $executeCommandProvider, T $experimental)
+    /**
+     * @param TextDocumentSyncOptions|0|1|2 $textDocumentSync
+     * @param CompletionOptions $completionProvider
+     * @param string|HoverOptions $hoverProvider
+     * @param SignatureHelpOptions $signatureHelpProvider
+     * @param string|DeclarationOptions|DeclarationRegistrationOptions $declarationProvider
+     * @param string|DefinitionOptions $definitionProvider
+     * @param string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions $typeDefinitionProvider
+     * @param string|ImplementationOptions|ImplementationRegistrationOptions $implementationProvider
+     * @param string|ReferenceOptions $referencesProvider
+     * @param string|DocumentHighlightOptions $documentHighlightProvider
+     * @param string|DocumentSymbolOptions $documentSymbolProvider
+     * @param string|CodeActionOptions $codeActionProvider
+     * @param CodeLensOptions $codeLensProvider
+     * @param DocumentLinkOptions $documentLinkProvider
+     * @param string|DocumentColorOptions|DocumentColorRegistrationOptions $colorProvider
+     * @param string|WorkspaceSymbolOptions $workspaceSymbolProvider
+     * @param string|DocumentFormattingOptions $documentFormattingProvider
+     * @param string|DocumentRangeFormattingOptions $documentRangeFormattingProvider
+     * @param DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider
+     * @param string|RenameOptions $renameProvider
+     * @param string|FoldingRangeOptions|FoldingRangeRegistrationOptions $foldingRangeProvider
+     * @param string|SelectionRangeOptions|SelectionRangeRegistrationOptions $selectionRangeProvider
+     * @param ExecuteCommandOptions $executeCommandProvider
+     * @param T $experimental
+     */
+    public function __construct($textDocumentSync, CompletionOptions $completionProvider, $hoverProvider, SignatureHelpOptions $signatureHelpProvider, $declarationProvider, $definitionProvider, $typeDefinitionProvider, $implementationProvider, $referencesProvider, $documentHighlightProvider, $documentSymbolProvider, $codeActionProvider, CodeLensOptions $codeLensProvider, DocumentLinkOptions $documentLinkProvider, $colorProvider, $workspaceSymbolProvider, $documentFormattingProvider, $documentRangeFormattingProvider, DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, $renameProvider, $foldingRangeProvider, $selectionRangeProvider, ExecuteCommandOptions $executeCommandProvider, T $experimental)
     {
         $this->textDocumentSync = $textDocumentSync;
         $this->completionProvider = $completionProvider;

@@ -40,7 +40,13 @@ class SignatureHelpContext
      */
     public $activeSignatureHelp;
 
-    public function __construct(null $triggerKind, string $triggerCharacter, string $isRetrigger, SignatureHelp $activeSignatureHelp)
+    /**
+     * @param 1|2|3 $triggerKind
+     * @param string $triggerCharacter
+     * @param string $isRetrigger
+     * @param SignatureHelp $activeSignatureHelp
+     */
+    public function __construct($triggerKind, string $triggerCharacter, string $isRetrigger, SignatureHelp $activeSignatureHelp)
     {
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;

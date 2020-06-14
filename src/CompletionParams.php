@@ -12,6 +12,9 @@ class CompletionParams
      */
     public $context;
 
+    /**
+     * @param CompletionContext $context
+     */
     public function __construct(CompletionContext $context)
     {
         $this->context = $context;

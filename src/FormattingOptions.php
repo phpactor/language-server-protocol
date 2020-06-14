@@ -39,6 +39,13 @@ class FormattingOptions
      */
     public $trimFinalNewlines;
 
+    /**
+     * @param int $tabSize
+     * @param string $insertSpaces
+     * @param string $trimTrailingWhitespace
+     * @param string $insertFinalNewline
+     * @param string $trimFinalNewlines
+     */
     public function __construct(int $tabSize, string $insertSpaces, string $trimTrailingWhitespace, string $insertFinalNewline, string $trimFinalNewlines)
     {
         $this->tabSize = $tabSize;

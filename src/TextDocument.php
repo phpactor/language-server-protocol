@@ -35,6 +35,12 @@ class TextDocument
      */
     public $lineCount;
 
+    /**
+     * @param string $uri
+     * @param string $languageId
+     * @param int $version
+     * @param int $lineCount
+     */
     public function __construct(string $uri, string $languageId, int $version, int $lineCount)
     {
         $this->uri = $uri;

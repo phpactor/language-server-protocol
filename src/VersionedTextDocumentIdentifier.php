@@ -15,7 +15,10 @@ class VersionedTextDocumentIdentifier
      */
     public $version;
 
-    public function __construct(null $version)
+    /**
+     * @param int|null $version
+     */
+    public function __construct($version)
     {
         $this->version = $version;
     }

@@ -11,6 +11,9 @@ class DidChangeWatchedFilesRegistrationOptions
      */
     public $watchers;
 
+    /**
+     * @param array<FileSystemWatcher> $watchers
+     */
     public function __construct(array $watchers)
     {
         $this->watchers = $watchers;

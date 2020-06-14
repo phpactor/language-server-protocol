@@ -15,7 +15,7 @@ class _InitializeParams
     /**
      * Information about the client
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $clientInfo;
 
@@ -39,7 +39,7 @@ class _InitializeParams
     /**
      * The capabilities provided by the client (editor or tool)
      *
-     * @var 
+     * @var _ClientCapabilities&WorkspaceFoldersClientCapabilities&ConfigurationClientCapabilities&WorkDoneProgressClientCapabilities
      */
     public $capabilities;
 
@@ -57,7 +57,16 @@ class _InitializeParams
      */
     public $trace;
 
-    public function __construct(null $processId, null $clientInfo, null $rootPath, null $rootUri, null $capabilities, null $initializationOptions, null $trace)
+    /**
+     * @param int|null $processId
+     * @param array<mixed> $clientInfo
+     * @param string|null $rootPath
+     * @param string|null $rootUri
+     * @param _ClientCapabilities&WorkspaceFoldersClientCapabilities&ConfigurationClientCapabilities&WorkDoneProgressClientCapabilities $capabilities
+     * @param mixed $initializationOptions
+     * @param 'off'|'messages'|'verbose' $trace
+     */
+    public function __construct($processId, $clientInfo, $rootPath, $rootUri, $capabilities, $initializationOptions, $trace)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;

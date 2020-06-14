@@ -18,6 +18,10 @@ class Range
      */
     public $end;
 
+    /**
+     * @param Position $start
+     * @param Position $end
+     */
     public function __construct(Position $start, Position $end)
     {
         $this->start = $start;

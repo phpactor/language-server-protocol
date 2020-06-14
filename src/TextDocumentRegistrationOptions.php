@@ -12,7 +12,10 @@ class TextDocumentRegistrationOptions
      */
     public $documentSelector;
 
-    public function __construct(null $documentSelector)
+    /**
+     * @param array<(string|DocumentFilter)>|null $documentSelector
+     */
+    public function __construct($documentSelector)
     {
         $this->documentSelector = $documentSelector;
     }

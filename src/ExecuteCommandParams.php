@@ -18,6 +18,10 @@ class ExecuteCommandParams
      */
     public $arguments;
 
+    /**
+     * @param string $command
+     * @param array<mixed> $arguments
+     */
     public function __construct(string $command, array $arguments)
     {
         $this->command = $command;

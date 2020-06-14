@@ -14,7 +14,7 @@ class DocumentSymbolClientCapabilities
     /**
      * Specific capabilities for the `SymbolKind`.
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $symbolKind;
 
@@ -25,7 +25,12 @@ class DocumentSymbolClientCapabilities
      */
     public $hierarchicalDocumentSymbolSupport;
 
-    public function __construct(string $dynamicRegistration, null $symbolKind, string $hierarchicalDocumentSymbolSupport)
+    /**
+     * @param string $dynamicRegistration
+     * @param array<mixed> $symbolKind
+     * @param string $hierarchicalDocumentSymbolSupport
+     */
+    public function __construct(string $dynamicRegistration, $symbolKind, string $hierarchicalDocumentSymbolSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;

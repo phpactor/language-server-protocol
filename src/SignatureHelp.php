@@ -27,7 +27,12 @@ class SignatureHelp
      */
     public $activeParameter;
 
-    public function __construct(array $signatures, null $activeSignature, null $activeParameter)
+    /**
+     * @param array<SignatureInformation> $signatures
+     * @param int|null $activeSignature
+     * @param int|null $activeParameter
+     */
+    public function __construct(array $signatures, $activeSignature, $activeParameter)
     {
         $this->signatures = $signatures;
         $this->activeSignature = $activeSignature;

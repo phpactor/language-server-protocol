@@ -14,6 +14,9 @@ class InitializeError
      */
     public $retry;
 
+    /**
+     * @param string $retry
+     */
     public function __construct(string $retry)
     {
         $this->retry = $retry;

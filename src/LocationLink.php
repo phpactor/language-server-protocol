@@ -38,6 +38,12 @@ class LocationLink
      */
     public $targetSelectionRange;
 
+    /**
+     * @param Range $originSelectionRange
+     * @param string $targetUri
+     * @param Range $targetRange
+     * @param Range $targetSelectionRange
+     */
     public function __construct(Range $originSelectionRange, string $targetUri, Range $targetRange, Range $targetSelectionRange)
     {
         $this->originSelectionRange = $originSelectionRange;

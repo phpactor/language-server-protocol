@@ -8,11 +8,14 @@ class PartialResultParams
      * An optional token that a server can use to report partial results (e.g. streaming) to
      * the client.
      *
-     * @var ProgressToken
+     * @var int|string
      */
     public $partialResultToken;
 
-    public function __construct(ProgressToken $partialResultToken)
+    /**
+     * @param int|string $partialResultToken
+     */
+    public function __construct($partialResultToken)
     {
         $this->partialResultToken = $partialResultToken;
     }

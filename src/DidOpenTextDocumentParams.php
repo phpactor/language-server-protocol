@@ -11,6 +11,9 @@ class DidOpenTextDocumentParams
      */
     public $textDocument;
 
+    /**
+     * @param TextDocumentItem $textDocument
+     */
     public function __construct(TextDocumentItem $textDocument)
     {
         $this->textDocument = $textDocument;

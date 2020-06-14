@@ -11,6 +11,9 @@ class ExecuteCommandOptions
      */
     public $commands;
 
+    /**
+     * @param array<string> $commands
+     */
     public function __construct(array $commands)
     {
         $this->commands = $commands;

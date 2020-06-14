@@ -11,6 +11,9 @@ class TextDocumentChangeEvent
      */
     public $document;
 
+    /**
+     * @param TextDocument $document
+     */
     public function __construct(TextDocument $document)
     {
         $this->document = $document;

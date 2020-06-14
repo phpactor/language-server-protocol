@@ -11,6 +11,9 @@ class CodeLensOptions
      */
     public $resolveProvider;
 
+    /**
+     * @param string $resolveProvider
+     */
     public function __construct(string $resolveProvider)
     {
         $this->resolveProvider = $resolveProvider;

@@ -34,6 +34,12 @@ class TextDocumentSyncClientCapabilities
      */
     public $didSave;
 
+    /**
+     * @param string $dynamicRegistration
+     * @param string $willSave
+     * @param string $willSaveWaitUntil
+     * @param string $didSave
+     */
     public function __construct(string $dynamicRegistration, string $willSave, string $willSaveWaitUntil, string $didSave)
     {
         $this->dynamicRegistration = $dynamicRegistration;

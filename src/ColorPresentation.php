@@ -30,6 +30,11 @@ class ColorPresentation
      */
     public $additionalTextEdits;
 
+    /**
+     * @param string $label
+     * @param TextEdit $textEdit
+     * @param array<TextEdit> $additionalTextEdits
+     */
     public function __construct(string $label, TextEdit $textEdit, array $additionalTextEdits)
     {
         $this->label = $label;

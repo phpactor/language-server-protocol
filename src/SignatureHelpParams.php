@@ -12,6 +12,9 @@ class SignatureHelpParams
      */
     public $context;
 
+    /**
+     * @param SignatureHelpContext $context
+     */
     public function __construct(SignatureHelpContext $context)
     {
         $this->context = $context;

@@ -57,7 +57,16 @@ class Diagnostic
      */
     public $relatedInformation;
 
-    public function __construct(Range $range, null $severity, null $code, string $source, string $message, array $tags, array $relatedInformation)
+    /**
+     * @param Range $range
+     * @param 1|2|3|4 $severity
+     * @param int|string $code
+     * @param string $source
+     * @param string $message
+     * @param array<1|2> $tags
+     * @param array<DiagnosticRelatedInformation> $relatedInformation
+     */
+    public function __construct(Range $range, $severity, $code, string $source, string $message, array $tags, array $relatedInformation)
     {
         $this->range = $range;
         $this->severity = $severity;

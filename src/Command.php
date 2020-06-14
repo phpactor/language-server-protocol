@@ -26,6 +26,11 @@ class Command
      */
     public $arguments;
 
+    /**
+     * @param string $title
+     * @param string $command
+     * @param array<mixed> $arguments
+     */
     public function __construct(string $title, string $command, array $arguments)
     {
         $this->title = $title;

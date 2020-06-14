@@ -18,6 +18,10 @@ class ColorInformation
      */
     public $color;
 
+    /**
+     * @param Range $range
+     * @param Color $color
+     */
     public function __construct(Range $range, Color $color)
     {
         $this->range = $range;

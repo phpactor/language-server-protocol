@@ -26,7 +26,12 @@ class Registration
      */
     public $registerOptions;
 
-    public function __construct(string $id, string $method, null $registerOptions)
+    /**
+     * @param string $id
+     * @param string $method
+     * @param mixed $registerOptions
+     */
+    public function __construct(string $id, string $method, $registerOptions)
     {
         $this->id = $id;
         $this->method = $method;

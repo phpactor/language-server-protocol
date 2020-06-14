@@ -10,6 +10,9 @@ class UnregistrationParams
      */
     public $unregisterations;
 
+    /**
+     * @param array<Unregistration> $unregisterations
+     */
     public function __construct(array $unregisterations)
     {
         $this->unregisterations = $unregisterations;

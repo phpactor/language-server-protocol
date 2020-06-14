@@ -37,7 +37,13 @@ class DocumentLink
      */
     public $data;
 
-    public function __construct(Range $range, string $target, string $tooltip, null $data)
+    /**
+     * @param Range $range
+     * @param string $target
+     * @param string $tooltip
+     * @param mixed $data
+     */
+    public function __construct(Range $range, string $target, string $tooltip, $data)
     {
         $this->range = $range;
         $this->target = $target;

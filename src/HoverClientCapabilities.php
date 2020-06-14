@@ -19,6 +19,10 @@ class HoverClientCapabilities
      */
     public $contentFormat;
 
+    /**
+     * @param string $dynamicRegistration
+     * @param array<'plaintext'|'markdown'> $contentFormat
+     */
     public function __construct(string $dynamicRegistration, array $contentFormat)
     {
         $this->dynamicRegistration = $dynamicRegistration;

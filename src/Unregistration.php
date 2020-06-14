@@ -19,6 +19,10 @@ class Unregistration
      */
     public $method;
 
+    /**
+     * @param string $id
+     * @param string $method
+     */
     public function __construct(string $id, string $method)
     {
         $this->id = $id;

@@ -25,6 +25,10 @@ class CodeActionContext
      */
     public $only;
 
+    /**
+     * @param array<Diagnostic> $diagnostics
+     * @param array<string> $only
+     */
     public function __construct(array $diagnostics, array $only)
     {
         $this->diagnostics = $diagnostics;

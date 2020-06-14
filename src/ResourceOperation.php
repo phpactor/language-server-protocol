@@ -10,6 +10,9 @@ class ResourceOperation
      */
     public $kind;
 
+    /**
+     * @param string $kind
+     */
     public function __construct(string $kind)
     {
         $this->kind = $kind;

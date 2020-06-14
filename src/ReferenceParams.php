@@ -10,6 +10,9 @@ class ReferenceParams
      */
     public $context;
 
+    /**
+     * @param ReferenceContext $context
+     */
     public function __construct(ReferenceContext $context)
     {
         $this->context = $context;

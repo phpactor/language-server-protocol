@@ -11,6 +11,9 @@ class ReferenceContext
      */
     public $includeDeclaration;
 
+    /**
+     * @param string $includeDeclaration
+     */
     public function __construct(string $includeDeclaration)
     {
         $this->includeDeclaration = $includeDeclaration;

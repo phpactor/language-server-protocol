@@ -18,6 +18,10 @@ class DocumentFormattingParams
      */
     public $options;
 
+    /**
+     * @param TextDocumentIdentifier $textDocument
+     * @param FormattingOptions $options
+     */
     public function __construct(TextDocumentIdentifier $textDocument, FormattingOptions $options)
     {
         $this->textDocument = $textDocument;

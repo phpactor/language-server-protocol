@@ -15,7 +15,7 @@ class CodeActionClientCapabilities
      * The client support code action literals as a valid
      * response of the `textDocument/codeAction` request.
      *
-     * @var type literal ...
+     * @var array<mixed>
      */
     public $codeActionLiteralSupport;
 
@@ -26,7 +26,12 @@ class CodeActionClientCapabilities
      */
     public $isPreferredSupport;
 
-    public function __construct(string $dynamicRegistration, null $codeActionLiteralSupport, string $isPreferredSupport)
+    /**
+     * @param string $dynamicRegistration
+     * @param array<mixed> $codeActionLiteralSupport
+     * @param string $isPreferredSupport
+     */
+    public function __construct(string $dynamicRegistration, $codeActionLiteralSupport, string $isPreferredSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->codeActionLiteralSupport = $codeActionLiteralSupport;

@@ -26,10 +26,14 @@ class DidChangeTextDocumentParams
      * - apply the `TextDocumentContentChangeEvent`s in a single notification in the order
      *    you receive them.
      *
-     * @var array<type literal ...|type literal ...>
+     * @var array<array<mixed>|array<mixed>>
      */
     public $contentChanges;
 
+    /**
+     * @param VersionedTextDocumentIdentifier $textDocument
+     * @param array<array<mixed>|array<mixed>> $contentChanges
+     */
     public function __construct(VersionedTextDocumentIdentifier $textDocument, array $contentChanges)
     {
         $this->textDocument = $textDocument;
