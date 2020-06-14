@@ -24,6 +24,7 @@ export class Generator
         source.push(`{`);
 
         this.buildProperties(declaration, source);
+        this.buildConstructorDefinition(declaration, source);
 
         source.push(`}`);
         console.log(source);
@@ -47,8 +48,36 @@ export class Generator
             source.push(`    public $${property.name.escapedText};`);
             source.push(``);
         }
+    }
 
-        return source;
+    buildConstructorDefinition(declaration: InterfaceDeclaration, source: string[]): void {
+        const args: string[] = [];
+        for (const property of declaration.members) {
+            if (!isPropertySignature(property)) {
+                continue;
+            }
+
+            const phpType = this.converter.phpType(property.type).real;
+
+            args.push(`${phpType} $${property.name.escapedText}`);
+        }
+
+        if (args.length === 0) {
+            return;
+        }
+
+        const argsString = args.join(', ');
+        source.push(`    public function __construct(${argsString})`);
+        source.push('    {');
+
+        for (const property of declaration.members) {
+            if (!isPropertySignature(property)) {
+                continue;
+            }
+
+            source.push(`        $this->$${property.name.escapedText} = $this->$${property.name.escapedText};`);
+        }
+        source.push('    }');
     }
 
     jsDocs(property: PropertySignature): string[] {
