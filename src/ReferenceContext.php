@@ -13,6 +13,6 @@ class ReferenceContext
 
     public function __construct(string $includeDeclaration)
     {
-        $this->$includeDeclaration = $this->$includeDeclaration;
+        $this->includeDeclaration = $includeDeclaration;
     }
 }

@@ -28,7 +28,7 @@ class Position
 
     public function __construct(int $line, int $character)
     {
-        $this->$line = $this->$line;
-        $this->$character = $this->$character;
+        $this->line = $line;
+        $this->character = $character;
     }
 }

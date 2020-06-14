@@ -20,7 +20,7 @@ class DocumentFormattingParams
 
     public function __construct(TextDocumentIdentifier $textDocument, FormattingOptions $options)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$options = $this->$options;
+        $this->textDocument = $textDocument;
+        $this->options = $options;
     }
 }

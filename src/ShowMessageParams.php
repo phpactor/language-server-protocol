@@ -20,7 +20,7 @@ class ShowMessageParams
 
     public function __construct(MessageType $type, string $message)
     {
-        $this->$type = $this->$type;
-        $this->$message = $this->$message;
+        $this->type = $type;
+        $this->message = $message;
     }
 }

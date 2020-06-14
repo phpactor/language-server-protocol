@@ -16,6 +16,6 @@ class CodeActionOptions
 
     public function __construct(array $codeActionKinds)
     {
-        $this->$codeActionKinds = $this->$codeActionKinds;
+        $this->codeActionKinds = $codeActionKinds;
     }
 }

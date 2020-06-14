@@ -4,7 +4,12 @@ import {
     ArrayTypeNode,
     UnionTypeNode,
     TupleTypeNode,
-    ParenthesizedTypeNode
+    ParenthesizedTypeNode,
+    Node,
+    TypeReferenceNode,
+    isTypeNode,
+    isTypeReferenceNode,
+    isIdentifier
 } from 'typescript';
 
 export class PhpType
@@ -21,7 +26,7 @@ export class PhpType
 
 export class TypeConverter
 {
-    phpType(type: TypeNode|null): PhpType {
+    phpType(type: TypeNode|TypeReferenceNode|null): PhpType {
         if (null === type) {
             return new PhpType(null,'');
         }
@@ -51,19 +56,19 @@ export class TypeConverter
         }
 
         if (SyntaxKind[type.kind] == 'TupleType') {
-            return this.phpTypeTuple(type);
+            return this.phpTypeTuple(type as TupleTypeNode);
         }
 
         if (SyntaxKind[type.kind] == 'TypeLiteral') {
-            return this.phpType(null, 'type literal ...');
+            return new PhpType(null, 'type literal ...');
         }
 
         if (SyntaxKind[type.kind] == 'ParenthesizedType') {
-            return this.phpTypeParenthesis(type);
+            return this.phpTypeParenthesis(type as ParenthesizedTypeNode);
         }
 
         if (SyntaxKind[type.kind] == 'ArrayType') {
-            return this.phpTypeArray(type);
+            return this.phpTypeArray(type as ArrayTypeNode);
         }
 
         if (SyntaxKind[type.kind] == 'LiteralType') {
@@ -71,11 +76,11 @@ export class TypeConverter
         }
 
         if (SyntaxKind[type.kind] == 'UnionType') {
-            return this.phpTypeUnion(type);
+            return this.phpTypeUnion(type as UnionTypeNode);
         }
 
-        if (type.hasOwnProperty('typeName')) {
-            return new PhpType(type.typeName.escapedText, type.typeName.escapedText);
+        if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
+            return new PhpType(type.typeName.escapedText.toString(), type.typeName.escapedText.toString());
         }
 
         return new PhpType(null,'');
@@ -100,8 +105,8 @@ export class TypeConverter
 
     private phpTypeTuple(type: TupleTypeNode): PhpType {
         const types = type.elementTypes.map((type: TypeNode) => {
-            return this.phpType(type).documented
-        }).join(','))
+            return this.phpType(type).documented;
+        }).join(',');
 
         return new PhpType(
             'array',

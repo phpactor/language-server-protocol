@@ -29,8 +29,8 @@ class SignatureHelp
 
     public function __construct(array $signatures, object $activeSignature, object $activeParameter)
     {
-        $this->$signatures = $this->$signatures;
-        $this->$activeSignature = $this->$activeSignature;
-        $this->$activeParameter = $this->$activeParameter;
+        $this->signatures = $signatures;
+        $this->activeSignature = $activeSignature;
+        $this->activeParameter = $activeParameter;
     }
 }

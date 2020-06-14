@@ -160,27 +160,27 @@ class TextDocumentClientCapabilities
 
     public function __construct(TextDocumentSyncClientCapabilities $synchronization, CompletionClientCapabilities $completion, HoverClientCapabilities $hover, SignatureHelpClientCapabilities $signatureHelp, DeclarationClientCapabilities $declaration, DefinitionClientCapabilities $definition, TypeDefinitionClientCapabilities $typeDefinition, ImplementationClientCapabilities $implementation, ReferenceClientCapabilities $references, DocumentHighlightClientCapabilities $documentHighlight, DocumentSymbolClientCapabilities $documentSymbol, CodeActionClientCapabilities $codeAction, CodeLensClientCapabilities $codeLens, DocumentLinkClientCapabilities $documentLink, DocumentColorClientCapabilities $colorProvider, DocumentFormattingClientCapabilities $formatting, DocumentRangeFormattingClientCapabilities $rangeFormatting, DocumentOnTypeFormattingClientCapabilities $onTypeFormatting, RenameClientCapabilities $rename, FoldingRangeClientCapabilities $foldingRange, SelectionRangeClientCapabilities $selectionRange, PublishDiagnosticsClientCapabilities $publishDiagnostics)
     {
-        $this->$synchronization = $this->$synchronization;
-        $this->$completion = $this->$completion;
-        $this->$hover = $this->$hover;
-        $this->$signatureHelp = $this->$signatureHelp;
-        $this->$declaration = $this->$declaration;
-        $this->$definition = $this->$definition;
-        $this->$typeDefinition = $this->$typeDefinition;
-        $this->$implementation = $this->$implementation;
-        $this->$references = $this->$references;
-        $this->$documentHighlight = $this->$documentHighlight;
-        $this->$documentSymbol = $this->$documentSymbol;
-        $this->$codeAction = $this->$codeAction;
-        $this->$codeLens = $this->$codeLens;
-        $this->$documentLink = $this->$documentLink;
-        $this->$colorProvider = $this->$colorProvider;
-        $this->$formatting = $this->$formatting;
-        $this->$rangeFormatting = $this->$rangeFormatting;
-        $this->$onTypeFormatting = $this->$onTypeFormatting;
-        $this->$rename = $this->$rename;
-        $this->$foldingRange = $this->$foldingRange;
-        $this->$selectionRange = $this->$selectionRange;
-        $this->$publishDiagnostics = $this->$publishDiagnostics;
+        $this->synchronization = $synchronization;
+        $this->completion = $completion;
+        $this->hover = $hover;
+        $this->signatureHelp = $signatureHelp;
+        $this->declaration = $declaration;
+        $this->definition = $definition;
+        $this->typeDefinition = $typeDefinition;
+        $this->implementation = $implementation;
+        $this->references = $references;
+        $this->documentHighlight = $documentHighlight;
+        $this->documentSymbol = $documentSymbol;
+        $this->codeAction = $codeAction;
+        $this->codeLens = $codeLens;
+        $this->documentLink = $documentLink;
+        $this->colorProvider = $colorProvider;
+        $this->formatting = $formatting;
+        $this->rangeFormatting = $rangeFormatting;
+        $this->onTypeFormatting = $onTypeFormatting;
+        $this->rename = $rename;
+        $this->foldingRange = $foldingRange;
+        $this->selectionRange = $selectionRange;
+        $this->publishDiagnostics = $publishDiagnostics;
     }
 }

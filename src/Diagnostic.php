@@ -59,12 +59,12 @@ class Diagnostic
 
     public function __construct(Range $range, DiagnosticSeverity $severity, object $code, string $source, string $message, array $tags, array $relatedInformation)
     {
-        $this->$range = $this->$range;
-        $this->$severity = $this->$severity;
-        $this->$code = $this->$code;
-        $this->$source = $this->$source;
-        $this->$message = $this->$message;
-        $this->$tags = $this->$tags;
-        $this->$relatedInformation = $this->$relatedInformation;
+        $this->range = $range;
+        $this->severity = $severity;
+        $this->code = $code;
+        $this->source = $source;
+        $this->message = $message;
+        $this->tags = $tags;
+        $this->relatedInformation = $relatedInformation;
     }
 }

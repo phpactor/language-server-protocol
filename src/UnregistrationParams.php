@@ -12,6 +12,6 @@ class UnregistrationParams
 
     public function __construct(array $unregisterations)
     {
-        $this->$unregisterations = $this->$unregisterations;
+        $this->unregisterations = $unregisterations;
     }
 }

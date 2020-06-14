@@ -158,21 +158,21 @@ class CompletionItem
 
     public function __construct(string $label, CompletionItemKind $kind, array $tags, string $detail, object $documentation, string $deprecated, string $preselect, string $sortText, string $filterText, string $insertText, InsertTextFormat $insertTextFormat, TextEdit $textEdit, array $additionalTextEdits, array $commitCharacters, Command $command, null $data)
     {
-        $this->$label = $this->$label;
-        $this->$kind = $this->$kind;
-        $this->$tags = $this->$tags;
-        $this->$detail = $this->$detail;
-        $this->$documentation = $this->$documentation;
-        $this->$deprecated = $this->$deprecated;
-        $this->$preselect = $this->$preselect;
-        $this->$sortText = $this->$sortText;
-        $this->$filterText = $this->$filterText;
-        $this->$insertText = $this->$insertText;
-        $this->$insertTextFormat = $this->$insertTextFormat;
-        $this->$textEdit = $this->$textEdit;
-        $this->$additionalTextEdits = $this->$additionalTextEdits;
-        $this->$commitCharacters = $this->$commitCharacters;
-        $this->$command = $this->$command;
-        $this->$data = $this->$data;
+        $this->label = $label;
+        $this->kind = $kind;
+        $this->tags = $tags;
+        $this->detail = $detail;
+        $this->documentation = $documentation;
+        $this->deprecated = $deprecated;
+        $this->preselect = $preselect;
+        $this->sortText = $sortText;
+        $this->filterText = $filterText;
+        $this->insertText = $insertText;
+        $this->insertTextFormat = $insertTextFormat;
+        $this->textEdit = $textEdit;
+        $this->additionalTextEdits = $additionalTextEdits;
+        $this->commitCharacters = $commitCharacters;
+        $this->command = $command;
+        $this->data = $data;
     }
 }

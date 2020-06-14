@@ -18,7 +18,7 @@ class Location
 
     public function __construct(DocumentUri $uri, Range $range)
     {
-        $this->$uri = $this->$uri;
-        $this->$range = $this->$range;
+        $this->uri = $uri;
+        $this->range = $range;
     }
 }

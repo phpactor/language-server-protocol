@@ -12,6 +12,6 @@ class DidChangeConfigurationRegistrationOptions
 
     public function __construct(object $section)
     {
-        $this->$section = $this->$section;
+        $this->section = $section;
     }
 }

@@ -20,7 +20,7 @@ class ExecuteCommandParams
 
     public function __construct(string $command, array $arguments)
     {
-        $this->$command = $this->$command;
-        $this->$arguments = $this->$arguments;
+        $this->command = $command;
+        $this->arguments = $arguments;
     }
 }

@@ -22,7 +22,7 @@ class ApplyWorkspaceEditParams
 
     public function __construct(string $label, WorkspaceEdit $edit)
     {
-        $this->$label = $this->$label;
-        $this->$edit = $this->$edit;
+        $this->label = $label;
+        $this->edit = $edit;
     }
 }

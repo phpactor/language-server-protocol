@@ -14,6 +14,6 @@ class CompletionParams
 
     public function __construct(CompletionContext $context)
     {
-        $this->$context = $this->$context;
+        $this->context = $context;
     }
 }

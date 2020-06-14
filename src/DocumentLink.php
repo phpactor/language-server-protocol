@@ -39,9 +39,9 @@ class DocumentLink
 
     public function __construct(Range $range, string $target, string $tooltip, null $data)
     {
-        $this->$range = $this->$range;
-        $this->$target = $this->$target;
-        $this->$tooltip = $this->$tooltip;
-        $this->$data = $this->$data;
+        $this->range = $range;
+        $this->target = $target;
+        $this->tooltip = $tooltip;
+        $this->data = $data;
     }
 }

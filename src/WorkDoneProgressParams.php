@@ -13,6 +13,6 @@ class WorkDoneProgressParams
 
     public function __construct(ProgressToken $workDoneToken)
     {
-        $this->$workDoneToken = $this->$workDoneToken;
+        $this->workDoneToken = $workDoneToken;
     }
 }

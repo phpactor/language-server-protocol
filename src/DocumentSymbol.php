@@ -59,12 +59,12 @@ class DocumentSymbol
 
     public function __construct(string $name, string $detail, SymbolKind $kind, string $deprecated, Range $range, Range $selectionRange, array $children)
     {
-        $this->$name = $this->$name;
-        $this->$detail = $this->$detail;
-        $this->$kind = $this->$kind;
-        $this->$deprecated = $this->$deprecated;
-        $this->$range = $this->$range;
-        $this->$selectionRange = $this->$selectionRange;
-        $this->$children = $this->$children;
+        $this->name = $name;
+        $this->detail = $detail;
+        $this->kind = $kind;
+        $this->deprecated = $deprecated;
+        $this->range = $range;
+        $this->selectionRange = $selectionRange;
+        $this->children = $children;
     }
 }

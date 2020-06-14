@@ -28,8 +28,8 @@ class Command
 
     public function __construct(string $title, string $command, array $arguments)
     {
-        $this->$title = $this->$title;
-        $this->$command = $this->$command;
-        $this->$arguments = $this->$arguments;
+        $this->title = $title;
+        $this->command = $command;
+        $this->arguments = $arguments;
     }
 }

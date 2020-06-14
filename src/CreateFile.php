@@ -27,8 +27,8 @@ class CreateFile
 
     public function __construct(null $kind, DocumentUri $uri, CreateFileOptions $options)
     {
-        $this->$kind = $this->$kind;
-        $this->$uri = $this->$uri;
-        $this->$options = $this->$options;
+        $this->kind = $kind;
+        $this->uri = $uri;
+        $this->options = $options;
     }
 }

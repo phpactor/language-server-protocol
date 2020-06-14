@@ -12,6 +12,6 @@ class ReferenceParams
 
     public function __construct(ReferenceContext $context)
     {
-        $this->$context = $this->$context;
+        $this->context = $context;
     }
 }

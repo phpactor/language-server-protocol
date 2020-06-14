@@ -13,6 +13,6 @@ class DidChangeConfigurationParams
 
     public function __construct(null $settings)
     {
-        $this->$settings = $this->$settings;
+        $this->settings = $settings;
     }
 }

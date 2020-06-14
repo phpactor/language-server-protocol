@@ -34,9 +34,9 @@ class RenameFile
 
     public function __construct(null $kind, DocumentUri $oldUri, DocumentUri $newUri, RenameFileOptions $options)
     {
-        $this->$kind = $this->$kind;
-        $this->$oldUri = $this->$oldUri;
-        $this->$newUri = $this->$newUri;
-        $this->$options = $this->$options;
+        $this->kind = $kind;
+        $this->oldUri = $oldUri;
+        $this->newUri = $newUri;
+        $this->options = $options;
     }
 }

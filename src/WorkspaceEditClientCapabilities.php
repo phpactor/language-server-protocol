@@ -29,8 +29,8 @@ class WorkspaceEditClientCapabilities
 
     public function __construct(string $documentChanges, array $resourceOperations, FailureHandlingKind $failureHandling)
     {
-        $this->$documentChanges = $this->$documentChanges;
-        $this->$resourceOperations = $this->$resourceOperations;
-        $this->$failureHandling = $this->$failureHandling;
+        $this->documentChanges = $documentChanges;
+        $this->resourceOperations = $resourceOperations;
+        $this->failureHandling = $failureHandling;
     }
 }

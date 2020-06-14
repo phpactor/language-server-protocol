@@ -20,7 +20,7 @@ class TextDocumentWillSaveEvent
 
     public function __construct(TextDocument $document, object $reason)
     {
-        $this->$document = $this->$document;
-        $this->$reason = $this->$reason;
+        $this->document = $document;
+        $this->reason = $reason;
     }
 }

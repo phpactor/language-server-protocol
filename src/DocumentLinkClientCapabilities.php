@@ -20,7 +20,7 @@ class DocumentLinkClientCapabilities
 
     public function __construct(string $dynamicRegistration, string $tooltipSupport)
     {
-        $this->$dynamicRegistration = $this->$dynamicRegistration;
-        $this->$tooltipSupport = $this->$tooltipSupport;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->tooltipSupport = $tooltipSupport;
     }
 }

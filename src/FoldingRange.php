@@ -43,10 +43,10 @@ class FoldingRange
 
     public function __construct(int $startLine, int $startCharacter, int $endLine, int $endCharacter, string $kind)
     {
-        $this->$startLine = $this->$startLine;
-        $this->$startCharacter = $this->$startCharacter;
-        $this->$endLine = $this->$endLine;
-        $this->$endCharacter = $this->$endCharacter;
-        $this->$kind = $this->$kind;
+        $this->startLine = $startLine;
+        $this->startCharacter = $startCharacter;
+        $this->endLine = $endLine;
+        $this->endCharacter = $endCharacter;
+        $this->kind = $kind;
     }
 }

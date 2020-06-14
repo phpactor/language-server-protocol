@@ -34,9 +34,9 @@ class _ClientCapabilities
 
     public function __construct(WorkspaceClientCapabilities $workspace, TextDocumentClientCapabilities $textDocument, object $window, object $experimental)
     {
-        $this->$workspace = $this->$workspace;
-        $this->$textDocument = $this->$textDocument;
-        $this->$window = $this->$window;
-        $this->$experimental = $this->$experimental;
+        $this->workspace = $workspace;
+        $this->textDocument = $textDocument;
+        $this->window = $window;
+        $this->experimental = $experimental;
     }
 }

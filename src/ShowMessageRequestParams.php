@@ -27,8 +27,8 @@ class ShowMessageRequestParams
 
     public function __construct(MessageType $type, string $message, array $actions)
     {
-        $this->$type = $this->$type;
-        $this->$message = $this->$message;
-        $this->$actions = $this->$actions;
+        $this->type = $type;
+        $this->message = $message;
+        $this->actions = $actions;
     }
 }

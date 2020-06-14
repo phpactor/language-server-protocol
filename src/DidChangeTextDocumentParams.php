@@ -32,7 +32,7 @@ class DidChangeTextDocumentParams
 
     public function __construct(VersionedTextDocumentIdentifier $textDocument, array $contentChanges)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$contentChanges = $this->$contentChanges;
+        $this->textDocument = $textDocument;
+        $this->contentChanges = $contentChanges;
     }
 }

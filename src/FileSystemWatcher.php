@@ -28,7 +28,7 @@ class FileSystemWatcher
 
     public function __construct(string $globPattern, int $kind)
     {
-        $this->$globPattern = $this->$globPattern;
-        $this->$kind = $this->$kind;
+        $this->globPattern = $globPattern;
+        $this->kind = $kind;
     }
 }

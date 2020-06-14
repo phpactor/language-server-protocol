@@ -20,7 +20,7 @@ class TextDocumentEdit
 
     public function __construct(VersionedTextDocumentIdentifier $textDocument, array $edits)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$edits = $this->$edits;
+        $this->textDocument = $textDocument;
+        $this->edits = $edits;
     }
 }

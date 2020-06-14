@@ -20,7 +20,7 @@ class DiagnosticRelatedInformation
 
     public function __construct(Location $location, string $message)
     {
-        $this->$location = $this->$location;
-        $this->$message = $this->$message;
+        $this->location = $location;
+        $this->message = $message;
     }
 }

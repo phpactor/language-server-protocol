@@ -13,6 +13,6 @@ class DidOpenTextDocumentParams
 
     public function __construct(TextDocumentItem $textDocument)
     {
-        $this->$textDocument = $this->$textDocument;
+        $this->textDocument = $textDocument;
     }
 }

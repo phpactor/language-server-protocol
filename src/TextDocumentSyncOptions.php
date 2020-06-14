@@ -46,10 +46,10 @@ class TextDocumentSyncOptions
 
     public function __construct(string $openClose, TextDocumentSyncKind $change, string $willSave, string $willSaveWaitUntil, SaveOptions $save)
     {
-        $this->$openClose = $this->$openClose;
-        $this->$change = $this->$change;
-        $this->$willSave = $this->$willSave;
-        $this->$willSaveWaitUntil = $this->$willSaveWaitUntil;
-        $this->$save = $this->$save;
+        $this->openClose = $openClose;
+        $this->change = $change;
+        $this->willSave = $willSave;
+        $this->willSaveWaitUntil = $willSaveWaitUntil;
+        $this->save = $save;
     }
 }

@@ -27,7 +27,7 @@ class CodeActionContext
 
     public function __construct(array $diagnostics, array $only)
     {
-        $this->$diagnostics = $this->$diagnostics;
-        $this->$only = $this->$only;
+        $this->diagnostics = $diagnostics;
+        $this->only = $only;
     }
 }

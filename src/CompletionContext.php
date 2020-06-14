@@ -21,7 +21,7 @@ class CompletionContext
 
     public function __construct(CompletionTriggerKind $triggerKind, string $triggerCharacter)
     {
-        $this->$triggerKind = $this->$triggerKind;
-        $this->$triggerCharacter = $this->$triggerCharacter;
+        $this->triggerKind = $triggerKind;
+        $this->triggerCharacter = $triggerCharacter;
     }
 }

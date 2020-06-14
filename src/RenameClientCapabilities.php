@@ -21,7 +21,7 @@ class RenameClientCapabilities
 
     public function __construct(string $dynamicRegistration, string $prepareSupport)
     {
-        $this->$dynamicRegistration = $this->$dynamicRegistration;
-        $this->$prepareSupport = $this->$prepareSupport;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->prepareSupport = $prepareSupport;
     }
 }

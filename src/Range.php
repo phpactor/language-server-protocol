@@ -20,7 +20,7 @@ class Range
 
     public function __construct(Position $start, Position $end)
     {
-        $this->$start = $this->$start;
-        $this->$end = $this->$end;
+        $this->start = $start;
+        $this->end = $end;
     }
 }

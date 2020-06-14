@@ -13,6 +13,6 @@ class TextDocumentChangeRegistrationOptions
 
     public function __construct(TextDocumentSyncKind $syncKind)
     {
-        $this->$syncKind = $this->$syncKind;
+        $this->syncKind = $syncKind;
     }
 }

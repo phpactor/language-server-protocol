@@ -15,7 +15,7 @@ class SignatureHelpClientCapabilities
      * The client supports the following `SignatureInformation`
      * specific properties.
      *
-     * @var 
+     * @var type literal ...
      */
     public $signatureInformation;
 
@@ -31,8 +31,8 @@ class SignatureHelpClientCapabilities
 
     public function __construct(string $dynamicRegistration, null $signatureInformation, string $contextSupport)
     {
-        $this->$dynamicRegistration = $this->$dynamicRegistration;
-        $this->$signatureInformation = $this->$signatureInformation;
-        $this->$contextSupport = $this->$contextSupport;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->signatureInformation = $signatureInformation;
+        $this->contextSupport = $contextSupport;
     }
 }

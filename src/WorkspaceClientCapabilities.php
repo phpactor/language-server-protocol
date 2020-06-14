@@ -50,11 +50,11 @@ class WorkspaceClientCapabilities
 
     public function __construct(string $applyEdit, WorkspaceEditClientCapabilities $workspaceEdit, DidChangeConfigurationClientCapabilities $didChangeConfiguration, DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, WorkspaceSymbolClientCapabilities $symbol, ExecuteCommandClientCapabilities $executeCommand)
     {
-        $this->$applyEdit = $this->$applyEdit;
-        $this->$workspaceEdit = $this->$workspaceEdit;
-        $this->$didChangeConfiguration = $this->$didChangeConfiguration;
-        $this->$didChangeWatchedFiles = $this->$didChangeWatchedFiles;
-        $this->$symbol = $this->$symbol;
-        $this->$executeCommand = $this->$executeCommand;
+        $this->applyEdit = $applyEdit;
+        $this->workspaceEdit = $workspaceEdit;
+        $this->didChangeConfiguration = $didChangeConfiguration;
+        $this->didChangeWatchedFiles = $didChangeWatchedFiles;
+        $this->symbol = $symbol;
+        $this->executeCommand = $executeCommand;
     }
 }

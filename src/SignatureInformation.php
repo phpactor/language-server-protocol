@@ -29,8 +29,8 @@ class SignatureInformation
 
     public function __construct(string $label, object $documentation, array $parameters)
     {
-        $this->$label = $this->$label;
-        $this->$documentation = $this->$documentation;
-        $this->$parameters = $this->$parameters;
+        $this->label = $label;
+        $this->documentation = $documentation;
+        $this->parameters = $parameters;
     }
 }

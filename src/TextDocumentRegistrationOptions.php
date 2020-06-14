@@ -14,6 +14,6 @@ class TextDocumentRegistrationOptions
 
     public function __construct(object $documentSelector)
     {
-        $this->$documentSelector = $this->$documentSelector;
+        $this->documentSelector = $documentSelector;
     }
 }

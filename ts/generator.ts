@@ -2,7 +2,9 @@ import {
     InterfaceDeclaration,
     isPropertySignature,
     PropertySignature,
-    JSDoc
+    JSDoc,
+    PropertyDeclaration,
+    isIdentifier
 } from 'typescript';
 
 import {TypeConverter} from './typeConverter';
@@ -27,13 +29,18 @@ export class Generator
         this.buildConstructorDefinition(declaration, source);
 
         source.push(`}`);
+        console.log(source);
 
         return source.join("\n");
     }
 
-    buildProperties(declaration: InterfaceDeclaration, source: array<string>): void {
-        for (const property of declaration.members) {
+    buildProperties(declaration: InterfaceDeclaration, source: string[]): void {
+        for (const property  of declaration.members) {
             if (!isPropertySignature(property)) {
+                continue;
+            }
+
+            if (!isIdentifier(property.name)) {
                 continue;
             }
 
@@ -56,6 +63,10 @@ export class Generator
                 continue;
             }
 
+            if (!isIdentifier(property.name)) {
+                continue;
+            }
+
             const phpType = this.converter.phpType(property.type).real;
 
             args.push(`${phpType} $${property.name.escapedText}`);
@@ -74,13 +85,17 @@ export class Generator
                 continue;
             }
 
-            source.push(`        $this->${property.name.escapedText} = $this->$${property.name.escapedText};`);
+            if (!isIdentifier(property.name)) {
+                continue;
+            }
+
+            source.push(`        $this->${property.name.escapedText} = $${property.name.escapedText};`);
         }
         source.push('    }');
     }
 
     jsDocs(property: PropertySignature): string[] {
-        const jsDocs: array<string> = property.jsDoc;
+        const jsDocs: JSDoc[] = property['jsDoc'];
         if (!jsDocs) {
             return [];
         }

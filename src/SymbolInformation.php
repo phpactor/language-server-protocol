@@ -52,10 +52,10 @@ class SymbolInformation
 
     public function __construct(string $name, SymbolKind $kind, string $deprecated, Location $location, string $containerName)
     {
-        $this->$name = $this->$name;
-        $this->$kind = $this->$kind;
-        $this->$deprecated = $this->$deprecated;
-        $this->$location = $this->$location;
-        $this->$containerName = $this->$containerName;
+        $this->name = $name;
+        $this->kind = $kind;
+        $this->deprecated = $deprecated;
+        $this->location = $location;
+        $this->containerName = $containerName;
     }
 }

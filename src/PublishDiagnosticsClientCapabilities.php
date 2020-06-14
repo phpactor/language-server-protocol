@@ -15,7 +15,7 @@ class PublishDiagnosticsClientCapabilities
      * Client supports the tag property to provide meta data about a diagnostic.
      * Clients supporting tags have to handle unknown tags gracefully.
      *
-     * @var 
+     * @var type literal ...
      */
     public $tagSupport;
 
@@ -29,8 +29,8 @@ class PublishDiagnosticsClientCapabilities
 
     public function __construct(string $relatedInformation, null $tagSupport, string $versionSupport)
     {
-        $this->$relatedInformation = $this->$relatedInformation;
-        $this->$tagSupport = $this->$tagSupport;
-        $this->$versionSupport = $this->$versionSupport;
+        $this->relatedInformation = $relatedInformation;
+        $this->tagSupport = $tagSupport;
+        $this->versionSupport = $versionSupport;
     }
 }

@@ -40,9 +40,9 @@ class LocationLink
 
     public function __construct(Range $originSelectionRange, DocumentUri $targetUri, Range $targetRange, Range $targetSelectionRange)
     {
-        $this->$originSelectionRange = $this->$originSelectionRange;
-        $this->$targetUri = $this->$targetUri;
-        $this->$targetRange = $this->$targetRange;
-        $this->$targetSelectionRange = $this->$targetSelectionRange;
+        $this->originSelectionRange = $originSelectionRange;
+        $this->targetUri = $targetUri;
+        $this->targetRange = $targetRange;
+        $this->targetSelectionRange = $targetSelectionRange;
     }
 }

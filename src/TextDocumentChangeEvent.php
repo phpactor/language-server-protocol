@@ -13,6 +13,6 @@ class TextDocumentChangeEvent
 
     public function __construct(TextDocument $document)
     {
-        $this->$document = $this->$document;
+        $this->document = $document;
     }
 }

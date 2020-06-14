@@ -20,7 +20,7 @@ class MarkupContent
 
     public function __construct(MarkupKind $kind, string $value)
     {
-        $this->$kind = $this->$kind;
-        $this->$value = $this->$value;
+        $this->kind = $kind;
+        $this->value = $value;
     }
 }

@@ -21,7 +21,7 @@ class HoverClientCapabilities
 
     public function __construct(string $dynamicRegistration, array $contentFormat)
     {
-        $this->$dynamicRegistration = $this->$dynamicRegistration;
-        $this->$contentFormat = $this->$contentFormat;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->contentFormat = $contentFormat;
     }
 }

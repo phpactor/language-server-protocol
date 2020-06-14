@@ -21,7 +21,7 @@ class Unregistration
 
     public function __construct(string $id, string $method)
     {
-        $this->$id = $this->$id;
-        $this->$method = $this->$method;
+        $this->id = $id;
+        $this->method = $method;
     }
 }

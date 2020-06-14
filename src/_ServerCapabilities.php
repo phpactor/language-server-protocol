@@ -179,29 +179,29 @@ class _ServerCapabilities
 
     public function __construct(object $textDocumentSync, CompletionOptions $completionProvider, object $hoverProvider, SignatureHelpOptions $signatureHelpProvider, object $declarationProvider, object $definitionProvider, object $typeDefinitionProvider, object $implementationProvider, object $referencesProvider, object $documentHighlightProvider, object $documentSymbolProvider, object $codeActionProvider, CodeLensOptions $codeLensProvider, DocumentLinkOptions $documentLinkProvider, object $colorProvider, object $workspaceSymbolProvider, object $documentFormattingProvider, object $documentRangeFormattingProvider, DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, object $renameProvider, object $foldingRangeProvider, object $selectionRangeProvider, ExecuteCommandOptions $executeCommandProvider, T $experimental)
     {
-        $this->$textDocumentSync = $this->$textDocumentSync;
-        $this->$completionProvider = $this->$completionProvider;
-        $this->$hoverProvider = $this->$hoverProvider;
-        $this->$signatureHelpProvider = $this->$signatureHelpProvider;
-        $this->$declarationProvider = $this->$declarationProvider;
-        $this->$definitionProvider = $this->$definitionProvider;
-        $this->$typeDefinitionProvider = $this->$typeDefinitionProvider;
-        $this->$implementationProvider = $this->$implementationProvider;
-        $this->$referencesProvider = $this->$referencesProvider;
-        $this->$documentHighlightProvider = $this->$documentHighlightProvider;
-        $this->$documentSymbolProvider = $this->$documentSymbolProvider;
-        $this->$codeActionProvider = $this->$codeActionProvider;
-        $this->$codeLensProvider = $this->$codeLensProvider;
-        $this->$documentLinkProvider = $this->$documentLinkProvider;
-        $this->$colorProvider = $this->$colorProvider;
-        $this->$workspaceSymbolProvider = $this->$workspaceSymbolProvider;
-        $this->$documentFormattingProvider = $this->$documentFormattingProvider;
-        $this->$documentRangeFormattingProvider = $this->$documentRangeFormattingProvider;
-        $this->$documentOnTypeFormattingProvider = $this->$documentOnTypeFormattingProvider;
-        $this->$renameProvider = $this->$renameProvider;
-        $this->$foldingRangeProvider = $this->$foldingRangeProvider;
-        $this->$selectionRangeProvider = $this->$selectionRangeProvider;
-        $this->$executeCommandProvider = $this->$executeCommandProvider;
-        $this->$experimental = $this->$experimental;
+        $this->textDocumentSync = $textDocumentSync;
+        $this->completionProvider = $completionProvider;
+        $this->hoverProvider = $hoverProvider;
+        $this->signatureHelpProvider = $signatureHelpProvider;
+        $this->declarationProvider = $declarationProvider;
+        $this->definitionProvider = $definitionProvider;
+        $this->typeDefinitionProvider = $typeDefinitionProvider;
+        $this->implementationProvider = $implementationProvider;
+        $this->referencesProvider = $referencesProvider;
+        $this->documentHighlightProvider = $documentHighlightProvider;
+        $this->documentSymbolProvider = $documentSymbolProvider;
+        $this->codeActionProvider = $codeActionProvider;
+        $this->codeLensProvider = $codeLensProvider;
+        $this->documentLinkProvider = $documentLinkProvider;
+        $this->colorProvider = $colorProvider;
+        $this->workspaceSymbolProvider = $workspaceSymbolProvider;
+        $this->documentFormattingProvider = $documentFormattingProvider;
+        $this->documentRangeFormattingProvider = $documentRangeFormattingProvider;
+        $this->documentOnTypeFormattingProvider = $documentOnTypeFormattingProvider;
+        $this->renameProvider = $renameProvider;
+        $this->foldingRangeProvider = $foldingRangeProvider;
+        $this->selectionRangeProvider = $selectionRangeProvider;
+        $this->executeCommandProvider = $executeCommandProvider;
+        $this->experimental = $experimental;
     }
 }

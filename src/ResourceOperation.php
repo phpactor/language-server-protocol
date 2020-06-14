@@ -12,6 +12,6 @@ class ResourceOperation
 
     public function __construct(string $kind)
     {
-        $this->$kind = $this->$kind;
+        $this->kind = $kind;
     }
 }

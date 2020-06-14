@@ -14,6 +14,6 @@ class PartialResultParams
 
     public function __construct(ProgressToken $partialResultToken)
     {
-        $this->$partialResultToken = $this->$partialResultToken;
+        $this->partialResultToken = $partialResultToken;
     }
 }

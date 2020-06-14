@@ -20,7 +20,7 @@ class ColorInformation
 
     public function __construct(Range $range, Color $color)
     {
-        $this->$range = $this->$range;
-        $this->$color = $this->$color;
+        $this->range = $range;
+        $this->color = $color;
     }
 }

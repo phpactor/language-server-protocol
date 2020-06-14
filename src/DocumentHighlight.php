@@ -20,7 +20,7 @@ class DocumentHighlight
 
     public function __construct(Range $range, DocumentHighlightKind $kind)
     {
-        $this->$range = $this->$range;
-        $this->$kind = $this->$kind;
+        $this->range = $range;
+        $this->kind = $kind;
     }
 }

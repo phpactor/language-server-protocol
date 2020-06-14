@@ -12,6 +12,6 @@ class RegistrationParams
 
     public function __construct(array $registrations)
     {
-        $this->$registrations = $this->$registrations;
+        $this->registrations = $registrations;
     }
 }

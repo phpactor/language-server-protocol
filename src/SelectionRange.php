@@ -20,7 +20,7 @@ class SelectionRange
 
     public function __construct(Range $range, SelectionRange $parent)
     {
-        $this->$range = $this->$range;
-        $this->$parent = $this->$parent;
+        $this->range = $range;
+        $this->parent = $parent;
     }
 }

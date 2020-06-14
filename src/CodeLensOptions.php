@@ -13,6 +13,6 @@ class CodeLensOptions
 
     public function __construct(string $resolveProvider)
     {
-        $this->$resolveProvider = $this->$resolveProvider;
+        $this->resolveProvider = $resolveProvider;
     }
 }

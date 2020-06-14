@@ -23,7 +23,7 @@ class SignatureHelpOptions
 
     public function __construct(array $triggerCharacters, array $retriggerCharacters)
     {
-        $this->$triggerCharacters = $this->$triggerCharacters;
-        $this->$retriggerCharacters = $this->$retriggerCharacters;
+        $this->triggerCharacters = $triggerCharacters;
+        $this->retriggerCharacters = $retriggerCharacters;
     }
 }

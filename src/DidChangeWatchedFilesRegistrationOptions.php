@@ -13,6 +13,6 @@ class DidChangeWatchedFilesRegistrationOptions
 
     public function __construct(array $watchers)
     {
-        $this->$watchers = $this->$watchers;
+        $this->watchers = $watchers;
     }
 }

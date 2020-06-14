@@ -29,8 +29,8 @@ class CodeLens
 
     public function __construct(Range $range, Command $command, null $data)
     {
-        $this->$range = $this->$range;
-        $this->$command = $this->$command;
-        $this->$data = $this->$data;
+        $this->range = $range;
+        $this->command = $command;
+        $this->data = $data;
     }
 }

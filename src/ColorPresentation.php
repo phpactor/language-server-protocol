@@ -32,8 +32,8 @@ class ColorPresentation
 
     public function __construct(string $label, TextEdit $textEdit, array $additionalTextEdits)
     {
-        $this->$label = $this->$label;
-        $this->$textEdit = $this->$textEdit;
-        $this->$additionalTextEdits = $this->$additionalTextEdits;
+        $this->label = $label;
+        $this->textEdit = $textEdit;
+        $this->additionalTextEdits = $additionalTextEdits;
     }
 }

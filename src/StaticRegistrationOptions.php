@@ -14,6 +14,6 @@ class StaticRegistrationOptions
 
     public function __construct(string $id)
     {
-        $this->$id = $this->$id;
+        $this->id = $id;
     }
 }

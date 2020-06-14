@@ -13,6 +13,6 @@ class SaveOptions
 
     public function __construct(string $includeText)
     {
-        $this->$includeText = $this->$includeText;
+        $this->includeText = $includeText;
     }
 }

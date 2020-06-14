@@ -56,11 +56,11 @@ class CodeAction
 
     public function __construct(string $title, CodeActionKind $kind, array $diagnostics, string $isPreferred, WorkspaceEdit $edit, Command $command)
     {
-        $this->$title = $this->$title;
-        $this->$kind = $this->$kind;
-        $this->$diagnostics = $this->$diagnostics;
-        $this->$isPreferred = $this->$isPreferred;
-        $this->$edit = $this->$edit;
-        $this->$command = $this->$command;
+        $this->title = $title;
+        $this->kind = $kind;
+        $this->diagnostics = $diagnostics;
+        $this->isPreferred = $isPreferred;
+        $this->edit = $edit;
+        $this->command = $command;
     }
 }

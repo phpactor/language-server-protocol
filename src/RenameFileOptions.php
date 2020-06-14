@@ -20,7 +20,7 @@ class RenameFileOptions
 
     public function __construct(string $overwrite, string $ignoreIfExists)
     {
-        $this->$overwrite = $this->$overwrite;
-        $this->$ignoreIfExists = $this->$ignoreIfExists;
+        $this->overwrite = $overwrite;
+        $this->ignoreIfExists = $ignoreIfExists;
     }
 }

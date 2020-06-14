@@ -14,6 +14,6 @@ class WorkspaceSymbolParams
 
     public function __construct(string $query)
     {
-        $this->$query = $this->$query;
+        $this->query = $query;
     }
 }

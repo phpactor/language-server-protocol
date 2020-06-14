@@ -20,7 +20,7 @@ class Hover
 
     public function __construct(object $contents, Range $range)
     {
-        $this->$contents = $this->$contents;
-        $this->$range = $this->$range;
+        $this->contents = $contents;
+        $this->range = $range;
     }
 }

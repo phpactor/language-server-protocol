@@ -28,8 +28,8 @@ class Registration
 
     public function __construct(string $id, string $method, null $registerOptions)
     {
-        $this->$id = $this->$id;
-        $this->$method = $this->$method;
-        $this->$registerOptions = $this->$registerOptions;
+        $this->id = $id;
+        $this->method = $method;
+        $this->registerOptions = $registerOptions;
     }
 }

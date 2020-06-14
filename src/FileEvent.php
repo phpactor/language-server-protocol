@@ -20,7 +20,7 @@ class FileEvent
 
     public function __construct(DocumentUri $uri, FileChangeType $type)
     {
-        $this->$uri = $this->$uri;
-        $this->$type = $this->$type;
+        $this->uri = $uri;
+        $this->type = $type;
     }
 }

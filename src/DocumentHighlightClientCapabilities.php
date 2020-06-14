@@ -13,6 +13,6 @@ class DocumentHighlightClientCapabilities
 
     public function __construct(string $dynamicRegistration)
     {
-        $this->$dynamicRegistration = $this->$dynamicRegistration;
+        $this->dynamicRegistration = $dynamicRegistration;
     }
 }

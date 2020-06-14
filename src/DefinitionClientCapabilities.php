@@ -20,7 +20,7 @@ class DefinitionClientCapabilities
 
     public function __construct(string $dynamicRegistration, string $linkSupport)
     {
-        $this->$dynamicRegistration = $this->$dynamicRegistration;
-        $this->$linkSupport = $this->$linkSupport;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->linkSupport = $linkSupport;
     }
 }

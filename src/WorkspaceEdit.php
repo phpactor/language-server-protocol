@@ -7,7 +7,7 @@ class WorkspaceEdit
     /**
      * Holds changes to existing resources.
      *
-     * @var 
+     * @var type literal ...
      */
     public $changes;
 
@@ -29,7 +29,7 @@ class WorkspaceEdit
 
     public function __construct(null $changes, array $documentChanges)
     {
-        $this->$changes = $this->$changes;
-        $this->$documentChanges = $this->$documentChanges;
+        $this->changes = $changes;
+        $this->documentChanges = $documentChanges;
     }
 }

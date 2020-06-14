@@ -13,6 +13,6 @@ class MessageActionItem
 
     public function __construct(string $title)
     {
-        $this->$title = $this->$title;
+        $this->title = $title;
     }
 }

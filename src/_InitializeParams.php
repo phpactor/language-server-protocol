@@ -15,7 +15,7 @@ class _InitializeParams
     /**
      * Information about the client
      *
-     * @var 
+     * @var type literal ...
      */
     public $clientInfo;
 
@@ -59,12 +59,12 @@ class _InitializeParams
 
     public function __construct(object $processId, null $clientInfo, object $rootPath, object $rootUri, ClientCapabilities $capabilities, null $initializationOptions, object $trace)
     {
-        $this->$processId = $this->$processId;
-        $this->$clientInfo = $this->$clientInfo;
-        $this->$rootPath = $this->$rootPath;
-        $this->$rootUri = $this->$rootUri;
-        $this->$capabilities = $this->$capabilities;
-        $this->$initializationOptions = $this->$initializationOptions;
-        $this->$trace = $this->$trace;
+        $this->processId = $processId;
+        $this->clientInfo = $clientInfo;
+        $this->rootPath = $rootPath;
+        $this->rootUri = $rootUri;
+        $this->capabilities = $capabilities;
+        $this->initializationOptions = $initializationOptions;
+        $this->trace = $trace;
     }
 }

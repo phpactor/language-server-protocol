@@ -20,7 +20,7 @@ class DeleteFileOptions
 
     public function __construct(string $recursive, string $ignoreIfNotExists)
     {
-        $this->$recursive = $this->$recursive;
-        $this->$ignoreIfNotExists = $this->$ignoreIfNotExists;
+        $this->recursive = $recursive;
+        $this->ignoreIfNotExists = $ignoreIfNotExists;
     }
 }

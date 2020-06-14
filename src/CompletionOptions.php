@@ -40,8 +40,8 @@ class CompletionOptions
 
     public function __construct(array $triggerCharacters, array $allCommitCharacters, string $resolveProvider)
     {
-        $this->$triggerCharacters = $this->$triggerCharacters;
-        $this->$allCommitCharacters = $this->$allCommitCharacters;
-        $this->$resolveProvider = $this->$resolveProvider;
+        $this->triggerCharacters = $triggerCharacters;
+        $this->allCommitCharacters = $allCommitCharacters;
+        $this->resolveProvider = $resolveProvider;
     }
 }

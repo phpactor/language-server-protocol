@@ -14,13 +14,13 @@ class InitializeResult
     /**
      * Information about the server.
      *
-     * @var 
+     * @var type literal ...
      */
     public $serverInfo;
 
     public function __construct(ServerCapabilities $capabilities, null $serverInfo)
     {
-        $this->$capabilities = $this->$capabilities;
-        $this->$serverInfo = $this->$serverInfo;
+        $this->capabilities = $capabilities;
+        $this->serverInfo = $serverInfo;
     }
 }

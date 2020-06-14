@@ -27,8 +27,8 @@ class PublishDiagnosticsParams
 
     public function __construct(DocumentUri $uri, int $version, array $diagnostics)
     {
-        $this->$uri = $this->$uri;
-        $this->$version = $this->$version;
-        $this->$diagnostics = $this->$diagnostics;
+        $this->uri = $uri;
+        $this->version = $version;
+        $this->diagnostics = $diagnostics;
     }
 }

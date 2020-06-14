@@ -35,9 +35,9 @@ class TextDocumentItem
 
     public function __construct(DocumentUri $uri, string $languageId, int $version, string $text)
     {
-        $this->$uri = $this->$uri;
-        $this->$languageId = $this->$languageId;
-        $this->$version = $this->$version;
-        $this->$text = $this->$text;
+        $this->uri = $uri;
+        $this->languageId = $languageId;
+        $this->version = $version;
+        $this->text = $text;
     }
 }

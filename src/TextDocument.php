@@ -37,9 +37,9 @@ class TextDocument
 
     public function __construct(DocumentUri $uri, string $languageId, int $version, int $lineCount)
     {
-        $this->$uri = $this->$uri;
-        $this->$languageId = $this->$languageId;
-        $this->$version = $this->$version;
-        $this->$lineCount = $this->$lineCount;
+        $this->uri = $uri;
+        $this->languageId = $languageId;
+        $this->version = $version;
+        $this->lineCount = $lineCount;
     }
 }

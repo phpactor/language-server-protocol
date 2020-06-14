@@ -41,10 +41,10 @@ class FormattingOptions
 
     public function __construct(int $tabSize, string $insertSpaces, string $trimTrailingWhitespace, string $insertFinalNewline, string $trimFinalNewlines)
     {
-        $this->$tabSize = $this->$tabSize;
-        $this->$insertSpaces = $this->$insertSpaces;
-        $this->$trimTrailingWhitespace = $this->$trimTrailingWhitespace;
-        $this->$insertFinalNewline = $this->$insertFinalNewline;
-        $this->$trimFinalNewlines = $this->$trimFinalNewlines;
+        $this->tabSize = $tabSize;
+        $this->insertSpaces = $insertSpaces;
+        $this->trimTrailingWhitespace = $trimTrailingWhitespace;
+        $this->insertFinalNewline = $insertFinalNewline;
+        $this->trimFinalNewlines = $trimFinalNewlines;
     }
 }

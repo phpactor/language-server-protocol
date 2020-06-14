@@ -16,6 +16,6 @@ class InitializeError
 
     public function __construct(string $retry)
     {
-        $this->$retry = $this->$retry;
+        $this->retry = $retry;
     }
 }

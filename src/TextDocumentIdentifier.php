@@ -13,6 +13,6 @@ class TextDocumentIdentifier
 
     public function __construct(DocumentUri $uri)
     {
-        $this->$uri = $this->$uri;
+        $this->uri = $uri;
     }
 }

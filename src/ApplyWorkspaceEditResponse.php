@@ -31,8 +31,8 @@ class ApplyWorkspaceEditResponse
 
     public function __construct(string $applied, string $failureReason, int $failedChange)
     {
-        $this->$applied = $this->$applied;
-        $this->$failureReason = $this->$failureReason;
-        $this->$failedChange = $this->$failedChange;
+        $this->applied = $applied;
+        $this->failureReason = $failureReason;
+        $this->failedChange = $failedChange;
     }
 }

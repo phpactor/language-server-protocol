@@ -20,7 +20,7 @@ class CompletionList
 
     public function __construct(string $isIncomplete, array $items)
     {
-        $this->$isIncomplete = $this->$isIncomplete;
-        $this->$items = $this->$items;
+        $this->isIncomplete = $isIncomplete;
+        $this->items = $items;
     }
 }

@@ -29,8 +29,8 @@ class RenameParams
 
     public function __construct(TextDocumentIdentifier $textDocument, Position $position, string $newName)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$position = $this->$position;
-        $this->$newName = $this->$newName;
+        $this->textDocument = $textDocument;
+        $this->position = $position;
+        $this->newName = $newName;
     }
 }

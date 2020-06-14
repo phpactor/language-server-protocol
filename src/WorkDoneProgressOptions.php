@@ -12,6 +12,6 @@ class WorkDoneProgressOptions
 
     public function __construct(string $workDoneProgress)
     {
-        $this->$workDoneProgress = $this->$workDoneProgress;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

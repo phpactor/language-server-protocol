@@ -27,8 +27,8 @@ class DocumentRangeFormattingParams
 
     public function __construct(TextDocumentIdentifier $textDocument, Range $range, FormattingOptions $options)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$range = $this->$range;
-        $this->$options = $this->$options;
+        $this->textDocument = $textDocument;
+        $this->range = $range;
+        $this->options = $options;
     }
 }

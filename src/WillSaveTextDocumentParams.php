@@ -20,7 +20,7 @@ class WillSaveTextDocumentParams
 
     public function __construct(TextDocumentIdentifier $textDocument, TextDocumentSaveReason $reason)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$reason = $this->$reason;
+        $this->textDocument = $textDocument;
+        $this->reason = $reason;
     }
 }

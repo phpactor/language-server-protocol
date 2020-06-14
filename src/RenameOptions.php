@@ -13,6 +13,6 @@ class RenameOptions
 
     public function __construct(string $prepareProvider)
     {
-        $this->$prepareProvider = $this->$prepareProvider;
+        $this->prepareProvider = $prepareProvider;
     }
 }

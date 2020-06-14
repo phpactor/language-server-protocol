@@ -17,6 +17,6 @@ class VersionedTextDocumentIdentifier
 
     public function __construct(object $version)
     {
-        $this->$version = $this->$version;
+        $this->version = $version;
     }
 }

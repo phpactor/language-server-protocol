@@ -20,7 +20,7 @@ class TextDocumentPositionParams
 
     public function __construct(TextDocumentIdentifier $textDocument, Position $position)
     {
-        $this->$textDocument = $this->$textDocument;
-        $this->$position = $this->$position;
+        $this->textDocument = $textDocument;
+        $this->position = $position;
     }
 }

@@ -20,7 +20,7 @@ class DocumentOnTypeFormattingOptions
 
     public function __construct(string $firstTriggerCharacter, array $moreTriggerCharacter)
     {
-        $this->$firstTriggerCharacter = $this->$firstTriggerCharacter;
-        $this->$moreTriggerCharacter = $this->$moreTriggerCharacter;
+        $this->firstTriggerCharacter = $firstTriggerCharacter;
+        $this->moreTriggerCharacter = $moreTriggerCharacter;
     }
 }

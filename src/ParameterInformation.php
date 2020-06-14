@@ -28,7 +28,7 @@ class ParameterInformation
 
     public function __construct(object $label, object $documentation)
     {
-        $this->$label = $this->$label;
-        $this->$documentation = $this->$documentation;
+        $this->label = $label;
+        $this->documentation = $documentation;
     }
 }
