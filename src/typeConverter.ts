@@ -81,15 +81,15 @@ export class TypeConverter
         return new PhpType(null,'');
     }
 
-    phpTypeParenthesis(type: ParenthesizedTypeNode): PhpType {
+    private phpTypeParenthesis(type: ParenthesizedTypeNode): PhpType {
         return new PhpType(null, `(${this.phpType(type.type).documented})`);
     }
 
-    phpTypeArray(type: ArrayTypeNode): PhpType {
+    private phpTypeArray(type: ArrayTypeNode): PhpType {
         return new PhpType('array', `array<${this.phpType(type.elementType).documented}>`);
     }
 
-    phpTypeUnion(type: UnionTypeNode): PhpType {
+    private phpTypeUnion(type: UnionTypeNode): PhpType {
         return new PhpType(
             'object',
             type.types.map((type: TypeNode) => {
@@ -98,7 +98,7 @@ export class TypeConverter
         );
     }
 
-    phpTypeTuple(type: TupleTypeNode): PhpType {
+    private phpTypeTuple(type: TupleTypeNode): PhpType {
         const types = type.elementTypes.map((type: TypeNode) => {
             return this.phpType(type).documented
         }).join(','))
@@ -108,5 +108,4 @@ export class TypeConverter
             `array{${types}}`
         );
     }
-
 }

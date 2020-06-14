@@ -23,6 +23,15 @@ export class Generator
         source.push(`class ${declaration.name.escapedText}`);
         source.push(`{`);
 
+        this.buildProperties(declaration, source);
+
+        source.push(`}`);
+        console.log(source);
+
+        return source.join("\n");
+    }
+
+    buildProperties(declaration: InterfaceDeclaration, source: array<string>): void {
         for (const property of declaration.members) {
             if (!isPropertySignature(property)) {
                 continue;
@@ -39,10 +48,7 @@ export class Generator
             source.push(``);
         }
 
-        source.push(`}`);
-        console.log(source);
-
-        return source.join("\n");
+        return source;
     }
 
     jsDocs(property: PropertySignature): string[] {

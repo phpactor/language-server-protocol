@@ -25,7 +25,8 @@ class Transpiler
 
         node.forEachChild(node => {
             if (SyntaxKind[node.kind] == 'InterfaceDeclaration') {
-                this.generator.interfaceDeclaration(node);
+                const code = this.generator.interfaceDeclaration(node);
+                this.writer.write(node.name.escapedText, code);
             }
         });
     }
