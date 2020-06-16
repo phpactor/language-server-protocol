@@ -35,8 +35,6 @@ export class Generator
 
     interfaceDeclaration(declaration: InterfaceDeclaration): string {
         const phpClass = this.resolvePhpClass(declaration);
-        console.log(phpClass);
-
         const source: Array<string> = ['<?php'];
 
         source.push(``);
@@ -103,7 +101,7 @@ export class Generator
                 source.push(`     * ${docLine}`);
             }
             source.push(`     *`);
-            source.push(`     * @var ${property.type.documented}`);
+            source.push(`     * @var ${this.renderPropertyType(property)}`);
             source.push(`     */`);
             source.push(`    public $${property.name};`);
             source.push(``);
@@ -160,9 +158,11 @@ export class Generator
 
     renderPropertyType(property: Property): string {
         let documentedType = property.type.documented;
+
         if (property.nullable) {
             documentedType = documentedType + '|null';
         }
+
         return documentedType;
     }
 }
