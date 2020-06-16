@@ -3,11 +3,25 @@ import {
     isPropertySignature,
     PropertySignature,
     JSDoc,
-    PropertyDeclaration,
     isIdentifier
 } from 'typescript';
 
-import {TypeConverter} from './typeConverter';
+import {TypeConverter, PhpType} from './typeConverter';
+
+class PhpClass {
+    name: string;
+    properties: Properties;
+}
+
+class Properties extends Map<string, Property> {
+}
+
+class Property {
+    name: string;
+    type: PhpType;
+    nullable: boolean;
+    docs: string[];
+}
 
 export class Generator
 {
@@ -16,17 +30,19 @@ export class Generator
     constructor (converter: TypeConverter) {
         this.converter = converter;
     }
+
     interfaceDeclaration(declaration: InterfaceDeclaration): string {
         const source: Array<string> = ['<?php'];
+        const phpClass = this.resolvePhpClass(declaration);
 
         source.push(``);
         source.push(`namespace LanguageServerProtocol;`);
         source.push(``);
-        source.push(`class ${declaration.name.escapedText}`);
+        source.push(`class ${phpClass.name}`);
         source.push(`{`);
 
-        this.buildProperties(declaration, source);
-        this.buildConstructorDefinition(declaration, source);
+        this.buildProperties(phpClass, source);
+        this.buildConstructorDefinition(phpClass, source);
 
         source.push(`}`);
         console.log(source);
@@ -34,7 +50,9 @@ export class Generator
         return source.join("\n");
     }
 
-    buildProperties(declaration: InterfaceDeclaration, source: string[]): void {
+    resolvePhpClass(declaration: InterfaceDeclaration) {
+        var properties = new Map<string, Property>();
+
         for (const property  of declaration.members) {
             if (!isPropertySignature(property)) {
                 continue;
@@ -44,85 +62,70 @@ export class Generator
                 continue;
             }
 
+            const classProperty: Property = {
+                docs: this.jsDocs(property),
+                name: property.name.escapedText.toString(),
+                type: this.converter.phpType(property.type),
+                nullable: property.questionToken ? true : false
+            };
+
+            properties.set(classProperty.name, classProperty);
+        }
+
+        return {
+            name: declaration.name.escapedText.toString(),
+            properties: properties as Properties
+        } as PhpClass;
+    }
+
+    buildProperties(declaration: PhpClass, source: string[]): void {
+        declaration.properties.forEach((property: Property) => {
             source.push(`    /**`);
-            for (const docLine of this.jsDocs(property)) {
+            for (const docLine of property.docs) {
                 source.push(`     * ${docLine}`);
             }
             source.push(`     *`);
-            source.push(`     * @var ${this.renderPropertyType(property)}`);
+            source.push(`     * @var ${property.type.documented}`);
             source.push(`     */`);
-            source.push(`    public $${property.name.escapedText};`);
+            source.push(`    public $${property.name};`);
             source.push(``);
-        }
+        });
     }
 
-    renderPropertyType(property: PropertySignature): string {
-        let documentedType = this.converter.phpType(property.type).documented;
-        if (property.questionToken) {
-            documentedType = documentedType + '|null';
-        }
-        return documentedType;
-    }
-
-    buildConstructorDefinition(declaration: InterfaceDeclaration, source: string[]): void {
+    buildConstructorDefinition(declaration: PhpClass, source: string[]): void {
         const args: string[] = [];
-        for (const property of declaration.members) {
-            if (!isPropertySignature(property)) {
-                continue;
-            }
-
-            if (!isIdentifier(property.name)) {
-                continue;
-            }
-
-            const phpType = this.converter.phpType(property.type).real;
+        declaration.properties.forEach((property: Property) => {
             const arg = [];
 
-            if (property.questionToken && phpType) {
+            if (property.nullable) {
                 arg.push('?');
             }
 
-            if (phpType) {
-                arg.push(`${phpType} `);
+            if (property.type.real) {
+                arg.push(`${property.type.real} `);
             }
 
-            arg.push(`$${property.name.escapedText}`);
+            arg.push(`$${property.name}`);
             args.push(arg.join(''));
-        }
+        });
 
         if (args.length === 0) {
             return;
         }
 
         source.push('    /**');
-        for (const property of declaration.members) {
-            if (!isPropertySignature(property)) {
-                continue;
-            }
-
-            if (!isIdentifier(property.name)) {
-                continue;
-            }
-
-            source.push(`     * @param ${this.renderPropertyType(property)} $${property.name.escapedText}`);
-        }
+        declaration.properties.forEach((property: Property) => {
+            source.push(`     * @param ${this.renderPropertyType(property)} $${property.name}`);
+        });
         source.push('     */');
 
         const argsString = args.join(', ');
         source.push(`    public function __construct(${argsString})`);
         source.push('    {');
 
-        for (const property of declaration.members) {
-            if (!isPropertySignature(property)) {
-                continue;
-            }
-
-            if (!isIdentifier(property.name)) {
-                continue;
-            }
-
-            source.push(`        $this->${property.name.escapedText} = $${property.name.escapedText};`);
-        }
+        declaration.properties.forEach((property: Property) => {
+            source.push(`        $this->${property.name} = $${property.name};`);
+        });
         source.push('    }');
     }
 
@@ -135,5 +138,13 @@ export class Generator
         return [].concat.apply([], jsDocs.map((doc: JSDoc) => {
             return doc.comment.split("\r\n");
         }));
+    }
+
+    renderPropertyType(property: Property): string {
+        let documentedType = property.type.documented;
+        if (property.nullable) {
+            documentedType = documentedType + '|null';
+        }
+        return documentedType;
     }
 }

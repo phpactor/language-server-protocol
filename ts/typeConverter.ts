@@ -12,7 +12,10 @@ import {
     isIdentifier,
     isTypeAliasDeclaration,
     isIntersectionTypeNode,
-    IntersectionTypeNode
+    IntersectionTypeNode,
+    ClassLikeDeclaration,
+    isInterfaceDeclaration,
+    InterfaceDeclaration
 } from 'typescript';
 
 export class PhpType
@@ -27,17 +30,13 @@ export class PhpType
     }
 }
 
-interface TypeAliasMap {
-    [key: string]: PhpType
-}
-
 export class TypeConverter
 {
-    typeAliasMap: TypeAliasMap;
+    entityMap: EntityMap;
 
-    constructor(typeAliasMap: TypeAliasMap)
+    constructor(entityMap: EntityMap)
     {
-        this.typeAliasMap = typeAliasMap;
+        this.entityMap = entityMap;
     }
 
     phpType(type: TypeNode|TypeReferenceNode|null): PhpType {
@@ -93,13 +92,13 @@ export class TypeConverter
             return this.phpTypeUnion(type as UnionTypeNode);
         }
 
-        if (isIntersectionTypeNode(type) {
+        if (isIntersectionTypeNode(type)) {
             return this.phpTypeIntersection(type);
         }
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
-            if (this.typeAliasMap[type.typeName.escapedText.toString()]) {
-                return this.typeAliasMap[type.typeName.escapedText.toString()];
+            if (this.entityMap.aliases[type.typeName.escapedText.toString()]) {
+                return this.entityMap.aliases[type.typeName.escapedText.toString()];
             }
             return new PhpType(type.typeName.escapedText.toString(), type.typeName.escapedText.toString());
         }
@@ -150,22 +149,45 @@ export class TypeConverter
     }
 }
 
-export function createTypeAliasMap(nodes: Node[]): TypeAliasMap {
+interface EntityMap {
+    aliases: TypeAliasMap,
+    interfaces: InterfaceMap
+}
 
-    const typeConverter = new TypeConverter({} as TypeAliasMap);
-    const aliases = {};
+interface TypeAliasMap {
+    [key: string]: PhpType
+}
+
+interface InterfaceMap {
+    [key: string]: InterfaceDeclaration
+}
+
+export function createEntityMap(nodes: Node[]): EntityMap {
+
+    const typeConverter = new TypeConverter({
+        aliases: {},
+        interfaces: {}
+    } as EntityMap);
+
+    var map = {
+        aliases: {},
+        interfaces: {}
+    } as EntityMap;
 
     nodes.forEach((node: Node) => {
 
-
         node.forEachChild(node => {
-            if (!isTypeAliasDeclaration(node)) {
+            if (isTypeAliasDeclaration(node)) {
+                map.aliases[node.name.escapedText.toString()] = typeConverter.phpType(node.type);
                 return;
             }
-            aliases[node.name.escapedText.toString()] = typeConverter.phpType(node.type);
+            if (isInterfaceDeclaration(node)) {
+                map.interfaces[node.name.escapedText.toString()] = node;
+                return;
+            }
         });
 
     });
 
-    return aliases as TypeAliasMap;
+    return map;
 }
