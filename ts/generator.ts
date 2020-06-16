@@ -3,7 +3,8 @@ import {
     isPropertySignature,
     PropertySignature,
     JSDoc,
-    isIdentifier
+    isIdentifier,
+    SyntaxKind
 } from 'typescript';
 
 import {TypeConverter, PhpType} from './typeConverter';
@@ -11,6 +12,7 @@ import {TypeConverter, PhpType} from './typeConverter';
 class PhpClass {
     name: string;
     properties: Properties;
+    mixins: string[];
 }
 
 class Properties extends Map<string, Property> {
@@ -32,8 +34,10 @@ export class Generator
     }
 
     interfaceDeclaration(declaration: InterfaceDeclaration): string {
-        const source: Array<string> = ['<?php'];
         const phpClass = this.resolvePhpClass(declaration);
+        console.log(phpClass);
+
+        const source: Array<string> = ['<?php'];
 
         source.push(``);
         source.push(`namespace LanguageServerProtocol;`);
@@ -45,13 +49,14 @@ export class Generator
         this.buildConstructorDefinition(phpClass, source);
 
         source.push(`}`);
-        console.log(source);
+        //console.log(source);
 
         return source.join("\n");
     }
 
     resolvePhpClass(declaration: InterfaceDeclaration) {
         var properties = new Map<string, Property>();
+        const mixins = Array<string>();
 
         for (const property  of declaration.members) {
             if (!isPropertySignature(property)) {
@@ -72,9 +77,22 @@ export class Generator
             properties.set(classProperty.name, classProperty);
         }
 
+        if (declaration.heritageClauses) {
+            for (const clause of declaration.heritageClauses) {
+                for (const type of clause.types) {
+                    if (!isIdentifier(type.expression)) {
+                        continue;
+                    }
+
+                    mixins.push(type.expression.escapedText.toString());
+                }
+            }
+        }
+
         return {
             name: declaration.name.escapedText.toString(),
-            properties: properties as Properties
+            properties: properties as Properties,
+            mixins: mixins
         } as PhpClass;
     }
 

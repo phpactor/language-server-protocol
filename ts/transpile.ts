@@ -1,7 +1,7 @@
 import path = require('path');
 import {Generator} from "./generator";
 import {Writer} from './writer';
-import {TypeConverter,createTypeAliasMap, createEntityMap} from './typeConverter';
+import {TypeConverter,createEntityMap} from './typeConverter';
 import {Transpiler} from './transpiler';
 import {ScriptTarget, createSourceFile}  from "typescript"
 import {readFileSync} from 'fs';
