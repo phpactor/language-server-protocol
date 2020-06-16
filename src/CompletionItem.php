@@ -174,7 +174,7 @@ class CompletionItem
      * @param Command|null $command
      * @param mixed|null $data
      */
-    public function __construct(string $label, $kind, ?array $tags, ?string $detail, $documentation, ?string $deprecated, ?string $preselect, ?string $sortText, ?string $filterText, ?string $insertText, $insertTextFormat, ?TextEdit $textEdit, ?array $additionalTextEdits, ?array $commitCharacters, ?Command $command, $data)
+    public function __construct(string $label, ?$kind, ?array $tags, ?string $detail, ?$documentation, ?string $deprecated, ?string $preselect, ?string $sortText, ?string $filterText, ?string $insertText, ?$insertTextFormat, ?TextEdit $textEdit, ?array $additionalTextEdits, ?array $commitCharacters, ?Command $command, ?$data)
     {
         $this->label = $label;
         $this->kind = $kind;

@@ -15,7 +15,7 @@ class PartialResultParams
     /**
      * @param int|string|null $partialResultToken
      */
-    public function __construct($partialResultToken)
+    public function __construct(?$partialResultToken)
     {
         $this->partialResultToken = $partialResultToken;
     }

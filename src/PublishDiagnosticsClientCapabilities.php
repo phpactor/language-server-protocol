@@ -32,7 +32,7 @@ class PublishDiagnosticsClientCapabilities
      * @param array<mixed>|null $tagSupport
      * @param string|null $versionSupport
      */
-    public function __construct(?string $relatedInformation, $tagSupport, ?string $versionSupport)
+    public function __construct(?string $relatedInformation, ?$tagSupport, ?string $versionSupport)
     {
         $this->relatedInformation = $relatedInformation;
         $this->tagSupport = $tagSupport;

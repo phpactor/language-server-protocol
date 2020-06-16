@@ -22,7 +22,7 @@ class DocumentHighlight
      * @param Range $range
      * @param 1|2|3|null $kind
      */
-    public function __construct(Range $range, $kind)
+    public function __construct(Range $range, ?$kind)
     {
         $this->range = $range;
         $this->kind = $kind;

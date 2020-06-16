@@ -32,7 +32,7 @@ class WorkspaceEditClientCapabilities
      * @param array<'create'|'rename'|'delete'>|null $resourceOperations
      * @param 'abort'|'transactional'|'undo'|'textOnlyTransactional'|null $failureHandling
      */
-    public function __construct(?string $documentChanges, ?array $resourceOperations, $failureHandling)
+    public function __construct(?string $documentChanges, ?array $resourceOperations, ?$failureHandling)
     {
         $this->documentChanges = $documentChanges;
         $this->resourceOperations = $resourceOperations;

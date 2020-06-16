@@ -32,7 +32,7 @@ class SignatureInformation
      * @param string|MarkupContent|null $documentation
      * @param array<ParameterInformation>|null $parameters
      */
-    public function __construct(string $label, $documentation, ?array $parameters)
+    public function __construct(string $label, ?$documentation, ?array $parameters)
     {
         $this->label = $label;
         $this->documentation = $documentation;

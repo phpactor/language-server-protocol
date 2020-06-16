@@ -32,7 +32,7 @@ class CodeLens
      * @param Command|null $command
      * @param mixed|null $data
      */
-    public function __construct(Range $range, ?Command $command, $data)
+    public function __construct(Range $range, ?Command $command, ?$data)
     {
         $this->range = $range;
         $this->command = $command;

@@ -22,7 +22,7 @@ class WorkspaceSymbolClientCapabilities
      * @param string|null $dynamicRegistration
      * @param array<mixed>|null $symbolKind
      */
-    public function __construct(?string $dynamicRegistration, $symbolKind)
+    public function __construct(?string $dynamicRegistration, ?$symbolKind)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;
