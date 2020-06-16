@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * implements WorkDoneProgressParams
+ */
 class _InitializeParams
 {
     /**

@@ -40,6 +40,13 @@ export class Generator
         source.push(``);
         source.push(`namespace LanguageServerProtocol;`);
         source.push(``);
+
+        if (phpClass.mixins.length > 0) {
+            source.push(`/**`);
+            source.push(' * implements ' + phpClass.mixins.join(', '));
+            source.push(` */`);
+        }
+
         source.push(`class ${phpClass.name}`);
         source.push(`{`);
 

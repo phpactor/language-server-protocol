@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * implements WorkDoneProgressParams, PartialResultParams
+ */
 class CodeLensParams
 {
     /**

@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * implements ResourceOperation
+ */
 class DeleteFile
 {
     /**
