@@ -66,7 +66,7 @@ class _InitializeParams
      * @param mixed|null $initializationOptions
      * @param 'off'|'messages'|'verbose'|null $trace
      */
-    public function __construct($processId, ?$clientInfo, ?$rootPath, $rootUri, $capabilities, ?$initializationOptions, ?$trace)
+    public function __construct($processId, $clientInfo, $rootPath, $rootUri, $capabilities, $initializationOptions, $trace)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;

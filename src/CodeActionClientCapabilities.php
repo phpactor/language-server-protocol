@@ -31,7 +31,7 @@ class CodeActionClientCapabilities
      * @param array<mixed>|null $codeActionLiteralSupport
      * @param string|null $isPreferredSupport
      */
-    public function __construct(?string $dynamicRegistration, ?$codeActionLiteralSupport, ?string $isPreferredSupport)
+    public function __construct(?string $dynamicRegistration, $codeActionLiteralSupport, ?string $isPreferredSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->codeActionLiteralSupport = $codeActionLiteralSupport;

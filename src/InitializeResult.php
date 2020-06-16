@@ -22,7 +22,7 @@ class InitializeResult
      * @param _ServerCapabilities&WorkspaceFoldersServerCapabilities $capabilities
      * @param array<mixed>|null $serverInfo
      */
-    public function __construct($capabilities, ?$serverInfo)
+    public function __construct($capabilities, $serverInfo)
     {
         $this->capabilities = $capabilities;
         $this->serverInfo = $serverInfo;

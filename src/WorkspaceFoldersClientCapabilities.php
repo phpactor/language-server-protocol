@@ -14,7 +14,7 @@ class WorkspaceFoldersClientCapabilities
     /**
      * @param array<mixed>|null $workspace
      */
-    public function __construct(?$workspace)
+    public function __construct($workspace)
     {
         $this->workspace = $workspace;
     }

@@ -51,7 +51,7 @@ class TextDocumentSyncOptions
      * @param string|null $willSaveWaitUntil
      * @param SaveOptions|null $save
      */
-    public function __construct(?string $openClose, ?$change, ?string $willSave, ?string $willSaveWaitUntil, ?SaveOptions $save)
+    public function __construct(?string $openClose, $change, ?string $willSave, ?string $willSaveWaitUntil, ?SaveOptions $save)
     {
         $this->openClose = $openClose;
         $this->change = $change;

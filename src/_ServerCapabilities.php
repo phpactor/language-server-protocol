@@ -203,7 +203,7 @@ class _ServerCapabilities
      * @param ExecuteCommandOptions|null $executeCommandProvider
      * @param T|null $experimental
      */
-    public function __construct(?$textDocumentSync, ?CompletionOptions $completionProvider, ?$hoverProvider, ?SignatureHelpOptions $signatureHelpProvider, ?$declarationProvider, ?$definitionProvider, ?$typeDefinitionProvider, ?$implementationProvider, ?$referencesProvider, ?$documentHighlightProvider, ?$documentSymbolProvider, ?$codeActionProvider, ?CodeLensOptions $codeLensProvider, ?DocumentLinkOptions $documentLinkProvider, ?$colorProvider, ?$workspaceSymbolProvider, ?$documentFormattingProvider, ?$documentRangeFormattingProvider, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, ?$renameProvider, ?$foldingRangeProvider, ?$selectionRangeProvider, ?ExecuteCommandOptions $executeCommandProvider, ?T $experimental)
+    public function __construct($textDocumentSync, ?CompletionOptions $completionProvider, $hoverProvider, ?SignatureHelpOptions $signatureHelpProvider, $declarationProvider, $definitionProvider, $typeDefinitionProvider, $implementationProvider, $referencesProvider, $documentHighlightProvider, $documentSymbolProvider, $codeActionProvider, ?CodeLensOptions $codeLensProvider, ?DocumentLinkOptions $documentLinkProvider, $colorProvider, $workspaceSymbolProvider, $documentFormattingProvider, $documentRangeFormattingProvider, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider, $renameProvider, $foldingRangeProvider, $selectionRangeProvider, ?ExecuteCommandOptions $executeCommandProvider, ?T $experimental)
     {
         $this->textDocumentSync = $textDocumentSync;
         $this->completionProvider = $completionProvider;

@@ -113,7 +113,7 @@ export class Generator
         declaration.properties.forEach((property: Property) => {
             const arg = [];
 
-            if (property.nullable) {
+            if (property.type.real && property.nullable) {
                 arg.push('?');
             }
 
