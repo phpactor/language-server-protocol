@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * General parameters to to register for an notification or to register a provider.
+ */
 class Registration
 {
     /**

@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressParams, PartialResultParams
+ * The parameters of a [CodeLensRequest](#CodeLensRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
 class CodeLensParams
 {

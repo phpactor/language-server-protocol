@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The data type of the ResponseError if the
+ * initialize request fails.
+ */
 class InitializeError
 {
     /**

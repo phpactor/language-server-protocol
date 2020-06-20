@@ -2,6 +2,13 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A code lens represents a [command](#Command) that should be shown along with
+ * source text, like the number of references, a way to run tests, etc.
+ * 
+ * A code lens is _unresolved_ when no command is associated to it. For performance
+ * reasons the creation of a code lens and resolving should be done to two stages.
+ */
 class CodeLens
 {
     /**

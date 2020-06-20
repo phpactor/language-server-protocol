@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
+ * Parameters for a [DefinitionRequest](#DefinitionRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
 class DefinitionParams
 {

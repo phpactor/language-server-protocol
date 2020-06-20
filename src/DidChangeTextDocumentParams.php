@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The change text document notification's parameters.
+ */
 class DidChangeTextDocumentParams
 {
     /**

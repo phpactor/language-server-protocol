@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements ExecuteCommandOptions
+ * Registration options for a [ExecuteCommandRequest](#ExecuteCommandRequest).
+ *
+ * Mixins (implemented TS interfaces): ExecuteCommandOptions
  */
 class ExecuteCommandRegistrationOptions
 {

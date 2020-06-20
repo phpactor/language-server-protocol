@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, DocumentOnTypeFormattingOptions
+ * Registration options for a [DocumentOnTypeFormattingRequest](#DocumentOnTypeFormattingRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentOnTypeFormattingOptions
  */
 class DocumentOnTypeFormattingRegistrationOptions
 {

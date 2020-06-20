@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentPositionParams, WorkDoneProgressParams
+ * Parameters for a [SignatureHelpRequest](#SignatureHelpRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
 class SignatureHelpParams
 {

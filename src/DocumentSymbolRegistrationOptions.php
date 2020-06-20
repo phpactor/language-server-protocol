@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, DocumentSymbolOptions
+ * Registration options for a [DocumentSymbolRequest](#DocumentSymbolRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentSymbolOptions
  */
 class DocumentSymbolRegistrationOptions
 {

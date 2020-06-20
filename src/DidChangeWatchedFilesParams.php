@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The watched files change notification's parameters.
+ */
 class DidChangeWatchedFilesParams
 {
     /**

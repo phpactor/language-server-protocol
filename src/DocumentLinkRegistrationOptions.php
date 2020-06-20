@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, DocumentLinkOptions
+ * Registration options for a [DocumentLinkRequest](#DocumentLinkRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentLinkOptions
  */
 class DocumentLinkRegistrationOptions
 {

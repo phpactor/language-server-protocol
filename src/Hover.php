@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The result of a hover request.
+ */
 class Hover
 {
     /**

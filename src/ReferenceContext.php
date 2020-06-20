@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Value-object that contains additional information when
+ * requesting references.
+ */
 class ReferenceContext
 {
     /**

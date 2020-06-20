@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, FoldingRangeOptions, StaticRegistrationOptions
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, FoldingRangeOptions, StaticRegistrationOptions
  */
 class FoldingRangeRegistrationOptions
 {

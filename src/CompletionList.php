@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents a collection of [completion items](#CompletionItem) to be presented
+ * in the editor.
+ */
 class CompletionList
 {
     /**

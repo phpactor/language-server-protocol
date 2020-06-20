@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Provider options for a [RenameRequest](#RenameRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class RenameOptions
 {

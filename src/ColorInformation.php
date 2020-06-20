@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents a color range from a document.
+ */
 class ColorInformation
 {
     /**

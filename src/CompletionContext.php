@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Contains additional information about the context in which a completion request is triggered.
+ */
 class CompletionContext
 {
     /**

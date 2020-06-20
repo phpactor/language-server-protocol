@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents the connection of two locations. Provides additional metadata over normal [locations](#Location),
+ * including an origin range.
+ */
 class LocationLink
 {
     /**

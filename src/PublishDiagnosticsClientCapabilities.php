@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The publish diagnostic client capabilities.
+ */
 class PublishDiagnosticsClientCapabilities
 {
     /**

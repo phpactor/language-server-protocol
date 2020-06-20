@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, SignatureHelpOptions
+ * Registration options for a [SignatureHelpRequest](#SignatureHelpRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, SignatureHelpOptions
  */
 class SignatureHelpRegistrationOptions
 {

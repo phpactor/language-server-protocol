@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A response returned from the apply workspace edit request.
+ */
 class ApplyWorkspaceEditResponse
 {
     /**

@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
+ * Completion parameters
+ *
+ * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
 class CompletionParams
 {

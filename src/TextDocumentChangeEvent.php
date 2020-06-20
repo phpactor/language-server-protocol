@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * undefined
+ */
 class TextDocumentChangeEvent
 {
     /**

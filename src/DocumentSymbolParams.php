@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressParams, PartialResultParams
+ * Parameters for a [DocumentSymbolRequest](#DocumentSymbolRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
 class DocumentSymbolParams
 {

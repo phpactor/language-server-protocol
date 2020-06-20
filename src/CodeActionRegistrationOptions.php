@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, CodeActionOptions
+ * Registration options for a [CodeActionRequest](#CodeActionRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, CodeActionOptions
  */
 class CodeActionRegistrationOptions
 {

@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Provider options for a [DocumentHighlightRequest](#DocumentHighlightRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class DocumentHighlightOptions
 {

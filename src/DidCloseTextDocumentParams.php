@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters send in a close text document notification
+ */
 class DidCloseTextDocumentParams
 {
     /**

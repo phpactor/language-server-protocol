@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents information about programming constructs like variables, classes,
+ * interfaces etc.
+ */
 class SymbolInformation
 {
     /**

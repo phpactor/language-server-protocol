@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters send in a save text document notification
+ */
 class DidSaveTextDocumentParams
 {
     /**

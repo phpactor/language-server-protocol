@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Defines the capabilities provided by a language
+ * server.
+ */
 class _ServerCapabilities
 {
     /**

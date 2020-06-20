@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * The server capabilities of a [ExecuteCommandRequest](#ExecuteCommandRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class ExecuteCommandOptions
 {

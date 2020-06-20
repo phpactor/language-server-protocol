@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressParams, PartialResultParams
+ * A parameter literal used in selection range requests.
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
 class SelectionRangeParams
 {

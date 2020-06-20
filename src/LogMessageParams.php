@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The log message parameters.
+ */
 class LogMessageParams
 {
     /**

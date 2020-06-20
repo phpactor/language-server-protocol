@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Server Capabilities for a [SignatureHelpRequest](#SignatureHelpRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class SignatureHelpOptions
 {

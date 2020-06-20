@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkspaceSymbolOptions
+ * Registration options for a [WorkspaceSymbolRequest](#WorkspaceSymbolRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkspaceSymbolOptions
  */
 class WorkspaceSymbolRegistrationOptions
 {

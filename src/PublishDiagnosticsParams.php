@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The publish diagnostic notification's parameters.
+ */
 class PublishDiagnosticsParams
 {
     /**

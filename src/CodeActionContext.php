@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Contains additional diagnostic information about the context in which
+ * a [code action](#CodeActionProvider.provideCodeActions) is run.
+ */
 class CodeActionContext
 {
     /**

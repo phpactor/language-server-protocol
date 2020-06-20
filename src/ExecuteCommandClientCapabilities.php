@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The client capabilities of a [ExecuteCommandRequest](#ExecuteCommandRequest).
+ */
 class ExecuteCommandClientCapabilities
 {
     /**

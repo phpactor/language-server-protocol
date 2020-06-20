@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements ResourceOperation
+ * Rename file operation
+ *
+ * Mixins (implemented TS interfaces): ResourceOperation
  */
 class RenameFile
 {

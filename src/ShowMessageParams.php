@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters of a notification message.
+ */
 class ShowMessageParams
 {
     /**

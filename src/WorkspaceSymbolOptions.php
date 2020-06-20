@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Server capabilities for a [WorkspaceSymbolRequest](#WorkspaceSymbolRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class WorkspaceSymbolOptions
 {

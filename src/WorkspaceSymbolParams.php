@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressParams, PartialResultParams
+ * The parameters of a [WorkspaceSymbolRequest](#WorkspaceSymbolRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
 class WorkspaceSymbolParams
 {

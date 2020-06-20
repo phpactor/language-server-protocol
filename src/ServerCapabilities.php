@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements _ServerCapabilities, WorkspaceFoldersServerCapabilities
+ * Mixins (implemented TS interfaces): _ServerCapabilities, WorkspaceFoldersServerCapabilities
  */
 class ServerCapabilities
 {

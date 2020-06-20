@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents a folding range.
+ */
 class FoldingRange
 {
     /**

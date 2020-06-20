@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Client capabilities of a [DocumentFormattingRequest](#DocumentFormattingRequest).
+ */
 class DocumentFormattingClientCapabilities
 {
     /**

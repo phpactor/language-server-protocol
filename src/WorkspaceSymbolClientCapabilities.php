@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Client capabilities for a [WorkspaceSymbolRequest](#WorkspaceSymbolRequest).
+ */
 class WorkspaceSymbolClientCapabilities
 {
     /**

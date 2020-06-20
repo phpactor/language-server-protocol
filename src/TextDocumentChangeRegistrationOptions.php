@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions
+ * Describe options to be used when registered for text document change events.
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions
  */
 class TextDocumentChangeRegistrationOptions
 {

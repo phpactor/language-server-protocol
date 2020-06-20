@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Completion options.
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class CompletionOptions
 {

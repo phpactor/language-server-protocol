@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressParams
+ * The parameters of a [RenameRequest](#RenameRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
 class RenameParams
 {

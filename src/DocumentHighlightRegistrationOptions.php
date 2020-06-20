@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, DocumentHighlightOptions
+ * Registration options for a [DocumentHighlightRequest](#DocumentHighlightRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentHighlightOptions
  */
 class DocumentHighlightRegistrationOptions
 {

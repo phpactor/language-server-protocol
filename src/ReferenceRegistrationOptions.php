@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, ReferenceOptions
+ * Registration options for a [ReferencesRequest](#ReferencesRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, ReferenceOptions
  */
 class ReferenceRegistrationOptions
 {

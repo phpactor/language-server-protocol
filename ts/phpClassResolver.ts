@@ -20,6 +20,7 @@ export class PhpClass {
 
     mixins: string[] = [];
 
+    docs: string[] = [];
 }
 
 export class Properties extends Map<string, Property> {
@@ -32,7 +33,7 @@ export class Property {
     name: string;
     type: PhpType;
     nullable: boolean;
-    docs: string[];
+    docs: string[] = [];
 }
 
 export class PhpClassResolver
@@ -76,6 +77,7 @@ export class PhpClassResolver
 
     private fromInterface(declaration: InterfaceDeclaration): PhpClass {
 
+        const docs = this.jsDocs(declaration);
         var properties = new Map<string, Property>();
 
         // change to Set
@@ -117,7 +119,8 @@ export class PhpClassResolver
         return {
             name: declaration.name.escapedText.toString(),
             properties: properties as Properties,
-            mixins: mixins
+            mixins: mixins,
+            docs: docs
         } as PhpClass;
     }
 
@@ -136,13 +139,16 @@ export class PhpClassResolver
         return phpClass;
     }
 
-    private jsDocs(property: PropertySignature): string[] {
+    private jsDocs(property: PropertySignature|InterfaceDeclaration): string[] {
         const jsDocs: JSDoc[] = property['jsDoc'];
         if (!jsDocs) {
             return [];
         }
 
         return [].concat.apply([], jsDocs.map((doc: JSDoc) => {
+            if (!doc.comment) {
+                return;
+            }
             return doc.comment.split("\r\n");
         }));
     }

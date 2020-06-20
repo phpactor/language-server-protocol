@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A simple text document. Not to be implemented. The document keeps the content
+ * as string.
+ */
 class TextDocument
 {
     /**

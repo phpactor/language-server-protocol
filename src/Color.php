@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents a color in RGBA space.
+ */
 class Color
 {
     /**

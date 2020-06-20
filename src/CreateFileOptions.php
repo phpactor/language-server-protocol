@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Options to create a file.
+ */
 class CreateFileOptions
 {
     /**

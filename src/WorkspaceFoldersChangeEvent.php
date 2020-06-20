@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The workspace folder change event.
+ */
 class WorkspaceFoldersChangeEvent
 {
     /**

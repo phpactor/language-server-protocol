@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Delete file options
+ */
 class DeleteFileOptions
 {
     /**

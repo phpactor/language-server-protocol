@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class DeclarationOptions
 {

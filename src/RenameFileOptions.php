@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Rename file options
+ */
 class RenameFileOptions
 {
     /**

@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, DocumentRangeFormattingOptions
+ * Registration options for a [DocumentRangeFormattingRequest](#DocumentRangeFormattingRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentRangeFormattingOptions
  */
 class DocumentRangeFormattingRegistrationOptions
 {

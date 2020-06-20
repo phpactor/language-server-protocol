@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents reasons why a text document is saved.
+ */
 class TextDocumentWillSaveEvent
 {
     /**

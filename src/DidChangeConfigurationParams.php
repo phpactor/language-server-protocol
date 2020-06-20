@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters of a change configuration notification.
+ */
 class DidChangeConfigurationParams
 {
     /**

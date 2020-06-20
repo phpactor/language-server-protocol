@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Save options.
+ */
 class SaveOptions
 {
     /**

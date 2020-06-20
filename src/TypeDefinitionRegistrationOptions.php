@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, TypeDefinitionOptions, StaticRegistrationOptions
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, TypeDefinitionOptions, StaticRegistrationOptions
  */
 class TypeDefinitionRegistrationOptions
 {

@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Reference options.
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class ReferenceOptions
 {

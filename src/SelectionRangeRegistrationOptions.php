@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements SelectionRangeOptions, TextDocumentRegistrationOptions, StaticRegistrationOptions
+ * Mixins (implemented TS interfaces): SelectionRangeOptions, TextDocumentRegistrationOptions, StaticRegistrationOptions
  */
 class SelectionRangeRegistrationOptions
 {

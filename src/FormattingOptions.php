@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Value-object describing what options formatting should use.
+ */
 class FormattingOptions
 {
     /**

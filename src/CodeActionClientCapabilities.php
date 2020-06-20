@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The Client Capabilities of a [CodeActionRequest](#CodeActionRequest).
+ */
 class CodeActionClientCapabilities
 {
     /**

@@ -2,6 +2,11 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A workspace edit represents changes to many resources managed in the workspace. The edit
+ * should either provide `changes` or `documentChanges`. If documentChanges are present
+ * they are preferred over `changes` if the client can handle versioned document edits.
+ */
 class WorkspaceEdit
 {
     /**

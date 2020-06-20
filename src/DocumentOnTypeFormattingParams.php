@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters of a [DocumentOnTypeFormattingRequest](#DocumentOnTypeFormattingRequest).
+ */
 class DocumentOnTypeFormattingParams
 {
     /**

@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, CodeLensOptions
+ * Registration options for a [CodeLensRequest](#CodeLensRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, CodeLensOptions
  */
 class CodeLensRegistrationOptions
 {

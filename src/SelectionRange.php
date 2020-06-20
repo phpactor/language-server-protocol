@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A selection range represents a part of a selection hierarchy. A selection range
+ * may have a parent selection range that contains it.
+ */
 class SelectionRange
 {
     /**

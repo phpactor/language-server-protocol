@@ -2,6 +2,11 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents the signature of something callable. A signature
+ * can have a label, like a function-name, a doc-comment, and
+ * a set of parameters.
+ */
 class SignatureInformation
 {
     /**

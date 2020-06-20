@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Since 3.14.0
+ */
 class DeclarationClientCapabilities
 {
     /**

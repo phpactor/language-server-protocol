@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements ResourceOperation
+ * Delete file operation
+ *
+ * Mixins (implemented TS interfaces): ResourceOperation
  */
 class DeleteFile
 {

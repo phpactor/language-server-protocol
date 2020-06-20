@@ -11,9 +11,17 @@ export class Renderer
         source.push(`namespace LanguageServerProtocol;`);
         source.push(``);
 
-        if (phpClass.mixins.length > 0) {
+        if (phpClass.mixins.length > 0 || phpClass.docs.length > 0) {
             source.push(`/**`);
-            source.push(' * implements ' + phpClass.mixins.join(', '));
+            phpClass.docs.forEach((line: string) => {
+                source.push(` * ${line}`);
+            });
+            if (phpClass.mixins.length > 0 && phpClass.docs.length > 0) {
+                source.push(` *`);
+            }
+            if (phpClass.mixins.length > 0) {
+                source.push(' * Mixins (implemented TS interfaces): ' + phpClass.mixins.join(', '));
+            }
             source.push(` */`);
         }
 

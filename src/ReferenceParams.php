@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
+ * Parameters for a [ReferencesRequest](#ReferencesRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
 class ReferenceParams
 {

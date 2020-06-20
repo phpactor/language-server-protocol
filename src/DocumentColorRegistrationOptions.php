@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, StaticRegistrationOptions, DocumentColorOptions
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, StaticRegistrationOptions, DocumentColorOptions
  */
 class DocumentColorRegistrationOptions
 {

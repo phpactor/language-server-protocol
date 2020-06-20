@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Provider options for a [DocumentRangeFormattingRequest](#DocumentRangeFormattingRequest).
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class DocumentRangeFormattingOptions
 {

@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Defines the capabilities provided by the client.
+ */
 class _ClientCapabilities
 {
     /**

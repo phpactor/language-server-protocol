@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, SaveOptions
+ * Save registration options.
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, SaveOptions
  */
 class TextDocumentSaveRegistrationOptions
 {

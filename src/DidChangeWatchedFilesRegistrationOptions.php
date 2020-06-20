@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Describe options to be used when registered for text document change events.
+ */
 class DidChangeWatchedFilesRegistrationOptions
 {
     /**

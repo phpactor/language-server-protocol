@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Client Capabilities for a [DocumentSymbolRequest](#DocumentSymbolRequest).
+ */
 class DocumentSymbolClientCapabilities
 {
     /**

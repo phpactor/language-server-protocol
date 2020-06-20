@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentPositionParams, WorkDoneProgressParams
+ * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
 class PrepareRenameParams
 {

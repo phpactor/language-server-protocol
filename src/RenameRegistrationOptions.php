@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, RenameOptions
+ * Registration options for a [RenameRequest](#RenameRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, RenameOptions
  */
 class RenameRegistrationOptions
 {

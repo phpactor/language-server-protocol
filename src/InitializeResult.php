@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The result returned from an initialize request.
+ */
 class InitializeResult
 {
     /**

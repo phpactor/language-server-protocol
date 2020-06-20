@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters of a configuration request.
+ */
 class ConfigurationParams
 {
     /**

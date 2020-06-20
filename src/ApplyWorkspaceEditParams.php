@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters passed via a apply workspace edit request.
+ */
 class ApplyWorkspaceEditParams
 {
     /**

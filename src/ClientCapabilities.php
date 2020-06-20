@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements _ClientCapabilities, WorkspaceFoldersClientCapabilities, ConfigurationClientCapabilities, WorkDoneProgressClientCapabilities
+ * Mixins (implemented TS interfaces): _ClientCapabilities, WorkspaceFoldersClientCapabilities, ConfigurationClientCapabilities, WorkDoneProgressClientCapabilities
  */
 class ClientCapabilities
 {

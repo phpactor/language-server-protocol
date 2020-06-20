@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, HoverOptions
+ * Registration options for a [HoverRequest](#HoverRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, HoverOptions
  */
 class HoverRegistrationOptions
 {

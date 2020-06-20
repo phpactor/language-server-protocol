@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Additional information about the context in which a signature help request was triggered.
+ */
 class SignatureHelpContext
 {
     /**

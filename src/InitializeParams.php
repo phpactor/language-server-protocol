@@ -3,7 +3,7 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements _InitializeParams, WorkspaceFoldersInitializeParams
+ * Mixins (implemented TS interfaces): _InitializeParams, WorkspaceFoldersInitializeParams
  */
 class InitializeParams
 {

@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A text edit applicable to a text document.
+ */
 class TextEdit
 {
     /**

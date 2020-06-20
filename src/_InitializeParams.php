@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressParams
+ * The initialize parameters
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
 class _InitializeParams
 {

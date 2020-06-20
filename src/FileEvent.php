@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * An event describing a file change.
+ */
 class FileEvent
 {
     /**

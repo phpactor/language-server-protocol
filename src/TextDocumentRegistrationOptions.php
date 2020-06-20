@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * General text document registration options.
+ */
 class TextDocumentRegistrationOptions
 {
     /**

@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Represents a location inside a resource, such as a line
+ * inside a text file.
+ */
 class Location
 {
     /**

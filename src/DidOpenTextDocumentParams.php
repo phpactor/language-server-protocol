@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters send in a open text document notification
+ */
 class DidOpenTextDocumentParams
 {
     /**

@@ -2,6 +2,10 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Static registration options to be returned in the initialize
+ * request.
+ */
 class StaticRegistrationOptions
 {
     /**

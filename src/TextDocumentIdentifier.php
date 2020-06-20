@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * A literal to identify a text document in the client.
+ */
 class TextDocumentIdentifier
 {
     /**

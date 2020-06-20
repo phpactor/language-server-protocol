@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Text document specific client capabilities.
+ */
 class TextDocumentClientCapabilities
 {
     /**

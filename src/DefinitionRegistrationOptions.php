@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, DefinitionOptions
+ * Registration options for a [DefinitionRequest](#DefinitionRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DefinitionOptions
  */
 class DefinitionRegistrationOptions
 {

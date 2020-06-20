@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * General parameters to unregister a request or notification.
+ */
 class Unregistration
 {
     /**

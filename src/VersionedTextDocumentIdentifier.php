@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentIdentifier
+ * An identifier to denote a specific version of a text document.
+ *
+ * Mixins (implemented TS interfaces): TextDocumentIdentifier
  */
 class VersionedTextDocumentIdentifier
 {

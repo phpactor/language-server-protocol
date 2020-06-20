@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements ResourceOperation
+ * Create file operation.
+ *
+ * Mixins (implemented TS interfaces): ResourceOperation
  */
 class CreateFile
 {

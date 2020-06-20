@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Workspace specific client capabilities.
+ */
 class WorkspaceClientCapabilities
 {
     /**

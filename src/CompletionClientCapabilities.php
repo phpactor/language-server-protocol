@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * Completion client capabilities
+ */
 class CompletionClientCapabilities
 {
     /**

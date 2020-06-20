@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements WorkDoneProgressOptions
+ * Hover options.
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class HoverOptions
 {

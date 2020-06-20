@@ -3,7 +3,9 @@
 namespace LanguageServerProtocol;
 
 /**
- * implements TextDocumentRegistrationOptions, CompletionOptions
+ * Registration options for a [CompletionRequest](#CompletionRequest).
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, CompletionOptions
  */
 class CompletionRegistrationOptions
 {

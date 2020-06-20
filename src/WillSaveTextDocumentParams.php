@@ -2,6 +2,9 @@
 
 namespace LanguageServerProtocol;
 
+/**
+ * The parameters send in a will save text document notification.
+ */
 class WillSaveTextDocumentParams
 {
     /**
