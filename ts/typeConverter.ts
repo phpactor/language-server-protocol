@@ -97,8 +97,8 @@ export class TypeConverter
         }
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
-            if (this.entityMap.aliases[type.typeName.escapedText.toString()]) {
-                return this.entityMap.aliases[type.typeName.escapedText.toString()];
+            if (this.entityMap.aliases.has(type.typeName.escapedText.toString())) {
+                return this.phpType(this.entityMap.aliases.get(type.typeName.escapedText.toString()));
             }
             return new PhpType(type.typeName.escapedText.toString(), type.typeName.escapedText.toString());
         }
@@ -154,7 +154,7 @@ export class EntityMap {
     interfaces: InterfaceMap = new InterfaceMap();
 }
 
-class TypeAliasMap extends Map<string, PhpType> {
+class TypeAliasMap extends Map<string, TypeNode> {
 }
 
 class InterfaceMap extends Map<string, InterfaceDeclaration> {
@@ -162,15 +162,13 @@ class InterfaceMap extends Map<string, InterfaceDeclaration> {
 
 export function createEntityMap(nodes: Node[]): EntityMap {
 
-    const typeConverter = new TypeConverter(new EntityMap());
-
     const map = new EntityMap();
 
     nodes.forEach((node: Node) => {
 
         node.forEachChild((node: Node) => {
             if (isTypeAliasDeclaration(node)) {
-                map.aliases.set(node.name.escapedText.toString(), typeConverter.phpType(node.type));
+                map.aliases.set(node.name.escapedText.toString(), node.type);
                 return;
             }
             if (isInterfaceDeclaration(node)) {
