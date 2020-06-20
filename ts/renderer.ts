@@ -1,40 +1,10 @@
-import {
-    InterfaceDeclaration,
-    isPropertySignature,
-    PropertySignature,
-    JSDoc,
-    isIdentifier,
-    SyntaxKind
-} from 'typescript';
+import {TypeConverter, EntityMap} from './typeConverter';
+import {PhpClass, Property} from './phpClassResolver';
 
-import {TypeConverter, PhpType} from './typeConverter';
-
-class PhpClass {
-    name: string;
-    properties: Properties;
-    mixins: string[];
-}
-
-class Properties extends Map<string, Property> {
-}
-
-class Property {
-    name: string;
-    type: PhpType;
-    nullable: boolean;
-    docs: string[];
-}
-
-export class Generator
+export class Renderer
 {
-    converter: TypeConverter;
+    render(phpClass: PhpClass): string {
 
-    constructor (converter: TypeConverter) {
-        this.converter = converter;
-    }
-
-    interfaceDeclaration(declaration: InterfaceDeclaration): string {
-        const phpClass = this.resolvePhpClass(declaration);
         const source: Array<string> = ['<?php'];
 
         source.push(``);
@@ -57,48 +27,6 @@ export class Generator
         //console.log(source);
 
         return source.join("\n");
-    }
-
-    resolvePhpClass(declaration: InterfaceDeclaration) {
-        var properties = new Map<string, Property>();
-        const mixins = Array<string>();
-
-        for (const property  of declaration.members) {
-            if (!isPropertySignature(property)) {
-                continue;
-            }
-
-            if (!isIdentifier(property.name)) {
-                continue;
-            }
-
-            const classProperty: Property = {
-                docs: this.jsDocs(property),
-                name: property.name.escapedText.toString(),
-                type: this.converter.phpType(property.type),
-                nullable: property.questionToken ? true : false
-            };
-
-            properties.set(classProperty.name, classProperty);
-        }
-
-        if (declaration.heritageClauses) {
-            for (const clause of declaration.heritageClauses) {
-                for (const type of clause.types) {
-                    if (!isIdentifier(type.expression)) {
-                        continue;
-                    }
-
-                    mixins.push(type.expression.escapedText.toString());
-                }
-            }
-        }
-
-        return {
-            name: declaration.name.escapedText.toString(),
-            properties: properties as Properties,
-            mixins: mixins
-        } as PhpClass;
     }
 
     buildProperties(declaration: PhpClass, source: string[]): void {
@@ -150,17 +78,6 @@ export class Generator
             source.push(`        $this->${property.name} = $${property.name};`);
         });
         source.push('    }');
-    }
-
-    jsDocs(property: PropertySignature): string[] {
-        const jsDocs: JSDoc[] = property['jsDoc'];
-        if (!jsDocs) {
-            return [];
-        }
-
-        return [].concat.apply([], jsDocs.map((doc: JSDoc) => {
-            return doc.comment.split("\r\n");
-        }));
     }
 
     renderPropertyType(property: Property): string {

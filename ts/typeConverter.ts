@@ -45,11 +45,11 @@ export class TypeConverter
         }
 
         if (SyntaxKind[type.kind] == 'StringKeyword') {
-            return new PhpType('string','string');
+            return new PhpType('string', 'string');
         }
 
         if (SyntaxKind[type.kind] == 'BooleanKeyword') {
-            return new PhpType('string','string');
+            return new PhpType('bool','bool');
         }
 
         if (SyntaxKind[type.kind] == 'AnyKeyword') {
@@ -149,40 +149,32 @@ export class TypeConverter
     }
 }
 
-interface EntityMap {
-    aliases: TypeAliasMap,
-    interfaces: InterfaceMap
+export class EntityMap {
+    aliases: TypeAliasMap = new TypeAliasMap();
+    interfaces: InterfaceMap = new InterfaceMap();
 }
 
-interface TypeAliasMap {
-    [key: string]: PhpType
+class TypeAliasMap extends Map<string, PhpType> {
 }
 
-interface InterfaceMap {
-    [key: string]: InterfaceDeclaration
+class InterfaceMap extends Map<string, InterfaceDeclaration> {
 }
 
 export function createEntityMap(nodes: Node[]): EntityMap {
 
-    const typeConverter = new TypeConverter({
-        aliases: {},
-        interfaces: {}
-    } as EntityMap);
+    const typeConverter = new TypeConverter(new EntityMap());
 
-    var map = {
-        aliases: {},
-        interfaces: {}
-    } as EntityMap;
+    const map = new EntityMap();
 
     nodes.forEach((node: Node) => {
 
-        node.forEachChild(node => {
+        node.forEachChild((node: Node) => {
             if (isTypeAliasDeclaration(node)) {
-                map.aliases[node.name.escapedText.toString()] = typeConverter.phpType(node.type);
+                map.aliases.set(node.name.escapedText.toString(), typeConverter.phpType(node.type));
                 return;
             }
             if (isInterfaceDeclaration(node)) {
-                map.interfaces[node.name.escapedText.toString()] = node;
+                map.interfaces.set(node.name.escapedText.toString(), node);
                 return;
             }
         });

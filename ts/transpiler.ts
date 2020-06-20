@@ -1,29 +1,20 @@
-import {createSourceFile, ScriptTarget, SyntaxKind, InterfaceDeclaration, isInterfaceDeclaration, Node}  from "typescript"
-import {readFileSync} from 'fs';
 import {Writer} from './writer';
-import {Generator} from "./generator";
+import {PhpClassResolver, PhpClasses, PhpClass} from './phpClassResolver';
+import {Renderer} from './renderer';
 
 export class Transpiler
 {
     writer: Writer;
-    generator: Generator;
+    renderer: Renderer;
 
-    constructor (writer: Writer, generator: Generator) {
+    constructor (writer: Writer, renderer: Renderer) {
         this.writer = writer;
-        this.generator = generator;
+        this.renderer = renderer;
     }
 
-    transpile(nodes: Node[]): void {
-
-        nodes.forEach((node: Node) => {
-
-            node.forEachChild(node => {
-                if (isInterfaceDeclaration(node)) {
-                    const code = this.generator.interfaceDeclaration(node);
-                    this.writer.write(node.name.escapedText.toString(), code);
-                }
-            });
-
+    transpile(phpClasses: PhpClasses): void {
+        phpClasses.forEach((phpClass: PhpClass) => {
+            this.writer.write(phpClass.name, this.renderer.render(phpClass));
         });
     }
 }

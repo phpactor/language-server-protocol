@@ -1,10 +1,11 @@
-import path = require('path');
-import {Generator} from "./generator";
+import {Renderer} from "./renderer";
 import {Writer} from './writer';
 import {TypeConverter,createEntityMap} from './typeConverter';
 import {Transpiler} from './transpiler';
 import {ScriptTarget, createSourceFile}  from "typescript"
 import {readFileSync} from 'fs';
+import {PhpClassResolver} from './phpClassResolver';
+import * as path from 'path';
 
 const paths: string[] = [
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.d.ts'),
@@ -21,19 +22,24 @@ const paths: string[] = [
 ];
 
 const nodes = paths.map((file: string) => {
-    return createSourceFile(
+    const node = createSourceFile(
         file,
         readFileSync(file, 'utf8'),
         ScriptTarget.Latest,
         true
     );
+
+    return node;
 });
 
-const typeAliasMap = createEntityMap(nodes);
+const entityMap = createEntityMap(nodes);
+const typeConverter = new TypeConverter(entityMap);
+const phpClassResolver = new PhpClassResolver(entityMap, typeConverter);
+const phpClasses = phpClassResolver.fromEntityMap(entityMap);
 
 const transpiler = new Transpiler(
     new Writer(path.resolve(__dirname, '..', 'src')),
-    new Generator(new TypeConverter(typeAliasMap))
+    new Renderer()
 );
 
-transpiler.transpile(nodes);
+transpiler.transpile(phpClasses);
