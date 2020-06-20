@@ -159,7 +159,9 @@ export class TypeConverter
     }
 
     private phpTypeLiteral(type: TypeLiteralNode): PhpType {
-        return new PhpType('array', 'array<mixed>');
+        // TODO: These are sub-types. We could attempt to render a PHPStan
+        //       array-shape here, but it would be better to create a new class.
+        return new PhpType('array', `array<mixed>`);
     }
 }
 
