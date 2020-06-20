@@ -68,9 +68,10 @@ export class PhpClassResolver
         phpClass.name = name;
 
         type.types.forEach((type: TypeNode) => {
+            phpClass.mixins.push(this.typeConverter.phpType(type).real);
         });
 
-        return phpClass;
+        return this.hydateMixins(phpClass);
     }
 
     private fromInterface(declaration: InterfaceDeclaration): PhpClass {
@@ -123,6 +124,10 @@ export class PhpClassResolver
     private hydateMixins(phpClass: PhpClass): PhpClass {
         var properties = phpClass.properties;
         phpClass.mixins.forEach((mixinName: string) => {
+            if (!this.nodeMap.interfaces.has(mixinName)) {
+                console.warn(`MixIn ${mixinName} is not a mapped interface`);
+                return;
+            }
             const mixinClass = this.fromInterface(this.nodeMap.interfaces.get(mixinName));
 
             properties = new Map([ ... properties, ... this.hydateMixins(mixinClass).properties ]);
