@@ -26,7 +26,7 @@ class SelectionRange
      * @param Range $range
      * @param SelectionRange|null $parent
      */
-    public function __construct(Range $range, ?SelectionRange $parent)
+    public function __construct(Range $range, ?SelectionRange $parent = null)
     {
         $this->range = $range;
         $this->parent = $parent;

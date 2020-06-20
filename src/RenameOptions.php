@@ -26,7 +26,7 @@ class RenameOptions
      * @param bool|null $prepareProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $prepareProvider, ?bool $workDoneProgress)
+    public function __construct(?bool $prepareProvider = null, ?bool $workDoneProgress = null)
     {
         $this->prepareProvider = $prepareProvider;
         $this->workDoneProgress = $workDoneProgress;

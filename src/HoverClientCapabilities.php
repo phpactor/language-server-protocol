@@ -23,7 +23,7 @@ class HoverClientCapabilities
      * @param bool|null $dynamicRegistration
      * @param array<'plaintext'|'markdown'>|null $contentFormat
      */
-    public function __construct(?bool $dynamicRegistration, ?array $contentFormat)
+    public function __construct(?bool $dynamicRegistration = null, ?array $contentFormat = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->contentFormat = $contentFormat;

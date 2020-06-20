@@ -61,7 +61,7 @@ class SymbolInformation
      * @param Location $location
      * @param string|null $containerName
      */
-    public function __construct(string $name, $kind, ?bool $deprecated, Location $location, ?string $containerName)
+    public function __construct(Location $location, $kind, string $name, ?bool $deprecated = null, ?string $containerName = null)
     {
         $this->name = $name;
         $this->kind = $kind;

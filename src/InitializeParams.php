@@ -85,7 +85,7 @@ class InitializeParams
      * @param int|string|null $workDoneToken
      * @param array<WorkspaceFolder>|null $workspaceFolders
      */
-    public function __construct($processId, $clientInfo, $rootPath, $rootUri, ClientCapabilities $capabilities, $initializationOptions, $trace, $workDoneToken, $workspaceFolders)
+    public function __construct($workspaceFolders, ClientCapabilities $capabilities, $rootUri, $processId, $clientInfo, $rootPath, $initializationOptions, $trace, $workDoneToken)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;

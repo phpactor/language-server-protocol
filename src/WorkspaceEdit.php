@@ -36,7 +36,7 @@ class WorkspaceEdit
      * @param array<mixed>|null $changes
      * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>|null $documentChanges
      */
-    public function __construct($changes, ?array $documentChanges)
+    public function __construct($changes, ?array $documentChanges = null)
     {
         $this->changes = $changes;
         $this->documentChanges = $documentChanges;

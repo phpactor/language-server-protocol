@@ -50,7 +50,7 @@ class WorkDoneProgressReport
      * @param string|null $message
      * @param int|null $percentage
      */
-    public function __construct($kind, ?bool $cancellable, ?string $message, ?int $percentage)
+    public function __construct($kind, ?bool $cancellable = null, ?string $message = null, ?int $percentage = null)
     {
         $this->kind = $kind;
         $this->cancellable = $cancellable;

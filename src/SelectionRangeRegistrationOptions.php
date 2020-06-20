@@ -34,7 +34,7 @@ class SelectionRangeRegistrationOptions
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param string|null $id
      */
-    public function __construct(?bool $workDoneProgress, $documentSelector, ?string $id)
+    public function __construct($documentSelector, ?bool $workDoneProgress = null, ?string $id = null)
     {
         $this->workDoneProgress = $workDoneProgress;
         $this->documentSelector = $documentSelector;

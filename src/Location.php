@@ -24,7 +24,7 @@ class Location
      * @param string $uri
      * @param Range $range
      */
-    public function __construct(string $uri, Range $range)
+    public function __construct(Range $range, string $uri)
     {
         $this->uri = $uri;
         $this->range = $range;

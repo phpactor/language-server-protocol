@@ -33,7 +33,7 @@ class DocumentSymbolClientCapabilities
      * @param array<mixed>|null $symbolKind
      * @param bool|null $hierarchicalDocumentSymbolSupport
      */
-    public function __construct(?bool $dynamicRegistration, $symbolKind, ?bool $hierarchicalDocumentSymbolSupport)
+    public function __construct(?bool $dynamicRegistration = null, $symbolKind, ?bool $hierarchicalDocumentSymbolSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;

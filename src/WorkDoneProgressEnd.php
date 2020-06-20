@@ -22,7 +22,7 @@ class WorkDoneProgressEnd
      * @param 'end' $kind
      * @param string|null $message
      */
-    public function __construct($kind, ?string $message)
+    public function __construct($kind, ?string $message = null)
     {
         $this->kind = $kind;
         $this->message = $message;

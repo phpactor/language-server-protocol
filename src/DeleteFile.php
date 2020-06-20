@@ -34,7 +34,7 @@ class DeleteFile
      * @param string $uri
      * @param DeleteFileOptions|null $options
      */
-    public function __construct(string $kind, string $uri, ?DeleteFileOptions $options)
+    public function __construct(string $uri, string $kind, ?DeleteFileOptions $options = null)
     {
         $this->kind = $kind;
         $this->uri = $uri;

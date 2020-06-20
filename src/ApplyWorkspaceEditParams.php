@@ -27,7 +27,7 @@ class ApplyWorkspaceEditParams
      * @param string|null $label
      * @param WorkspaceEdit $edit
      */
-    public function __construct(?string $label, WorkspaceEdit $edit)
+    public function __construct(WorkspaceEdit $edit, ?string $label = null)
     {
         $this->label = $label;
         $this->edit = $edit;

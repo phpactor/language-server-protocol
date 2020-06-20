@@ -27,7 +27,7 @@ class HoverRegistrationOptions
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?bool $workDoneProgress)
+    public function __construct($documentSelector, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->workDoneProgress = $workDoneProgress;

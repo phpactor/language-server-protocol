@@ -40,7 +40,7 @@ class Position
      * @param int $line
      * @param int $character
      */
-    public function __construct(int $line, int $character)
+    public function __construct(int $character, int $line)
     {
         $this->line = $line;
         $this->character = $character;

@@ -40,7 +40,7 @@ class TextDocumentSyncClientCapabilities
      * @param bool|null $willSaveWaitUntil
      * @param bool|null $didSave
      */
-    public function __construct(?bool $dynamicRegistration, ?bool $willSave, ?bool $willSaveWaitUntil, ?bool $didSave)
+    public function __construct(?bool $dynamicRegistration = null, ?bool $willSave = null, ?bool $willSaveWaitUntil = null, ?bool $didSave = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->willSave = $willSave;

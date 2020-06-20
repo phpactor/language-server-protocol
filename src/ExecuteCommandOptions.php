@@ -26,7 +26,7 @@ class ExecuteCommandOptions
      * @param array<string> $commands
      * @param bool|null $workDoneProgress
      */
-    public function __construct(array $commands, ?bool $workDoneProgress)
+    public function __construct(array $commands, ?bool $workDoneProgress = null)
     {
         $this->commands = $commands;
         $this->workDoneProgress = $workDoneProgress;

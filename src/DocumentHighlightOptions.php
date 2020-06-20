@@ -18,7 +18,7 @@ class DocumentHighlightOptions
     /**
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress)
+    public function __construct(?bool $workDoneProgress = null)
     {
         $this->workDoneProgress = $workDoneProgress;
     }

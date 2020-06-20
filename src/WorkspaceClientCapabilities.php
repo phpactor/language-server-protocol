@@ -59,7 +59,7 @@ class WorkspaceClientCapabilities
      * @param WorkspaceSymbolClientCapabilities|null $symbol
      * @param ExecuteCommandClientCapabilities|null $executeCommand
      */
-    public function __construct(?bool $applyEdit, ?WorkspaceEditClientCapabilities $workspaceEdit, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, ?WorkspaceSymbolClientCapabilities $symbol, ?ExecuteCommandClientCapabilities $executeCommand)
+    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null)
     {
         $this->applyEdit = $applyEdit;
         $this->workspaceEdit = $workspaceEdit;

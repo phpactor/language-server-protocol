@@ -26,7 +26,7 @@ class TextDocumentPositionParams
      * @param TextDocumentIdentifier $textDocument
      * @param Position $position
      */
-    public function __construct(TextDocumentIdentifier $textDocument, Position $position)
+    public function __construct(Position $position, TextDocumentIdentifier $textDocument)
     {
         $this->textDocument = $textDocument;
         $this->position = $position;

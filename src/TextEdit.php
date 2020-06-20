@@ -27,7 +27,7 @@ class TextEdit
      * @param Range $range
      * @param string $newText
      */
-    public function __construct(Range $range, string $newText)
+    public function __construct(string $newText, Range $range)
     {
         $this->range = $range;
         $this->newText = $newText;

@@ -25,7 +25,7 @@ class DeleteFileOptions
      * @param bool|null $recursive
      * @param bool|null $ignoreIfNotExists
      */
-    public function __construct(?bool $recursive, ?bool $ignoreIfNotExists)
+    public function __construct(?bool $recursive = null, ?bool $ignoreIfNotExists = null)
     {
         $this->recursive = $recursive;
         $this->ignoreIfNotExists = $ignoreIfNotExists;

@@ -33,7 +33,7 @@ class CodeActionContext
      * @param array<Diagnostic> $diagnostics
      * @param array<string>|null $only
      */
-    public function __construct(array $diagnostics, ?array $only)
+    public function __construct(array $diagnostics, ?array $only = null)
     {
         $this->diagnostics = $diagnostics;
         $this->only = $only;

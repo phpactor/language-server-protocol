@@ -53,7 +53,16 @@ export class Renderer
 
     buildConstructorDefinition(declaration: PhpClass, source: string[]): void {
         const args: string[] = [];
-        declaration.properties.forEach((property: Property) => {
+
+        const properties: Property[] = Array.from(declaration.properties.values()).sort((property1: Property, property2: Property) => {
+            if (property1.nullable) {
+                return 1;
+            }
+
+            return -1;
+        });
+
+        properties.forEach((property: Property) => {
             const arg = [];
 
             if (property.type.real && property.nullable) {
@@ -65,6 +74,11 @@ export class Renderer
             }
 
             arg.push(`$${property.name}`);
+
+            if (property.type.real && property.nullable) {
+                arg.push(' = null');
+            }
+
             args.push(arg.join(''));
         });
 

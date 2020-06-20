@@ -35,7 +35,7 @@ class Range
      * @param Position $start
      * @param Position $end
      */
-    public function __construct(Position $start, Position $end)
+    public function __construct(Position $end, Position $start)
     {
         $this->start = $start;
         $this->end = $end;

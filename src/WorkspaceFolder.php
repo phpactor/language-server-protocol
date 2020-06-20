@@ -23,7 +23,7 @@ class WorkspaceFolder
      * @param string $uri
      * @param string $name
      */
-    public function __construct(string $uri, string $name)
+    public function __construct(string $name, string $uri)
     {
         $this->uri = $uri;
         $this->name = $name;

@@ -26,7 +26,7 @@ class CompletionList
      * @param bool $isIncomplete
      * @param array<CompletionItem> $items
      */
-    public function __construct(bool $isIncomplete, array $items)
+    public function __construct(array $items, bool $isIncomplete)
     {
         $this->isIncomplete = $isIncomplete;
         $this->items = $items;

@@ -55,7 +55,7 @@ class CompletionOptions
      * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?array $triggerCharacters, ?array $allCommitCharacters, ?bool $resolveProvider, ?bool $workDoneProgress)
+    public function __construct(?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->triggerCharacters = $triggerCharacters;
         $this->allCommitCharacters = $allCommitCharacters;

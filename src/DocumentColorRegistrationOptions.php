@@ -34,7 +34,7 @@ class DocumentColorRegistrationOptions
      * @param string|null $id
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?string $id, ?bool $workDoneProgress)
+    public function __construct($documentSelector, ?string $id = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->id = $id;

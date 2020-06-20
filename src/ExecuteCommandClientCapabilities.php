@@ -17,7 +17,7 @@ class ExecuteCommandClientCapabilities
     /**
      * @param bool|null $dynamicRegistration
      */
-    public function __construct(?bool $dynamicRegistration)
+    public function __construct(?bool $dynamicRegistration = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
     }

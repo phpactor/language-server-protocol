@@ -35,7 +35,7 @@ class ColorPresentation
      * @param TextEdit|null $textEdit
      * @param array<TextEdit>|null $additionalTextEdits
      */
-    public function __construct(string $label, ?TextEdit $textEdit, ?array $additionalTextEdits)
+    public function __construct(string $label, ?TextEdit $textEdit = null, ?array $additionalTextEdits = null)
     {
         $this->label = $label;
         $this->textEdit = $textEdit;

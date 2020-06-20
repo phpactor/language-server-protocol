@@ -30,7 +30,7 @@ class FileSystemWatcher
      * @param string $globPattern
      * @param int|null $kind
      */
-    public function __construct(string $globPattern, ?int $kind)
+    public function __construct(string $globPattern, ?int $kind = null)
     {
         $this->globPattern = $globPattern;
         $this->kind = $kind;

@@ -23,7 +23,7 @@ class RenameClientCapabilities
      * @param bool|null $dynamicRegistration
      * @param bool|null $prepareSupport
      */
-    public function __construct(?bool $dynamicRegistration, ?bool $prepareSupport)
+    public function __construct(?bool $dynamicRegistration = null, ?bool $prepareSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->prepareSupport = $prepareSupport;

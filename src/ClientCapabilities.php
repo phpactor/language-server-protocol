@@ -41,7 +41,7 @@ class ClientCapabilities
      * @param array<mixed>|null $window
      * @param object|null $experimental
      */
-    public function __construct($workspace, ?TextDocumentClientCapabilities $textDocument, $window, ?object $experimental)
+    public function __construct($workspace, ?TextDocumentClientCapabilities $textDocument = null, $window, ?object $experimental = null)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;

@@ -25,7 +25,7 @@ class CreateFileOptions
      * @param bool|null $overwrite
      * @param bool|null $ignoreIfExists
      */
-    public function __construct(?bool $overwrite, ?bool $ignoreIfExists)
+    public function __construct(?bool $overwrite = null, ?bool $ignoreIfExists = null)
     {
         $this->overwrite = $overwrite;
         $this->ignoreIfExists = $ignoreIfExists;

@@ -37,7 +37,7 @@ class DidChangeTextDocumentParams
      * @param VersionedTextDocumentIdentifier $textDocument
      * @param array<array<mixed>|array<mixed>> $contentChanges
      */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, array $contentChanges)
+    public function __construct(array $contentChanges, VersionedTextDocumentIdentifier $textDocument)
     {
         $this->textDocument = $textDocument;
         $this->contentChanges = $contentChanges;

@@ -49,7 +49,7 @@ class FormattingOptions
      * @param bool|null $insertFinalNewline
      * @param bool|null $trimFinalNewlines
      */
-    public function __construct(int $tabSize, bool $insertSpaces, ?bool $trimTrailingWhitespace, ?bool $insertFinalNewline, ?bool $trimFinalNewlines)
+    public function __construct(bool $insertSpaces, int $tabSize, ?bool $trimTrailingWhitespace = null, ?bool $insertFinalNewline = null, ?bool $trimFinalNewlines = null)
     {
         $this->tabSize = $tabSize;
         $this->insertSpaces = $insertSpaces;

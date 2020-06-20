@@ -37,7 +37,7 @@ class SignatureHelpOptions
      * @param array<string>|null $retriggerCharacters
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?array $triggerCharacters, ?array $retriggerCharacters, ?bool $workDoneProgress)
+    public function __construct(?array $triggerCharacters = null, ?array $retriggerCharacters = null, ?bool $workDoneProgress = null)
     {
         $this->triggerCharacters = $triggerCharacters;
         $this->retriggerCharacters = $retriggerCharacters;

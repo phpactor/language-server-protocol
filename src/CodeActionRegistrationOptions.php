@@ -38,7 +38,7 @@ class CodeActionRegistrationOptions
      * @param array<string>|null $codeActionKinds
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?array $codeActionKinds, ?bool $workDoneProgress)
+    public function __construct($documentSelector, ?array $codeActionKinds = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->codeActionKinds = $codeActionKinds;

@@ -36,7 +36,7 @@ class DocumentOnTypeFormattingRegistrationOptions
      * @param string $firstTriggerCharacter
      * @param array<string>|null $moreTriggerCharacter
      */
-    public function __construct($documentSelector, string $firstTriggerCharacter, ?array $moreTriggerCharacter)
+    public function __construct(string $firstTriggerCharacter, $documentSelector, ?array $moreTriggerCharacter = null)
     {
         $this->documentSelector = $documentSelector;
         $this->firstTriggerCharacter = $firstTriggerCharacter;

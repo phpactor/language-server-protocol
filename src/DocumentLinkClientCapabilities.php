@@ -25,7 +25,7 @@ class DocumentLinkClientCapabilities
      * @param bool|null $dynamicRegistration
      * @param bool|null $tooltipSupport
      */
-    public function __construct(?bool $dynamicRegistration, ?bool $tooltipSupport)
+    public function __construct(?bool $dynamicRegistration = null, ?bool $tooltipSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->tooltipSupport = $tooltipSupport;

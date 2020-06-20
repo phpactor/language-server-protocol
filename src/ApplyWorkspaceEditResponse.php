@@ -37,7 +37,7 @@ class ApplyWorkspaceEditResponse
      * @param string|null $failureReason
      * @param int|null $failedChange
      */
-    public function __construct(bool $applied, ?string $failureReason, ?int $failedChange)
+    public function __construct(bool $applied, ?string $failureReason = null, ?int $failedChange = null)
     {
         $this->applied = $applied;
         $this->failureReason = $failureReason;

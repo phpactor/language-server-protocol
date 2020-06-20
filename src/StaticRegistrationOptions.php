@@ -19,7 +19,7 @@ class StaticRegistrationOptions
     /**
      * @param string|null $id
      */
-    public function __construct(?string $id)
+    public function __construct(?string $id = null)
     {
         $this->id = $id;
     }

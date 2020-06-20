@@ -26,7 +26,7 @@ class DidSaveTextDocumentParams
      * @param VersionedTextDocumentIdentifier $textDocument
      * @param string|null $text
      */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, ?string $text)
+    public function __construct(VersionedTextDocumentIdentifier $textDocument, ?string $text = null)
     {
         $this->textDocument = $textDocument;
         $this->text = $text;

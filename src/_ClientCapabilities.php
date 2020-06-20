@@ -41,7 +41,7 @@ class _ClientCapabilities
      * @param object|null $window
      * @param object|null $experimental
      */
-    public function __construct(?WorkspaceClientCapabilities $workspace, ?TextDocumentClientCapabilities $textDocument, ?object $window, ?object $experimental)
+    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?object $window = null, ?object $experimental = null)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;

@@ -35,7 +35,7 @@ class ExecuteCommandParams
      * @param array<mixed>|null $arguments
      * @param int|string|null $workDoneToken
      */
-    public function __construct(string $command, ?array $arguments, $workDoneToken)
+    public function __construct(string $command, ?array $arguments = null, $workDoneToken)
     {
         $this->command = $command;
         $this->arguments = $arguments;

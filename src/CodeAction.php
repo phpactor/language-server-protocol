@@ -68,7 +68,7 @@ class CodeAction
      * @param WorkspaceEdit|null $edit
      * @param Command|null $command
      */
-    public function __construct(string $title, ?string $kind, ?array $diagnostics, ?bool $isPreferred, ?WorkspaceEdit $edit, ?Command $command)
+    public function __construct(string $title, ?string $kind = null, ?array $diagnostics = null, ?bool $isPreferred = null, ?WorkspaceEdit $edit = null, ?Command $command = null)
     {
         $this->title = $title;
         $this->kind = $kind;

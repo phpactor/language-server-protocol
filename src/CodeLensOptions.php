@@ -26,7 +26,7 @@ class CodeLensOptions
      * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $resolveProvider, ?bool $workDoneProgress)
+    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;

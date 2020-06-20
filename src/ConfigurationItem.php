@@ -22,7 +22,7 @@ class ConfigurationItem
      * @param string|null $scopeUri
      * @param string|null $section
      */
-    public function __construct(?string $scopeUri, ?string $section)
+    public function __construct(?string $scopeUri = null, ?string $section = null)
     {
         $this->scopeUri = $scopeUri;
         $this->section = $section;

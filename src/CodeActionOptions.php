@@ -29,7 +29,7 @@ class CodeActionOptions
      * @param array<string>|null $codeActionKinds
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?array $codeActionKinds, ?bool $workDoneProgress)
+    public function __construct(?array $codeActionKinds = null, ?bool $workDoneProgress = null)
     {
         $this->codeActionKinds = $codeActionKinds;
         $this->workDoneProgress = $workDoneProgress;

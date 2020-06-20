@@ -70,7 +70,7 @@ class Diagnostic
      * @param array<1|2>|null $tags
      * @param array<DiagnosticRelatedInformation>|null $relatedInformation
      */
-    public function __construct(Range $range, $severity, $code, ?string $source, string $message, ?array $tags, ?array $relatedInformation)
+    public function __construct(string $message, Range $range, $severity, $code, ?string $source = null, ?array $tags = null, ?array $relatedInformation = null)
     {
         $this->range = $range;
         $this->severity = $severity;

@@ -33,7 +33,7 @@ class PublishDiagnosticsParams
      * @param int|null $version
      * @param array<Diagnostic> $diagnostics
      */
-    public function __construct(string $uri, ?int $version, array $diagnostics)
+    public function __construct(array $diagnostics, string $uri, ?int $version = null)
     {
         $this->uri = $uri;
         $this->version = $version;

@@ -28,7 +28,7 @@ class TextDocumentSaveRegistrationOptions
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param bool|null $includeText
      */
-    public function __construct($documentSelector, ?bool $includeText)
+    public function __construct($documentSelector, ?bool $includeText = null)
     {
         $this->documentSelector = $documentSelector;
         $this->includeText = $includeText;

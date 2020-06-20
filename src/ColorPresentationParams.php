@@ -52,7 +52,7 @@ class ColorPresentationParams
      * @param int|string|null $workDoneToken
      * @param int|string|null $partialResultToken
      */
-    public function __construct(TextDocumentIdentifier $textDocument, Color $color, Range $range, $workDoneToken, $partialResultToken)
+    public function __construct(Range $range, Color $color, TextDocumentIdentifier $textDocument, $workDoneToken, $partialResultToken)
     {
         $this->textDocument = $textDocument;
         $this->color = $color;

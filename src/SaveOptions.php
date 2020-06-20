@@ -17,7 +17,7 @@ class SaveOptions
     /**
      * @param bool|null $includeText
      */
-    public function __construct(?bool $includeText)
+    public function __construct(?bool $includeText = null)
     {
         $this->includeText = $includeText;
     }

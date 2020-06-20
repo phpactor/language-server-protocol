@@ -37,7 +37,7 @@ class Command
      * @param string $command
      * @param array<mixed>|null $arguments
      */
-    public function __construct(string $title, string $command, ?array $arguments)
+    public function __construct(string $command, string $title, ?array $arguments = null)
     {
         $this->title = $title;
         $this->command = $command;

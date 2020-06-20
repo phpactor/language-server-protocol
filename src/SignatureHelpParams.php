@@ -44,7 +44,7 @@ class SignatureHelpParams
      * @param Position $position
      * @param int|string|null $workDoneToken
      */
-    public function __construct(?SignatureHelpContext $context, TextDocumentIdentifier $textDocument, Position $position, $workDoneToken)
+    public function __construct(Position $position, TextDocumentIdentifier $textDocument, ?SignatureHelpContext $context = null, $workDoneToken)
     {
         $this->context = $context;
         $this->textDocument = $textDocument;

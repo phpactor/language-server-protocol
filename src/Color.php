@@ -41,7 +41,7 @@ class Color
      * @param int $blue
      * @param int $alpha
      */
-    public function __construct(int $red, int $green, int $blue, int $alpha)
+    public function __construct(int $alpha, int $blue, int $green, int $red)
     {
         $this->red = $red;
         $this->green = $green;

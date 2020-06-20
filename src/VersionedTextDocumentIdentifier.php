@@ -31,7 +31,7 @@ class VersionedTextDocumentIdentifier
      * @param int|null $version
      * @param string $uri
      */
-    public function __construct($version, string $uri)
+    public function __construct(string $uri, $version)
     {
         $this->version = $version;
         $this->uri = $uri;

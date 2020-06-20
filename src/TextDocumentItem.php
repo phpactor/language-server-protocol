@@ -43,7 +43,7 @@ class TextDocumentItem
      * @param int $version
      * @param string $text
      */
-    public function __construct(string $uri, string $languageId, int $version, string $text)
+    public function __construct(string $text, int $version, string $languageId, string $uri)
     {
         $this->uri = $uri;
         $this->languageId = $languageId;
