@@ -10,6 +10,8 @@ import {
     isIdentifier,
     isIntersectionTypeNode,
     IntersectionTypeNode,
+    isTypeLiteralNode,
+    TypeLiteralNode,
 } from 'typescript';
 
 import {NodeMap} from './nodeMap';
@@ -70,8 +72,8 @@ export class TypeConverter
 
         // TODO: This refers to nested type definitions. We should
         //       generate a new class in this case for PHP.
-        if (SyntaxKind[type.kind] == 'TypeLiteral') {
-            return new PhpType(null, 'array<mixed>');
+        if (isTypeLiteralNode(type)) {
+            return this.phpTypeLiteral(type);
         }
 
         if (SyntaxKind[type.kind] == 'ParenthesizedType') {
@@ -154,6 +156,10 @@ export class TypeConverter
             'array',
             `array{${types}}`
         );
+    }
+
+    private phpTypeLiteral(type: TypeLiteralNode): PhpType {
+        return new PhpType('array', 'array<mixed>');
     }
 }
 

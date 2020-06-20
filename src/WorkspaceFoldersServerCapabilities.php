@@ -14,7 +14,7 @@ class WorkspaceFoldersServerCapabilities
     /**
      * @param array<mixed>|null $workspace
      */
-    public function __construct($workspace = null)
+    public function __construct(?array $workspace = null)
     {
         $this->workspace = $workspace;
     }

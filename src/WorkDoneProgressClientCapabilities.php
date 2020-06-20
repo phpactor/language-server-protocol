@@ -14,7 +14,7 @@ class WorkDoneProgressClientCapabilities
     /**
      * @param array<mixed>|null $window
      */
-    public function __construct($window = null)
+    public function __construct(?array $window = null)
     {
         $this->window = $window;
     }
