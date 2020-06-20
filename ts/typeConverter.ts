@@ -5,18 +5,14 @@ import {
     UnionTypeNode,
     TupleTypeNode,
     ParenthesizedTypeNode,
-    Node,
     TypeReferenceNode,
-    isTypeNode,
     isTypeReferenceNode,
     isIdentifier,
-    isTypeAliasDeclaration,
     isIntersectionTypeNode,
     IntersectionTypeNode,
-    ClassLikeDeclaration,
-    isInterfaceDeclaration,
-    InterfaceDeclaration
 } from 'typescript';
+
+import {NodeMap} from './nodeMap';
 
 export class PhpType
 {
@@ -32,11 +28,11 @@ export class PhpType
 
 export class TypeConverter
 {
-    entityMap: EntityMap;
+    nodeMap: NodeMap;
 
-    constructor(entityMap: EntityMap)
+    constructor(nodeMap: NodeMap)
     {
-        this.entityMap = entityMap;
+        this.nodeMap = nodeMap;
     }
 
     phpType(type: TypeNode|TypeReferenceNode|null): PhpType {
@@ -97,8 +93,8 @@ export class TypeConverter
         }
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
-            if (this.entityMap.aliases.has(type.typeName.escapedText.toString())) {
-                return this.phpType(this.entityMap.aliases.get(type.typeName.escapedText.toString()));
+            if (this.nodeMap.aliases.has(type.typeName.escapedText.toString())) {
+                return this.phpType(this.nodeMap.aliases.get(type.typeName.escapedText.toString()));
             }
             return new PhpType(type.typeName.escapedText.toString(), type.typeName.escapedText.toString());
         }
@@ -149,35 +145,3 @@ export class TypeConverter
     }
 }
 
-export class EntityMap {
-    aliases: TypeAliasMap = new TypeAliasMap();
-    interfaces: InterfaceMap = new InterfaceMap();
-}
-
-class TypeAliasMap extends Map<string, TypeNode> {
-}
-
-class InterfaceMap extends Map<string, InterfaceDeclaration> {
-}
-
-export function createEntityMap(nodes: Node[]): EntityMap {
-
-    const map = new EntityMap();
-
-    nodes.forEach((node: Node) => {
-
-        node.forEachChild((node: Node) => {
-            if (isTypeAliasDeclaration(node)) {
-                map.aliases.set(node.name.escapedText.toString(), node.type);
-                return;
-            }
-            if (isInterfaceDeclaration(node)) {
-                map.interfaces.set(node.name.escapedText.toString(), node);
-                return;
-            }
-        });
-
-    });
-
-    return map;
-}

@@ -3,18 +3,22 @@ import {
     isPropertySignature,
     PropertySignature,
     JSDoc,
-    isIdentifier
+    isIdentifier,
+    TypeNode,
+    isIntersectionTypeNode,
+    IntersectionTypeNode
 } from 'typescript';
 
-import {PhpType, EntityMap, TypeConverter} from './typeConverter';
+import {PhpType, TypeConverter} from './typeConverter';
+import {NodeMap} from './nodeMap';
 
 export class PhpClass {
 
     name: string;
 
-    properties: Properties;
+    properties: Properties = new Properties();
 
-    mixins: string[];
+    mixins: string[] = [];
 
 }
 
@@ -33,25 +37,43 @@ export class Property {
 
 export class PhpClassResolver
 {
-    entityMap: EntityMap;
+    nodeMap: NodeMap;
     typeConverter: TypeConverter;
 
-    constructor(entityMap: EntityMap, typeConverter: TypeConverter)
+    constructor(nodeMap: NodeMap, typeConverter: TypeConverter)
     {
-        this.entityMap = entityMap;
+        this.nodeMap = nodeMap;
         this.typeConverter = typeConverter;
     }
 
-    public fromEntityMap(entityMap: EntityMap): PhpClasses
+    public fromNodeMap(nodeMap: NodeMap): PhpClasses
     {
         const classes = new PhpClasses();
 
-        entityMap.interfaces.forEach((interfaceDeclaration: InterfaceDeclaration) => {
+        nodeMap.interfaces.forEach((interfaceDeclaration: InterfaceDeclaration) => {
             const phpClass = this.fromInterface(interfaceDeclaration);
             classes.set(phpClass.name, phpClass);
         });
 
+        nodeMap.aliases.forEach((type: TypeNode, name: string) => {
+            if (isIntersectionTypeNode(type)) {
+                classes.set(name, this.fromIntersectionTypeNode(name, type));
+            }
+        });
+
         return classes;
+    }
+
+    private fromIntersectionTypeNode(name: string, type: IntersectionTypeNode): PhpClass
+    {
+        const phpClass = new PhpClass();
+        phpClass.name = name;
+
+        type.types.forEach((type: TypeNode) => {
+            const phpType = this.typeConverter.phpType(type);
+        });
+
+        return phpClass;
     }
 
     private fromInterface(declaration: InterfaceDeclaration): PhpClass {
@@ -89,8 +111,9 @@ export class PhpClassResolver
                     }
 
                     const mixinName = type.expression.escapedText.toString();
-                    const mixinClass = this.fromInterface(this.entityMap.interfaces.get(mixinName));
+                    const mixinClass = this.fromInterface(this.nodeMap.interfaces.get(mixinName));
                     properties = new Map([ ... mixinClass.properties, ... properties ]);
+                    mixins.push(mixinName);
                 }
             }
         }
