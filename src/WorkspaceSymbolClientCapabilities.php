@@ -7,7 +7,7 @@ class WorkspaceSymbolClientCapabilities
     /**
      * Symbol request supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -19,10 +19,10 @@ class WorkspaceSymbolClientCapabilities
     public $symbolKind;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $symbolKind
      */
-    public function __construct(?string $dynamicRegistration, $symbolKind)
+    public function __construct(?bool $dynamicRegistration, $symbolKind)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;

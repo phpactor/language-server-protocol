@@ -10,14 +10,14 @@ class InitializeError
      * (2) user selects retry or cancel
      * (3) if user selected retry the initialize method is sent again.
      *
-     * @var string
+     * @var bool
      */
     public $retry;
 
     /**
-     * @param string $retry
+     * @param bool $retry
      */
-    public function __construct(string $retry)
+    public function __construct(bool $retry)
     {
         $this->retry = $retry;
     }

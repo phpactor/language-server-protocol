@@ -8,17 +8,25 @@ namespace LanguageServerProtocol;
 class RenameOptions
 {
     /**
+     *
+     * @var bool|null
+     */
+    public $workDoneProgress;
+
+    /**
      * Renames should be checked and tested before being executed.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $prepareProvider;
 
     /**
-     * @param string|null $prepareProvider
+     * @param bool|null $workDoneProgress
+     * @param bool|null $prepareProvider
      */
-    public function __construct(?string $prepareProvider)
+    public function __construct(?bool $workDoneProgress, ?bool $prepareProvider)
     {
+        $this->workDoneProgress = $workDoneProgress;
         $this->prepareProvider = $prepareProvider;
     }
 }

@@ -6,14 +6,14 @@ class WorkDoneProgressOptions
 {
     /**
      *
-     * @var string|null
+     * @var bool|null
      */
     public $workDoneProgress;
 
     /**
-     * @param string|null $workDoneProgress
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?string $workDoneProgress)
+    public function __construct(?bool $workDoneProgress)
     {
         $this->workDoneProgress = $workDoneProgress;
     }

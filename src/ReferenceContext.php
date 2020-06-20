@@ -7,14 +7,14 @@ class ReferenceContext
     /**
      * Include the declaration of the current symbol.
      *
-     * @var string
+     * @var bool
      */
     public $includeDeclaration;
 
     /**
-     * @param string $includeDeclaration
+     * @param bool $includeDeclaration
      */
-    public function __construct(string $includeDeclaration)
+    public function __construct(bool $includeDeclaration)
     {
         $this->includeDeclaration = $includeDeclaration;
     }

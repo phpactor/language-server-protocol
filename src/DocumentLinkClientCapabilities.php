@@ -7,22 +7,22 @@ class DocumentLinkClientCapabilities
     /**
      * Whether document link supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
     /**
      * Whether the client support the `tooltip` property on `DocumentLink`.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $tooltipSupport;
 
     /**
-     * @param string|null $dynamicRegistration
-     * @param string|null $tooltipSupport
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $tooltipSupport
      */
-    public function __construct(?string $dynamicRegistration, ?string $tooltipSupport)
+    public function __construct(?bool $dynamicRegistration, ?bool $tooltipSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->tooltipSupport = $tooltipSupport;

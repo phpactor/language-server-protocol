@@ -8,6 +8,13 @@ namespace LanguageServerProtocol;
 class _InitializeParams
 {
     /**
+     * An optional token that a server can use to report work done progress.
+     *
+     * @var int|string|null
+     */
+    public $workDoneToken;
+
+    /**
      * The process Id of the parent process that started
      * the server.
      *
@@ -42,7 +49,7 @@ class _InitializeParams
     /**
      * The capabilities provided by the client (editor or tool)
      *
-     * @var _ClientCapabilities&WorkspaceFoldersClientCapabilities&ConfigurationClientCapabilities&WorkDoneProgressClientCapabilities
+     * @var ClientCapabilities
      */
     public $capabilities;
 
@@ -61,16 +68,18 @@ class _InitializeParams
     public $trace;
 
     /**
+     * @param int|string|null $workDoneToken
      * @param int|null $processId
      * @param array<mixed>|null $clientInfo
      * @param string|null|null $rootPath
      * @param string|null $rootUri
-     * @param _ClientCapabilities&WorkspaceFoldersClientCapabilities&ConfigurationClientCapabilities&WorkDoneProgressClientCapabilities $capabilities
+     * @param ClientCapabilities $capabilities
      * @param mixed|null $initializationOptions
      * @param 'off'|'messages'|'verbose'|null $trace
      */
-    public function __construct($processId, $clientInfo, $rootPath, $rootUri, $capabilities, $initializationOptions, $trace)
+    public function __construct($workDoneToken, $processId, $clientInfo, $rootPath, $rootUri, ClientCapabilities $capabilities, $initializationOptions, $trace)
     {
+        $this->workDoneToken = $workDoneToken;
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;
         $this->rootPath = $rootPath;

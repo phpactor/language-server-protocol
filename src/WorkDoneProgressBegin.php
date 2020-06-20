@@ -25,7 +25,7 @@ class WorkDoneProgressBegin
      * long running operation. Clients that don't support cancellation are allowed
      * to ignore the setting.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $cancellable;
 
@@ -55,11 +55,11 @@ class WorkDoneProgressBegin
     /**
      * @param 'begin' $kind
      * @param string $title
-     * @param string|null $cancellable
+     * @param bool|null $cancellable
      * @param string|null $message
      * @param int|null $percentage
      */
-    public function __construct($kind, string $title, ?string $cancellable, ?string $message, ?int $percentage)
+    public function __construct($kind, string $title, ?bool $cancellable, ?string $message, ?int $percentage)
     {
         $this->kind = $kind;
         $this->title = $title;

@@ -7,7 +7,7 @@ class ApplyWorkspaceEditResponse
     /**
      * Indicates whether the edit was applied or not.
      *
-     * @var string
+     * @var bool
      */
     public $applied;
 
@@ -30,11 +30,11 @@ class ApplyWorkspaceEditResponse
     public $failedChange;
 
     /**
-     * @param string $applied
+     * @param bool $applied
      * @param string|null $failureReason
      * @param int|null $failedChange
      */
-    public function __construct(string $applied, ?string $failureReason, ?int $failedChange)
+    public function __construct(bool $applied, ?string $failureReason, ?int $failedChange)
     {
         $this->applied = $applied;
         $this->failureReason = $failureReason;

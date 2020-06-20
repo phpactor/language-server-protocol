@@ -7,14 +7,14 @@ class TextDocumentSyncClientCapabilities
     /**
      * Whether text document synchronization supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
     /**
      * The client supports sending will save notifications.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $willSave;
 
@@ -23,24 +23,24 @@ class TextDocumentSyncClientCapabilities
      * waits for a response providing text edits which will
      * be applied to the document before it is saved.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $willSaveWaitUntil;
 
     /**
      * The client supports did save notifications.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $didSave;
 
     /**
-     * @param string|null $dynamicRegistration
-     * @param string|null $willSave
-     * @param string|null $willSaveWaitUntil
-     * @param string|null $didSave
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $willSave
+     * @param bool|null $willSaveWaitUntil
+     * @param bool|null $didSave
      */
-    public function __construct(?string $dynamicRegistration, ?string $willSave, ?string $willSaveWaitUntil, ?string $didSave)
+    public function __construct(?bool $dynamicRegistration, ?bool $willSave, ?bool $willSaveWaitUntil, ?bool $didSave)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->willSave = $willSave;

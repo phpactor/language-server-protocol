@@ -7,7 +7,7 @@ class RenameClientCapabilities
     /**
      * Whether rename supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -15,15 +15,15 @@ class RenameClientCapabilities
      * Client supports testing for validity of rename operations
      * before execution.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $prepareSupport;
 
     /**
-     * @param string|null $dynamicRegistration
-     * @param string|null $prepareSupport
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $prepareSupport
      */
-    public function __construct(?string $dynamicRegistration, ?string $prepareSupport)
+    public function __construct(?bool $dynamicRegistration, ?bool $prepareSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->prepareSupport = $prepareSupport;

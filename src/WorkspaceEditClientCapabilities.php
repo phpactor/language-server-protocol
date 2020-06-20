@@ -7,7 +7,7 @@ class WorkspaceEditClientCapabilities
     /**
      * The client supports versioned document changes in `WorkspaceEdit`s
      *
-     * @var string|null
+     * @var bool|null
      */
     public $documentChanges;
 
@@ -28,11 +28,11 @@ class WorkspaceEditClientCapabilities
     public $failureHandling;
 
     /**
-     * @param string|null $documentChanges
+     * @param bool|null $documentChanges
      * @param array<'create'|'rename'|'delete'>|null $resourceOperations
      * @param 'abort'|'transactional'|'undo'|'textOnlyTransactional'|null $failureHandling
      */
-    public function __construct(?string $documentChanges, ?array $resourceOperations, $failureHandling)
+    public function __construct(?bool $documentChanges, ?array $resourceOperations, $failureHandling)
     {
         $this->documentChanges = $documentChanges;
         $this->resourceOperations = $resourceOperations;

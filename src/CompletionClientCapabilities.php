@@ -7,7 +7,7 @@ class CompletionClientCapabilities
     /**
      * Whether completion supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -29,17 +29,17 @@ class CompletionClientCapabilities
      * The client supports to send additional context information for a
      * `textDocument/completion` requestion.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $contextSupport;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $completionItem
      * @param array<mixed>|null $completionItemKind
-     * @param string|null $contextSupport
+     * @param bool|null $contextSupport
      */
-    public function __construct(?string $dynamicRegistration, $completionItem, $completionItemKind, ?string $contextSupport)
+    public function __construct(?bool $dynamicRegistration, $completionItem, $completionItemKind, ?bool $contextSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->completionItem = $completionItem;

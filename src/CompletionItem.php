@@ -46,7 +46,7 @@ class CompletionItem
     /**
      * Indicates if this item is deprecated.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $deprecated;
 
@@ -57,7 +57,7 @@ class CompletionItem
      * tool / client decides which item that is. The rule is that the *first*
      * item of those that match best is selected.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $preselect;
 
@@ -162,8 +162,8 @@ class CompletionItem
      * @param array<1>|null $tags
      * @param string|null $detail
      * @param string|MarkupContent|null $documentation
-     * @param string|null $deprecated
-     * @param string|null $preselect
+     * @param bool|null $deprecated
+     * @param bool|null $preselect
      * @param string|null $sortText
      * @param string|null $filterText
      * @param string|null $insertText
@@ -174,7 +174,7 @@ class CompletionItem
      * @param Command|null $command
      * @param mixed|null $data
      */
-    public function __construct(string $label, $kind, ?array $tags, ?string $detail, $documentation, ?string $deprecated, ?string $preselect, ?string $sortText, ?string $filterText, ?string $insertText, $insertTextFormat, ?TextEdit $textEdit, ?array $additionalTextEdits, ?array $commitCharacters, ?Command $command, $data)
+    public function __construct(string $label, $kind, ?array $tags, ?string $detail, $documentation, ?bool $deprecated, ?bool $preselect, ?string $sortText, ?string $filterText, ?string $insertText, $insertTextFormat, ?TextEdit $textEdit, ?array $additionalTextEdits, ?array $commitCharacters, ?Command $command, $data)
     {
         $this->label = $label;
         $this->kind = $kind;

@@ -9,14 +9,14 @@ class SelectionRangeClientCapabilities
      * the client supports the new `SelectionRangeRegistrationOptions` return value for the corresponding server
      * capability as well.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      */
-    public function __construct(?string $dynamicRegistration)
+    public function __construct(?bool $dynamicRegistration)
     {
         $this->dynamicRegistration = $dynamicRegistration;
     }

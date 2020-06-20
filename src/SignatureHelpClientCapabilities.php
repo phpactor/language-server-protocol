@@ -7,7 +7,7 @@ class SignatureHelpClientCapabilities
     /**
      * Whether signature help supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -25,16 +25,16 @@ class SignatureHelpClientCapabilities
      * contextSupport will also support the `retriggerCharacters` on
      * `SignatureHelpOptions`.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $contextSupport;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $signatureInformation
-     * @param string|null $contextSupport
+     * @param bool|null $contextSupport
      */
-    public function __construct(?string $dynamicRegistration, $signatureInformation, ?string $contextSupport)
+    public function __construct(?bool $dynamicRegistration, $signatureInformation, ?bool $contextSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->signatureInformation = $signatureInformation;

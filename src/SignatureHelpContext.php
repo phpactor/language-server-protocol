@@ -26,7 +26,7 @@ class SignatureHelpContext
      * Retriggers occur when the signature help is already active and can be caused by actions such as
      * typing a trigger character, a cursor move, or document content changes.
      *
-     * @var string
+     * @var bool
      */
     public $isRetrigger;
 
@@ -43,10 +43,10 @@ class SignatureHelpContext
     /**
      * @param 1|2|3 $triggerKind
      * @param string|null $triggerCharacter
-     * @param string $isRetrigger
+     * @param bool $isRetrigger
      * @param SignatureHelp|null $activeSignatureHelp
      */
-    public function __construct($triggerKind, ?string $triggerCharacter, string $isRetrigger, ?SignatureHelp $activeSignatureHelp)
+    public function __construct($triggerKind, ?string $triggerCharacter, bool $isRetrigger, ?SignatureHelp $activeSignatureHelp)
     {
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;

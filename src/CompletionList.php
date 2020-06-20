@@ -7,7 +7,7 @@ class CompletionList
     /**
      * This list it not complete. Further typing results in recomputing this list.
      *
-     * @var string
+     * @var bool
      */
     public $isIncomplete;
 
@@ -19,10 +19,10 @@ class CompletionList
     public $items;
 
     /**
-     * @param string $isIncomplete
+     * @param bool $isIncomplete
      * @param array<CompletionItem> $items
      */
-    public function __construct(string $isIncomplete, array $items)
+    public function __construct(bool $isIncomplete, array $items)
     {
         $this->isIncomplete = $isIncomplete;
         $this->items = $items;

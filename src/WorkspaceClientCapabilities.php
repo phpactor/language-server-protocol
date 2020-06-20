@@ -9,7 +9,7 @@ class WorkspaceClientCapabilities
      * to the workspace by supporting the request
      * 'workspace/applyEdit'
      *
-     * @var string|null
+     * @var bool|null
      */
     public $applyEdit;
 
@@ -49,14 +49,14 @@ class WorkspaceClientCapabilities
     public $executeCommand;
 
     /**
-     * @param string|null $applyEdit
+     * @param bool|null $applyEdit
      * @param WorkspaceEditClientCapabilities|null $workspaceEdit
      * @param DidChangeConfigurationClientCapabilities|null $didChangeConfiguration
      * @param DidChangeWatchedFilesClientCapabilities|null $didChangeWatchedFiles
      * @param WorkspaceSymbolClientCapabilities|null $symbol
      * @param ExecuteCommandClientCapabilities|null $executeCommand
      */
-    public function __construct(?string $applyEdit, ?WorkspaceEditClientCapabilities $workspaceEdit, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, ?WorkspaceSymbolClientCapabilities $symbol, ?ExecuteCommandClientCapabilities $executeCommand)
+    public function __construct(?bool $applyEdit, ?WorkspaceEditClientCapabilities $workspaceEdit, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles, ?WorkspaceSymbolClientCapabilities $symbol, ?ExecuteCommandClientCapabilities $executeCommand)
     {
         $this->applyEdit = $applyEdit;
         $this->workspaceEdit = $workspaceEdit;

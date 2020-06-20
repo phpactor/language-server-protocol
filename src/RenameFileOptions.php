@@ -7,22 +7,22 @@ class RenameFileOptions
     /**
      * Overwrite target if existing. Overwrite wins over `ignoreIfExists`
      *
-     * @var string|null
+     * @var bool|null
      */
     public $overwrite;
 
     /**
      * Ignores if target exists.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $ignoreIfExists;
 
     /**
-     * @param string|null $overwrite
-     * @param string|null $ignoreIfExists
+     * @param bool|null $overwrite
+     * @param bool|null $ignoreIfExists
      */
-    public function __construct(?string $overwrite, ?string $ignoreIfExists)
+    public function __construct(?bool $overwrite, ?bool $ignoreIfExists)
     {
         $this->overwrite = $overwrite;
         $this->ignoreIfExists = $ignoreIfExists;

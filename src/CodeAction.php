@@ -34,7 +34,7 @@ class CodeAction
      * A quick fix should be marked preferred if it properly addresses the underlying error.
      * A refactoring should be marked preferred if it is the most reasonable choice of actions to take.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $isPreferred;
 
@@ -58,11 +58,11 @@ class CodeAction
      * @param string $title
      * @param string|null $kind
      * @param array<Diagnostic>|null $diagnostics
-     * @param string|null $isPreferred
+     * @param bool|null $isPreferred
      * @param WorkspaceEdit|null $edit
      * @param Command|null $command
      */
-    public function __construct(string $title, ?string $kind, ?array $diagnostics, ?string $isPreferred, ?WorkspaceEdit $edit, ?Command $command)
+    public function __construct(string $title, ?string $kind, ?array $diagnostics, ?bool $isPreferred, ?WorkspaceEdit $edit, ?Command $command)
     {
         $this->title = $title;
         $this->kind = $kind;

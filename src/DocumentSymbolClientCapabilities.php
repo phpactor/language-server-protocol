@@ -7,7 +7,7 @@ class DocumentSymbolClientCapabilities
     /**
      * Whether document symbol supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -21,16 +21,16 @@ class DocumentSymbolClientCapabilities
     /**
      * The client support hierarchical document symbols.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $hierarchicalDocumentSymbolSupport;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $symbolKind
-     * @param string|null $hierarchicalDocumentSymbolSupport
+     * @param bool|null $hierarchicalDocumentSymbolSupport
      */
-    public function __construct(?string $dynamicRegistration, $symbolKind, ?string $hierarchicalDocumentSymbolSupport)
+    public function __construct(?bool $dynamicRegistration, $symbolKind, ?bool $hierarchicalDocumentSymbolSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;

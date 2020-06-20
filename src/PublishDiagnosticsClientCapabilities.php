@@ -7,7 +7,7 @@ class PublishDiagnosticsClientCapabilities
     /**
      * Whether the clients accepts diagnostics with related information.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $relatedInformation;
 
@@ -23,16 +23,16 @@ class PublishDiagnosticsClientCapabilities
      * Whether the client interprets the version property of the
      * `textDocument/publishDiagnostics` notification`s parameter.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $versionSupport;
 
     /**
-     * @param string|null $relatedInformation
+     * @param bool|null $relatedInformation
      * @param array<mixed>|null $tagSupport
-     * @param string|null $versionSupport
+     * @param bool|null $versionSupport
      */
-    public function __construct(?string $relatedInformation, $tagSupport, ?string $versionSupport)
+    public function __construct(?bool $relatedInformation, $tagSupport, ?bool $versionSupport)
     {
         $this->relatedInformation = $relatedInformation;
         $this->tagSupport = $tagSupport;

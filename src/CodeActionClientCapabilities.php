@@ -7,7 +7,7 @@ class CodeActionClientCapabilities
     /**
      * Whether code action supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -22,16 +22,16 @@ class CodeActionClientCapabilities
     /**
      * Whether code action supports the `isPreferred` property.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $isPreferredSupport;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $codeActionLiteralSupport
-     * @param string|null $isPreferredSupport
+     * @param bool|null $isPreferredSupport
      */
-    public function __construct(?string $dynamicRegistration, $codeActionLiteralSupport, ?string $isPreferredSupport)
+    public function __construct(?bool $dynamicRegistration, $codeActionLiteralSupport, ?bool $isPreferredSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->codeActionLiteralSupport = $codeActionLiteralSupport;

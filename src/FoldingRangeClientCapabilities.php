@@ -9,7 +9,7 @@ class FoldingRangeClientCapabilities
      * the client supports the new `FoldingRangeRegistrationOptions` return value for the corresponding server
      * capability as well.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -25,16 +25,16 @@ class FoldingRangeClientCapabilities
      * If set, the client signals that it only supports folding complete lines. If set, client will
      * ignore specified `startCharacter` and `endCharacter` properties in a FoldingRange.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $lineFoldingOnly;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param int|null $rangeLimit
-     * @param string|null $lineFoldingOnly
+     * @param bool|null $lineFoldingOnly
      */
-    public function __construct(?string $dynamicRegistration, ?int $rangeLimit, ?string $lineFoldingOnly)
+    public function __construct(?bool $dynamicRegistration, ?int $rangeLimit, ?bool $lineFoldingOnly)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->rangeLimit = $rangeLimit;

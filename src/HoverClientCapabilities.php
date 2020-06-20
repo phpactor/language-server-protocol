@@ -7,7 +7,7 @@ class HoverClientCapabilities
     /**
      * Whether hover supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -20,10 +20,10 @@ class HoverClientCapabilities
     public $contentFormat;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      * @param array<'plaintext'|'markdown'>|null $contentFormat
      */
-    public function __construct(?string $dynamicRegistration, ?array $contentFormat)
+    public function __construct(?bool $dynamicRegistration, ?array $contentFormat)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->contentFormat = $contentFormat;

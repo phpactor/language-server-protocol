@@ -7,14 +7,14 @@ class ReferenceClientCapabilities
     /**
      * Whether references supports dynamic registration.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
     /**
-     * @param string|null $dynamicRegistration
+     * @param bool|null $dynamicRegistration
      */
-    public function __construct(?string $dynamicRegistration)
+    public function __construct(?bool $dynamicRegistration)
     {
         $this->dynamicRegistration = $dynamicRegistration;
     }

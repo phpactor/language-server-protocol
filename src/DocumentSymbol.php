@@ -29,7 +29,7 @@ class DocumentSymbol
     /**
      * Indicates if this symbol is deprecated.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $deprecated;
 
@@ -61,12 +61,12 @@ class DocumentSymbol
      * @param string $name
      * @param string|null $detail
      * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26 $kind
-     * @param string|null $deprecated
+     * @param bool|null $deprecated
      * @param Range $range
      * @param Range $selectionRange
      * @param array<DocumentSymbol>|null $children
      */
-    public function __construct(string $name, ?string $detail, $kind, ?string $deprecated, Range $range, Range $selectionRange, ?array $children)
+    public function __construct(string $name, ?string $detail, $kind, ?bool $deprecated, Range $range, Range $selectionRange, ?array $children)
     {
         $this->name = $name;
         $this->detail = $detail;

@@ -7,14 +7,14 @@ class SaveOptions
     /**
      * The client is supposed to include the content on save.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $includeText;
 
     /**
-     * @param string|null $includeText
+     * @param bool|null $includeText
      */
-    public function __construct(?string $includeText)
+    public function __construct(?bool $includeText)
     {
         $this->includeText = $includeText;
     }

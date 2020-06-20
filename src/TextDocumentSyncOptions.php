@@ -8,7 +8,7 @@ class TextDocumentSyncOptions
      * Open and close notifications are sent to the server. If omitted open close notification should not
      * be sent.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $openClose;
 
@@ -24,7 +24,7 @@ class TextDocumentSyncOptions
      * If present will save notifications are sent to the server. If omitted the notification should not be
      * sent.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $willSave;
 
@@ -32,7 +32,7 @@ class TextDocumentSyncOptions
      * If present will save wait until requests are sent to the server. If omitted the request should not be
      * sent.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $willSaveWaitUntil;
 
@@ -45,13 +45,13 @@ class TextDocumentSyncOptions
     public $save;
 
     /**
-     * @param string|null $openClose
+     * @param bool|null $openClose
      * @param 0|1|2|null $change
-     * @param string|null $willSave
-     * @param string|null $willSaveWaitUntil
+     * @param bool|null $willSave
+     * @param bool|null $willSaveWaitUntil
      * @param SaveOptions|null $save
      */
-    public function __construct(?string $openClose, $change, ?string $willSave, ?string $willSaveWaitUntil, ?SaveOptions $save)
+    public function __construct(?bool $openClose, $change, ?bool $willSave, ?bool $willSaveWaitUntil, ?SaveOptions $save)
     {
         $this->openClose = $openClose;
         $this->change = $change;

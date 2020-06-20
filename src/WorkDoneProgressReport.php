@@ -17,7 +17,7 @@ class WorkDoneProgressReport
      * Clients that don't support cancellation or don't support control the button's
      * enablement state are allowed to ignore the setting.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $cancellable;
 
@@ -46,11 +46,11 @@ class WorkDoneProgressReport
 
     /**
      * @param 'report' $kind
-     * @param string|null $cancellable
+     * @param bool|null $cancellable
      * @param string|null $message
      * @param int|null $percentage
      */
-    public function __construct($kind, ?string $cancellable, ?string $message, ?int $percentage)
+    public function __construct($kind, ?bool $cancellable, ?string $message, ?int $percentage)
     {
         $this->kind = $kind;
         $this->cancellable = $cancellable;

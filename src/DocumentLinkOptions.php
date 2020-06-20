@@ -8,17 +8,25 @@ namespace LanguageServerProtocol;
 class DocumentLinkOptions
 {
     /**
+     *
+     * @var bool|null
+     */
+    public $workDoneProgress;
+
+    /**
      * Document links have a resolve provider as well.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $resolveProvider;
 
     /**
-     * @param string|null $resolveProvider
+     * @param bool|null $workDoneProgress
+     * @param bool|null $resolveProvider
      */
-    public function __construct(?string $resolveProvider)
+    public function __construct(?bool $workDoneProgress, ?bool $resolveProvider)
     {
+        $this->workDoneProgress = $workDoneProgress;
         $this->resolveProvider = $resolveProvider;
     }
 }

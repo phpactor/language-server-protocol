@@ -7,7 +7,7 @@ class InitializeResult
     /**
      * The capabilities the language server provides.
      *
-     * @var _ServerCapabilities&WorkspaceFoldersServerCapabilities
+     * @var ServerCapabilities
      */
     public $capabilities;
 
@@ -19,10 +19,10 @@ class InitializeResult
     public $serverInfo;
 
     /**
-     * @param _ServerCapabilities&WorkspaceFoldersServerCapabilities $capabilities
+     * @param ServerCapabilities $capabilities
      * @param array<mixed>|null $serverInfo
      */
-    public function __construct($capabilities, $serverInfo)
+    public function __construct(ServerCapabilities $capabilities, $serverInfo)
     {
         $this->capabilities = $capabilities;
         $this->serverInfo = $serverInfo;

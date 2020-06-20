@@ -8,6 +8,12 @@ namespace LanguageServerProtocol;
 class CompletionOptions
 {
     /**
+     *
+     * @var bool|null
+     */
+    public $workDoneProgress;
+
+    /**
      * Most tools trigger completion request automatically without explicitly requesting
      * it using a keyboard shortcut (e.g. Ctrl+Space). Typically they do so when the user
      * starts to type an identifier. For example if the user types `c` in a JavaScript file
@@ -37,17 +43,19 @@ class CompletionOptions
      * The server provides support to resolve additional
      * information for a completion item.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $resolveProvider;
 
     /**
+     * @param bool|null $workDoneProgress
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $allCommitCharacters
-     * @param string|null $resolveProvider
+     * @param bool|null $resolveProvider
      */
-    public function __construct(?array $triggerCharacters, ?array $allCommitCharacters, ?string $resolveProvider)
+    public function __construct(?bool $workDoneProgress, ?array $triggerCharacters, ?array $allCommitCharacters, ?bool $resolveProvider)
     {
+        $this->workDoneProgress = $workDoneProgress;
         $this->triggerCharacters = $triggerCharacters;
         $this->allCommitCharacters = $allCommitCharacters;
         $this->resolveProvider = $resolveProvider;

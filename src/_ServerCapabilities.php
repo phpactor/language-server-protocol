@@ -22,7 +22,7 @@ class _ServerCapabilities
     /**
      * The server provides hover support.
      *
-     * @var string|HoverOptions|null
+     * @var bool|HoverOptions|null
      */
     public $hoverProvider;
 
@@ -36,49 +36,49 @@ class _ServerCapabilities
     /**
      * The server provides Goto Declaration support.
      *
-     * @var string|DeclarationOptions|DeclarationRegistrationOptions|null
+     * @var bool|DeclarationOptions|DeclarationRegistrationOptions|null
      */
     public $declarationProvider;
 
     /**
      * The server provides goto definition support.
      *
-     * @var string|DefinitionOptions|null
+     * @var bool|DefinitionOptions|null
      */
     public $definitionProvider;
 
     /**
      * The server provides Goto Type Definition support.
      *
-     * @var string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions|null
+     * @var bool|TypeDefinitionOptions|TypeDefinitionRegistrationOptions|null
      */
     public $typeDefinitionProvider;
 
     /**
      * The server provides Goto Implementation support.
      *
-     * @var string|ImplementationOptions|ImplementationRegistrationOptions|null
+     * @var bool|ImplementationOptions|ImplementationRegistrationOptions|null
      */
     public $implementationProvider;
 
     /**
      * The server provides find references support.
      *
-     * @var string|ReferenceOptions|null
+     * @var bool|ReferenceOptions|null
      */
     public $referencesProvider;
 
     /**
      * The server provides document highlight support.
      *
-     * @var string|DocumentHighlightOptions|null
+     * @var bool|DocumentHighlightOptions|null
      */
     public $documentHighlightProvider;
 
     /**
      * The server provides document symbol support.
      *
-     * @var string|DocumentSymbolOptions|null
+     * @var bool|DocumentSymbolOptions|null
      */
     public $documentSymbolProvider;
 
@@ -87,7 +87,7 @@ class _ServerCapabilities
      * specified if the client states that it supports
      * `codeActionLiteralSupport` in its initial `initialize` request.
      *
-     * @var string|CodeActionOptions|null
+     * @var bool|CodeActionOptions|null
      */
     public $codeActionProvider;
 
@@ -108,28 +108,28 @@ class _ServerCapabilities
     /**
      * The server provides color provider support.
      *
-     * @var string|DocumentColorOptions|DocumentColorRegistrationOptions|null
+     * @var bool|DocumentColorOptions|DocumentColorRegistrationOptions|null
      */
     public $colorProvider;
 
     /**
      * The server provides workspace symbol support.
      *
-     * @var string|WorkspaceSymbolOptions|null
+     * @var bool|WorkspaceSymbolOptions|null
      */
     public $workspaceSymbolProvider;
 
     /**
      * The server provides document formatting.
      *
-     * @var string|DocumentFormattingOptions|null
+     * @var bool|DocumentFormattingOptions|null
      */
     public $documentFormattingProvider;
 
     /**
      * The server provides document range formatting.
      *
-     * @var string|DocumentRangeFormattingOptions|null
+     * @var bool|DocumentRangeFormattingOptions|null
      */
     public $documentRangeFormattingProvider;
 
@@ -145,21 +145,21 @@ class _ServerCapabilities
      * specified if the client states that it supports
      * `prepareSupport` in its initial `initialize` request.
      *
-     * @var string|RenameOptions|null
+     * @var bool|RenameOptions|null
      */
     public $renameProvider;
 
     /**
      * The server provides folding provider support.
      *
-     * @var string|FoldingRangeOptions|FoldingRangeRegistrationOptions|null
+     * @var bool|FoldingRangeOptions|FoldingRangeRegistrationOptions|null
      */
     public $foldingRangeProvider;
 
     /**
      * The server provides selection range support.
      *
-     * @var string|SelectionRangeOptions|SelectionRangeRegistrationOptions|null
+     * @var bool|SelectionRangeOptions|SelectionRangeRegistrationOptions|null
      */
     public $selectionRangeProvider;
 
@@ -180,26 +180,26 @@ class _ServerCapabilities
     /**
      * @param TextDocumentSyncOptions|0|1|2|null $textDocumentSync
      * @param CompletionOptions|null $completionProvider
-     * @param string|HoverOptions|null $hoverProvider
+     * @param bool|HoverOptions|null $hoverProvider
      * @param SignatureHelpOptions|null $signatureHelpProvider
-     * @param string|DeclarationOptions|DeclarationRegistrationOptions|null $declarationProvider
-     * @param string|DefinitionOptions|null $definitionProvider
-     * @param string|TypeDefinitionOptions|TypeDefinitionRegistrationOptions|null $typeDefinitionProvider
-     * @param string|ImplementationOptions|ImplementationRegistrationOptions|null $implementationProvider
-     * @param string|ReferenceOptions|null $referencesProvider
-     * @param string|DocumentHighlightOptions|null $documentHighlightProvider
-     * @param string|DocumentSymbolOptions|null $documentSymbolProvider
-     * @param string|CodeActionOptions|null $codeActionProvider
+     * @param bool|DeclarationOptions|DeclarationRegistrationOptions|null $declarationProvider
+     * @param bool|DefinitionOptions|null $definitionProvider
+     * @param bool|TypeDefinitionOptions|TypeDefinitionRegistrationOptions|null $typeDefinitionProvider
+     * @param bool|ImplementationOptions|ImplementationRegistrationOptions|null $implementationProvider
+     * @param bool|ReferenceOptions|null $referencesProvider
+     * @param bool|DocumentHighlightOptions|null $documentHighlightProvider
+     * @param bool|DocumentSymbolOptions|null $documentSymbolProvider
+     * @param bool|CodeActionOptions|null $codeActionProvider
      * @param CodeLensOptions|null $codeLensProvider
      * @param DocumentLinkOptions|null $documentLinkProvider
-     * @param string|DocumentColorOptions|DocumentColorRegistrationOptions|null $colorProvider
-     * @param string|WorkspaceSymbolOptions|null $workspaceSymbolProvider
-     * @param string|DocumentFormattingOptions|null $documentFormattingProvider
-     * @param string|DocumentRangeFormattingOptions|null $documentRangeFormattingProvider
+     * @param bool|DocumentColorOptions|DocumentColorRegistrationOptions|null $colorProvider
+     * @param bool|WorkspaceSymbolOptions|null $workspaceSymbolProvider
+     * @param bool|DocumentFormattingOptions|null $documentFormattingProvider
+     * @param bool|DocumentRangeFormattingOptions|null $documentRangeFormattingProvider
      * @param DocumentOnTypeFormattingOptions|null $documentOnTypeFormattingProvider
-     * @param string|RenameOptions|null $renameProvider
-     * @param string|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
-     * @param string|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
+     * @param bool|RenameOptions|null $renameProvider
+     * @param bool|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
+     * @param bool|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
      * @param ExecuteCommandOptions|null $executeCommandProvider
      * @param T|null $experimental
      */

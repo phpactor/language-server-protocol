@@ -21,7 +21,7 @@ class SymbolInformation
     /**
      * Indicates if this symbol is deprecated.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $deprecated;
 
@@ -53,11 +53,11 @@ class SymbolInformation
     /**
      * @param string $name
      * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26 $kind
-     * @param string|null $deprecated
+     * @param bool|null $deprecated
      * @param Location $location
      * @param string|null $containerName
      */
-    public function __construct(string $name, $kind, ?string $deprecated, Location $location, ?string $containerName)
+    public function __construct(string $name, $kind, ?bool $deprecated, Location $location, ?string $containerName)
     {
         $this->name = $name;
         $this->kind = $kind;

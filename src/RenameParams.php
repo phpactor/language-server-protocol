@@ -8,6 +8,13 @@ namespace LanguageServerProtocol;
 class RenameParams
 {
     /**
+     * An optional token that a server can use to report work done progress.
+     *
+     * @var int|string|null
+     */
+    public $workDoneToken;
+
+    /**
      * The document to rename.
      *
      * @var TextDocumentIdentifier
@@ -31,12 +38,14 @@ class RenameParams
     public $newName;
 
     /**
+     * @param int|string|null $workDoneToken
      * @param TextDocumentIdentifier $textDocument
      * @param Position $position
      * @param string $newName
      */
-    public function __construct(TextDocumentIdentifier $textDocument, Position $position, string $newName)
+    public function __construct($workDoneToken, TextDocumentIdentifier $textDocument, Position $position, string $newName)
     {
+        $this->workDoneToken = $workDoneToken;
         $this->textDocument = $textDocument;
         $this->position = $position;
         $this->newName = $newName;

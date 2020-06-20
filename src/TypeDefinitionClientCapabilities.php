@@ -9,7 +9,7 @@ class TypeDefinitionClientCapabilities
      * the client supports the new `TypeDefinitionRegistrationOptions` return value
      * for the corresponding server capability as well.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $dynamicRegistration;
 
@@ -18,15 +18,15 @@ class TypeDefinitionClientCapabilities
      * 
      * Since 3.14.0
      *
-     * @var string|null
+     * @var bool|null
      */
     public $linkSupport;
 
     /**
-     * @param string|null $dynamicRegistration
-     * @param string|null $linkSupport
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $linkSupport
      */
-    public function __construct(?string $dynamicRegistration, ?string $linkSupport)
+    public function __construct(?bool $dynamicRegistration, ?bool $linkSupport)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->linkSupport = $linkSupport;

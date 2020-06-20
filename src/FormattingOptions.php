@@ -14,39 +14,39 @@ class FormattingOptions
     /**
      * Prefer spaces over tabs.
      *
-     * @var string
+     * @var bool
      */
     public $insertSpaces;
 
     /**
      * Trim trailing whitespaces on a line.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $trimTrailingWhitespace;
 
     /**
      * Insert a newline character at the end of the file if one does not exist.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $insertFinalNewline;
 
     /**
      * Trim all newlines after the final newline at the end of the file.
      *
-     * @var string|null
+     * @var bool|null
      */
     public $trimFinalNewlines;
 
     /**
      * @param int $tabSize
-     * @param string $insertSpaces
-     * @param string|null $trimTrailingWhitespace
-     * @param string|null $insertFinalNewline
-     * @param string|null $trimFinalNewlines
+     * @param bool $insertSpaces
+     * @param bool|null $trimTrailingWhitespace
+     * @param bool|null $insertFinalNewline
+     * @param bool|null $trimFinalNewlines
      */
-    public function __construct(int $tabSize, string $insertSpaces, ?string $trimTrailingWhitespace, ?string $insertFinalNewline, ?string $trimFinalNewlines)
+    public function __construct(int $tabSize, bool $insertSpaces, ?bool $trimTrailingWhitespace, ?bool $insertFinalNewline, ?bool $trimFinalNewlines)
     {
         $this->tabSize = $tabSize;
         $this->insertSpaces = $insertSpaces;
