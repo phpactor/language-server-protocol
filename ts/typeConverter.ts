@@ -68,6 +68,8 @@ export class TypeConverter
             return this.phpTypeTuple(type as TupleTypeNode);
         }
 
+        // TODO: This refers to nested type definitions. We should
+        //       generate a new class in this case for PHP.
         if (SyntaxKind[type.kind] == 'TypeLiteral') {
             return new PhpType(null, 'array<mixed>');
         }
@@ -93,12 +95,22 @@ export class TypeConverter
         }
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
-            if (this.nodeMap.aliases.has(type.typeName.escapedText.toString())) {
-                return this.phpType(this.nodeMap.aliases.get(type.typeName.escapedText.toString()));
+            const typeName = type.typeName.escapedText.toString();
+            if (this.nodeMap.aliases.has(typeName)) {
+                return this.phpType(this.nodeMap.aliases.get(typeName));
             }
-            return new PhpType(type.typeName.escapedText.toString(), type.typeName.escapedText.toString());
-        }
 
+            if (this.nodeMap.interfaces.has(typeName)) {
+                return new PhpType(typeName, typeName);
+            }
+
+            if (this.nodeMap.intersections.has(typeName)) {
+                return new PhpType(typeName, typeName);
+            }
+
+            console.warn(`Unknown type ${typeName}`);
+            return new PhpType(null, 'mixed');
+        }
 
         return new PhpType(null,'');
     }

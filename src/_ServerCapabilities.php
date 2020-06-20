@@ -177,7 +177,7 @@ class _ServerCapabilities
     /**
      * Experimental server capabilities.
      *
-     * @var T|null
+     * @var mixed|null
      */
     public $experimental;
 
@@ -205,9 +205,9 @@ class _ServerCapabilities
      * @param bool|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
      * @param bool|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
      * @param ExecuteCommandOptions|null $executeCommandProvider
-     * @param T|null $experimental
+     * @param mixed|null $experimental
      */
-    public function __construct($textDocumentSync, ?CompletionOptions $completionProvider = null, $hoverProvider, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider, $definitionProvider, $typeDefinitionProvider, $implementationProvider, $referencesProvider, $documentHighlightProvider, $documentSymbolProvider, $codeActionProvider, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider, $workspaceSymbolProvider, $documentFormattingProvider, $documentRangeFormattingProvider, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider, $foldingRangeProvider, $selectionRangeProvider, ?ExecuteCommandOptions $executeCommandProvider = null, ?T $experimental = null)
+    public function __construct($textDocumentSync, ?CompletionOptions $completionProvider = null, $hoverProvider, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider, $definitionProvider, $typeDefinitionProvider, $implementationProvider, $referencesProvider, $documentHighlightProvider, $documentSymbolProvider, $codeActionProvider, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider, $workspaceSymbolProvider, $documentFormattingProvider, $documentRangeFormattingProvider, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider, $foldingRangeProvider, $selectionRangeProvider, ?ExecuteCommandOptions $executeCommandProvider = null, $experimental)
     {
         $this->textDocumentSync = $textDocumentSync;
         $this->completionProvider = $completionProvider;
