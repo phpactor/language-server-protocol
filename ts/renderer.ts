@@ -5,7 +5,7 @@ export class Renderer
 {
     render(phpClass: PhpClass): string {
 
-        const source: Array<string> = ['<?php'];
+        const source: Array<string> = ['<?php // Auto-generated from vscode-languageserver-protocol (typescript)'];
 
         source.push(``);
         source.push(`namespace LanguageServerProtocol;`);
