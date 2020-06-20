@@ -37,7 +37,7 @@ class SignatureHelpClientCapabilities
      * @param array<mixed>|null $signatureInformation
      * @param bool|null $contextSupport
      */
-    public function __construct(?bool $dynamicRegistration = null, $signatureInformation, ?bool $contextSupport = null)
+    public function __construct(?bool $dynamicRegistration = null, $signatureInformation = null, ?bool $contextSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->signatureInformation = $signatureInformation;

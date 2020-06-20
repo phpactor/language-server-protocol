@@ -27,7 +27,7 @@ class DocumentSymbolRegistrationOptions
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->workDoneProgress = $workDoneProgress;

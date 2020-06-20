@@ -18,7 +18,7 @@ class TextDocumentRegistrationOptions
     /**
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      */
-    public function __construct($documentSelector)
+    public function __construct($documentSelector = null)
     {
         $this->documentSelector = $documentSelector;
     }

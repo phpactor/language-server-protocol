@@ -14,7 +14,7 @@ class WorkDoneProgressParams
     /**
      * @param int|string|null $workDoneToken
      */
-    public function __construct($workDoneToken)
+    public function __construct($workDoneToken = null)
     {
         $this->workDoneToken = $workDoneToken;
     }

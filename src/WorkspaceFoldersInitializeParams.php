@@ -14,7 +14,7 @@ class WorkspaceFoldersInitializeParams
     /**
      * @param array<WorkspaceFolder>|null $workspaceFolders
      */
-    public function __construct($workspaceFolders)
+    public function __construct($workspaceFolders = null)
     {
         $this->workspaceFolders = $workspaceFolders;
     }

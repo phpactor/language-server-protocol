@@ -37,7 +37,7 @@ class WorkspaceSymbolParams
      * @param int|string|null $workDoneToken
      * @param int|string|null $partialResultToken
      */
-    public function __construct(string $query, $workDoneToken, $partialResultToken)
+    public function __construct(string $query, $workDoneToken = null, $partialResultToken = null)
     {
         $this->query = $query;
         $this->workDoneToken = $workDoneToken;

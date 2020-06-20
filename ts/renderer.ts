@@ -79,7 +79,7 @@ export class Renderer
 
             arg.push(`$${property.name}`);
 
-            if (property.type.real && property.nullable) {
+            if (property.nullable) {
                 arg.push(' = null');
             }
 

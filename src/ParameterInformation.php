@@ -34,7 +34,7 @@ class ParameterInformation
      * @param string|array{int,int} $label
      * @param string|MarkupContent|null $documentation
      */
-    public function __construct($label, $documentation)
+    public function __construct($label, $documentation = null)
     {
         $this->label = $label;
         $this->documentation = $documentation;

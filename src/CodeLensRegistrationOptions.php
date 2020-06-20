@@ -35,7 +35,7 @@ class CodeLensRegistrationOptions
      * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->resolveProvider = $resolveProvider;

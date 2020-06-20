@@ -79,7 +79,7 @@ class _InitializeParams
      * @param 'off'|'messages'|'verbose'|null $trace
      * @param int|string|null $workDoneToken
      */
-    public function __construct(ClientCapabilities $capabilities, $processId, $clientInfo, $rootPath, $rootUri, $initializationOptions, $trace, $workDoneToken)
+    public function __construct(ClientCapabilities $capabilities, $processId = null, $clientInfo = null, $rootPath = null, $rootUri = null, $initializationOptions = null, $trace = null, $workDoneToken = null)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;

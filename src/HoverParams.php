@@ -35,7 +35,7 @@ class HoverParams
      * @param Position $position
      * @param int|string|null $workDoneToken
      */
-    public function __construct(TextDocumentIdentifier $textDocument, Position $position, $workDoneToken)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, $workDoneToken = null)
     {
         $this->textDocument = $textDocument;
         $this->position = $position;

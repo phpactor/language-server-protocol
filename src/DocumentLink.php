@@ -47,7 +47,7 @@ class DocumentLink
      * @param string|null $tooltip
      * @param mixed|null $data
      */
-    public function __construct(Range $range, ?string $target = null, ?string $tooltip = null, $data)
+    public function __construct(Range $range, ?string $target = null, ?string $tooltip = null, $data = null)
     {
         $this->range = $range;
         $this->target = $target;

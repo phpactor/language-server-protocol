@@ -25,7 +25,7 @@ class InitializeResult
      * @param ServerCapabilities $capabilities
      * @param array<mixed>|null $serverInfo
      */
-    public function __construct(ServerCapabilities $capabilities, $serverInfo)
+    public function __construct(ServerCapabilities $capabilities, $serverInfo = null)
     {
         $this->capabilities = $capabilities;
         $this->serverInfo = $serverInfo;

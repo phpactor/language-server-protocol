@@ -35,7 +35,7 @@ class RenameRegistrationOptions
      * @param bool|null $prepareProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?bool $prepareProvider = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?bool $prepareProvider = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->prepareProvider = $prepareProvider;

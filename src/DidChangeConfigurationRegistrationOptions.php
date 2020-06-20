@@ -13,7 +13,7 @@ class DidChangeConfigurationRegistrationOptions
     /**
      * @param string|array<string>|null $section
      */
-    public function __construct($section)
+    public function __construct($section = null)
     {
         $this->section = $section;
     }

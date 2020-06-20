@@ -52,7 +52,7 @@ class CodeActionParams
      * @param int|string|null $workDoneToken
      * @param int|string|null $partialResultToken
      */
-    public function __construct(TextDocumentIdentifier $textDocument, Range $range, CodeActionContext $context, $workDoneToken, $partialResultToken)
+    public function __construct(TextDocumentIdentifier $textDocument, Range $range, CodeActionContext $context, $workDoneToken = null, $partialResultToken = null)
     {
         $this->textDocument = $textDocument;
         $this->range = $range;

@@ -64,7 +64,7 @@ class CompletionRegistrationOptions
      * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->triggerCharacters = $triggerCharacters;

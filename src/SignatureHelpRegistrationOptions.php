@@ -46,7 +46,7 @@ class SignatureHelpRegistrationOptions
      * @param array<string>|null $retriggerCharacters
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector, ?array $triggerCharacters = null, ?array $retriggerCharacters = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?array $triggerCharacters = null, ?array $retriggerCharacters = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->triggerCharacters = $triggerCharacters;

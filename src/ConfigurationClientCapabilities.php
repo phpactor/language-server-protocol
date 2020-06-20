@@ -14,7 +14,7 @@ class ConfigurationClientCapabilities
     /**
      * @param array<mixed>|null $workspace
      */
-    public function __construct($workspace)
+    public function __construct($workspace = null)
     {
         $this->workspace = $workspace;
     }

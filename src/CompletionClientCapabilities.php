@@ -42,7 +42,7 @@ class CompletionClientCapabilities
      * @param array<mixed>|null $completionItemKind
      * @param bool|null $contextSupport
      */
-    public function __construct(?bool $dynamicRegistration = null, $completionItem, $completionItemKind, ?bool $contextSupport = null)
+    public function __construct(?bool $dynamicRegistration = null, $completionItem = null, $completionItemKind = null, ?bool $contextSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->completionItem = $completionItem;

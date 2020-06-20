@@ -34,7 +34,7 @@ class FoldingRangeRegistrationOptions
      * @param bool|null $workDoneProgress
      * @param string|null $id
      */
-    public function __construct($documentSelector, ?bool $workDoneProgress = null, ?string $id = null)
+    public function __construct($documentSelector = null, ?bool $workDoneProgress = null, ?string $id = null)
     {
         $this->documentSelector = $documentSelector;
         $this->workDoneProgress = $workDoneProgress;
