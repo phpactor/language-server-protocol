@@ -8,19 +8,12 @@ namespace LanguageServerProtocol;
 class CompletionParams
 {
     /**
-     * An optional token that a server can use to report partial results (e.g. streaming) to
-     * the client.
+     * The completion context. This is only available it the client specifies
+     * to send this using the client capability `textDocument.completion.contextSupport === true`
      *
-     * @var int|string|null
+     * @var CompletionContext|null
      */
-    public $partialResultToken;
-
-    /**
-     * An optional token that a server can use to report work done progress.
-     *
-     * @var int|string|null
-     */
-    public $workDoneToken;
+    public $context;
 
     /**
      * The text document.
@@ -37,26 +30,33 @@ class CompletionParams
     public $position;
 
     /**
-     * The completion context. This is only available it the client specifies
-     * to send this using the client capability `textDocument.completion.contextSupport === true`
+     * An optional token that a server can use to report work done progress.
      *
-     * @var CompletionContext|null
+     * @var int|string|null
      */
-    public $context;
+    public $workDoneToken;
 
     /**
-     * @param int|string|null $partialResultToken
-     * @param int|string|null $workDoneToken
+     * An optional token that a server can use to report partial results (e.g. streaming) to
+     * the client.
+     *
+     * @var int|string|null
+     */
+    public $partialResultToken;
+
+    /**
+     * @param CompletionContext|null $context
      * @param TextDocumentIdentifier $textDocument
      * @param Position $position
-     * @param CompletionContext|null $context
+     * @param int|string|null $workDoneToken
+     * @param int|string|null $partialResultToken
      */
-    public function __construct($partialResultToken, $workDoneToken, TextDocumentIdentifier $textDocument, Position $position, ?CompletionContext $context)
+    public function __construct(?CompletionContext $context, TextDocumentIdentifier $textDocument, Position $position, $workDoneToken, $partialResultToken)
     {
-        $this->partialResultToken = $partialResultToken;
-        $this->workDoneToken = $workDoneToken;
+        $this->context = $context;
         $this->textDocument = $textDocument;
         $this->position = $position;
-        $this->context = $context;
+        $this->workDoneToken = $workDoneToken;
+        $this->partialResultToken = $partialResultToken;
     }
 }

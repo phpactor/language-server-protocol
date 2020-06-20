@@ -8,11 +8,12 @@ namespace LanguageServerProtocol;
 class SignatureHelpParams
 {
     /**
-     * An optional token that a server can use to report work done progress.
+     * The signature help context. This is only available if the client specifies
+     * to send this using the client capability `textDocument.signatureHelp.contextSupport === true`
      *
-     * @var int|string|null
+     * @var SignatureHelpContext|null
      */
-    public $workDoneToken;
+    public $context;
 
     /**
      * The text document.
@@ -29,24 +30,23 @@ class SignatureHelpParams
     public $position;
 
     /**
-     * The signature help context. This is only available if the client specifies
-     * to send this using the client capability `textDocument.signatureHelp.contextSupport === true`
+     * An optional token that a server can use to report work done progress.
      *
-     * @var SignatureHelpContext|null
+     * @var int|string|null
      */
-    public $context;
+    public $workDoneToken;
 
     /**
-     * @param int|string|null $workDoneToken
+     * @param SignatureHelpContext|null $context
      * @param TextDocumentIdentifier $textDocument
      * @param Position $position
-     * @param SignatureHelpContext|null $context
+     * @param int|string|null $workDoneToken
      */
-    public function __construct($workDoneToken, TextDocumentIdentifier $textDocument, Position $position, ?SignatureHelpContext $context)
+    public function __construct(?SignatureHelpContext $context, TextDocumentIdentifier $textDocument, Position $position, $workDoneToken)
     {
-        $this->workDoneToken = $workDoneToken;
+        $this->context = $context;
         $this->textDocument = $textDocument;
         $this->position = $position;
-        $this->context = $context;
+        $this->workDoneToken = $workDoneToken;
     }
 }

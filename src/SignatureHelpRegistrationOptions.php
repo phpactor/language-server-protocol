@@ -8,10 +8,12 @@ namespace LanguageServerProtocol;
 class SignatureHelpRegistrationOptions
 {
     /**
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
      *
-     * @var bool|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
      */
-    public $workDoneProgress;
+    public $documentSelector;
 
     /**
      * List of characters that trigger signature help.
@@ -31,24 +33,22 @@ class SignatureHelpRegistrationOptions
     public $retriggerCharacters;
 
     /**
-     * A document selector to identify the scope of the registration. If set to null
-     * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var bool|null
      */
-    public $documentSelector;
+    public $workDoneProgress;
 
     /**
-     * @param bool|null $workDoneProgress
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $retriggerCharacters
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?array $triggerCharacters, ?array $retriggerCharacters, $documentSelector)
+    public function __construct($documentSelector, ?array $triggerCharacters, ?array $retriggerCharacters, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
+        $this->documentSelector = $documentSelector;
         $this->triggerCharacters = $triggerCharacters;
         $this->retriggerCharacters = $retriggerCharacters;
-        $this->documentSelector = $documentSelector;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

@@ -8,13 +8,6 @@ namespace LanguageServerProtocol;
 class PrepareRenameParams
 {
     /**
-     * An optional token that a server can use to report work done progress.
-     *
-     * @var int|string|null
-     */
-    public $workDoneToken;
-
-    /**
      * The text document.
      *
      * @var TextDocumentIdentifier
@@ -29,14 +22,21 @@ class PrepareRenameParams
     public $position;
 
     /**
-     * @param int|string|null $workDoneToken
+     * An optional token that a server can use to report work done progress.
+     *
+     * @var int|string|null
+     */
+    public $workDoneToken;
+
+    /**
      * @param TextDocumentIdentifier $textDocument
      * @param Position $position
+     * @param int|string|null $workDoneToken
      */
-    public function __construct($workDoneToken, TextDocumentIdentifier $textDocument, Position $position)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, $workDoneToken)
     {
-        $this->workDoneToken = $workDoneToken;
         $this->textDocument = $textDocument;
         $this->position = $position;
+        $this->workDoneToken = $workDoneToken;
     }
 }

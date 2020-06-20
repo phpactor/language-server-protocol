@@ -8,12 +8,6 @@ namespace LanguageServerProtocol;
 class DefinitionRegistrationOptions
 {
     /**
-     *
-     * @var bool|null
-     */
-    public $workDoneProgress;
-
-    /**
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
@@ -22,12 +16,18 @@ class DefinitionRegistrationOptions
     public $documentSelector;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $workDoneProgress, $documentSelector)
+    public $workDoneProgress;
+
+    /**
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $workDoneProgress
+     */
+    public function __construct($documentSelector, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
         $this->documentSelector = $documentSelector;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

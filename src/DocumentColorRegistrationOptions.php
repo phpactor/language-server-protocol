@@ -8,10 +8,12 @@ namespace LanguageServerProtocol;
 class DocumentColorRegistrationOptions
 {
     /**
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
      *
-     * @var bool|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
      */
-    public $workDoneProgress;
+    public $documentSelector;
 
     /**
      * The id used to register the request. The id can be used to deregister
@@ -22,22 +24,20 @@ class DocumentColorRegistrationOptions
     public $id;
 
     /**
-     * A document selector to identify the scope of the registration. If set to null
-     * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var bool|null
      */
-    public $documentSelector;
+    public $workDoneProgress;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param string|null $id
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param string|null $id
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?string $id, $documentSelector)
+    public function __construct($documentSelector, ?string $id, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->id = $id;
         $this->documentSelector = $documentSelector;
+        $this->id = $id;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

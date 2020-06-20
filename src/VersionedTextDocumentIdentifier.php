@@ -8,13 +8,6 @@ namespace LanguageServerProtocol;
 class VersionedTextDocumentIdentifier
 {
     /**
-     * The text document's uri.
-     *
-     * @var string
-     */
-    public $uri;
-
-    /**
      * The version number of this document. If a versioned text document identifier
      * is sent from the server to the client and the file is not open in the editor
      * (the server has not received an open notification before) the server can send
@@ -26,12 +19,19 @@ class VersionedTextDocumentIdentifier
     public $version;
 
     /**
-     * @param string $uri
-     * @param int|null $version
+     * The text document's uri.
+     *
+     * @var string
      */
-    public function __construct(string $uri, $version)
+    public $uri;
+
+    /**
+     * @param int|null $version
+     * @param string $uri
+     */
+    public function __construct($version, string $uri)
     {
-        $this->uri = $uri;
         $this->version = $version;
+        $this->uri = $uri;
     }
 }

@@ -8,10 +8,12 @@ namespace LanguageServerProtocol;
 class RenameRegistrationOptions
 {
     /**
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
      *
-     * @var bool|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
      */
-    public $workDoneProgress;
+    public $documentSelector;
 
     /**
      * Renames should be checked and tested before being executed.
@@ -21,22 +23,20 @@ class RenameRegistrationOptions
     public $prepareProvider;
 
     /**
-     * A document selector to identify the scope of the registration. If set to null
-     * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var bool|null
      */
-    public $documentSelector;
+    public $workDoneProgress;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param bool|null $prepareProvider
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $prepareProvider
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?bool $prepareProvider, $documentSelector)
+    public function __construct($documentSelector, ?bool $prepareProvider, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->prepareProvider = $prepareProvider;
         $this->documentSelector = $documentSelector;
+        $this->prepareProvider = $prepareProvider;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

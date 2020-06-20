@@ -8,9 +8,8 @@ namespace LanguageServerProtocol;
 class CreateFile
 {
     /**
-     * A create
      *
-     * @var 'create'
+     * @var string
      */
     public $kind;
 
@@ -29,11 +28,11 @@ class CreateFile
     public $options;
 
     /**
-     * @param 'create' $kind
+     * @param string $kind
      * @param string $uri
      * @param CreateFileOptions|null $options
      */
-    public function __construct($kind, string $uri, ?CreateFileOptions $options)
+    public function __construct(string $kind, string $uri, ?CreateFileOptions $options)
     {
         $this->kind = $kind;
         $this->uri = $uri;

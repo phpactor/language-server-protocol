@@ -8,9 +8,8 @@ namespace LanguageServerProtocol;
 class RenameFile
 {
     /**
-     * A rename
      *
-     * @var 'rename'
+     * @var string
      */
     public $kind;
 
@@ -36,12 +35,12 @@ class RenameFile
     public $options;
 
     /**
-     * @param 'rename' $kind
+     * @param string $kind
      * @param string $oldUri
      * @param string $newUri
      * @param RenameFileOptions|null $options
      */
-    public function __construct($kind, string $oldUri, string $newUri, ?RenameFileOptions $options)
+    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options)
     {
         $this->kind = $kind;
         $this->oldUri = $oldUri;

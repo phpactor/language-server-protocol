@@ -8,19 +8,10 @@ namespace LanguageServerProtocol;
 class ReferenceParams
 {
     /**
-     * An optional token that a server can use to report partial results (e.g. streaming) to
-     * the client.
      *
-     * @var int|string|null
+     * @var ReferenceContext
      */
-    public $partialResultToken;
-
-    /**
-     * An optional token that a server can use to report work done progress.
-     *
-     * @var int|string|null
-     */
-    public $workDoneToken;
+    public $context;
 
     /**
      * The text document.
@@ -37,24 +28,33 @@ class ReferenceParams
     public $position;
 
     /**
+     * An optional token that a server can use to report work done progress.
      *
-     * @var ReferenceContext
+     * @var int|string|null
      */
-    public $context;
+    public $workDoneToken;
 
     /**
-     * @param int|string|null $partialResultToken
-     * @param int|string|null $workDoneToken
+     * An optional token that a server can use to report partial results (e.g. streaming) to
+     * the client.
+     *
+     * @var int|string|null
+     */
+    public $partialResultToken;
+
+    /**
+     * @param ReferenceContext $context
      * @param TextDocumentIdentifier $textDocument
      * @param Position $position
-     * @param ReferenceContext $context
+     * @param int|string|null $workDoneToken
+     * @param int|string|null $partialResultToken
      */
-    public function __construct($partialResultToken, $workDoneToken, TextDocumentIdentifier $textDocument, Position $position, ReferenceContext $context)
+    public function __construct(ReferenceContext $context, TextDocumentIdentifier $textDocument, Position $position, $workDoneToken, $partialResultToken)
     {
-        $this->partialResultToken = $partialResultToken;
-        $this->workDoneToken = $workDoneToken;
+        $this->context = $context;
         $this->textDocument = $textDocument;
         $this->position = $position;
-        $this->context = $context;
+        $this->workDoneToken = $workDoneToken;
+        $this->partialResultToken = $partialResultToken;
     }
 }

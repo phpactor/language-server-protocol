@@ -8,9 +8,8 @@ namespace LanguageServerProtocol;
 class DeleteFile
 {
     /**
-     * A delete
      *
-     * @var 'delete'
+     * @var string
      */
     public $kind;
 
@@ -29,11 +28,11 @@ class DeleteFile
     public $options;
 
     /**
-     * @param 'delete' $kind
+     * @param string $kind
      * @param string $uri
      * @param DeleteFileOptions|null $options
      */
-    public function __construct($kind, string $uri, ?DeleteFileOptions $options)
+    public function __construct(string $kind, string $uri, ?DeleteFileOptions $options)
     {
         $this->kind = $kind;
         $this->uri = $uri;

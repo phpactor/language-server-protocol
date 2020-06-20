@@ -8,10 +8,12 @@ namespace LanguageServerProtocol;
 class DocumentLinkRegistrationOptions
 {
     /**
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
      *
-     * @var bool|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
      */
-    public $workDoneProgress;
+    public $documentSelector;
 
     /**
      * Document links have a resolve provider as well.
@@ -21,22 +23,20 @@ class DocumentLinkRegistrationOptions
     public $resolveProvider;
 
     /**
-     * A document selector to identify the scope of the registration. If set to null
-     * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var bool|null
      */
-    public $documentSelector;
+    public $workDoneProgress;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param bool|null $resolveProvider
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $resolveProvider
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?bool $resolveProvider, $documentSelector)
+    public function __construct($documentSelector, ?bool $resolveProvider, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->resolveProvider = $resolveProvider;
         $this->documentSelector = $documentSelector;
+        $this->resolveProvider = $resolveProvider;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

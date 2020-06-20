@@ -1,4 +1,4 @@
-import {TypeConverter, EntityMap} from './typeConverter';
+import {TypeConverter} from './typeConverter';
 import {PhpClass, Property} from './phpClassResolver';
 
 export class Renderer

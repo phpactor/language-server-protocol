@@ -8,12 +8,12 @@ namespace LanguageServerProtocol;
 class WorkspaceSymbolParams
 {
     /**
-     * An optional token that a server can use to report partial results (e.g. streaming) to
-     * the client.
+     * A query string to filter symbols by. Clients may send an empty
+     * string here to request all symbols.
      *
-     * @var int|string|null
+     * @var string
      */
-    public $partialResultToken;
+    public $query;
 
     /**
      * An optional token that a server can use to report work done progress.
@@ -23,22 +23,22 @@ class WorkspaceSymbolParams
     public $workDoneToken;
 
     /**
-     * A query string to filter symbols by. Clients may send an empty
-     * string here to request all symbols.
+     * An optional token that a server can use to report partial results (e.g. streaming) to
+     * the client.
      *
-     * @var string
+     * @var int|string|null
      */
-    public $query;
+    public $partialResultToken;
 
     /**
-     * @param int|string|null $partialResultToken
-     * @param int|string|null $workDoneToken
      * @param string $query
+     * @param int|string|null $workDoneToken
+     * @param int|string|null $partialResultToken
      */
-    public function __construct($partialResultToken, $workDoneToken, string $query)
+    public function __construct(string $query, $workDoneToken, $partialResultToken)
     {
-        $this->partialResultToken = $partialResultToken;
-        $this->workDoneToken = $workDoneToken;
         $this->query = $query;
+        $this->workDoneToken = $workDoneToken;
+        $this->partialResultToken = $partialResultToken;
     }
 }

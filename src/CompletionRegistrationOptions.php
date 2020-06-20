@@ -8,10 +8,12 @@ namespace LanguageServerProtocol;
 class CompletionRegistrationOptions
 {
     /**
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
      *
-     * @var bool|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
      */
-    public $workDoneProgress;
+    public $documentSelector;
 
     /**
      * Most tools trigger completion request automatically without explicitly requesting
@@ -48,26 +50,24 @@ class CompletionRegistrationOptions
     public $resolveProvider;
 
     /**
-     * A document selector to identify the scope of the registration. If set to null
-     * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var bool|null
      */
-    public $documentSelector;
+    public $workDoneProgress;
 
     /**
-     * @param bool|null $workDoneProgress
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $allCommitCharacters
      * @param bool|null $resolveProvider
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?array $triggerCharacters, ?array $allCommitCharacters, ?bool $resolveProvider, $documentSelector)
+    public function __construct($documentSelector, ?array $triggerCharacters, ?array $allCommitCharacters, ?bool $resolveProvider, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
+        $this->documentSelector = $documentSelector;
         $this->triggerCharacters = $triggerCharacters;
         $this->allCommitCharacters = $allCommitCharacters;
         $this->resolveProvider = $resolveProvider;
-        $this->documentSelector = $documentSelector;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

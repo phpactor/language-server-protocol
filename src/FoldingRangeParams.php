@@ -8,12 +8,11 @@ namespace LanguageServerProtocol;
 class FoldingRangeParams
 {
     /**
-     * An optional token that a server can use to report partial results (e.g. streaming) to
-     * the client.
+     * The text document.
      *
-     * @var int|string|null
+     * @var TextDocumentIdentifier
      */
-    public $partialResultToken;
+    public $textDocument;
 
     /**
      * An optional token that a server can use to report work done progress.
@@ -23,21 +22,22 @@ class FoldingRangeParams
     public $workDoneToken;
 
     /**
-     * The text document.
+     * An optional token that a server can use to report partial results (e.g. streaming) to
+     * the client.
      *
-     * @var TextDocumentIdentifier
+     * @var int|string|null
      */
-    public $textDocument;
+    public $partialResultToken;
 
     /**
-     * @param int|string|null $partialResultToken
-     * @param int|string|null $workDoneToken
      * @param TextDocumentIdentifier $textDocument
+     * @param int|string|null $workDoneToken
+     * @param int|string|null $partialResultToken
      */
-    public function __construct($partialResultToken, $workDoneToken, TextDocumentIdentifier $textDocument)
+    public function __construct(TextDocumentIdentifier $textDocument, $workDoneToken, $partialResultToken)
     {
-        $this->partialResultToken = $partialResultToken;
-        $this->workDoneToken = $workDoneToken;
         $this->textDocument = $textDocument;
+        $this->workDoneToken = $workDoneToken;
+        $this->partialResultToken = $partialResultToken;
     }
 }

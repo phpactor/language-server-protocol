@@ -8,12 +8,6 @@ namespace LanguageServerProtocol;
 class SignatureHelpOptions
 {
     /**
-     *
-     * @var bool|null
-     */
-    public $workDoneProgress;
-
-    /**
      * List of characters that trigger signature help.
      *
      * @var array<string>|null
@@ -31,14 +25,20 @@ class SignatureHelpOptions
     public $retriggerCharacters;
 
     /**
-     * @param bool|null $workDoneProgress
+     *
+     * @var bool|null
+     */
+    public $workDoneProgress;
+
+    /**
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $retriggerCharacters
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?array $triggerCharacters, ?array $retriggerCharacters)
+    public function __construct(?array $triggerCharacters, ?array $retriggerCharacters, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
         $this->triggerCharacters = $triggerCharacters;
         $this->retriggerCharacters = $retriggerCharacters;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

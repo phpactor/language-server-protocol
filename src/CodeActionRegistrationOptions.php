@@ -8,10 +8,12 @@ namespace LanguageServerProtocol;
 class CodeActionRegistrationOptions
 {
     /**
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
      *
-     * @var bool|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
      */
-    public $workDoneProgress;
+    public $documentSelector;
 
     /**
      * CodeActionKinds that this server may return.
@@ -24,22 +26,20 @@ class CodeActionRegistrationOptions
     public $codeActionKinds;
 
     /**
-     * A document selector to identify the scope of the registration. If set to null
-     * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var bool|null
      */
-    public $documentSelector;
+    public $workDoneProgress;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param array<string>|null $codeActionKinds
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<string>|null $codeActionKinds
+     * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress, ?array $codeActionKinds, $documentSelector)
+    public function __construct($documentSelector, ?array $codeActionKinds, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->codeActionKinds = $codeActionKinds;
         $this->documentSelector = $documentSelector;
+        $this->codeActionKinds = $codeActionKinds;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

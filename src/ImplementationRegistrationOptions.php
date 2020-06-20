@@ -8,20 +8,6 @@ namespace LanguageServerProtocol;
 class ImplementationRegistrationOptions
 {
     /**
-     * The id used to register the request. The id can be used to deregister
-     * the request again. See also Registration#id.
-     *
-     * @var string|null
-     */
-    public $id;
-
-    /**
-     *
-     * @var bool|null
-     */
-    public $workDoneProgress;
-
-    /**
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
@@ -30,14 +16,28 @@ class ImplementationRegistrationOptions
     public $documentSelector;
 
     /**
-     * @param string|null $id
-     * @param bool|null $workDoneProgress
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     *
+     * @var bool|null
      */
-    public function __construct(?string $id, ?bool $workDoneProgress, $documentSelector)
+    public $workDoneProgress;
+
+    /**
+     * The id used to register the request. The id can be used to deregister
+     * the request again. See also Registration#id.
+     *
+     * @var string|null
+     */
+    public $id;
+
+    /**
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $workDoneProgress
+     * @param string|null $id
+     */
+    public function __construct($documentSelector, ?bool $workDoneProgress, ?string $id)
     {
-        $this->id = $id;
-        $this->workDoneProgress = $workDoneProgress;
         $this->documentSelector = $documentSelector;
+        $this->workDoneProgress = $workDoneProgress;
+        $this->id = $id;
     }
 }

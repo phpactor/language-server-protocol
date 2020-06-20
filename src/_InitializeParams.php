@@ -8,13 +8,6 @@ namespace LanguageServerProtocol;
 class _InitializeParams
 {
     /**
-     * An optional token that a server can use to report work done progress.
-     *
-     * @var int|string|null
-     */
-    public $workDoneToken;
-
-    /**
      * The process Id of the parent process that started
      * the server.
      *
@@ -68,7 +61,13 @@ class _InitializeParams
     public $trace;
 
     /**
-     * @param int|string|null $workDoneToken
+     * An optional token that a server can use to report work done progress.
+     *
+     * @var int|string|null
+     */
+    public $workDoneToken;
+
+    /**
      * @param int|null $processId
      * @param array<mixed>|null $clientInfo
      * @param string|null|null $rootPath
@@ -76,10 +75,10 @@ class _InitializeParams
      * @param ClientCapabilities $capabilities
      * @param mixed|null $initializationOptions
      * @param 'off'|'messages'|'verbose'|null $trace
+     * @param int|string|null $workDoneToken
      */
-    public function __construct($workDoneToken, $processId, $clientInfo, $rootPath, $rootUri, ClientCapabilities $capabilities, $initializationOptions, $trace)
+    public function __construct($processId, $clientInfo, $rootPath, $rootUri, ClientCapabilities $capabilities, $initializationOptions, $trace, $workDoneToken)
     {
-        $this->workDoneToken = $workDoneToken;
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;
         $this->rootPath = $rootPath;
@@ -87,5 +86,6 @@ class _InitializeParams
         $this->capabilities = $capabilities;
         $this->initializationOptions = $initializationOptions;
         $this->trace = $trace;
+        $this->workDoneToken = $workDoneToken;
     }
 }

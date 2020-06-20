@@ -52,13 +52,11 @@ export class PhpClassResolver
 
         nodeMap.interfaces.forEach((interfaceDeclaration: InterfaceDeclaration) => {
             const phpClass = this.fromInterface(interfaceDeclaration);
-            classes.set(phpClass.name, phpClass);
+            classes.set(phpClass.name, this.hydateMixins(phpClass));
         });
 
-        nodeMap.aliases.forEach((type: TypeNode, name: string) => {
-            if (isIntersectionTypeNode(type)) {
-                classes.set(name, this.fromIntersectionTypeNode(name, type));
-            }
+        nodeMap.intersections.forEach((type: IntersectionTypeNode, name: string) => {
+            classes.set(name, this.fromIntersectionTypeNode(name, type));
         });
 
         return classes;
@@ -70,7 +68,6 @@ export class PhpClassResolver
         phpClass.name = name;
 
         type.types.forEach((type: TypeNode) => {
-            const phpType = this.typeConverter.phpType(type);
         });
 
         return phpClass;
@@ -111,8 +108,6 @@ export class PhpClassResolver
                     }
 
                     const mixinName = type.expression.escapedText.toString();
-                    const mixinClass = this.fromInterface(this.nodeMap.interfaces.get(mixinName));
-                    properties = new Map([ ... mixinClass.properties, ... properties ]);
                     mixins.push(mixinName);
                 }
             }
@@ -123,6 +118,17 @@ export class PhpClassResolver
             properties: properties as Properties,
             mixins: mixins
         } as PhpClass;
+    }
+
+    private hydateMixins(phpClass: PhpClass): PhpClass {
+        var properties = phpClass.properties;
+        phpClass.mixins.forEach((mixinName: string) => {
+            const mixinClass = this.fromInterface(this.nodeMap.interfaces.get(mixinName));
+
+            properties = new Map([ ... properties, ... this.hydateMixins(mixinClass).properties ]);
+        });
+        phpClass.properties = properties;
+        return phpClass;
     }
 
     private jsDocs(property: PropertySignature): string[] {

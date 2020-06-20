@@ -8,12 +8,6 @@ namespace LanguageServerProtocol;
 class ExecuteCommandOptions
 {
     /**
-     *
-     * @var bool|null
-     */
-    public $workDoneProgress;
-
-    /**
      * The commands to be executed on the server
      *
      * @var array<string>
@@ -21,12 +15,18 @@ class ExecuteCommandOptions
     public $commands;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param array<string> $commands
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $workDoneProgress, array $commands)
+    public $workDoneProgress;
+
+    /**
+     * @param array<string> $commands
+     * @param bool|null $workDoneProgress
+     */
+    public function __construct(array $commands, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
         $this->commands = $commands;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

@@ -8,12 +8,6 @@ namespace LanguageServerProtocol;
 class CodeLensOptions
 {
     /**
-     *
-     * @var bool|null
-     */
-    public $workDoneProgress;
-
-    /**
      * Code lens has a resolve provider as well.
      *
      * @var bool|null
@@ -21,12 +15,18 @@ class CodeLensOptions
     public $resolveProvider;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param bool|null $resolveProvider
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $workDoneProgress, ?bool $resolveProvider)
+    public $workDoneProgress;
+
+    /**
+     * @param bool|null $resolveProvider
+     * @param bool|null $workDoneProgress
+     */
+    public function __construct(?bool $resolveProvider, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
         $this->resolveProvider = $resolveProvider;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

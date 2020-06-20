@@ -8,13 +8,6 @@ namespace LanguageServerProtocol;
 class TextDocumentSaveRegistrationOptions
 {
     /**
-     * The client is supposed to include the content on save.
-     *
-     * @var bool|null
-     */
-    public $includeText;
-
-    /**
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
@@ -23,12 +16,19 @@ class TextDocumentSaveRegistrationOptions
     public $documentSelector;
 
     /**
-     * @param bool|null $includeText
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * The client is supposed to include the content on save.
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $includeText, $documentSelector)
+    public $includeText;
+
+    /**
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param bool|null $includeText
+     */
+    public function __construct($documentSelector, ?bool $includeText)
     {
-        $this->includeText = $includeText;
         $this->documentSelector = $documentSelector;
+        $this->includeText = $includeText;
     }
 }

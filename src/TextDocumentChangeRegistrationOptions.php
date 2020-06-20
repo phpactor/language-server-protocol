@@ -8,6 +8,13 @@ namespace LanguageServerProtocol;
 class TextDocumentChangeRegistrationOptions
 {
     /**
+     * How documents are synced to the server.
+     *
+     * @var 0|1|2
+     */
+    public $syncKind;
+
+    /**
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
@@ -16,19 +23,12 @@ class TextDocumentChangeRegistrationOptions
     public $documentSelector;
 
     /**
-     * How documents are synced to the server.
-     *
-     * @var 0|1|2
-     */
-    public $syncKind;
-
-    /**
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param 0|1|2 $syncKind
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      */
-    public function __construct($documentSelector, $syncKind)
+    public function __construct($syncKind, $documentSelector)
     {
-        $this->documentSelector = $documentSelector;
         $this->syncKind = $syncKind;
+        $this->documentSelector = $documentSelector;
     }
 }

@@ -8,12 +8,6 @@ namespace LanguageServerProtocol;
 class RenameOptions
 {
     /**
-     *
-     * @var bool|null
-     */
-    public $workDoneProgress;
-
-    /**
      * Renames should be checked and tested before being executed.
      *
      * @var bool|null
@@ -21,12 +15,18 @@ class RenameOptions
     public $prepareProvider;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param bool|null $prepareProvider
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $workDoneProgress, ?bool $prepareProvider)
+    public $workDoneProgress;
+
+    /**
+     * @param bool|null $prepareProvider
+     * @param bool|null $workDoneProgress
+     */
+    public function __construct(?bool $prepareProvider, ?bool $workDoneProgress)
     {
-        $this->workDoneProgress = $workDoneProgress;
         $this->prepareProvider = $prepareProvider;
+        $this->workDoneProgress = $workDoneProgress;
     }
 }

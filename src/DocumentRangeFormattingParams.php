@@ -8,13 +8,6 @@ namespace LanguageServerProtocol;
 class DocumentRangeFormattingParams
 {
     /**
-     * An optional token that a server can use to report work done progress.
-     *
-     * @var int|string|null
-     */
-    public $workDoneToken;
-
-    /**
      * The document to format.
      *
      * @var TextDocumentIdentifier
@@ -36,16 +29,23 @@ class DocumentRangeFormattingParams
     public $options;
 
     /**
-     * @param int|string|null $workDoneToken
+     * An optional token that a server can use to report work done progress.
+     *
+     * @var int|string|null
+     */
+    public $workDoneToken;
+
+    /**
      * @param TextDocumentIdentifier $textDocument
      * @param Range $range
      * @param FormattingOptions $options
+     * @param int|string|null $workDoneToken
      */
-    public function __construct($workDoneToken, TextDocumentIdentifier $textDocument, Range $range, FormattingOptions $options)
+    public function __construct(TextDocumentIdentifier $textDocument, Range $range, FormattingOptions $options, $workDoneToken)
     {
-        $this->workDoneToken = $workDoneToken;
         $this->textDocument = $textDocument;
         $this->range = $range;
         $this->options = $options;
+        $this->workDoneToken = $workDoneToken;
     }
 }
