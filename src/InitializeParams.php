@@ -26,7 +26,7 @@ class InitializeParams
      * The rootPath of the workspace. Is null
      * if no folder is open.
      *
-     * @var string|null|null
+     * @var string|null
      */
     public $rootPath;
 
@@ -77,7 +77,7 @@ class InitializeParams
     /**
      * @param int|null $processId
      * @param array<mixed>|null $clientInfo
-     * @param string|null|null $rootPath
+     * @param string|null $rootPath
      * @param string|null $rootUri
      * @param ClientCapabilities $capabilities
      * @param mixed|null $initializationOptions
@@ -85,7 +85,7 @@ class InitializeParams
      * @param int|string|null $workDoneToken
      * @param array<WorkspaceFolder>|null $workspaceFolders
      */
-    public function __construct($workspaceFolders, ClientCapabilities $capabilities, $rootUri, $processId, $clientInfo, $rootPath, $initializationOptions, $trace, $workDoneToken)
+    public function __construct(ClientCapabilities $capabilities, $processId, $clientInfo, $rootPath, $rootUri, $initializationOptions, $trace, $workDoneToken, $workspaceFolders)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;

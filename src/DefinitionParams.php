@@ -44,7 +44,7 @@ class DefinitionParams
      * @param int|string|null $workDoneToken
      * @param int|string|null $partialResultToken
      */
-    public function __construct(Position $position, TextDocumentIdentifier $textDocument, $workDoneToken, $partialResultToken)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, $workDoneToken, $partialResultToken)
     {
         $this->textDocument = $textDocument;
         $this->position = $position;

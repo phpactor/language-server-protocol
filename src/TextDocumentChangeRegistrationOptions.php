@@ -28,7 +28,7 @@ class TextDocumentChangeRegistrationOptions
      * @param 0|1|2 $syncKind
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      */
-    public function __construct($documentSelector, $syncKind)
+    public function __construct($syncKind, $documentSelector)
     {
         $this->syncKind = $syncKind;
         $this->documentSelector = $documentSelector;

@@ -72,7 +72,7 @@ class DocumentSymbol
      * @param Range $selectionRange
      * @param array<DocumentSymbol>|null $children
      */
-    public function __construct(Range $selectionRange, Range $range, $kind, string $name, ?string $detail = null, ?bool $deprecated = null, ?array $children = null)
+    public function __construct(string $name, $kind, Range $range, Range $selectionRange, ?string $detail = null, ?bool $deprecated = null, ?array $children = null)
     {
         $this->name = $name;
         $this->detail = $detail;

@@ -59,7 +59,7 @@ class WorkDoneProgressBegin
      * @param string|null $message
      * @param int|null $percentage
      */
-    public function __construct(string $title, $kind, ?bool $cancellable = null, ?string $message = null, ?int $percentage = null)
+    public function __construct($kind, string $title, ?bool $cancellable = null, ?string $message = null, ?int $percentage = null)
     {
         $this->kind = $kind;
         $this->title = $title;

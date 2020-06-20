@@ -30,7 +30,7 @@ class ShowMessageRequestParams
      * @param string $message
      * @param array<MessageActionItem>|null $actions
      */
-    public function __construct(string $message, $type, ?array $actions = null)
+    public function __construct($type, string $message, ?array $actions = null)
     {
         $this->type = $type;
         $this->message = $message;

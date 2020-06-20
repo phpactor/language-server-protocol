@@ -51,7 +51,7 @@ class ReferenceParams
      * @param int|string|null $workDoneToken
      * @param int|string|null $partialResultToken
      */
-    public function __construct(Position $position, TextDocumentIdentifier $textDocument, ReferenceContext $context, $workDoneToken, $partialResultToken)
+    public function __construct(ReferenceContext $context, TextDocumentIdentifier $textDocument, Position $position, $workDoneToken, $partialResultToken)
     {
         $this->context = $context;
         $this->textDocument = $textDocument;

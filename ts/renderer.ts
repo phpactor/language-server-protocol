@@ -55,6 +55,10 @@ export class Renderer
         const args: string[] = [];
 
         const properties: Property[] = Array.from(declaration.properties.values()).sort((property1: Property, property2: Property) => {
+            if (property1.nullable === property2.nullable) {
+                return 0;
+            }
+
             if (property1.nullable) {
                 return 1;
             }
@@ -105,7 +109,7 @@ export class Renderer
     renderPropertyType(property: Property): string {
         let documentedType = property.type.documented;
 
-        if (property.nullable) {
+        if (!documentedType.match(/null/) && property.nullable) {
             documentedType = documentedType + '|null';
         }
 

@@ -25,7 +25,7 @@ class ShowMessageParams
      * @param 1|2|3|4 $type
      * @param string $message
      */
-    public function __construct(string $message, $type)
+    public function __construct($type, string $message)
     {
         $this->type = $type;
         $this->message = $message;

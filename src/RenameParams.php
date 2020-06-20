@@ -45,7 +45,7 @@ class RenameParams
      * @param string $newName
      * @param int|string|null $workDoneToken
      */
-    public function __construct(string $newName, Position $position, TextDocumentIdentifier $textDocument, $workDoneToken)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, string $newName, $workDoneToken)
     {
         $this->textDocument = $textDocument;
         $this->position = $position;

@@ -6,11 +6,14 @@ import {
     isIdentifier,
     TypeNode,
     isIntersectionTypeNode,
-    IntersectionTypeNode
+    IntersectionTypeNode,
+    isUnionTypeNode,
+    SyntaxKind
 } from 'typescript';
 
 import {PhpType, TypeConverter} from './typeConverter';
 import {NodeMap} from './nodeMap';
+import {isNull} from 'util';
 
 export class PhpClass {
 
@@ -97,7 +100,7 @@ export class PhpClassResolver
                 docs: this.jsDocs(property),
                 name: property.name.escapedText.toString(),
                 type: this.typeConverter.phpType(property.type),
-                nullable: property.questionToken ? true : false
+                nullable: this.isNullable(property)
             };
 
             properties.set(classProperty.name, classProperty);
@@ -153,5 +156,26 @@ export class PhpClassResolver
         }));
     }
 
+    private isNullable(property: PropertySignature): boolean {
+        if (property.questionToken) {
+            return true;
+        }
+
+        if (!property.type) {
+            return false;
+        }
+
+        if (!isUnionTypeNode(property.type)) {
+            return false;
+        }
+
+        for (const type of property.type.types) {
+            if (SyntaxKind[type.kind] == 'NullKeyword') {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 

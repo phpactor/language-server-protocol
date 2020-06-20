@@ -53,7 +53,7 @@ class CompletionParams
      * @param int|string|null $workDoneToken
      * @param int|string|null $partialResultToken
      */
-    public function __construct(Position $position, TextDocumentIdentifier $textDocument, ?CompletionContext $context = null, $workDoneToken, $partialResultToken)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, ?CompletionContext $context = null, $workDoneToken, $partialResultToken)
     {
         $this->context = $context;
         $this->textDocument = $textDocument;

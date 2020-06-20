@@ -35,7 +35,7 @@ class DocumentFormattingParams
      * @param FormattingOptions $options
      * @param int|string|null $workDoneToken
      */
-    public function __construct(FormattingOptions $options, TextDocumentIdentifier $textDocument, $workDoneToken)
+    public function __construct(TextDocumentIdentifier $textDocument, FormattingOptions $options, $workDoneToken)
     {
         $this->textDocument = $textDocument;
         $this->options = $options;

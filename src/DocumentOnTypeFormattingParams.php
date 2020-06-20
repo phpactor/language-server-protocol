@@ -41,7 +41,7 @@ class DocumentOnTypeFormattingParams
      * @param string $ch
      * @param FormattingOptions $options
      */
-    public function __construct(FormattingOptions $options, string $ch, Position $position, TextDocumentIdentifier $textDocument)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, string $ch, FormattingOptions $options)
     {
         $this->textDocument = $textDocument;
         $this->position = $position;

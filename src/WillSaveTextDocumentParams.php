@@ -25,7 +25,7 @@ class WillSaveTextDocumentParams
      * @param TextDocumentIdentifier $textDocument
      * @param 1|2|3 $reason
      */
-    public function __construct($reason, TextDocumentIdentifier $textDocument)
+    public function __construct(TextDocumentIdentifier $textDocument, $reason)
     {
         $this->textDocument = $textDocument;
         $this->reason = $reason;

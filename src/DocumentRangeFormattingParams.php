@@ -43,7 +43,7 @@ class DocumentRangeFormattingParams
      * @param FormattingOptions $options
      * @param int|string|null $workDoneToken
      */
-    public function __construct(FormattingOptions $options, Range $range, TextDocumentIdentifier $textDocument, $workDoneToken)
+    public function __construct(TextDocumentIdentifier $textDocument, Range $range, FormattingOptions $options, $workDoneToken)
     {
         $this->textDocument = $textDocument;
         $this->range = $range;

@@ -25,7 +25,7 @@ class WorkspaceFoldersChangeEvent
      * @param array<WorkspaceFolder> $added
      * @param array<WorkspaceFolder> $removed
      */
-    public function __construct(array $removed, array $added)
+    public function __construct(array $added, array $removed)
     {
         $this->added = $added;
         $this->removed = $removed;
