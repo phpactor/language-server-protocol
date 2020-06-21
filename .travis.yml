@@ -13,6 +13,7 @@ cache:
 before_script:
     - sudo apt-get install nodejs --yes
     - npm install
+    - npm ls
     - composer install
 
 script:
