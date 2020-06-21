@@ -22,7 +22,7 @@ class CompletionListTest extends TestCase
         self::assertEquals(new CompletionList(
             true,
             [
-                new CompletionItem('foobar'),
+                new CompletionItem('Foobar'),
             ]
         ), $list);
     }

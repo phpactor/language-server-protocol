@@ -215,48 +215,74 @@ class TextDocumentClientCapabilities
     }
 
     /**
-     * @param array<mixed> $array
+     * @param array<string,mixed> $array
      */
     public static function fromArray(array $array): self
     {
         $map = [
-            'synchronization' => [TextDocumentSyncClientCapabilities::class],
-            'completion' => [CompletionClientCapabilities::class],
-            'hover' => [HoverClientCapabilities::class],
-            'signatureHelp' => [SignatureHelpClientCapabilities::class],
-            'declaration' => [DeclarationClientCapabilities::class],
-            'definition' => [DefinitionClientCapabilities::class],
-            'typeDefinition' => [TypeDefinitionClientCapabilities::class],
-            'implementation' => [ImplementationClientCapabilities::class],
-            'references' => [ReferenceClientCapabilities::class],
-            'documentHighlight' => [DocumentHighlightClientCapabilities::class],
-            'documentSymbol' => [DocumentSymbolClientCapabilities::class],
-            'codeAction' => [CodeActionClientCapabilities::class],
-            'codeLens' => [CodeLensClientCapabilities::class],
-            'documentLink' => [DocumentLinkClientCapabilities::class],
-            'colorProvider' => [DocumentColorClientCapabilities::class],
-            'formatting' => [DocumentFormattingClientCapabilities::class],
-            'rangeFormatting' => [DocumentRangeFormattingClientCapabilities::class],
-            'onTypeFormatting' => [DocumentOnTypeFormattingClientCapabilities::class],
-            'rename' => [RenameClientCapabilities::class],
-            'foldingRange' => [FoldingRangeClientCapabilities::class],
-            'selectionRange' => [SelectionRangeClientCapabilities::class],
-            'publishDiagnostics' => [PublishDiagnosticsClientCapabilities::class],
+            'synchronization' => ['names' => [TextDocumentSyncClientCapabilities::class], 'iterable' => false],
+            'completion' => ['names' => [CompletionClientCapabilities::class], 'iterable' => false],
+            'hover' => ['names' => [HoverClientCapabilities::class], 'iterable' => false],
+            'signatureHelp' => ['names' => [SignatureHelpClientCapabilities::class], 'iterable' => false],
+            'declaration' => ['names' => [DeclarationClientCapabilities::class], 'iterable' => false],
+            'definition' => ['names' => [DefinitionClientCapabilities::class], 'iterable' => false],
+            'typeDefinition' => ['names' => [TypeDefinitionClientCapabilities::class], 'iterable' => false],
+            'implementation' => ['names' => [ImplementationClientCapabilities::class], 'iterable' => false],
+            'references' => ['names' => [ReferenceClientCapabilities::class], 'iterable' => false],
+            'documentHighlight' => ['names' => [DocumentHighlightClientCapabilities::class], 'iterable' => false],
+            'documentSymbol' => ['names' => [DocumentSymbolClientCapabilities::class], 'iterable' => false],
+            'codeAction' => ['names' => [CodeActionClientCapabilities::class], 'iterable' => false],
+            'codeLens' => ['names' => [CodeLensClientCapabilities::class], 'iterable' => false],
+            'documentLink' => ['names' => [DocumentLinkClientCapabilities::class], 'iterable' => false],
+            'colorProvider' => ['names' => [DocumentColorClientCapabilities::class], 'iterable' => false],
+            'formatting' => ['names' => [DocumentFormattingClientCapabilities::class], 'iterable' => false],
+            'rangeFormatting' => ['names' => [DocumentRangeFormattingClientCapabilities::class], 'iterable' => false],
+            'onTypeFormatting' => ['names' => [DocumentOnTypeFormattingClientCapabilities::class], 'iterable' => false],
+            'rename' => ['names' => [RenameClientCapabilities::class], 'iterable' => false],
+            'foldingRange' => ['names' => [FoldingRangeClientCapabilities::class], 'iterable' => false],
+            'selectionRange' => ['names' => [SelectionRangeClientCapabilities::class], 'iterable' => false],
+            'publishDiagnostics' => ['names' => [PublishDiagnosticsClientCapabilities::class], 'iterable' => false],
         ];
+
         foreach ($array as $key => &$value) {
             if (!isset($map[$key])) {
                 continue;
             }
-            foreach ($map[$key] as $className) {
-               try {
-                   $value = Invoke::new($className, $value);
-                   continue;
-               } catch (Exception $e) {
-                   continue;
-               }
+
+            if ($map[$key]['iterable']) {
+                $value = array_map(function ($object) use ($map, $key) {
+                    if (!is_array($object)) {
+                        return $object;
+                    }
+
+                    return self::invokeFromNames($map[$key]['names'], $object) ?: $object;
+                }, $value);
+                continue;
+            }
+
+            $names = $map[$key]['names'];
+            $value = self::invokeFromNames($names, $value) ?: $value;
+        }
+        
+        return Invoke::new(self::class, $array);
+    }
+
+    /**
+     * @param array<string> $classNames
+     * @param array<string,mixed> $object
+     */
+    private static function invokeFromNames(array $classNames, array $object): ?object
+    {
+        foreach ($classNames as $className) {
+            try {
+                // @phpstan-ignore-next-line
+                return call_user_func_array($className . '::fromArray', [$object]);
+            } catch (Exception $e) {
+                continue;
             }
         }
-        return Invoke::new(self::class, $array);
+
+        return null;
     }
         
 }

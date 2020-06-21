@@ -21,12 +21,14 @@ export class PhpType
     real: string|null;
     documented: string;
     classNames: ClassName[] = [];
+    iterable: boolean = false;
 
-    constructor (real: string, documented: string, classNames: ClassName[] = [])
+    constructor (real: string, documented: string, classNames: ClassName[] = [], iterable: boolean = false)
     {
         this.real = real;
         this.documented = documented;
         this.classNames = classNames;
+        this.iterable = iterable;
     }
 }
 
@@ -126,7 +128,7 @@ export class TypeConverter
     }
 
     private phpTypeArray(type: ArrayTypeNode): PhpType {
-        return new PhpType('array', `array<${this.phpType(type.elementType).documented}>`);
+        return new PhpType('array', `array<${this.phpType(type.elementType).documented}>`, this.phpType(type.elementType).classNames, true);
     }
 
     private phpTypeUnion(type: UnionTypeNode): PhpType {
@@ -139,7 +141,14 @@ export class TypeConverter
                 return null;
             }
 
-            return type.typeName.escapedText.toString();
+            const name = type.typeName.escapedText.toString();
+
+            if (!this.nodeMap.hasName(name)) {
+                console.warn(`Could not find type ${name}`);
+                return null;
+            }
+
+            return name;
         }).filter((type) => {
             return type !== null;
         });

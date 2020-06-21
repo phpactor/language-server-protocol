@@ -11,6 +11,10 @@ export class NodeMap {
     aliases: TypeAliasMap = new TypeAliasMap();
     intersections: IntersectionMap = new IntersectionMap();
     interfaces: InterfaceMap = new InterfaceMap();
+
+    hasName(name: string) {
+        return this.intersections.has(name) || this.interfaces.has(name);
+    }
 }
 
 class TypeAliasMap extends Map<string, TypeNode> {

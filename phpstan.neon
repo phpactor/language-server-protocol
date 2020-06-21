@@ -1,4 +1,8 @@
 parameters:
     level: 7
     paths: [ src ]
+    ignoreErrors:
+        - '/If condition is always false/'
+        - '/If condition is always true/'
+        - '/Unreachable statement/'
 

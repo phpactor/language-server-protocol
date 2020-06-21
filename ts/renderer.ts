@@ -126,12 +126,30 @@ export class Renderer
 
         source.push(`
     /**
-     * @param array<mixed> $array
+     * @param array<string,mixed> $array
      */
     public static function fromArray(array $array): self
     {
         ${normalizerSource}
         return Invoke::new(self::class, $array);
+    }
+
+    /**
+     * @param array<string> $classNames
+     * @param array<string,mixed> $object
+     */
+    private static function invokeFromNames(array $classNames, array $object): ?object
+    {
+        foreach ($classNames as $className) {
+            try {
+                // @phpstan-ignore-next-line
+                return call_user_func_array($className . '::fromArray', [$object]);
+            } catch (Exception $e) {
+                continue;
+            }
+        }
+
+        return null;
     }
         `);
     }
@@ -150,22 +168,31 @@ export class Renderer
                 return name + '::class';
             }).join(', ');
 
-            classResolutionSource.push(`            '${property.name}' => [${classNames}],`);
+            classResolutionSource.push(`            '${property.name}' => ['names' => [${classNames}], 'iterable' => ${property.type.iterable ? 'true':'false'}],`);
         });
+
         classResolutionSource.push('        ];'),
-        classResolutionSource.push('        foreach ($array as $key => &$value) {'),
-        classResolutionSource.push('            if (!isset($map[$key])) {');
-        classResolutionSource.push('                continue;');
-        classResolutionSource.push('            }');
-        classResolutionSource.push('            foreach ($map[$key] as $className) {');
-        classResolutionSource.push('               try {');
-        classResolutionSource.push('                   $value = Invoke::new($className, $value);');
-        classResolutionSource.push('                   continue;');
-        classResolutionSource.push('               } catch (Exception $e) {');
-        classResolutionSource.push('                   continue;');
-        classResolutionSource.push('               }');
-        classResolutionSource.push('            }');
-        classResolutionSource.push('        }');
+        classResolutionSource.push(`
+        foreach ($array as $key => &$value) {
+            if (!isset($map[$key])) {
+                continue;
+            }
+
+            if ($map[$key]['iterable']) {
+                $value = array_map(function ($object) use ($map, $key) {
+                    if (!is_array($object)) {
+                        return $object;
+                    }
+
+                    return self::invokeFromNames($map[$key]['names'], $object) ?: $object;
+                }, $value);
+                continue;
+            }
+
+            $names = $map[$key]['names'];
+            $value = self::invokeFromNames($names, $value) ?: $value;
+        }
+        `);
 
         return classResolutionSource;
     }

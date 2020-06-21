@@ -247,49 +247,75 @@ class ServerCapabilities
     }
 
     /**
-     * @param array<mixed> $array
+     * @param array<string,mixed> $array
      */
     public static function fromArray(array $array): self
     {
         $map = [
-            'textDocumentSync' => [TextDocumentSyncOptions::class, TextDocumentSyncKind::class],
-            'completionProvider' => [CompletionOptions::class],
-            'hoverProvider' => [HoverOptions::class],
-            'signatureHelpProvider' => [SignatureHelpOptions::class],
-            'declarationProvider' => [DeclarationOptions::class, DeclarationRegistrationOptions::class],
-            'definitionProvider' => [DefinitionOptions::class],
-            'typeDefinitionProvider' => [TypeDefinitionOptions::class, TypeDefinitionRegistrationOptions::class],
-            'implementationProvider' => [ImplementationOptions::class, ImplementationRegistrationOptions::class],
-            'referencesProvider' => [ReferenceOptions::class],
-            'documentHighlightProvider' => [DocumentHighlightOptions::class],
-            'documentSymbolProvider' => [DocumentSymbolOptions::class],
-            'codeActionProvider' => [CodeActionOptions::class],
-            'codeLensProvider' => [CodeLensOptions::class],
-            'documentLinkProvider' => [DocumentLinkOptions::class],
-            'colorProvider' => [DocumentColorOptions::class, DocumentColorRegistrationOptions::class],
-            'workspaceSymbolProvider' => [WorkspaceSymbolOptions::class],
-            'documentFormattingProvider' => [DocumentFormattingOptions::class],
-            'documentRangeFormattingProvider' => [DocumentRangeFormattingOptions::class],
-            'documentOnTypeFormattingProvider' => [DocumentOnTypeFormattingOptions::class],
-            'renameProvider' => [RenameOptions::class],
-            'foldingRangeProvider' => [FoldingRangeOptions::class, FoldingRangeRegistrationOptions::class],
-            'selectionRangeProvider' => [SelectionRangeOptions::class, SelectionRangeRegistrationOptions::class],
-            'executeCommandProvider' => [ExecuteCommandOptions::class],
+            'textDocumentSync' => ['names' => [TextDocumentSyncOptions::class], 'iterable' => false],
+            'completionProvider' => ['names' => [CompletionOptions::class], 'iterable' => false],
+            'hoverProvider' => ['names' => [HoverOptions::class], 'iterable' => false],
+            'signatureHelpProvider' => ['names' => [SignatureHelpOptions::class], 'iterable' => false],
+            'declarationProvider' => ['names' => [DeclarationOptions::class, DeclarationRegistrationOptions::class], 'iterable' => false],
+            'definitionProvider' => ['names' => [DefinitionOptions::class], 'iterable' => false],
+            'typeDefinitionProvider' => ['names' => [TypeDefinitionOptions::class, TypeDefinitionRegistrationOptions::class], 'iterable' => false],
+            'implementationProvider' => ['names' => [ImplementationOptions::class, ImplementationRegistrationOptions::class], 'iterable' => false],
+            'referencesProvider' => ['names' => [ReferenceOptions::class], 'iterable' => false],
+            'documentHighlightProvider' => ['names' => [DocumentHighlightOptions::class], 'iterable' => false],
+            'documentSymbolProvider' => ['names' => [DocumentSymbolOptions::class], 'iterable' => false],
+            'codeActionProvider' => ['names' => [CodeActionOptions::class], 'iterable' => false],
+            'codeLensProvider' => ['names' => [CodeLensOptions::class], 'iterable' => false],
+            'documentLinkProvider' => ['names' => [DocumentLinkOptions::class], 'iterable' => false],
+            'colorProvider' => ['names' => [DocumentColorOptions::class, DocumentColorRegistrationOptions::class], 'iterable' => false],
+            'workspaceSymbolProvider' => ['names' => [WorkspaceSymbolOptions::class], 'iterable' => false],
+            'documentFormattingProvider' => ['names' => [DocumentFormattingOptions::class], 'iterable' => false],
+            'documentRangeFormattingProvider' => ['names' => [DocumentRangeFormattingOptions::class], 'iterable' => false],
+            'documentOnTypeFormattingProvider' => ['names' => [DocumentOnTypeFormattingOptions::class], 'iterable' => false],
+            'renameProvider' => ['names' => [RenameOptions::class], 'iterable' => false],
+            'foldingRangeProvider' => ['names' => [FoldingRangeOptions::class, FoldingRangeRegistrationOptions::class], 'iterable' => false],
+            'selectionRangeProvider' => ['names' => [SelectionRangeOptions::class, SelectionRangeRegistrationOptions::class], 'iterable' => false],
+            'executeCommandProvider' => ['names' => [ExecuteCommandOptions::class], 'iterable' => false],
         ];
+
         foreach ($array as $key => &$value) {
             if (!isset($map[$key])) {
                 continue;
             }
-            foreach ($map[$key] as $className) {
-               try {
-                   $value = Invoke::new($className, $value);
-                   continue;
-               } catch (Exception $e) {
-                   continue;
-               }
+
+            if ($map[$key]['iterable']) {
+                $value = array_map(function ($object) use ($map, $key) {
+                    if (!is_array($object)) {
+                        return $object;
+                    }
+
+                    return self::invokeFromNames($map[$key]['names'], $object) ?: $object;
+                }, $value);
+                continue;
+            }
+
+            $names = $map[$key]['names'];
+            $value = self::invokeFromNames($names, $value) ?: $value;
+        }
+        
+        return Invoke::new(self::class, $array);
+    }
+
+    /**
+     * @param array<string> $classNames
+     * @param array<string,mixed> $object
+     */
+    private static function invokeFromNames(array $classNames, array $object): ?object
+    {
+        foreach ($classNames as $className) {
+            try {
+                // @phpstan-ignore-next-line
+                return call_user_func_array($className . '::fromArray', [$object]);
+            } catch (Exception $e) {
+                continue;
             }
         }
-        return Invoke::new(self::class, $array);
+
+        return null;
     }
         
 }
