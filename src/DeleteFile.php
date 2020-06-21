@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Delete file operation
  *
@@ -40,4 +42,13 @@ class DeleteFile
         $this->uri = $uri;
         $this->options = $options;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

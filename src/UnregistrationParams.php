@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class UnregistrationParams
 {
     /**
@@ -17,4 +19,13 @@ class UnregistrationParams
     {
         $this->unregisterations = $unregisterations;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

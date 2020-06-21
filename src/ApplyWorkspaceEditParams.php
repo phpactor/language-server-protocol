@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The parameters passed via a apply workspace edit request.
  */
@@ -32,4 +34,13 @@ class ApplyWorkspaceEditParams
         $this->label = $label;
         $this->edit = $edit;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

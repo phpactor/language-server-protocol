@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Mixins (implemented TS interfaces): _InitializeParams, WorkspaceFoldersInitializeParams
  */
@@ -97,4 +99,13 @@ class InitializeParams
         $this->workDoneToken = $workDoneToken;
         $this->workspaceFolders = $workspaceFolders;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

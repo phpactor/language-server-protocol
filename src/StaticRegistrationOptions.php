@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Static registration options to be returned in the initialize
  * request.
@@ -23,4 +25,13 @@ class StaticRegistrationOptions
     {
         $this->id = $id;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

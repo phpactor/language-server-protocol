@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Client Capabilities for a [SignatureHelpRequest](#SignatureHelpRequest).
  */
@@ -43,4 +45,13 @@ class SignatureHelpClientCapabilities
         $this->signatureInformation = $signatureInformation;
         $this->contextSupport = $contextSupport;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

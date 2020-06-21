@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The parameters send in a close text document notification
  */
@@ -21,4 +23,13 @@ class DidCloseTextDocumentParams
     {
         $this->textDocument = $textDocument;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

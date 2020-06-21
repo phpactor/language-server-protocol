@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Describe options to be used when registered for text document change events.
  */
@@ -21,4 +23,13 @@ class DidChangeWatchedFilesRegistrationOptions
     {
         $this->watchers = $watchers;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

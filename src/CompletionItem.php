@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A completion item represents a text snippet that is
  * proposed to complete text that is being typed.
@@ -197,4 +199,13 @@ class CompletionItem
         $this->command = $command;
         $this->data = $data;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

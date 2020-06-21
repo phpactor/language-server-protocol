@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Client capabilities of a [DocumentRangeFormattingRequest](#DocumentRangeFormattingRequest).
  */
@@ -21,4 +23,13 @@ class DocumentRangeFormattingClientCapabilities
     {
         $this->dynamicRegistration = $dynamicRegistration;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

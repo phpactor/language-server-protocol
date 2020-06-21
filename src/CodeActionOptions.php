@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Provider options for a [CodeActionRequest](#CodeActionRequest).
  *
@@ -34,4 +36,13 @@ class CodeActionOptions
         $this->codeActionKinds = $codeActionKinds;
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

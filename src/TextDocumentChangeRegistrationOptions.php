@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Describe options to be used when registered for text document change events.
  *
@@ -33,4 +35,13 @@ class TextDocumentChangeRegistrationOptions
         $this->syncKind = $syncKind;
         $this->documentSelector = $documentSelector;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

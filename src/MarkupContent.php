@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A `MarkupContent` literal represents a string value which content is interpreted base on its
  * kind flag. Currently the protocol supports `plaintext` and `markdown` as markup kinds.
@@ -51,4 +53,13 @@ class MarkupContent
         $this->kind = $kind;
         $this->value = $value;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

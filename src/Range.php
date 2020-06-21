@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A range in a text document expressed as (zero-based) start and end positions.
  * 
@@ -40,4 +42,13 @@ class Range
         $this->start = $start;
         $this->end = $end;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

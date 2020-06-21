@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Delete file options
  */
@@ -30,4 +32,13 @@ class DeleteFileOptions
         $this->recursive = $recursive;
         $this->ignoreIfNotExists = $ignoreIfNotExists;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Defines the capabilities provided by a language
  * server.
@@ -234,4 +236,13 @@ class _ServerCapabilities
         $this->executeCommandProvider = $executeCommandProvider;
         $this->experimental = $experimental;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

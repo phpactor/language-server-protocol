@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Represents a reference to a command. Provides a title which
  * will be used to represent a command in the UI and, optionally,
@@ -43,4 +45,13 @@ class Command
         $this->command = $command;
         $this->arguments = $arguments;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -10,6 +10,8 @@ export class Renderer
         source.push(``);
         source.push(`namespace LanguageServerProtocol;`);
         source.push(``);
+        source.push(`use DTL\\Invoke\\Invoke;`);
+        source.push(``);
 
         if (phpClass.mixins.length > 0 || phpClass.docs.length > 0) {
             source.push(`/**`);
@@ -30,6 +32,7 @@ export class Renderer
 
         this.buildProperties(phpClass, source);
         this.buildConstructorDefinition(phpClass, source);
+        this.buildArrayConstructor(phpClass, source);
 
         source.push(`}`);
         //console.log(source);
@@ -114,5 +117,17 @@ export class Renderer
         }
 
         return documentedType;
+    }
+
+    buildArrayConstructor(declaration: PhpClass, source: string[]): void {
+        source.push(`
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        `);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Registration options for a [ExecuteCommandRequest](#ExecuteCommandRequest).
  *
@@ -31,4 +33,13 @@ class ExecuteCommandRegistrationOptions
         $this->commands = $commands;
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

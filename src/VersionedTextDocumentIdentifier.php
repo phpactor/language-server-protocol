@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * An identifier to denote a specific version of a text document.
  *
@@ -36,4 +38,13 @@ class VersionedTextDocumentIdentifier
         $this->version = $version;
         $this->uri = $uri;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

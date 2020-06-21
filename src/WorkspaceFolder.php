@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class WorkspaceFolder
 {
     /**
@@ -28,4 +30,13 @@ class WorkspaceFolder
         $this->uri = $uri;
         $this->name = $name;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

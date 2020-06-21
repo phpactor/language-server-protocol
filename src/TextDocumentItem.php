@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * An item to transfer a text document from the client to the
  * server.
@@ -50,4 +52,13 @@ class TextDocumentItem
         $this->version = $version;
         $this->text = $text;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

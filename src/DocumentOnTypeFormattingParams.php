@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The parameters of a [DocumentOnTypeFormattingRequest](#DocumentOnTypeFormattingRequest).
  */
@@ -48,4 +50,13 @@ class DocumentOnTypeFormattingParams
         $this->ch = $ch;
         $this->options = $options;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

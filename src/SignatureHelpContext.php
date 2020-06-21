@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Additional information about the context in which a signature help request was triggered.
  */
@@ -56,4 +58,13 @@ class SignatureHelpContext
         $this->isRetrigger = $isRetrigger;
         $this->activeSignatureHelp = $activeSignatureHelp;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

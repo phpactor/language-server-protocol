@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A simple text document. Not to be implemented. The document keeps the content
  * as string.
@@ -52,4 +54,13 @@ class TextDocument
         $this->version = $version;
         $this->lineCount = $lineCount;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

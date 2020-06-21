@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A document highlight is a range inside a text document which deserves
  * special attention. Usually a document highlight is visualized by changing
@@ -32,4 +34,13 @@ class DocumentHighlight
         $this->range = $range;
         $this->kind = $kind;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

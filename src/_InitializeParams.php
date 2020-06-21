@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The initialize parameters
  *
@@ -90,4 +92,13 @@ class _InitializeParams
         $this->trace = $trace;
         $this->workDoneToken = $workDoneToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

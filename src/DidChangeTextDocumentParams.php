@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The change text document notification's parameters.
  */
@@ -42,4 +44,13 @@ class DidChangeTextDocumentParams
         $this->textDocument = $textDocument;
         $this->contentChanges = $contentChanges;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

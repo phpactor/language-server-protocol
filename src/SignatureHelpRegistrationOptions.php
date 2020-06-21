@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Registration options for a [SignatureHelpRequest](#SignatureHelpRequest).
  *
@@ -53,4 +55,13 @@ class SignatureHelpRegistrationOptions
         $this->retriggerCharacters = $retriggerCharacters;
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Contains additional information about the context in which a completion request is triggered.
  */
@@ -31,4 +33,13 @@ class CompletionContext
         $this->triggerKind = $triggerKind;
         $this->triggerCharacter = $triggerCharacter;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

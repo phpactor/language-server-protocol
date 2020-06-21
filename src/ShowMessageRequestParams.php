@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class ShowMessageRequestParams
 {
     /**
@@ -36,4 +38,13 @@ class ShowMessageRequestParams
         $this->message = $message;
         $this->actions = $actions;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class WorkDoneProgressOptions
 {
     /**
@@ -17,4 +19,13 @@ class WorkDoneProgressOptions
     {
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class HoverClientCapabilities
 {
     /**
@@ -28,4 +30,13 @@ class HoverClientCapabilities
         $this->dynamicRegistration = $dynamicRegistration;
         $this->contentFormat = $contentFormat;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

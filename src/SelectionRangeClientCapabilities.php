@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class SelectionRangeClientCapabilities
 {
     /**
@@ -20,4 +22,13 @@ class SelectionRangeClientCapabilities
     {
         $this->dynamicRegistration = $dynamicRegistration;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

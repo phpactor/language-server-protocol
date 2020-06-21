@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The result returned from an initialize request.
  */
@@ -30,4 +32,13 @@ class InitializeResult
         $this->capabilities = $capabilities;
         $this->serverInfo = $serverInfo;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

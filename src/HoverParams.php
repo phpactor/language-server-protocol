@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Parameters for a [HoverRequest](#HoverRequest).
  *
@@ -41,4 +43,13 @@ class HoverParams
         $this->position = $position;
         $this->workDoneToken = $workDoneToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

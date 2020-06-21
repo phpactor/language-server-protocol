@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class RenameClientCapabilities
 {
     /**
@@ -28,4 +30,13 @@ class RenameClientCapabilities
         $this->dynamicRegistration = $dynamicRegistration;
         $this->prepareSupport = $prepareSupport;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

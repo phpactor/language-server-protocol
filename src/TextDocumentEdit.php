@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Describes textual changes on a text document. A TextDocumentEdit describes all changes
  * on a document version Si and after they are applied move the document to version Si+1.
@@ -33,4 +35,13 @@ class TextDocumentEdit
         $this->textDocument = $textDocument;
         $this->edits = $edits;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

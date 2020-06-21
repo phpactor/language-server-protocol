@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class WorkDoneProgressClientCapabilities
 {
     /**
@@ -18,4 +20,13 @@ class WorkDoneProgressClientCapabilities
     {
         $this->window = $window;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

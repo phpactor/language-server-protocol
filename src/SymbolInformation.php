@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Represents information about programming constructs like variables, classes,
  * interfaces etc.
@@ -69,4 +71,13 @@ class SymbolInformation
         $this->location = $location;
         $this->containerName = $containerName;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

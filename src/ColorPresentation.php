@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class ColorPresentation
 {
     /**
@@ -41,4 +43,13 @@ class ColorPresentation
         $this->textEdit = $textEdit;
         $this->additionalTextEdits = $additionalTextEdits;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

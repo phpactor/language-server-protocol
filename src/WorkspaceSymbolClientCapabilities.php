@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Client capabilities for a [WorkspaceSymbolRequest](#WorkspaceSymbolRequest).
  */
@@ -30,4 +32,13 @@ class WorkspaceSymbolClientCapabilities
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

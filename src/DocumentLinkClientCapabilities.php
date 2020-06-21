@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The client capabilities of a [DocumentLinkRequest](#DocumentLinkRequest).
  */
@@ -30,4 +32,13 @@ class DocumentLinkClientCapabilities
         $this->dynamicRegistration = $dynamicRegistration;
         $this->tooltipSupport = $tooltipSupport;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

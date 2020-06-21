@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class TextDocumentSyncOptions
 {
     /**
@@ -59,4 +61,13 @@ class TextDocumentSyncOptions
         $this->willSaveWaitUntil = $willSaveWaitUntil;
         $this->save = $save;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

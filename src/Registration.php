@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * General parameters to to register for an notification or to register a provider.
  */
@@ -40,4 +42,13 @@ class Registration
         $this->method = $method;
         $this->registerOptions = $registerOptions;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

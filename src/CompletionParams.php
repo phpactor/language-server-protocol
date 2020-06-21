@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Completion parameters
  *
@@ -61,4 +63,13 @@ class CompletionParams
         $this->workDoneToken = $workDoneToken;
         $this->partialResultToken = $partialResultToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The parameters of a `workspace/didChangeWorkspaceFolders` notification.
  */
@@ -21,4 +23,13 @@ class DidChangeWorkspaceFoldersParams
     {
         $this->event = $event;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

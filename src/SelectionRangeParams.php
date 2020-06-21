@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A parameter literal used in selection range requests.
  *
@@ -51,4 +53,13 @@ class SelectionRangeParams
         $this->workDoneToken = $workDoneToken;
         $this->partialResultToken = $partialResultToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

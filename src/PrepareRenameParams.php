@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
@@ -39,4 +41,13 @@ class PrepareRenameParams
         $this->position = $position;
         $this->workDoneToken = $workDoneToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

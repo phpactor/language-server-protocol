@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class WorkspaceEditClientCapabilities
 {
     /**
@@ -38,4 +40,13 @@ class WorkspaceEditClientCapabilities
         $this->resourceOperations = $resourceOperations;
         $this->failureHandling = $failureHandling;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

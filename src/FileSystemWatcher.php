@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class FileSystemWatcher
 {
     /**
@@ -35,4 +37,13 @@ class FileSystemWatcher
         $this->globPattern = $globPattern;
         $this->kind = $kind;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

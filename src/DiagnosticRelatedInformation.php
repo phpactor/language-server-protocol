@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Represents a related message and source code location for a diagnostic. This should be
  * used to point to code locations that cause or related to a diagnostics, e.g when duplicating
@@ -32,4 +34,13 @@ class DiagnosticRelatedInformation
         $this->location = $location;
         $this->message = $message;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class WorkDoneProgressBegin
 {
     /**
@@ -67,4 +69,13 @@ class WorkDoneProgressBegin
         $this->message = $message;
         $this->percentage = $percentage;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Defines the capabilities provided by the client.
  */
@@ -48,4 +50,13 @@ class _ClientCapabilities
         $this->window = $window;
         $this->experimental = $experimental;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

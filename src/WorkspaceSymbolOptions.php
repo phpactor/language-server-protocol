@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Server capabilities for a [WorkspaceSymbolRequest](#WorkspaceSymbolRequest).
  *
@@ -22,4 +24,13 @@ class WorkspaceSymbolOptions
     {
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

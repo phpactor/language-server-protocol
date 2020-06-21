@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Save registration options.
  *
@@ -33,4 +35,13 @@ class TextDocumentSaveRegistrationOptions
         $this->documentSelector = $documentSelector;
         $this->includeText = $includeText;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

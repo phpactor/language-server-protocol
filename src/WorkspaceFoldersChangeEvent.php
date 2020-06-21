@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The workspace folder change event.
  */
@@ -30,4 +32,13 @@ class WorkspaceFoldersChangeEvent
         $this->added = $added;
         $this->removed = $removed;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

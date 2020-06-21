@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Position in a text document expressed as zero-based line and character offset.
  * The offsets are based on a UTF-16 string representation. So a string of the form
@@ -45,4 +47,13 @@ class Position
         $this->line = $line;
         $this->character = $character;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

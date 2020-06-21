@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The parameters of a [RenameRequest](#RenameRequest).
  *
@@ -52,4 +54,13 @@ class RenameParams
         $this->newName = $newName;
         $this->workDoneToken = $workDoneToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

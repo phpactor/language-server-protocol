@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Registration options for a [RenameRequest](#RenameRequest).
  *
@@ -41,4 +43,13 @@ class RenameRegistrationOptions
         $this->prepareProvider = $prepareProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

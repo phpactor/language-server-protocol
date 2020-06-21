@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The parameters send in a will save text document notification.
  */
@@ -30,4 +32,13 @@ class WillSaveTextDocumentParams
         $this->textDocument = $textDocument;
         $this->reason = $reason;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

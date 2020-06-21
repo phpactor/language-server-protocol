@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Workspace specific client capabilities.
  */
@@ -68,4 +70,13 @@ class WorkspaceClientCapabilities
         $this->symbol = $symbol;
         $this->executeCommand = $executeCommand;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

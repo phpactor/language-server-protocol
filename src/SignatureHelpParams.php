@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Parameters for a [SignatureHelpRequest](#SignatureHelpRequest).
  *
@@ -51,4 +53,13 @@ class SignatureHelpParams
         $this->position = $position;
         $this->workDoneToken = $workDoneToken;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

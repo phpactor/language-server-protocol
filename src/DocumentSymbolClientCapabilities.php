@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Client Capabilities for a [DocumentSymbolRequest](#DocumentSymbolRequest).
  */
@@ -39,4 +41,13 @@ class DocumentSymbolClientCapabilities
         $this->symbolKind = $symbolKind;
         $this->hierarchicalDocumentSymbolSupport = $hierarchicalDocumentSymbolSupport;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

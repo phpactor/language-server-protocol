@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Provider options for a [DocumentLinkRequest](#DocumentLinkRequest).
  *
@@ -31,4 +33,13 @@ class DocumentLinkOptions
         $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

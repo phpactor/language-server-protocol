@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Represents reasons why a text document is saved.
  */
@@ -30,4 +32,13 @@ class TextDocumentWillSaveEvent
         $this->document = $document;
         $this->reason = $reason;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

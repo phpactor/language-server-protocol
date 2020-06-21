@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Represents the connection of two locations. Provides additional metadata over normal [locations](#Location),
  * including an origin range.
@@ -55,4 +57,13 @@ class LocationLink
         $this->targetRange = $targetRange;
         $this->targetSelectionRange = $targetSelectionRange;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

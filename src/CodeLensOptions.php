@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Code Lens provider options of a [CodeLensRequest](#CodeLensRequest).
  *
@@ -31,4 +33,13 @@ class CodeLensOptions
         $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

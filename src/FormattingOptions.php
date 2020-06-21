@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Value-object describing what options formatting should use.
  */
@@ -57,4 +59,13 @@ class FormattingOptions
         $this->insertFinalNewline = $insertFinalNewline;
         $this->trimFinalNewlines = $trimFinalNewlines;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A code action represents a change that can be performed in code, e.g. to fix a problem or
  * to refactor code.
@@ -77,4 +79,13 @@ class CodeAction
         $this->edit = $edit;
         $this->command = $command;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

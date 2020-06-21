@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A code lens represents a [command](#Command) that should be shown along with
  * source text, like the number of references, a way to run tests, etc.
@@ -45,4 +47,13 @@ class CodeLens
         $this->command = $command;
         $this->data = $data;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class FoldingRangeClientCapabilities
 {
     /**
@@ -40,4 +42,13 @@ class FoldingRangeClientCapabilities
         $this->rangeLimit = $rangeLimit;
         $this->lineFoldingOnly = $lineFoldingOnly;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

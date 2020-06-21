@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, ImplementationOptions, StaticRegistrationOptions
  */
@@ -40,4 +42,13 @@ class ImplementationRegistrationOptions
         $this->workDoneProgress = $workDoneProgress;
         $this->id = $id;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Text document specific client capabilities.
  */
@@ -210,4 +212,13 @@ class TextDocumentClientCapabilities
         $this->selectionRange = $selectionRange;
         $this->publishDiagnostics = $publishDiagnostics;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

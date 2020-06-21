@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * The publish diagnostic notification's parameters.
  */
@@ -39,4 +41,13 @@ class PublishDiagnosticsParams
         $this->version = $version;
         $this->diagnostics = $diagnostics;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

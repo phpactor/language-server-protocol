@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Represents a collection of [completion items](#CompletionItem) to be presented
  * in the editor.
@@ -31,4 +33,13 @@ class CompletionList
         $this->isIncomplete = $isIncomplete;
         $this->items = $items;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

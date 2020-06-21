@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 class WorkspaceFoldersServerCapabilities
 {
     /**
@@ -18,4 +20,13 @@ class WorkspaceFoldersServerCapabilities
     {
         $this->workspace = $workspace;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

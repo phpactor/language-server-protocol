@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A response returned from the apply workspace edit request.
  */
@@ -43,4 +45,13 @@ class ApplyWorkspaceEditResponse
         $this->failureReason = $failureReason;
         $this->failedChange = $failedChange;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Since 3.14.0
  */
@@ -32,4 +34,13 @@ class DeclarationClientCapabilities
         $this->dynamicRegistration = $dynamicRegistration;
         $this->linkSupport = $linkSupport;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

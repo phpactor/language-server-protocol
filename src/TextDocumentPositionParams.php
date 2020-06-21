@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A parameter literal used in requests to pass a text document and a position inside that
  * document.
@@ -31,4 +33,13 @@ class TextDocumentPositionParams
         $this->textDocument = $textDocument;
         $this->position = $position;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

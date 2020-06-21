@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Registration options for a [DocumentOnTypeFormattingRequest](#DocumentOnTypeFormattingRequest).
  *
@@ -42,4 +44,13 @@ class DocumentOnTypeFormattingRegistrationOptions
         $this->firstTriggerCharacter = $firstTriggerCharacter;
         $this->moreTriggerCharacter = $moreTriggerCharacter;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

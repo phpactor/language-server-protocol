@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Signature help represents the signature of something
  * callable. There can be multiple signature but only one
@@ -43,4 +45,13 @@ class SignatureHelp
         $this->activeSignature = $activeSignature;
         $this->activeParameter = $activeParameter;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

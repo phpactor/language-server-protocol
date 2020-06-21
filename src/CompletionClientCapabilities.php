@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * Completion client capabilities
  */
@@ -49,4 +51,13 @@ class CompletionClientCapabilities
         $this->completionItemKind = $completionItemKind;
         $this->contextSupport = $contextSupport;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }

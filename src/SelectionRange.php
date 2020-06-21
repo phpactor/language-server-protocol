@@ -2,6 +2,8 @@
 
 namespace LanguageServerProtocol;
 
+use DTL\Invoke\Invoke;
+
 /**
  * A selection range represents a part of a selection hierarchy. A selection range
  * may have a parent selection range that contains it.
@@ -31,4 +33,13 @@ class SelectionRange
         $this->range = $range;
         $this->parent = $parent;
     }
+
+    /**
+     * @param array<mixed> $array
+     */
+    public static function fromArray(array $array): self
+    {
+        return Invoke::new(self::class, $array);
+    }
+        
 }
