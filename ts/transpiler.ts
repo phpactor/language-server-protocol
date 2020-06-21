@@ -1,5 +1,5 @@
 import {Writer} from './writer';
-import {PhpClassResolver, PhpClasses, PhpClass} from './phpClassResolver';
+import {PhpClassResolver, PhpClasses, PhpClass} from './phpClass';
 import {Renderer} from './renderer';
 
 export class Transpiler

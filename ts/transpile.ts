@@ -4,7 +4,7 @@ import {TypeConverter} from './typeConverter';
 import {Transpiler} from './transpiler';
 import {ScriptTarget, createSourceFile}  from "typescript"
 import {readFileSync} from 'fs';
-import {PhpClassResolver} from './phpClassResolver';
+import {PhpClassResolver} from './phpClass';
 import * as path from 'path';
 import {createNodeMap} from './nodeMap';
 

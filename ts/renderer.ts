@@ -1,5 +1,5 @@
 import {TypeConverter} from './typeConverter';
-import {PhpClass, Property} from './phpClassResolver';
+import {PhpClass, Property} from './phpClass';
 
 export class Renderer
 {
