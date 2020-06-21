@@ -1,6 +1,6 @@
 <?php // Auto-generated from vscode-languageserver-protocol (typescript)
 
-namespace LanguageServerProtocol;
+namespace Phpactor\LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
 use Exception;

@@ -8,7 +8,7 @@ export class Renderer
         const source: Array<string> = ['<?php // Auto-generated from vscode-languageserver-protocol (typescript)'];
 
         source.push(``);
-        source.push(`namespace LanguageServerProtocol;`);
+        source.push(`namespace Phpactor\\LanguageServerProtocol;`);
         source.push(``);
         source.push(`use DTL\\Invoke\\Invoke;`);
         source.push(`use Exception;`);
