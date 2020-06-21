@@ -111,16 +111,18 @@ class SymbolInformation
      */
     private static function invokeFromNames(array $classNames, array $object): ?object
     {
+        $lastException = null;
         foreach ($classNames as $className) {
             try {
                 // @phpstan-ignore-next-line
                 return call_user_func_array($className . '::fromArray', [$object]);
-            } catch (Exception $e) {
+            } catch (Exception $exception) {
+                $lastException = $exception;
                 continue;
             }
         }
 
-        return null;
+        throw $exception;
     }
         
 }
