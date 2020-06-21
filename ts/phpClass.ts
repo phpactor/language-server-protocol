@@ -5,7 +5,6 @@ import {
     JSDoc,
     isIdentifier,
     TypeNode,
-    isIntersectionTypeNode,
     IntersectionTypeNode,
     isUnionTypeNode,
     SyntaxKind
@@ -13,7 +12,6 @@ import {
 
 import {PhpType, TypeConverter} from './typeConverter';
 import {NodeMap} from './nodeMap';
-import {isNull} from 'util';
 
 export class PhpClass {
 

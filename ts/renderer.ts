@@ -1,4 +1,3 @@
-import {TypeConverter} from './typeConverter';
 import {PhpClass, Property} from './phpClass';
 
 export class Renderer
