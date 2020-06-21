@@ -144,7 +144,7 @@ export class TypeConverter
             const name = type.typeName.escapedText.toString();
 
             if (!this.nodeMap.hasName(name)) {
-                console.warn(`Could not find type ${name}`);
+                //console.warn(`Could not find type ${name}`);
                 return null;
             }
 

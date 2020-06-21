@@ -14,7 +14,7 @@ class Hover
     /**
      * The hover's content
      *
-     * @var MarkupContent|string|array<mixed>|array<string|array<mixed>>
+     * @var MarkupContent|string|array<string>
      */
     public $contents;
 
@@ -26,7 +26,7 @@ class Hover
     public $range;
 
     /**
-     * @param MarkupContent|string|array<mixed>|array<string|array<mixed>> $contents
+     * @param MarkupContent|string|array<string> $contents
      * @param Range|null $range
      */
     public function __construct($contents, ?Range $range = null)

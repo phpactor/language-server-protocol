@@ -1,8 +1,20 @@
-import {PhpClass, Property} from './phpClass';
+import {PhpClass, Property, PhpClassLike, isPhpClass, isPhpInterface} from './phpClass';
 
 export class Renderer
 {
-    render(phpClass: PhpClass): string {
+    render(phpClass: PhpClassLike): string {
+        if (isPhpClass(phpClass)) {
+            return this.renderClass(phpClass);
+        }
+
+        if (isPhpInterface(phpClass)) {
+            return '';
+        }
+
+        console.log(phpClass);
+    }
+
+    private renderClass(phpClass: PhpClass): string {
 
         const source: Array<string> = ['<?php // Auto-generated from vscode-languageserver-protocol (typescript)'];
 
@@ -36,7 +48,6 @@ export class Renderer
         this.buildArrayConstructor(phpClass, source);
 
         source.push(`}`);
-        //console.log(source);
 
         return source.join("\n");
     }

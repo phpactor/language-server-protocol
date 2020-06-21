@@ -1,5 +1,5 @@
 import {Writer} from './writer';
-import {PhpClasses, PhpClass} from './phpClass';
+import {PhpClasses, PhpClass, PhpClassLike} from './phpClass';
 import {Renderer} from './renderer';
 
 export class Transpiler
@@ -13,7 +13,7 @@ export class Transpiler
     }
 
     transpile(phpClasses: PhpClasses): void {
-        phpClasses.forEach((phpClass: PhpClass) => {
+        phpClasses.forEach((phpClass: PhpClassLike) => {
             this.writer.write(phpClass.name, this.renderer.render(phpClass));
         });
     }

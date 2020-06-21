@@ -7,27 +7,41 @@ import {
     TypeNode,
     IntersectionTypeNode,
     isUnionTypeNode,
-    SyntaxKind
+    SyntaxKind,
+    ModuleDeclaration
 } from 'typescript';
 
 import {PhpType, TypeConverter} from './typeConverter';
 import {NodeMap} from './nodeMap';
 
-export class PhpClass {
-
+export abstract class PhpClassLike {
+    kind: string;
     name: string;
-
-    properties: Properties = new Properties();
-
-    mixins: string[] = [];
-
     docs: string[] = [];
+}
+
+export class PhpInterface extends PhpClassLike {
+    kind: string = 'interface';
+}
+
+export function isPhpInterface(phpClass: PhpClassLike): phpClass is PhpInterface {
+    return phpClass.kind === 'interface';
+}
+
+export function isPhpClass(phpClass: PhpClassLike): phpClass is PhpClass {
+    return phpClass.kind === 'class';
+}
+
+export class PhpClass extends PhpClassLike {
+    kind: string = 'class';
+    properties: Properties = new Properties();
+    mixins: string[] = [];
 }
 
 export class Properties extends Map<string, Property> {
 }
 
-export class PhpClasses extends Map<string, PhpClass> {
+export class PhpClasses extends Map<string, PhpClassLike> {
 }
 
 export class Property {
@@ -59,6 +73,10 @@ export class PhpClassResolver
 
         nodeMap.intersections.forEach((type: IntersectionTypeNode, name: string) => {
             classes.set(name, this.fromIntersectionTypeNode(name, type));
+        });
+
+        nodeMap.modules.forEach((module: ModuleDeclaration, name: string) => {
+            classes.set(name, this.fromModule(name, module));
         });
 
         return classes;
@@ -117,12 +135,18 @@ export class PhpClassResolver
             }
         }
 
-        return {
-            name: declaration.name.escapedText.toString(),
-            properties: properties as Properties,
-            mixins: mixins,
-            docs: docs
-        } as PhpClass;
+        const phpClass = new PhpClass();
+
+        phpClass.name = declaration.name.escapedText.toString();
+        phpClass.properties = properties as Properties;
+        phpClass.mixins = mixins;
+        phpClass.docs = docs;
+
+        return phpClass;
+    }
+
+    private fromModule(name: string, module: ModuleDeclaration): PhpInterface {
+        return new PhpInterface();
     }
 
     private hydateMixins(phpClass: PhpClass): PhpClass {

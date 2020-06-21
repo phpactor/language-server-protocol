@@ -34,7 +34,15 @@ const nodes = paths.map((file: string) => {
     return node;
 });
 
-const nodeMap = createNodeMap(nodes);
+const args = process.argv.slice(2);
+
+let filter = null;
+
+if (args) {
+    filter = new RegExp(args[0]);
+}
+
+const nodeMap = createNodeMap(nodes, filter);
 
 const typeConverter = new TypeConverter(nodeMap);
 const phpClassResolver = new PhpClassResolver(nodeMap, typeConverter);
