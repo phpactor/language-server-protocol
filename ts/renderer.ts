@@ -1,4 +1,5 @@
-import {PhpClass, Property, PhpClassLike, isPhpClass, isPhpInterface} from './phpClass';
+import {PhpClass, Property, PhpClassLike, isPhpClass, isPhpInterface, PhpInterface, PhpConstant} from './phpClass';
+import * as inflect from 'inflect';
 
 export class Renderer
 {
@@ -8,14 +9,31 @@ export class Renderer
         }
 
         if (isPhpInterface(phpClass)) {
-            return '';
+            return this.renderInterface(phpClass);
         }
 
-        console.log(phpClass);
+        throw `Do not know how to render php class like`
+    }
+    
+    private renderInterface(phpClass: PhpInterface): string {
+        const source: Array<string> = ['<?php // Auto-generated from vscode-languageserver-protocol (typescript)'];
+        source.push(``);
+        source.push(`namespace Phpactor\\LanguageServerProtocol;`);
+        source.push(``);
+        source.push(`interface ${phpClass.name}`);
+        source.push(`{`);
+
+        phpClass.constants.forEach((constant: PhpConstant) => {
+            const constName = inflect.underscore(constant.name) as string;
+            source.push(`    public const ${constName.toUpperCase()} = ${constant.rawValue};`);
+        });
+
+        source.push(`}`);
+
+        return source.join("\n");
     }
 
     private renderClass(phpClass: PhpClass): string {
-
         const source: Array<string> = ['<?php // Auto-generated from vscode-languageserver-protocol (typescript)'];
 
         source.push(``);

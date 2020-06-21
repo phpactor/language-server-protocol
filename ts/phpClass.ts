@@ -8,7 +8,13 @@ import {
     IntersectionTypeNode,
     isUnionTypeNode,
     SyntaxKind,
-    ModuleDeclaration
+    ModuleDeclaration,
+    Node,
+    isModuleBlock,
+    isVariableDeclarationList,
+    isVariableDeclaration,
+    isLiteralTypeNode,
+    isTypeNode
 } from 'typescript';
 
 import {PhpType, TypeConverter} from './typeConverter';
@@ -18,10 +24,35 @@ export abstract class PhpClassLike {
     kind: string;
     name: string;
     docs: string[] = [];
+
+    constructor(name: string, docs: string[] = []) {
+        this.name = name;
+        this.docs = docs;
+    }
 }
 
 export class PhpInterface extends PhpClassLike {
     kind: string = 'interface';
+    constants: PhpConstants
+
+    constructor(name: string, docs: string[] = [], phpConstants: PhpConstants = new Map()) {
+        super(name);
+        this.constants = phpConstants;
+    }
+}
+
+export class PhpConstant {
+    name: string;
+    rawValue: string;
+
+    constructor (name: string, rawValue: string)
+    {
+        if (name.toLowerCase() === 'class') {
+            name = 'class_';
+        }
+        this.name = name;
+        this.rawValue = rawValue;
+    }
 }
 
 export function isPhpInterface(phpClass: PhpClassLike): phpClass is PhpInterface {
@@ -41,6 +72,8 @@ export class PhpClass extends PhpClassLike {
 export class Properties extends Map<string, Property> {
 }
 
+export class PhpConstants extends Map<string, PhpConstant> {
+}
 export class PhpClasses extends Map<string, PhpClassLike> {
 }
 
@@ -66,6 +99,14 @@ export class PhpClassResolver
     {
         const classes = new PhpClasses();
 
+        nodeMap.modules.forEach((module: ModuleDeclaration, name: string) => {
+            const phpInterface = this.interfaceFromModule(name, module);
+            if (null === phpInterface) {
+                return;
+            }
+            classes.set(name, phpInterface);
+        });
+
         nodeMap.interfaces.forEach((interfaceDeclaration: InterfaceDeclaration) => {
             const phpClass = this.fromInterface(interfaceDeclaration);
             classes.set(phpClass.name, this.hydateMixins(phpClass));
@@ -75,17 +116,12 @@ export class PhpClassResolver
             classes.set(name, this.fromIntersectionTypeNode(name, type));
         });
 
-        nodeMap.modules.forEach((module: ModuleDeclaration, name: string) => {
-            classes.set(name, this.fromModule(name, module));
-        });
-
         return classes;
     }
 
     private fromIntersectionTypeNode(name: string, type: IntersectionTypeNode): PhpClass
     {
-        const phpClass = new PhpClass();
-        phpClass.name = name;
+        const phpClass = new PhpClass(name);
 
         type.types.forEach((type: TypeNode) => {
             phpClass.mixins.push(this.typeConverter.phpType(type).real);
@@ -135,18 +171,54 @@ export class PhpClassResolver
             }
         }
 
-        const phpClass = new PhpClass();
+        const phpClass = new PhpClass(declaration.name.escapedText.toString(), docs);
 
-        phpClass.name = declaration.name.escapedText.toString();
         phpClass.properties = properties as Properties;
         phpClass.mixins = mixins;
-        phpClass.docs = docs;
 
         return phpClass;
     }
 
-    private fromModule(name: string, module: ModuleDeclaration): PhpInterface {
-        return new PhpInterface();
+    private interfaceFromModule(name: string, module: ModuleDeclaration): PhpInterface|null {
+        const constants = new PhpConstants();
+
+        module.forEachChild((node: Node) => {
+            if (!isModuleBlock(node)) {
+                return;
+            }
+
+            node.statements.forEach((node: Node) => {
+                node.forEachChild((node: Node)  => {
+                    if (!isVariableDeclarationList(node)) {
+                        return;
+                    }
+                    node.declarations.forEach((node: Node) => {
+                        if (!isVariableDeclaration(node)) {
+                            return;
+                        }
+                        if (!isIdentifier(node.name)) {
+                            return;
+                        }
+                        if (!node.type) {
+                            return;
+                        }
+                        if (!isLiteralTypeNode(node.type)) {
+                            return;
+                        }
+                        constants.set(node.name.escapedText.toString(), new PhpConstant(
+                            node.name.escapedText.toString(),
+                            node.type.literal.getText()
+                        ));
+                    });
+                });
+            });
+        });
+
+        if (constants.size === 0) {
+            return null;
+        }
+
+        return new PhpInterface(name, this.jsDocs(module), constants);
     }
 
     private hydateMixins(phpClass: PhpClass): PhpClass {
@@ -164,7 +236,7 @@ export class PhpClassResolver
         return phpClass;
     }
 
-    private jsDocs(property: PropertySignature|InterfaceDeclaration): string[] {
+    private jsDocs(property: PropertySignature|InterfaceDeclaration|ModuleDeclaration): string[] {
         const jsDocs: JSDoc[] = property['jsDoc'];
         if (!jsDocs) {
             return [];
