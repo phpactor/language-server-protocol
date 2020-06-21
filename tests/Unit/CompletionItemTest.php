@@ -9,9 +9,30 @@ use LanguageServerProtocol\Position;
 use LanguageServerProtocol\Range;
 use LanguageServerProtocol\TextEdit;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 class CompletionItemTest extends TestCase
 {
+    public function testExeptionOnUnknownKey(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Parameter "foobar"');
+        CompletionItem::fromArray([
+            'label' => 'Barfoo',
+            'foobar' => 'barfoo'
+        ]);
+    }
+
+    public function testIgnoreUnknownFields(): void
+    {
+        $item = CompletionItem::fromArray([
+            'label' => 'Barfoo',
+            'foobar' => 'barfoo'
+        ], true);
+
+        self::assertEquals('Barfoo', $item->label);
+    }
+
     public function testFromArray(): void
     {
         $item = CompletionItem::fromArray([

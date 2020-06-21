@@ -12,6 +12,7 @@ export class Renderer
         source.push(``);
         source.push(`use DTL\\Invoke\\Invoke;`);
         source.push(`use Exception;`);
+        source.push(`use RuntimeException;`);
         source.push(``);
 
         if (phpClass.mixins.length > 0 || phpClass.docs.length > 0) {
@@ -128,7 +129,7 @@ export class Renderer
     /**
      * @param array<string,mixed> $array
      */
-    public static function fromArray(array $array): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         ${normalizerSource}
         return Invoke::new(self::class, $array);
@@ -138,13 +139,13 @@ export class Renderer
      * @param array<string> $classNames
      * @param array<string,mixed> $object
      */
-    private static function invokeFromNames(array $classNames, array $object): ?object
+    private static function invokeFromNames(array $classNames, array $object, bool $allowUnknownKeys): ?object
     {
         $lastException = null;
         foreach ($classNames as $className) {
             try {
                 // @phpstan-ignore-next-line
-                return call_user_func_array($className . '::fromArray', [$object]);
+                return call_user_func_array($className . '::fromArray', [$object, $allowUnknownKeys]);
             } catch (Exception $exception) {
                 $lastException = $exception;
                 continue;
@@ -162,10 +163,6 @@ export class Renderer
         ];
 
         declaration.properties.forEach((property: Property) => {
-            if (property.type.classNames.length === 0) {
-                return;
-            }
-
             const classNames = property.type.classNames.map((name) => {
                 return name + '::class';
             }).join(', ');
@@ -177,22 +174,36 @@ export class Renderer
         classResolutionSource.push(`
         foreach ($array as $key => &$value) {
             if (!isset($map[$key])) {
+                if ($allowUnknownKeys) {
+                    unset($array[$key]);
+                    continue;
+                }
+
+                throw new RuntimeException(sprintf(
+                    'Parameter "%s" on class "%s" not known, known parameters: "%s"',
+                    $key, 
+                    self::class,
+                    implode('", "', array_keys($map))
+                ));
+            }
+
+            if (empty($map[$key]['names'])) {
                 continue;
             }
 
             if ($map[$key]['iterable']) {
-                $value = array_map(function ($object) use ($map, $key) {
+                $value = array_map(function ($object) use ($map, $key, $allowUnknownKeys) {
                     if (!is_array($object)) {
                         return $object;
                     }
 
-                    return self::invokeFromNames($map[$key]['names'], $object) ?: $object;
+                    return self::invokeFromNames($map[$key]['names'], $object, $allowUnknownKeys) ?: $object;
                 }, $value);
                 continue;
             }
 
             $names = $map[$key]['names'];
-            $value = self::invokeFromNames($names, $value) ?: $value;
+            $value = self::invokeFromNames($names, $value, $allowUnknownKeys) ?: $value;
         }
         `);
 
