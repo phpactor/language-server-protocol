@@ -29,7 +29,6 @@
     },
     "scripts": {
         "integrate": [
-            "npm run-script generate",
             "./vendor/bin/phpunit",
             "./vendor/bin/phpstan analyze"
         ]
