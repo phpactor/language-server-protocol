@@ -89,7 +89,7 @@ class TextDocumentChangeEvent
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

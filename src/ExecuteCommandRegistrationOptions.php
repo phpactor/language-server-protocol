@@ -100,7 +100,7 @@ class ExecuteCommandRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

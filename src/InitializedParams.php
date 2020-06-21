@@ -71,7 +71,7 @@ class InitializedParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

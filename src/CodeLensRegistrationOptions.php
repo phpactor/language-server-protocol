@@ -111,7 +111,7 @@ class CodeLensRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

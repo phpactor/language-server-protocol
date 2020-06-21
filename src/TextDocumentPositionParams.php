@@ -100,7 +100,7 @@ class TextDocumentPositionParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

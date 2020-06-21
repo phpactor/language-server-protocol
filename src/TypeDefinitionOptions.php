@@ -88,7 +88,7 @@ class TypeDefinitionOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

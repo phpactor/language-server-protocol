@@ -112,7 +112,7 @@ class DocumentColorParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

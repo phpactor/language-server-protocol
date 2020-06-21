@@ -99,7 +99,7 @@ class WillSaveTextDocumentParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -89,7 +89,7 @@ class SaveOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

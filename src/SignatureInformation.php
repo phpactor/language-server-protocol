@@ -113,7 +113,7 @@ class SignatureInformation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

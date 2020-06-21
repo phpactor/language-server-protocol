@@ -110,7 +110,7 @@ class CodeActionClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

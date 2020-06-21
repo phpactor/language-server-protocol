@@ -129,7 +129,7 @@ class FormattingOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

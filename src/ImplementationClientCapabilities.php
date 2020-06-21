@@ -103,7 +103,7 @@ class ImplementationClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

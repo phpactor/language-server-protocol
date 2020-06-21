@@ -156,7 +156,7 @@ class DocumentSymbol
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

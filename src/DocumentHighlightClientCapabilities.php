@@ -89,7 +89,7 @@ class DocumentHighlightClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

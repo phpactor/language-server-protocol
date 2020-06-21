@@ -115,7 +115,7 @@ class CodeLens
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

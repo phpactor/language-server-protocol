@@ -100,7 +100,7 @@ class SelectionRange
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

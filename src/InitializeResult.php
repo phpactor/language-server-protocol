@@ -99,7 +99,7 @@ class InitializeResult
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

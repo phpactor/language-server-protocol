@@ -112,7 +112,7 @@ class DocumentSymbolParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

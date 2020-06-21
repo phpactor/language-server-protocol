@@ -88,7 +88,7 @@ class SelectionRangeClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

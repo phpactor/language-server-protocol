@@ -101,7 +101,7 @@ class DeclarationClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

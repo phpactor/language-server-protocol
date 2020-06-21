@@ -85,7 +85,7 @@ class RegistrationParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -107,7 +107,7 @@ class CodeActionContext
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

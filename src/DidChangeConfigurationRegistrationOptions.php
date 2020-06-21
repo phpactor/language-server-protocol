@@ -85,7 +85,7 @@ class DidChangeConfigurationRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

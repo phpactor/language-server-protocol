@@ -141,7 +141,7 @@ class SymbolInformation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

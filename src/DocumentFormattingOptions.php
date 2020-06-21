@@ -90,7 +90,7 @@ class DocumentFormattingOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

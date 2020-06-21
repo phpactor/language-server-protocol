@@ -103,7 +103,7 @@ class TypeDefinitionClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -105,7 +105,7 @@ class VersionedTextDocumentIdentifier
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

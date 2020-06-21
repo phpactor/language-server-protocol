@@ -113,7 +113,7 @@ class Command
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

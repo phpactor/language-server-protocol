@@ -100,7 +100,7 @@ class CompletionContext
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

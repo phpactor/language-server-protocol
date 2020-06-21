@@ -122,7 +122,7 @@ class DocumentHighlightParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

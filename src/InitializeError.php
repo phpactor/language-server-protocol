@@ -93,7 +93,7 @@ class InitializeError
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

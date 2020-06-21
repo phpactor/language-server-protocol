@@ -91,7 +91,7 @@ class StaticRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

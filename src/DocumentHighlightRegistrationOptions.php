@@ -101,7 +101,7 @@ class DocumentHighlightRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -334,7 +334,7 @@ class ServerCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

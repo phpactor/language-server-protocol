@@ -111,7 +111,7 @@ class ColorPresentation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

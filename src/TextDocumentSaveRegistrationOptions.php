@@ -102,7 +102,7 @@ class TextDocumentSaveRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

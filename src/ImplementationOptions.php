@@ -88,7 +88,7 @@ class ImplementationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -119,7 +119,7 @@ class DocumentOnTypeFormattingParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

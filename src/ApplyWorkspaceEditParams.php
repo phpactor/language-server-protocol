@@ -101,7 +101,7 @@ class ApplyWorkspaceEditParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

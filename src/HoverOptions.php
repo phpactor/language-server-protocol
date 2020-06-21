@@ -90,7 +90,7 @@ class HoverOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

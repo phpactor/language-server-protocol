@@ -131,7 +131,7 @@ class ReferenceParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

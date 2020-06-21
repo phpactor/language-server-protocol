@@ -108,7 +108,7 @@ class ParameterInformation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

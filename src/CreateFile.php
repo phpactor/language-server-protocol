@@ -110,7 +110,7 @@ class CreateFile
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -89,7 +89,7 @@ class ExecuteCommandClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

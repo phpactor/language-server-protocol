@@ -98,7 +98,7 @@ class Location
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -111,7 +111,7 @@ class DocumentLinkRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

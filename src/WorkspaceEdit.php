@@ -110,7 +110,7 @@ class WorkspaceEdit
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

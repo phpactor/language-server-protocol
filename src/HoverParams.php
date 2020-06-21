@@ -111,7 +111,7 @@ class HoverParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

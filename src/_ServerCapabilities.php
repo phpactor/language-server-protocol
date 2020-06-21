@@ -325,7 +325,7 @@ class _ServerCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

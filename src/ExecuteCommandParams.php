@@ -111,7 +111,7 @@ class ExecuteCommandParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

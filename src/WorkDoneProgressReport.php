@@ -128,7 +128,7 @@ class WorkDoneProgressReport
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

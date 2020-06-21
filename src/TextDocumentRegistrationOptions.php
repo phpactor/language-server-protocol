@@ -90,7 +90,7 @@ class TextDocumentRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

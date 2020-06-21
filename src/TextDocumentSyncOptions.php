@@ -131,7 +131,7 @@ class TextDocumentSyncOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

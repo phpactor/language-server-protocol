@@ -86,7 +86,7 @@ class DidChangeConfigurationClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

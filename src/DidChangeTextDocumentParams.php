@@ -111,7 +111,7 @@ class DidChangeTextDocumentParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

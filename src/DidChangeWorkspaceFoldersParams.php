@@ -89,7 +89,7 @@ class DidChangeWorkspaceFoldersParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

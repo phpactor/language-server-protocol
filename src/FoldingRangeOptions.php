@@ -88,7 +88,7 @@ class FoldingRangeOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

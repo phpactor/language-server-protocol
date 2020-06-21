@@ -109,7 +109,7 @@ class Range
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

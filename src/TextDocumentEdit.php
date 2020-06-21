@@ -102,7 +102,7 @@ class TextDocumentEdit
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

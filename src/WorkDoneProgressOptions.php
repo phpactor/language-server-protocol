@@ -85,7 +85,7 @@ class WorkDoneProgressOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

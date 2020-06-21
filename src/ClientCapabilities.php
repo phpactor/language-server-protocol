@@ -119,7 +119,7 @@ class ClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

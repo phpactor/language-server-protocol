@@ -120,7 +120,7 @@ class RenameFile
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -152,7 +152,7 @@ export class Renderer
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         `);
     }

@@ -97,7 +97,7 @@ class HoverClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

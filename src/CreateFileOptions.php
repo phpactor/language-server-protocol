@@ -99,7 +99,7 @@ class CreateFileOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

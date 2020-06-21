@@ -101,7 +101,7 @@ class DefinitionRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

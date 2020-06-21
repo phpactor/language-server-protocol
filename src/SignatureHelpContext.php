@@ -127,7 +127,7 @@ class SignatureHelpContext
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -112,7 +112,7 @@ class DocumentLinkParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

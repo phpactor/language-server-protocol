@@ -101,7 +101,7 @@ class ReferenceRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

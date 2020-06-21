@@ -112,7 +112,7 @@ class FoldingRangeParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

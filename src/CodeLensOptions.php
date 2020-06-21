@@ -100,7 +100,7 @@ class CodeLensOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

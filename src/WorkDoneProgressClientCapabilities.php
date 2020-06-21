@@ -86,7 +86,7 @@ class WorkDoneProgressClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

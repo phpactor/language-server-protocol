@@ -99,7 +99,7 @@ class DefinitionClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

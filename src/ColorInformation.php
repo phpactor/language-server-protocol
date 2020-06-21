@@ -99,7 +99,7 @@ class ColorInformation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

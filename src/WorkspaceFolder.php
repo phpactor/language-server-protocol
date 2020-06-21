@@ -97,7 +97,7 @@ class WorkspaceFolder
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

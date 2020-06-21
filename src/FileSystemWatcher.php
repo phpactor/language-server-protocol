@@ -104,7 +104,7 @@ class FileSystemWatcher
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

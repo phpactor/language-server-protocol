@@ -110,7 +110,7 @@ class FoldingRangeClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

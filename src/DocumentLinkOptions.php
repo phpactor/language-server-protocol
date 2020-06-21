@@ -100,7 +100,7 @@ class DocumentLinkOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

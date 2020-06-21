@@ -90,7 +90,7 @@ class DocumentRangeFormattingOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

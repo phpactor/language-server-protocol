@@ -88,7 +88,7 @@ class DeclarationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

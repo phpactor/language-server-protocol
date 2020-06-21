@@ -124,7 +124,7 @@ class SignatureHelpRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

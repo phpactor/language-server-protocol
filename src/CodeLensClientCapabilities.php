@@ -89,7 +89,7 @@ class CodeLensClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

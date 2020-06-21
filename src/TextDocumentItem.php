@@ -121,7 +121,7 @@ class TextDocumentItem
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

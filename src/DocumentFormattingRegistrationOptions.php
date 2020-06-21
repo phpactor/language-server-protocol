@@ -101,7 +101,7 @@ class DocumentFormattingRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

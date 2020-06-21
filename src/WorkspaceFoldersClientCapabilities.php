@@ -86,7 +86,7 @@ class WorkspaceFoldersClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

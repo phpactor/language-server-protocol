@@ -90,7 +90,7 @@ class ReferenceContext
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

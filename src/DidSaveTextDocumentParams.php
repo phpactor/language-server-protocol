@@ -100,7 +100,7 @@ class DidSaveTextDocumentParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

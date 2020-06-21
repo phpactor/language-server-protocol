@@ -100,7 +100,7 @@ class RenameOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

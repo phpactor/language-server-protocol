@@ -101,7 +101,7 @@ class DocumentHighlight
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -99,7 +99,7 @@ class ShowMessageParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

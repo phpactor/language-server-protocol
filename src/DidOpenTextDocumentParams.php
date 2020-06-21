@@ -89,7 +89,7 @@ class DidOpenTextDocumentParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

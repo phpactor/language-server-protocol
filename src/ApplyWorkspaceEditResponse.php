@@ -113,7 +113,7 @@ class ApplyWorkspaceEditResponse
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

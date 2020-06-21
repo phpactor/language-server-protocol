@@ -89,7 +89,7 @@ class DidChangeWatchedFilesRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

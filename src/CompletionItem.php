@@ -280,7 +280,7 @@ class CompletionItem
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

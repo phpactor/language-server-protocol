@@ -123,7 +123,7 @@ class RenameParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

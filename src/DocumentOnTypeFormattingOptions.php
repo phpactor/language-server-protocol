@@ -99,7 +99,7 @@ class DocumentOnTypeFormattingOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

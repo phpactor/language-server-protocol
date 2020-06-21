@@ -99,7 +99,7 @@ class WorkspaceFoldersChangeEvent
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -101,7 +101,7 @@ class DocumentSymbolRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

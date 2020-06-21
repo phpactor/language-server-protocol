@@ -89,7 +89,7 @@ class ReferenceClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

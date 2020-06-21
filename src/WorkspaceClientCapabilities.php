@@ -141,7 +141,7 @@ class WorkspaceClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

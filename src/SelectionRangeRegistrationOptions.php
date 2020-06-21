@@ -110,7 +110,7 @@ class SelectionRangeRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

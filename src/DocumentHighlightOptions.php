@@ -90,7 +90,7 @@ class DocumentHighlightOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

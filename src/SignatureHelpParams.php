@@ -122,7 +122,7 @@ class SignatureHelpParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

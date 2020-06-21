@@ -88,7 +88,7 @@ class DocumentColorOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

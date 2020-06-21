@@ -110,7 +110,7 @@ class FoldingRangeRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

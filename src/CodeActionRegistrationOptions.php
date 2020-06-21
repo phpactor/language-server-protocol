@@ -114,7 +114,7 @@ class CodeActionRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

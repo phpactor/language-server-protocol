@@ -86,7 +86,7 @@ class ConfigurationClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

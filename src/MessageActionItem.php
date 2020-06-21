@@ -86,7 +86,7 @@ class MessageActionItem
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

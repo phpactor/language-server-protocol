@@ -125,7 +125,7 @@ class DocumentLink
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

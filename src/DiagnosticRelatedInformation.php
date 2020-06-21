@@ -101,7 +101,7 @@ class DiagnosticRelatedInformation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

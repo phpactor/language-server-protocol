@@ -123,7 +123,7 @@ class TextDocument
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

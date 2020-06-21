@@ -100,7 +100,7 @@ class CompletionList
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

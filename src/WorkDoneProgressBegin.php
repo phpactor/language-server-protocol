@@ -139,7 +139,7 @@ class WorkDoneProgressBegin
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

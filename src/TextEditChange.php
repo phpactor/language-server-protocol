@@ -74,7 +74,7 @@ class TextEditChange
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

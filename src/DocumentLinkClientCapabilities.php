@@ -99,7 +99,7 @@ class DocumentLinkClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

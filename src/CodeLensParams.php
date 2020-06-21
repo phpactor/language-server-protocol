@@ -112,7 +112,7 @@ class CodeLensParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -96,7 +96,7 @@ class WorkDoneProgressEnd
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

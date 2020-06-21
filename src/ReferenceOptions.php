@@ -90,7 +90,7 @@ class ReferenceOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

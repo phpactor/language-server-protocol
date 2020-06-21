@@ -110,7 +110,7 @@ class ImplementationRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

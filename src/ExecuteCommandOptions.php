@@ -100,7 +100,7 @@ class ExecuteCommandOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -122,7 +122,7 @@ class SelectionRangeParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

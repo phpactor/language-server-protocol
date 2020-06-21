@@ -165,7 +165,7 @@ class _InitializeParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

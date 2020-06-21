@@ -120,7 +120,7 @@ class MarkupContent
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -89,7 +89,7 @@ class DidChangeWatchedFilesParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

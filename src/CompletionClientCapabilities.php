@@ -120,7 +120,7 @@ class CompletionClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

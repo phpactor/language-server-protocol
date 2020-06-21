@@ -101,7 +101,7 @@ class TextEdit
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

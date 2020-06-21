@@ -113,7 +113,7 @@ class WorkspaceSymbolParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

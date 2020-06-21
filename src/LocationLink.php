@@ -126,7 +126,7 @@ class LocationLink
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

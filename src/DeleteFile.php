@@ -110,7 +110,7 @@ class DeleteFile
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

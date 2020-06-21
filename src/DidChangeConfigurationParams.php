@@ -89,7 +89,7 @@ class DidChangeConfigurationParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -88,7 +88,7 @@ class ConfigurationParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

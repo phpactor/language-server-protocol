@@ -113,7 +113,7 @@ class SignatureHelp
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

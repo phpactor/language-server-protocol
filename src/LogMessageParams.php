@@ -99,7 +99,7 @@ class LogMessageParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

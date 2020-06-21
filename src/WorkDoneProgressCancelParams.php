@@ -86,7 +86,7 @@ class WorkDoneProgressCancelParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

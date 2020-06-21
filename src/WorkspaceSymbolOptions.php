@@ -90,7 +90,7 @@ class WorkspaceSymbolOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

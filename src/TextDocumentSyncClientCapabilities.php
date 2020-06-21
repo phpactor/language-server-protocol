@@ -118,7 +118,7 @@ class TextDocumentSyncClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

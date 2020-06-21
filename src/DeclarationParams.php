@@ -120,7 +120,7 @@ class DeclarationParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

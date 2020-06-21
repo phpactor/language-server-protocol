@@ -100,7 +100,7 @@ class Unregistration
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

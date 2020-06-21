@@ -132,7 +132,7 @@ class CodeActionParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -97,7 +97,7 @@ class RenameClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

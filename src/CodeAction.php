@@ -150,7 +150,7 @@ class CodeAction
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -133,7 +133,7 @@ class CompletionParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

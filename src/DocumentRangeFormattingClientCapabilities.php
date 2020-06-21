@@ -89,7 +89,7 @@ class DocumentRangeFormattingClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

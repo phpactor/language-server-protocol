@@ -96,7 +96,7 @@ class ConfigurationItem
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

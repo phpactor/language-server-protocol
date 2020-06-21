@@ -101,7 +101,7 @@ class HoverRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

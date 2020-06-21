@@ -109,7 +109,7 @@ class PrepareRenameParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

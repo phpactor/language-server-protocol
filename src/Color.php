@@ -119,7 +119,7 @@ class Color
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

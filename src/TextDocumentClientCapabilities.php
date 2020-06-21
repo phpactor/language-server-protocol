@@ -299,7 +299,7 @@ class TextDocumentClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

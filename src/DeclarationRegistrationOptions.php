@@ -110,7 +110,7 @@ class DeclarationRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

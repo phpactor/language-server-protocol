@@ -111,7 +111,7 @@ class PublishDiagnosticsClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

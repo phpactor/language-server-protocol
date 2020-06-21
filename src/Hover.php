@@ -99,7 +99,7 @@ class Hover
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

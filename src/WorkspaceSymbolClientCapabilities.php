@@ -99,7 +99,7 @@ class WorkspaceSymbolClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

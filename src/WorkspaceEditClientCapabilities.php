@@ -108,7 +108,7 @@ class WorkspaceEditClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

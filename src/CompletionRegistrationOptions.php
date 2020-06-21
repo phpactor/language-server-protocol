@@ -144,7 +144,7 @@ class CompletionRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

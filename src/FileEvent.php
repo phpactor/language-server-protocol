@@ -99,7 +99,7 @@ class FileEvent
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

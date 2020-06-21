@@ -88,7 +88,7 @@ class DidChangeWatchedFilesClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

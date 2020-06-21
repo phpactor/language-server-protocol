@@ -110,7 +110,7 @@ class TypeDefinitionRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

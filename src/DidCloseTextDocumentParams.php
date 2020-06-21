@@ -89,7 +89,7 @@ class DidCloseTextDocumentParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

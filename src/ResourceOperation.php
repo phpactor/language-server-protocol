@@ -85,7 +85,7 @@ class ResourceOperation
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

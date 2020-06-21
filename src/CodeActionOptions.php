@@ -103,7 +103,7 @@ class CodeActionOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

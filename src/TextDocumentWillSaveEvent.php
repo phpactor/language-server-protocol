@@ -99,7 +99,7 @@ class TextDocumentWillSaveEvent
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

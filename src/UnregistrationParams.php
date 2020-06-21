@@ -85,7 +85,7 @@ class UnregistrationParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

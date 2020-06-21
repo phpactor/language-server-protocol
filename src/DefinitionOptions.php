@@ -90,7 +90,7 @@ class DefinitionOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

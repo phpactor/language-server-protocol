@@ -113,7 +113,7 @@ class SignatureHelpClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

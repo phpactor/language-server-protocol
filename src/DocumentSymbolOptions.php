@@ -90,7 +90,7 @@ class DocumentSymbolOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

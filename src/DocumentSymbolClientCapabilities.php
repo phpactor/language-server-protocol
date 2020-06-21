@@ -109,7 +109,7 @@ class DocumentSymbolClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

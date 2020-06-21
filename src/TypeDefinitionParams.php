@@ -120,7 +120,7 @@ class TypeDefinitionParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

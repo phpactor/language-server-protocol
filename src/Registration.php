@@ -110,7 +110,7 @@ class Registration
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

@@ -121,7 +121,7 @@ class DocumentRangeFormattingParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

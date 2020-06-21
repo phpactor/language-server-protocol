@@ -106,7 +106,7 @@ class ShowMessageRequestParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

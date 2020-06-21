@@ -86,7 +86,7 @@ class WorkspaceFoldersInitializeParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

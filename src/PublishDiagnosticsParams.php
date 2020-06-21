@@ -109,7 +109,7 @@ class PublishDiagnosticsParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

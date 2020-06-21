@@ -154,7 +154,7 @@ class Diagnostic
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

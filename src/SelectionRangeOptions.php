@@ -88,7 +88,7 @@ class SelectionRangeOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

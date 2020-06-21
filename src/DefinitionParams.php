@@ -122,7 +122,7 @@ class DefinitionParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

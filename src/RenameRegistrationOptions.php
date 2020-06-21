@@ -111,7 +111,7 @@ class RenameRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

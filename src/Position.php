@@ -114,7 +114,7 @@ class Position
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

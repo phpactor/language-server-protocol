@@ -87,7 +87,7 @@ class PartialResultParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

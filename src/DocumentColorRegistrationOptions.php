@@ -110,7 +110,7 @@ class DocumentColorRegistrationOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

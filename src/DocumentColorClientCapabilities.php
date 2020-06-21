@@ -88,7 +88,7 @@ class DocumentColorClientCapabilities
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

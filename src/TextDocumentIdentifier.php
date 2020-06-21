@@ -89,7 +89,7 @@ class TextDocumentIdentifier
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

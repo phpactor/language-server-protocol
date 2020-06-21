@@ -99,7 +99,7 @@ class DeleteFileOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

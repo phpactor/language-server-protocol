@@ -133,7 +133,7 @@ class CompletionOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

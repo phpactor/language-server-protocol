@@ -111,7 +111,7 @@ class DocumentFormattingParams
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }

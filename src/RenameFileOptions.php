@@ -99,7 +99,7 @@ class RenameFileOptions
             }
         }
 
-        throw $exception;
+        throw $lastException;
     }
         
 }
