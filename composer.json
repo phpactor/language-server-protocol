@@ -24,7 +24,14 @@
         "dantleech/invoke": "^1.0.2"
     },
     "require-dev": {
-        "phpstan/phpstan": "^0.12.0@dev",
+        "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.2"
+    },
+    "scripts": {
+        "integrate": [
+            "npm run-script generate",
+            "./vendor/bin/phpunit",
+            "./vendor/bin/phpstan analyze"
+        ]
     }
 }
