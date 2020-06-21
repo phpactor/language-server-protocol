@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Represents a diagnostic, such as a compiler error or warning. Diagnostic objects

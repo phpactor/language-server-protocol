@@ -11,6 +11,7 @@ export class Renderer
         source.push(`namespace LanguageServerProtocol;`);
         source.push(``);
         source.push(`use DTL\\Invoke\\Invoke;`);
+        source.push(`use Exception;`);
         source.push(``);
 
         if (phpClass.mixins.length > 0 || phpClass.docs.length > 0) {

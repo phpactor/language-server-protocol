@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Defines the capabilities provided by the client.

@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Represents a collection of [completion items](#CompletionItem) to be presented

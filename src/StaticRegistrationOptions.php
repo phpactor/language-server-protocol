@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Static registration options to be returned in the initialize

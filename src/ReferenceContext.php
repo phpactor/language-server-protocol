@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Value-object that contains additional information when

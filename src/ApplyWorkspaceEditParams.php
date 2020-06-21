@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * The parameters passed via a apply workspace edit request.
@@ -43,7 +44,6 @@ class ApplyWorkspaceEditParams
         $map = [
             'edit' => [WorkspaceEdit::class],
         ];
-
         foreach ($array as $key => &$value) {
             if (!isset($map[$key])) {
                 continue;

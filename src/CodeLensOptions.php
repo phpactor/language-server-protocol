@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Code Lens provider options of a [CodeLensRequest](#CodeLensRequest).

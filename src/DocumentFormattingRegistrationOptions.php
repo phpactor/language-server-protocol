@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Registration options for a [DocumentFormattingRequest](#DocumentFormattingRequest).

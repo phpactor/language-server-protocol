@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * The client capabilities of a [ExecuteCommandRequest](#ExecuteCommandRequest).

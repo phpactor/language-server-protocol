@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Client capabilities of a [DocumentRangeFormattingRequest](#DocumentRangeFormattingRequest).

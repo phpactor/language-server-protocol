@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, StaticRegistrationOptions, DocumentColorOptions

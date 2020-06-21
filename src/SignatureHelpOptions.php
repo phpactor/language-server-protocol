@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Server Capabilities for a [SignatureHelpRequest](#SignatureHelpRequest).

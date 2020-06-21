@@ -3,6 +3,7 @@
 namespace LanguageServerProtocol;
 
 use DTL\Invoke\Invoke;
+use Exception;
 
 /**
  * Parameters for a [ColorPresentationRequest](#ColorPresentationRequest).
