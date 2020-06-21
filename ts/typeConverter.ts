@@ -20,13 +20,17 @@ export class PhpType
 {
     real: string|null;
     documented: string;
+    classNames: ClassName[] = [];
 
-    constructor (real: string, documented: string)
+    constructor (real: string, documented: string, classNames: ClassName[] = [])
     {
         this.real = real;
         this.documented = documented;
+        this.classNames = classNames;
     }
 }
+
+export type ClassName = string;
 
 export class TypeConverter
 {
@@ -103,11 +107,11 @@ export class TypeConverter
             }
 
             if (this.nodeMap.interfaces.has(typeName)) {
-                return new PhpType(typeName, typeName);
+                return new PhpType(typeName, typeName, [ typeName ]);
             }
 
             if (this.nodeMap.intersections.has(typeName)) {
-                return new PhpType(typeName, typeName);
+                return new PhpType(typeName, typeName, [ typeName ]);
             }
 
             console.warn(`Unknown type ${typeName}`);
@@ -130,9 +134,20 @@ export class TypeConverter
             return this.phpType(type);
         });
 
+        const classNames = type.types.map((type: TypeNode) => {
+            if (!isTypeReferenceNode(type) || !isIdentifier(type.typeName)) {
+                return null;
+            }
+
+            return type.typeName.escapedText.toString();
+        }).filter((type) => {
+            return type !== null;
+        });
+
         return new PhpType(
             null,
-            phpTypes.map((type: PhpType) => { return type.documented; }).join('|')
+            phpTypes.map((type: PhpType) => { return type.documented; }).join('|'),
+            classNames as ClassName[]
         );
     }
 

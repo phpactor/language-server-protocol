@@ -218,6 +218,43 @@ class TextDocumentClientCapabilities
      */
     public static function fromArray(array $array): self
     {
+        $map = [
+            'synchronization' => [TextDocumentSyncClientCapabilities::class],
+            'completion' => [CompletionClientCapabilities::class],
+            'hover' => [HoverClientCapabilities::class],
+            'signatureHelp' => [SignatureHelpClientCapabilities::class],
+            'declaration' => [DeclarationClientCapabilities::class],
+            'definition' => [DefinitionClientCapabilities::class],
+            'typeDefinition' => [TypeDefinitionClientCapabilities::class],
+            'implementation' => [ImplementationClientCapabilities::class],
+            'references' => [ReferenceClientCapabilities::class],
+            'documentHighlight' => [DocumentHighlightClientCapabilities::class],
+            'documentSymbol' => [DocumentSymbolClientCapabilities::class],
+            'codeAction' => [CodeActionClientCapabilities::class],
+            'codeLens' => [CodeLensClientCapabilities::class],
+            'documentLink' => [DocumentLinkClientCapabilities::class],
+            'colorProvider' => [DocumentColorClientCapabilities::class],
+            'formatting' => [DocumentFormattingClientCapabilities::class],
+            'rangeFormatting' => [DocumentRangeFormattingClientCapabilities::class],
+            'onTypeFormatting' => [DocumentOnTypeFormattingClientCapabilities::class],
+            'rename' => [RenameClientCapabilities::class],
+            'foldingRange' => [FoldingRangeClientCapabilities::class],
+            'selectionRange' => [SelectionRangeClientCapabilities::class],
+            'publishDiagnostics' => [PublishDiagnosticsClientCapabilities::class],
+        ];
+        foreach ($array as $key => &$value) {
+            if (!isset($map[$key])) {
+                continue;
+            }
+            foreach ($map[$key] as $className) {
+               try {
+                   $value = Invoke::new($className, $value);
+                   continue;
+               } catch (Exception $e) {
+                   continue;
+               }
+            }
+        }
         return Invoke::new(self::class, $array);
     }
         

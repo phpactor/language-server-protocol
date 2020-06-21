@@ -77,6 +77,22 @@ class SymbolInformation
      */
     public static function fromArray(array $array): self
     {
+        $map = [
+            'location' => [Location::class],
+        ];
+        foreach ($array as $key => &$value) {
+            if (!isset($map[$key])) {
+                continue;
+            }
+            foreach ($map[$key] as $className) {
+               try {
+                   $value = Invoke::new($className, $value);
+                   continue;
+               } catch (Exception $e) {
+                   continue;
+               }
+            }
+        }
         return Invoke::new(self::class, $array);
     }
         

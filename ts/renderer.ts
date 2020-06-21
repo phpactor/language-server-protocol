@@ -120,14 +120,52 @@ export class Renderer
     }
 
     buildArrayConstructor(declaration: PhpClass, source: string[]): void {
+
+        const normalizerSource = this.buildClassNormalizer(declaration, source).join("\n");
+
         source.push(`
     /**
      * @param array<mixed> $array
      */
     public static function fromArray(array $array): self
     {
+        ${normalizerSource}
         return Invoke::new(self::class, $array);
     }
         `);
+    }
+
+    buildClassNormalizer(declaration: PhpClass, source: string[]): string[] {
+        const classResolutionSource = [
+            '$map = [',
+        ];
+
+        declaration.properties.forEach((property: Property) => {
+            if (property.type.classNames.length === 0) {
+                return;
+            }
+
+            const classNames = property.type.classNames.map((name) => {
+                return name + '::class';
+            }).join(', ');
+
+            classResolutionSource.push(`            '${property.name}' => [${classNames}],`);
+        });
+        classResolutionSource.push('        ];'),
+        classResolutionSource.push('        foreach ($array as $key => &$value) {'),
+        classResolutionSource.push('            if (!isset($map[$key])) {');
+        classResolutionSource.push('                continue;');
+        classResolutionSource.push('            }');
+        classResolutionSource.push('            foreach ($map[$key] as $className) {');
+        classResolutionSource.push('               try {');
+        classResolutionSource.push('                   $value = Invoke::new($className, $value);');
+        classResolutionSource.push('                   continue;');
+        classResolutionSource.push('               } catch (Exception $e) {');
+        classResolutionSource.push('                   continue;');
+        classResolutionSource.push('               }');
+        classResolutionSource.push('            }');
+        classResolutionSource.push('        }');
+
+        return classResolutionSource;
     }
 }

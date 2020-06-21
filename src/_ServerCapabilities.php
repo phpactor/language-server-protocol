@@ -242,6 +242,44 @@ class _ServerCapabilities
      */
     public static function fromArray(array $array): self
     {
+        $map = [
+            'textDocumentSync' => [TextDocumentSyncOptions::class, TextDocumentSyncKind::class],
+            'completionProvider' => [CompletionOptions::class],
+            'hoverProvider' => [HoverOptions::class],
+            'signatureHelpProvider' => [SignatureHelpOptions::class],
+            'declarationProvider' => [DeclarationOptions::class, DeclarationRegistrationOptions::class],
+            'definitionProvider' => [DefinitionOptions::class],
+            'typeDefinitionProvider' => [TypeDefinitionOptions::class, TypeDefinitionRegistrationOptions::class],
+            'implementationProvider' => [ImplementationOptions::class, ImplementationRegistrationOptions::class],
+            'referencesProvider' => [ReferenceOptions::class],
+            'documentHighlightProvider' => [DocumentHighlightOptions::class],
+            'documentSymbolProvider' => [DocumentSymbolOptions::class],
+            'codeActionProvider' => [CodeActionOptions::class],
+            'codeLensProvider' => [CodeLensOptions::class],
+            'documentLinkProvider' => [DocumentLinkOptions::class],
+            'colorProvider' => [DocumentColorOptions::class, DocumentColorRegistrationOptions::class],
+            'workspaceSymbolProvider' => [WorkspaceSymbolOptions::class],
+            'documentFormattingProvider' => [DocumentFormattingOptions::class],
+            'documentRangeFormattingProvider' => [DocumentRangeFormattingOptions::class],
+            'documentOnTypeFormattingProvider' => [DocumentOnTypeFormattingOptions::class],
+            'renameProvider' => [RenameOptions::class],
+            'foldingRangeProvider' => [FoldingRangeOptions::class, FoldingRangeRegistrationOptions::class],
+            'selectionRangeProvider' => [SelectionRangeOptions::class, SelectionRangeRegistrationOptions::class],
+            'executeCommandProvider' => [ExecuteCommandOptions::class],
+        ];
+        foreach ($array as $key => &$value) {
+            if (!isset($map[$key])) {
+                continue;
+            }
+            foreach ($map[$key] as $className) {
+               try {
+                   $value = Invoke::new($className, $value);
+                   continue;
+               } catch (Exception $e) {
+                   continue;
+               }
+            }
+        }
         return Invoke::new(self::class, $array);
     }
         

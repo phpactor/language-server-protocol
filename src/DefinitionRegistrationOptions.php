@@ -40,6 +40,22 @@ class DefinitionRegistrationOptions
      */
     public static function fromArray(array $array): self
     {
+        $map = [
+            'documentSelector' => [DocumentSelector::class],
+        ];
+        foreach ($array as $key => &$value) {
+            if (!isset($map[$key])) {
+                continue;
+            }
+            foreach ($map[$key] as $className) {
+               try {
+                   $value = Invoke::new($className, $value);
+                   continue;
+               } catch (Exception $e) {
+                   continue;
+               }
+            }
+        }
         return Invoke::new(self::class, $array);
     }
         
