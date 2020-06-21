@@ -1,10 +1,10 @@
 <?php
 
-namespace LanguageServerProtocol\Tests\Unit;
+namespace Phpactor\LanguageServerProtocol\Tests\Unit;
 
-use LanguageServerProtocol\CompletionItem;
-use LanguageServerProtocol\CompletionList;
 use PHPUnit\Framework\TestCase;
+use Phpactor\LanguageServerProtocol\CompletionItem;
+use Phpactor\LanguageServerProtocol\CompletionList;
 
 class CompletionListTest extends TestCase
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace LanguageServerProtocol\Tests\Unit;
+namespace Phpactor\LanguageServerProtocol\Tests\Unit;
 
-use LanguageServerProtocol\Command;
-use LanguageServerProtocol\CompletionItem;
-use LanguageServerProtocol\MarkupContent;
-use LanguageServerProtocol\Position;
-use LanguageServerProtocol\Range;
-use LanguageServerProtocol\TextEdit;
 use PHPUnit\Framework\TestCase;
+use Phpactor\LanguageServerProtocol\Command;
+use Phpactor\LanguageServerProtocol\Position;
+use Phpactor\LanguageServerProtocol\Range;
+use Phpactor\LanguageServerProtocol\TextEdit;
+use Phpactor\LanguageServerProtocol\MarkupContent;
+use Phpactor\LanguageServerProtocol\CompletionItem;
 use RuntimeException;
 
 class CompletionItemTest extends TestCase

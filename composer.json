@@ -12,12 +12,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "LanguageServerProtocol\\": "src/"
+            "Phpactor\\LanguageServerProtocol\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LanguageServerProtocol\\Tests\\": "tests/"
+            "Phpactor\\LanguageServerProtocol\\Tests\\": "tests/"
         }
     },
     "require": {

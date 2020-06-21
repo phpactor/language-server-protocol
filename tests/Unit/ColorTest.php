@@ -1,9 +1,9 @@
 <?php
 
-namespace LanguageServerProtocol\Tests\Unit;
+namespace Phpactor\LanguageServerProtocol\Tests\Unit;
 
-use LanguageServerProtocol\Color;
 use PHPUnit\Framework\TestCase;
+use Phpactor\LanguageServerProtocol\Color;
 
 class ColorTest extends TestCase
 {
