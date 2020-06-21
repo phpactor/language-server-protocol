@@ -25,14 +25,14 @@ class CompletionItem
      * The kind of this completion item. Based of the kind
      * an icon is chosen by the editor.
      *
-     * @var 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|null
+     * @var CompletionItemKind::*|null
      */
     public $kind;
 
     /**
      * Tags for this completion item.
      *
-     * @var array<1>|null
+     * @var array<CompletionItemTag::*>|null
      */
     public $tags;
 
@@ -108,7 +108,7 @@ class CompletionItem
      * and the `newText` property of a provided `textEdit`. If ommitted defaults to
      * `InsertTextFormat.PlainText`.
      *
-     * @var 1|2|null
+     * @var InsertTextFormat::*|null
      */
     public $insertTextFormat;
 
@@ -166,8 +166,8 @@ class CompletionItem
 
     /**
      * @param string $label
-     * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|null $kind
-     * @param array<1>|null $tags
+     * @param CompletionItemKind::*|null $kind
+     * @param array<CompletionItemTag::*>|null $tags
      * @param string|null $detail
      * @param string|MarkupContent|null $documentation
      * @param bool|null $deprecated
@@ -175,7 +175,7 @@ class CompletionItem
      * @param string|null $sortText
      * @param string|null $filterText
      * @param string|null $insertText
-     * @param 1|2|null $insertTextFormat
+     * @param InsertTextFormat::*|null $insertTextFormat
      * @param TextEdit|null $textEdit
      * @param array<TextEdit>|null $additionalTextEdits
      * @param array<string>|null $commitCharacters

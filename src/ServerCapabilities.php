@@ -15,7 +15,7 @@ class ServerCapabilities
      * Defines how text documents are synced. Is either a detailed structure defining each notification or
      * for backwards compatibility the TextDocumentSyncKind number.
      *
-     * @var TextDocumentSyncOptions|0|1|2|null
+     * @var TextDocumentSyncOptions|TextDocumentSyncKind::*|null
      */
     public $textDocumentSync;
 
@@ -192,7 +192,7 @@ class ServerCapabilities
     public $workspace;
 
     /**
-     * @param TextDocumentSyncOptions|0|1|2|null $textDocumentSync
+     * @param TextDocumentSyncOptions|TextDocumentSyncKind::*|null $textDocumentSync
      * @param CompletionOptions|null $completionProvider
      * @param bool|HoverOptions|null $hoverProvider
      * @param SignatureHelpOptions|null $signatureHelpProvider

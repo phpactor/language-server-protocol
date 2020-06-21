@@ -5,13 +5,11 @@ import {
     isInterfaceDeclaration,
     InterfaceDeclaration,
     isIntersectionTypeNode,
-    SyntaxKind,
-    isEnumDeclaration,
-    isNamespaceExport,
     isModuleDeclaration,
     ModuleDeclaration
 } from 'typescript';
 import {isNull} from 'util';
+import {constantsFromModule} from './phpClass';
 
 export class NodeMap {
     aliases: TypeAliasMap = new TypeAliasMap();
@@ -19,7 +17,7 @@ export class NodeMap {
     interfaces: InterfaceMap = new InterfaceMap();
     modules: ModuleMap = new ModuleMap();
 
-    hasName(name: string) {
+    hasIntersectionOrInterface(name: string) {
         return this.intersections.has(name) || this.interfaces.has(name);
     }
 }
@@ -47,11 +45,6 @@ export function createNodeMap(nodes: Node[], filter: RegExp = null): NodeMap {
                 return;
             }
 
-            if (isModuleDeclaration(node)) {
-                map.modules.set(node.name.text, node);
-                return;
-            }
-
             if (isTypeAliasDeclaration(node)) {
 
                 if (isIntersectionTypeNode(node.type)) {
@@ -60,6 +53,14 @@ export function createNodeMap(nodes: Node[], filter: RegExp = null): NodeMap {
                 }
 
                 map.aliases.set(node.name.escapedText.toString(), node.type);
+                return;
+            }
+
+            if (isModuleDeclaration(node)) {
+                if (constantsFromModule(node).size === 0) {
+                    return;
+                }
+                map.modules.set(node.name.text, node);
                 return;
             }
 

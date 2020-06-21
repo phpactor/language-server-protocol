@@ -23,7 +23,7 @@ class Diagnostic
      * The diagnostic's severity. Can be omitted. If omitted it is up to the
      * client to interpret diagnostics as error, warning, info or hint.
      *
-     * @var 1|2|3|4|null
+     * @var DiagnosticSeverity::*|null
      */
     public $severity;
 
@@ -53,7 +53,7 @@ class Diagnostic
     /**
      * Additional metadata about the diagnostic.
      *
-     * @var array<1|2>|null
+     * @var array<DiagnosticTag::*>|null
      */
     public $tags;
 
@@ -67,11 +67,11 @@ class Diagnostic
 
     /**
      * @param Range $range
-     * @param 1|2|3|4|null $severity
+     * @param DiagnosticSeverity::*|null $severity
      * @param int|string|null $code
      * @param string|null $source
      * @param string $message
-     * @param array<1|2>|null $tags
+     * @param array<DiagnosticTag::*>|null $tags
      * @param array<DiagnosticRelatedInformation>|null $relatedInformation
      */
     public function __construct(Range $range, string $message, $severity = null, $code = null, ?string $source = null, ?array $tags = null, ?array $relatedInformation = null)

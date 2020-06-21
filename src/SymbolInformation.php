@@ -22,7 +22,7 @@ class SymbolInformation
     /**
      * The kind of this symbol.
      *
-     * @var 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26
+     * @var SymbolKind::*
      */
     public $kind;
 
@@ -60,7 +60,7 @@ class SymbolInformation
 
     /**
      * @param string $name
-     * @param 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26 $kind
+     * @param SymbolKind::* $kind
      * @param bool|null $deprecated
      * @param Location $location
      * @param string|null $containerName

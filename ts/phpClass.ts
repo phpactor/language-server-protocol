@@ -14,11 +14,51 @@ import {
     isVariableDeclarationList,
     isVariableDeclaration,
     isLiteralTypeNode,
-    isTypeNode
+    isTypeNode,
+    forEachChild,
+    isExportDeclaration,
+    isExportSpecifier
 } from 'typescript';
 
 import {PhpType, TypeConverter} from './typeConverter';
 import {NodeMap} from './nodeMap';
+
+function forEachDescendant(node, callback) {
+    callback(node);
+    forEachChild(node, (childNode: Node) => {
+        forEachDescendant(childNode, callback);
+    });
+}
+
+export function constantsFromModule(module: ModuleDeclaration): PhpConstants {
+    const constants = new PhpConstants();
+
+    forEachDescendant(module, (node: Node) => {
+        if (!isVariableDeclaration(node)) {
+            return false;
+        }
+        if (!isIdentifier(node.name)) {
+            return false;
+        }
+        if (node.type && isLiteralTypeNode(node.type)) {
+            constants.set(node.name.escapedText.toString(), new PhpConstant(
+                node.name.escapedText.toString(),
+                node.type.literal.getText()
+            ));
+            return false;
+        }
+        if (node.initializer) {
+            constants.set(node.name.escapedText.toString(), new PhpConstant(
+                node.name.escapedText.toString(),
+                node.initializer.getText()
+            ));
+            return false;
+        }
+    });
+
+    return constants;
+}
+
 
 export abstract class PhpClassLike {
     kind: string;
@@ -180,39 +220,7 @@ export class PhpClassResolver
     }
 
     private interfaceFromModule(name: string, module: ModuleDeclaration): PhpInterface|null {
-        const constants = new PhpConstants();
-
-        module.forEachChild((node: Node) => {
-            if (!isModuleBlock(node)) {
-                return;
-            }
-
-            node.statements.forEach((node: Node) => {
-                node.forEachChild((node: Node)  => {
-                    if (!isVariableDeclarationList(node)) {
-                        return;
-                    }
-                    node.declarations.forEach((node: Node) => {
-                        if (!isVariableDeclaration(node)) {
-                            return;
-                        }
-                        if (!isIdentifier(node.name)) {
-                            return;
-                        }
-                        if (!node.type) {
-                            return;
-                        }
-                        if (!isLiteralTypeNode(node.type)) {
-                            return;
-                        }
-                        constants.set(node.name.escapedText.toString(), new PhpConstant(
-                            node.name.escapedText.toString(),
-                            node.type.literal.getText()
-                        ));
-                    });
-                });
-            });
-        });
+        const constants = constantsFromModule(module);
 
         if (constants.size === 0) {
             return null;

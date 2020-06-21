@@ -20,7 +20,7 @@ class TextDocumentSyncOptions
      * Change notifications are sent to the server. See TextDocumentSyncKind.None, TextDocumentSyncKind.Full
      * and TextDocumentSyncKind.Incremental. If omitted it defaults to TextDocumentSyncKind.None.
      *
-     * @var 0|1|2|null
+     * @var TextDocumentSyncKind::*|null
      */
     public $change;
 
@@ -50,7 +50,7 @@ class TextDocumentSyncOptions
 
     /**
      * @param bool|null $openClose
-     * @param 0|1|2|null $change
+     * @param TextDocumentSyncKind::*|null $change
      * @param bool|null $willSave
      * @param bool|null $willSaveWaitUntil
      * @param SaveOptions|null $save

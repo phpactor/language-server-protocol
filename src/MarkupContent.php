@@ -35,7 +35,7 @@ class MarkupContent
     /**
      * The type of the Markup
      *
-     * @var 'plaintext'|'markdown'
+     * @var MarkupKind::*
      */
     public $kind;
 
@@ -47,7 +47,7 @@ class MarkupContent
     public $value;
 
     /**
-     * @param 'plaintext'|'markdown' $kind
+     * @param MarkupKind::* $kind
      * @param string $value
      */
     public function __construct($kind, string $value)

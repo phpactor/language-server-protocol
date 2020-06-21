@@ -19,13 +19,13 @@ class HoverClientCapabilities
      * Client supports the follow content formats for the content
      * property. The order describes the preferred format of the client.
      *
-     * @var array<'plaintext'|'markdown'>|null
+     * @var array<MarkupKind::*>|null
      */
     public $contentFormat;
 
     /**
      * @param bool|null $dynamicRegistration
-     * @param array<'plaintext'|'markdown'>|null $contentFormat
+     * @param array<MarkupKind::*>|null $contentFormat
      */
     public function __construct(?bool $dynamicRegistration = null, ?array $contentFormat = null)
     {

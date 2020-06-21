@@ -104,6 +104,11 @@ export class TypeConverter
 
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
             const typeName = type.typeName.escapedText.toString();
+
+            if (this.nodeMap.modules.has(typeName)) {
+                return new PhpType(null, typeName + '::*');
+            }
+
             if (this.nodeMap.aliases.has(typeName)) {
                 return this.phpType(this.nodeMap.aliases.get(typeName));
             }
@@ -143,7 +148,7 @@ export class TypeConverter
 
             const name = type.typeName.escapedText.toString();
 
-            if (!this.nodeMap.hasName(name)) {
+            if (!this.nodeMap.hasIntersectionOrInterface(name)) {
                 //console.warn(`Could not find type ${name}`);
                 return null;
             }

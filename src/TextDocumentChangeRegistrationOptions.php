@@ -16,7 +16,7 @@ class TextDocumentChangeRegistrationOptions
     /**
      * How documents are synced to the server.
      *
-     * @var 0|1|2
+     * @var TextDocumentSyncKind::*
      */
     public $syncKind;
 
@@ -29,7 +29,7 @@ class TextDocumentChangeRegistrationOptions
     public $documentSelector;
 
     /**
-     * @param 0|1|2 $syncKind
+     * @param TextDocumentSyncKind::* $syncKind
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      */
     public function __construct($syncKind, $documentSelector = null)

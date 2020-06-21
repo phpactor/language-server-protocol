@@ -14,7 +14,7 @@ class CompletionContext
     /**
      * How the completion was triggered.
      *
-     * @var 1|2|3
+     * @var CompletionTriggerKind::*
      */
     public $triggerKind;
 
@@ -27,7 +27,7 @@ class CompletionContext
     public $triggerCharacter;
 
     /**
-     * @param 1|2|3 $triggerKind
+     * @param CompletionTriggerKind::* $triggerKind
      * @param string|null $triggerCharacter
      */
     public function __construct($triggerKind, ?string $triggerCharacter = null)

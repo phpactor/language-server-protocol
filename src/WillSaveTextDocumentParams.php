@@ -21,13 +21,13 @@ class WillSaveTextDocumentParams
     /**
      * The 'TextDocumentSaveReason'.
      *
-     * @var 1|2|3
+     * @var TextDocumentSaveReason::*
      */
     public $reason;
 
     /**
      * @param TextDocumentIdentifier $textDocument
-     * @param 1|2|3 $reason
+     * @param TextDocumentSaveReason::* $reason
      */
     public function __construct(TextDocumentIdentifier $textDocument, $reason)
     {

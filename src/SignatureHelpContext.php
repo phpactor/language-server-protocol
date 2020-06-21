@@ -14,7 +14,7 @@ class SignatureHelpContext
     /**
      * Action that caused signature help to be triggered.
      *
-     * @var 1|2|3
+     * @var SignatureHelpTriggerKind::*
      */
     public $triggerKind;
 
@@ -48,7 +48,7 @@ class SignatureHelpContext
     public $activeSignatureHelp;
 
     /**
-     * @param 1|2|3 $triggerKind
+     * @param SignatureHelpTriggerKind::* $triggerKind
      * @param string|null $triggerCharacter
      * @param bool $isRetrigger
      * @param SignatureHelp|null $activeSignatureHelp

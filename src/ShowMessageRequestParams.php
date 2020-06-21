@@ -11,7 +11,7 @@ class ShowMessageRequestParams
     /**
      * The message type. See {@link MessageType}
      *
-     * @var 1|2|3|4
+     * @var MessageType::*
      */
     public $type;
 
@@ -30,7 +30,7 @@ class ShowMessageRequestParams
     public $actions;
 
     /**
-     * @param 1|2|3|4 $type
+     * @param MessageType::* $type
      * @param string $message
      * @param array<MessageActionItem>|null $actions
      */

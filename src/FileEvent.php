@@ -21,13 +21,13 @@ class FileEvent
     /**
      * The change type.
      *
-     * @var 1|2|3
+     * @var FileChangeType::*
      */
     public $type;
 
     /**
      * @param string $uri
-     * @param 1|2|3 $type
+     * @param FileChangeType::* $type
      */
     public function __construct(string $uri, $type)
     {
