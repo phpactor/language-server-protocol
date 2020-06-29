@@ -83,6 +83,12 @@ class DefinitionParams
                 ));
             }
 
+            // from here we only care about arrays that can be transformed into
+            // objects
+            if (!is_array($value)) {
+                continue;
+            }
+
             if (empty($map[$key]['names'])) {
                 continue;
             }

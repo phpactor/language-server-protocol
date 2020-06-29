@@ -33,6 +33,29 @@ class CompletionItemTest extends TestCase
         self::assertEquals('Barfoo', $item->label);
     }
 
+    public function testNull(): void
+    {
+        $item = CompletionItem::fromArray([
+            'tags' => null,
+            'label' => 'Barfoo',
+            'foobar' => 'barfoo'
+        ], true);
+
+        self::assertEquals('Barfoo', $item->label);
+    }
+
+    public function testIterableNull(): void
+    {
+        $item = CompletionItem::fromArray([
+            'additionalTextEdits' => null,
+            'label' => 'Barfoo',
+            'foobar' => 'barfoo'
+        ], true);
+
+        self::assertEquals('Barfoo', $item->label);
+    }
+
+
     public function testFromArray(): void
     {
         $item = CompletionItem::fromArray([
