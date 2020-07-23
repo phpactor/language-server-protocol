@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class DocumentLinkOptions
+class DocumentLinkOptions extends WorkDoneProgressOptions
 {
     /**
      * Document links have a resolve provider as well.

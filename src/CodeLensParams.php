@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class CodeLensParams
+class CodeLensParams extends WorkDoneProgressParams
 {
     /**
      * The document to request code lens for.

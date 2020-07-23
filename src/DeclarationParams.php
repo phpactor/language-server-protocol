@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
-class DeclarationParams
+class DeclarationParams extends TextDocumentPositionParams
 {
     /**
      * The text document.

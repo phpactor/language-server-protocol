@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkspaceSymbolOptions
  */
-class WorkspaceSymbolRegistrationOptions
+class WorkspaceSymbolRegistrationOptions extends WorkspaceSymbolOptions
 {
     /**
      *

@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class RenameParams
+class RenameParams extends WorkDoneProgressParams
 {
     /**
      * The document to rename.

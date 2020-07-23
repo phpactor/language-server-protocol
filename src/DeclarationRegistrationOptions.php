@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): DeclarationOptions, TextDocumentRegistrationOptions, StaticRegistrationOptions
  */
-class DeclarationRegistrationOptions
+class DeclarationRegistrationOptions extends DeclarationOptions
 {
     /**
      *

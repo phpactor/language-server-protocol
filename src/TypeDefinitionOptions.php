@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class TypeDefinitionOptions
+class TypeDefinitionOptions extends WorkDoneProgressOptions
 {
     /**
      *

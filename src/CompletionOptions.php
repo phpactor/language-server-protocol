@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class CompletionOptions
+class CompletionOptions extends WorkDoneProgressOptions
 {
     /**
      * Most tools trigger completion request automatically without explicitly requesting

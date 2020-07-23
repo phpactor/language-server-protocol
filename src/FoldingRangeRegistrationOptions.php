@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, FoldingRangeOptions, StaticRegistrationOptions
  */
-class FoldingRangeRegistrationOptions
+class FoldingRangeRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
      * A document selector to identify the scope of the registration. If set to null

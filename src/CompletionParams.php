@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
-class CompletionParams
+class CompletionParams extends TextDocumentPositionParams
 {
     /**
      * The completion context. This is only available it the client specifies

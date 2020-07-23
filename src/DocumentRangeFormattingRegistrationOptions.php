@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentRangeFormattingOptions
  */
-class DocumentRangeFormattingRegistrationOptions
+class DocumentRangeFormattingRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
      * A document selector to identify the scope of the registration. If set to null

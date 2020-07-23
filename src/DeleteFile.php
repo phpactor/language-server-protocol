@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): ResourceOperation
  */
-class DeleteFile
+class DeleteFile extends ResourceOperation
 {
     /**
      *

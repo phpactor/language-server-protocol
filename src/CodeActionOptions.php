@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class CodeActionOptions
+class CodeActionOptions extends WorkDoneProgressOptions
 {
     /**
      * CodeActionKinds that this server may return.

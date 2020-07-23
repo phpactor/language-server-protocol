@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
-class HoverParams
+class HoverParams extends TextDocumentPositionParams
 {
     /**
      * The text document.

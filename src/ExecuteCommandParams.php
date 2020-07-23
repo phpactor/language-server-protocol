@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class ExecuteCommandParams
+class ExecuteCommandParams extends WorkDoneProgressParams
 {
     /**
      * The identifier of the actual command handler.

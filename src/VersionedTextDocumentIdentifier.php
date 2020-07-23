@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentIdentifier
  */
-class VersionedTextDocumentIdentifier
+class VersionedTextDocumentIdentifier extends TextDocumentIdentifier
 {
     /**
      * The version number of this document. If a versioned text document identifier

@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class DocumentLinkParams
+class DocumentLinkParams extends WorkDoneProgressParams
 {
     /**
      * The document to provide document links for.

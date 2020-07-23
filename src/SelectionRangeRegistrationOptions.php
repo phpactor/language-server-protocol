@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): SelectionRangeOptions, TextDocumentRegistrationOptions, StaticRegistrationOptions
  */
-class SelectionRangeRegistrationOptions
+class SelectionRangeRegistrationOptions extends SelectionRangeOptions
 {
     /**
      *

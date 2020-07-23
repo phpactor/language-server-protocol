@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class SignatureHelpOptions
+class SignatureHelpOptions extends WorkDoneProgressOptions
 {
     /**
      * List of characters that trigger signature help.

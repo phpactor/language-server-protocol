@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class _InitializeParams
+class _InitializeParams extends WorkDoneProgressParams
 {
     /**
      * The process Id of the parent process that started

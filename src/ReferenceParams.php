@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
-class ReferenceParams
+class ReferenceParams extends TextDocumentPositionParams
 {
     /**
      *

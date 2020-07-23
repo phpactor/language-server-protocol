@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class ColorPresentationParams
+class ColorPresentationParams extends WorkDoneProgressParams
 {
     /**
      * The text document.

@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): ResourceOperation
  */
-class CreateFile
+class CreateFile extends ResourceOperation
 {
     /**
      *

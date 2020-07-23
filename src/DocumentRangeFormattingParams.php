@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class DocumentRangeFormattingParams
+class DocumentRangeFormattingParams extends WorkDoneProgressParams
 {
     /**
      * The document to format.

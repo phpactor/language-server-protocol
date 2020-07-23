@@ -58,7 +58,12 @@ export class Renderer
             source.push(` */`);
         }
 
-        source.push(`class ${phpClass.name}`);
+        let extendsClause = '';
+        if (phpClass.extends) {
+            extendsClause = ` extends ${phpClass.extends}`
+        }
+
+        source.push(`class ${phpClass.name}${extendsClause}`);
         source.push(`{`);
 
         this.buildProperties(phpClass, source);

@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class CodeLensOptions
+class CodeLensOptions extends WorkDoneProgressOptions
 {
     /**
      * Code lens has a resolve provider as well.

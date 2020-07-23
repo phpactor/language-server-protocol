@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class WorkspaceSymbolParams
+class WorkspaceSymbolParams extends WorkDoneProgressParams
 {
     /**
      * A query string to filter symbols by. Clients may send an empty

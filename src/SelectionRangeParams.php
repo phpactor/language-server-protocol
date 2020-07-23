@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class SelectionRangeParams
+class SelectionRangeParams extends WorkDoneProgressParams
 {
     /**
      * The text document.

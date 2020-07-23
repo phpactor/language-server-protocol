@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): ResourceOperation
  */
-class RenameFile
+class RenameFile extends ResourceOperation
 {
     /**
      *

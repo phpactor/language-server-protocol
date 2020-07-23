@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): ExecuteCommandOptions
  */
-class ExecuteCommandRegistrationOptions
+class ExecuteCommandRegistrationOptions extends ExecuteCommandOptions
 {
     /**
      * The commands to be executed on the server

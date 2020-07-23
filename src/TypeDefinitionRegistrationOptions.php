@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, TypeDefinitionOptions, StaticRegistrationOptions
  */
-class TypeDefinitionRegistrationOptions
+class TypeDefinitionRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
      * A document selector to identify the scope of the registration. If set to null

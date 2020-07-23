@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class HoverOptions
+class HoverOptions extends WorkDoneProgressOptions
 {
     /**
      *

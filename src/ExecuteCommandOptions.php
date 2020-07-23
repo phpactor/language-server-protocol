@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class ExecuteCommandOptions
+class ExecuteCommandOptions extends WorkDoneProgressOptions
 {
     /**
      * The commands to be executed on the server

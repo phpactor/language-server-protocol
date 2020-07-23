@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions
  */
-class TextDocumentChangeRegistrationOptions
+class TextDocumentChangeRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
      * How documents are synced to the server.

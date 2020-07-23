@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
-class SignatureHelpParams
+class SignatureHelpParams extends TextDocumentPositionParams
 {
     /**
      * The signature help context. This is only available if the client specifies
