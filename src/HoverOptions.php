@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class HoverOptions
+class HoverOptions extends WorkDoneProgressOptions
 {
     /**
      *
@@ -29,8 +29,9 @@ class HoverOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'workDoneProgress' => ['names' => [], 'iterable' => false],

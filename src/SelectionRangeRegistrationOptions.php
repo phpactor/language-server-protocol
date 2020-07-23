@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): SelectionRangeOptions, TextDocumentRegistrationOptions, StaticRegistrationOptions
  */
-class SelectionRangeRegistrationOptions
+class SelectionRangeRegistrationOptions extends SelectionRangeOptions
 {
     /**
      *
@@ -47,8 +47,9 @@ class SelectionRangeRegistrationOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'workDoneProgress' => ['names' => [], 'iterable' => false],

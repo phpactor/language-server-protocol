@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class DocumentFormattingParams
+class DocumentFormattingParams extends WorkDoneProgressParams
 {
     /**
      * The document to format.
@@ -48,8 +48,9 @@ class DocumentFormattingParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],

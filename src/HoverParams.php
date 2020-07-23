@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
-class HoverParams
+class HoverParams extends TextDocumentPositionParams
 {
     /**
      * The text document.
@@ -48,8 +48,9 @@ class HoverParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],

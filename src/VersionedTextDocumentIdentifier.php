@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentIdentifier
  */
-class VersionedTextDocumentIdentifier
+class VersionedTextDocumentIdentifier extends TextDocumentIdentifier
 {
     /**
      * The version number of this document. If a versioned text document identifier
@@ -43,8 +43,9 @@ class VersionedTextDocumentIdentifier
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'version' => ['names' => [], 'iterable' => false],

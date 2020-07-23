@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, DocumentSymbolOptions
  */
-class DocumentSymbolRegistrationOptions
+class DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
      * A document selector to identify the scope of the registration. If set to null
@@ -39,8 +39,9 @@ class DocumentSymbolRegistrationOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'documentSelector' => ['names' => [], 'iterable' => false],

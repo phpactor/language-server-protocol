@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class SelectionRangeParams
+class SelectionRangeParams extends WorkDoneProgressParams
 {
     /**
      * The text document.
@@ -58,8 +58,9 @@ class SelectionRangeParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],

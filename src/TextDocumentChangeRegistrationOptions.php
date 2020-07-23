@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions
  */
-class TextDocumentChangeRegistrationOptions
+class TextDocumentChangeRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
      * How documents are synced to the server.
@@ -40,8 +40,9 @@ class TextDocumentChangeRegistrationOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'syncKind' => ['names' => [], 'iterable' => false],

@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class FoldingRangeOptions
+class FoldingRangeOptions extends WorkDoneProgressOptions
 {
     /**
      *
@@ -27,8 +27,9 @@ class FoldingRangeOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'workDoneProgress' => ['names' => [], 'iterable' => false],

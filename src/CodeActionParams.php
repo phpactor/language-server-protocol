@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class CodeActionParams
+class CodeActionParams extends WorkDoneProgressParams
 {
     /**
      * The document in which the command was invoked.
@@ -67,8 +67,9 @@ class CodeActionParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],

@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class CompletionOptions
+class CompletionOptions extends WorkDoneProgressOptions
 {
     /**
      * Most tools trigger completion request automatically without explicitly requesting
@@ -69,8 +69,9 @@ class CompletionOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'triggerCharacters' => ['names' => [], 'iterable' => true],

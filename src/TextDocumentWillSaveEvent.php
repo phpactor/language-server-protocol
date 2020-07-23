@@ -37,8 +37,9 @@ class TextDocumentWillSaveEvent
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'document' => ['names' => [TextDocument::class], 'iterable' => false],

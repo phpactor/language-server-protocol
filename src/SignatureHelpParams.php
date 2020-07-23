@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
  */
-class SignatureHelpParams
+class SignatureHelpParams extends TextDocumentPositionParams
 {
     /**
      * The signature help context. This is only available if the client specifies
@@ -58,8 +58,9 @@ class SignatureHelpParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'context' => ['names' => [SignatureHelpContext::class], 'iterable' => false],

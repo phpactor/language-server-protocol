@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams, PartialResultParams
  */
-class CompletionParams
+class CompletionParams extends TextDocumentPositionParams
 {
     /**
      * The completion context. This is only available it the client specifies
@@ -68,8 +68,9 @@ class CompletionParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'context' => ['names' => [CompletionContext::class], 'iterable' => false],

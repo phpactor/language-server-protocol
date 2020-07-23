@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class ExecuteCommandOptions
+class ExecuteCommandOptions extends WorkDoneProgressOptions
 {
     /**
      * The commands to be executed on the server
@@ -38,8 +38,9 @@ class ExecuteCommandOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'commands' => ['names' => [], 'iterable' => true],

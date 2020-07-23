@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class SignatureHelpOptions
+class SignatureHelpOptions extends WorkDoneProgressOptions
 {
     /**
      * List of characters that trigger signature help.
@@ -50,8 +50,9 @@ class SignatureHelpOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'triggerCharacters' => ['names' => [], 'iterable' => true],

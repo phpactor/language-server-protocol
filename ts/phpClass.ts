@@ -17,7 +17,9 @@ import {
     isTypeNode,
     forEachChild,
     isExportDeclaration,
-    isExportSpecifier
+    isExportSpecifier,
+    HeritageClause,
+    isExpressionWithTypeArguments
 } from 'typescript';
 
 import {PhpType, TypeConverter} from './typeConverter';
@@ -106,6 +108,7 @@ export function isPhpClass(phpClass: PhpClassLike): phpClass is PhpClass {
 export class PhpClass extends PhpClassLike {
     kind: string = 'class';
     properties: Properties = new Properties();
+    extends: string|null = null;
     mixins: string[] = [];
 }
 
@@ -173,10 +176,18 @@ export class PhpClassResolver
     private fromInterface(declaration: InterfaceDeclaration): PhpClass {
 
         const docs = this.jsDocs(declaration);
+        const phpClass = new PhpClass(declaration.name.escapedText.toString(), docs);
+
         var properties = new Map<string, Property>();
 
         // change to Set
         const mixins = Array<string>();
+
+        for (const heritageClause of declaration.heritageClauses ?? []) {
+            if (SyntaxKind[heritageClause.token] === 'ExtendsKeyword') {
+                phpClass.extends = this.resolveClassParent(heritageClause);
+            }
+        }
 
         for (const property of declaration.members) {
 
@@ -210,8 +221,6 @@ export class PhpClassResolver
                 }
             }
         }
-
-        const phpClass = new PhpClass(declaration.name.escapedText.toString(), docs);
 
         phpClass.properties = properties as Properties;
         phpClass.mixins = mixins;
@@ -278,6 +287,20 @@ export class PhpClassResolver
         }
 
         return false;
+    }
+
+    private resolveClassParent(extendsClause: HeritageClause): string|null {
+        const types = extendsClause.types.filter((element) => {
+            return isExpressionWithTypeArguments(element);
+        }).map((element) => {
+            return element.getText();
+        });
+
+        if (types.length === 0) {
+            return null;
+        }
+
+        return types[0];
     }
 }
 

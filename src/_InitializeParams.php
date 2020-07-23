@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class _InitializeParams
+class _InitializeParams extends WorkDoneProgressParams
 {
     /**
      * The process Id of the parent process that started
@@ -97,8 +97,9 @@ class _InitializeParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'processId' => ['names' => [], 'iterable' => false],

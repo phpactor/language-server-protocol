@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class RenameOptions
+class RenameOptions extends WorkDoneProgressOptions
 {
     /**
      * Renames should be checked and tested before being executed.
@@ -38,8 +38,9 @@ class RenameOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'prepareProvider' => ['names' => [], 'iterable' => false],

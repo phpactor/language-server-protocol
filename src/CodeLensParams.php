@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
  */
-class CodeLensParams
+class CodeLensParams extends WorkDoneProgressParams
 {
     /**
      * The document to request code lens for.
@@ -49,8 +49,9 @@ class CodeLensParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],

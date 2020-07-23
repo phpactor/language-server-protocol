@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
-class DocumentLinkOptions
+class DocumentLinkOptions extends WorkDoneProgressOptions
 {
     /**
      * Document links have a resolve provider as well.
@@ -38,8 +38,9 @@ class DocumentLinkOptions
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'resolveProvider' => ['names' => [], 'iterable' => false],
