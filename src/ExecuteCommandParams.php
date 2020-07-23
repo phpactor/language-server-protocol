@@ -48,8 +48,9 @@ class ExecuteCommandParams extends WorkDoneProgressParams
 
     /**
      * @param array<string,mixed> $array
+     * @return static
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'command' => ['names' => [], 'iterable' => false],
