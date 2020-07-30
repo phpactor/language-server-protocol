@@ -69,7 +69,8 @@ export class TypeConverter
         }
 
         if (SyntaxKind[type.kind] == 'ObjectKeyword') {
-            return new PhpType('object', 'object');
+            // just leave undefined objects as arrays
+            return new PhpType('array', 'array');
         }
 
         if (SyntaxKind[type.kind] == 'TupleType') {

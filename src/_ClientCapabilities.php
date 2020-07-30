@@ -28,24 +28,24 @@ class _ClientCapabilities
     /**
      * Window specific client capabilities.
      *
-     * @var object|null
+     * @var array|null
      */
     public $window;
 
     /**
      * Experimental client capabilities.
      *
-     * @var object|null
+     * @var array|null
      */
     public $experimental;
 
     /**
      * @param WorkspaceClientCapabilities|null $workspace
      * @param TextDocumentClientCapabilities|null $textDocument
-     * @param object|null $window
-     * @param object|null $experimental
+     * @param array|null $window
+     * @param array|null $experimental
      */
-    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?object $window = null, ?object $experimental = null)
+    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?array $experimental = null)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;
