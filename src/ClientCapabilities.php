@@ -35,7 +35,7 @@ class ClientCapabilities
     /**
      * Experimental client capabilities.
      *
-     * @var array|null
+     * @var array<mixed>|null
      */
     public $experimental;
 
@@ -43,7 +43,7 @@ class ClientCapabilities
      * @param array<mixed>|null $workspace
      * @param TextDocumentClientCapabilities|null $textDocument
      * @param array<mixed>|null $window
-     * @param array|null $experimental
+     * @param array<mixed>|null $experimental
      */
     public function __construct(?array $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?array $experimental = null)
     {
