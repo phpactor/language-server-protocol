@@ -1,7 +1,7 @@
 PHP Language Server Protocol Generator
 ======================================
 
-[![Build Status](https://travis-ci.org/phpactor/language-server-protocol.svg?branch=master)](https://travis-ci.org/phpactor/language-server-protocol)
+![CI](https://github.com/phpactor/language-server-protocol/workflows/CI/badge.svg)
 
 This package _transpiles_ the `vscode-language-server-protocol` library to PHP,
 providing the protocol classes required to create Language Server
