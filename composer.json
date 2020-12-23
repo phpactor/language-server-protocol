@@ -1,15 +1,23 @@
 {
     "name": "phpactor/language-server-protocol",
-    "description": "Langauge Server Protocol for PHP (transpiled)",
     "type": "library",
+    "description": "Langauge Server Protocol for PHP (transpiled)",
     "license": "MIT",
-    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Daniel Leech",
             "email": "daniel@dantleech.com"
         }
     ],
+    "require": {
+        "dantleech/invoke": "^1.0.2"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": "^9.2"
+    },
     "autoload": {
         "psr-4": {
             "Phpactor\\LanguageServerProtocol\\": "src/"
@@ -20,13 +28,8 @@
             "Phpactor\\LanguageServerProtocol\\Tests\\": "tests/"
         }
     },
-    "require": {
-        "dantleech/invoke": "^1.0.2"
-    },
-    "require-dev": {
-        "phpstan/phpstan": "^0.12",
-        "phpunit/phpunit": "^9.2"
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "integrate": [
             "./vendor/bin/phpunit",
