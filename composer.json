@@ -36,5 +36,8 @@
             "./vendor/bin/phpunit",
             "./vendor/bin/phpstan analyze"
         ]
+    },
+    "extra": {
+        "branch-alias": "0.1.x-dev"
     }
 }
