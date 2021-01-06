@@ -4,3 +4,5 @@ php/
 composer.lock
 
 /vendor/
+/.vscode
+/vendor
