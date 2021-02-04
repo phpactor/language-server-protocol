@@ -6,41 +6,36 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * The result of a linked editing range request.
+ */
+class LinkedEditingRanges
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * A list of ranges that can be edited together. The ranges must have
+     * identical length and contain identical text content. The ranges cannot overlap.
      *
-     * @var bool|null
+     * @var array<Range>
      */
-    public $workDoneProgress;
+    public $ranges;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * An optional word pattern (regular expression) that describes valid contents for
+     * the given ranges. If no pattern is provided, the client configuration's word
+     * pattern will be used.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var string|null
      */
-    public $showMessage;
+    public $wordPattern;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
+     * @param array<Range> $ranges
+     * @param string|null $wordPattern
      */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(array $ranges, ?string $wordPattern = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->ranges = $ranges;
+        $this->wordPattern = $wordPattern;
     }
 
     /**
@@ -50,9 +45,8 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'ranges' => ['names' => [Range::class], 'iterable' => true],
+            'wordPattern' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

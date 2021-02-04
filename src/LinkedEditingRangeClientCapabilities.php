@@ -6,41 +6,26 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Client capabilities for the linked editing range request.
+ */
+class LinkedEditingRangeClientCapabilities
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * Whether implementation supports dynamic registration. If this is set to `true`
+     * the client supports the new `(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
+     * return value for the corresponding server capability as well.
      *
      * @var bool|null
      */
-    public $workDoneProgress;
+    public $dynamicRegistration;
 
     /**
-     * Capabilities specific to the showMessage request.
-     *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @param bool|null $dynamicRegistration
      */
-    public $showMessage;
-
-    /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
-     */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(?bool $dynamicRegistration = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->dynamicRegistration = $dynamicRegistration;
     }
 
     /**
@@ -50,9 +35,7 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'dynamicRegistration' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

@@ -6,41 +6,31 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ */
+class SemanticTokensDelta
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
      *
-     * @var bool|null
+     * @var string|null
      */
-    public $workDoneProgress;
+    public $resultId;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The semantic token edits to transform a previous result into a new result.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var array<SemanticTokensEdit>
      */
-    public $showMessage;
+    public $edits;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
+     * @param string|null $resultId
+     * @param array<SemanticTokensEdit> $edits
      */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(array $edits, ?string $resultId = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->resultId = $resultId;
+        $this->edits = $edits;
     }
 
     /**
@@ -50,9 +40,8 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'resultId' => ['names' => [], 'iterable' => false],
+            'edits' => ['names' => [SemanticTokensEdit::class], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

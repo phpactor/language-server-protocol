@@ -6,41 +6,59 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Params to show a document.
+ */
+class ShowDocumentParams
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The document uri to show.
+     *
+     * @var string
+     */
+    public $uri;
+
+    /**
+     * Indicates to show the resource in an external program.
+     * To show for example `https://code.visualstudio.com/`
+     * in the default WEB browser set `external` to `true`.
      *
      * @var bool|null
      */
-    public $workDoneProgress;
+    public $external;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * An optional property to indicate whether the editor
+     * showing the document should take focus or not.
+     * Clients might ignore this property if an external
+     * program in started.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var bool|null
      */
-    public $showMessage;
+    public $takeFocus;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * An optional selection range if the document is a text
+     * document. Clients might ignore the property if an
+     * external program is started or the file is not a text
+     * file.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var Range|null
      */
-    public $showDocument;
+    public $selection;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * @param string $uri
+     * @param bool|null $external
+     * @param bool|null $takeFocus
+     * @param Range|null $selection
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(string $uri, ?bool $external = null, ?bool $takeFocus = null, ?Range $selection = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->uri = $uri;
+        $this->external = $external;
+        $this->takeFocus = $takeFocus;
+        $this->selection = $selection;
     }
 
     /**
@@ -50,9 +68,10 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'uri' => ['names' => [], 'iterable' => false],
+            'external' => ['names' => [], 'iterable' => false],
+            'takeFocus' => ['names' => [], 'iterable' => false],
+            'selection' => ['names' => [Range::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

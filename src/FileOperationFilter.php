@@ -6,41 +6,34 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * A filter to describe in which file operation requests or notifications
+ * the server is interested in.
+ */
+class FileOperationFilter
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * A Uri like `file` or `untitled`.
      *
-     * @var bool|null
+     * @var string|null
      */
-    public $workDoneProgress;
+    public $scheme;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The actual file operation pattern.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var FileOperationPattern
      */
-    public $showMessage;
+    public $pattern;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
+     * @param string|null $scheme
+     * @param FileOperationPattern $pattern
      */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(FileOperationPattern $pattern, ?string $scheme = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->scheme = $scheme;
+        $this->pattern = $pattern;
     }
 
     /**
@@ -50,9 +43,8 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'scheme' => ['names' => [], 'iterable' => false],
+            'pattern' => ['names' => [FileOperationPattern::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

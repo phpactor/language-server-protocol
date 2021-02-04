@@ -6,41 +6,24 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Matching options for the file operation pattern.
+ */
+class FileOperationPatternOptions
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The pattern should be matched ignoring casing.
      *
      * @var bool|null
      */
-    public $workDoneProgress;
+    public $ignoreCase;
 
     /**
-     * Capabilities specific to the showMessage request.
-     *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @param bool|null $ignoreCase
      */
-    public $showMessage;
-
-    /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
-     */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(?bool $ignoreCase = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->ignoreCase = $ignoreCase;
     }
 
     /**
@@ -50,9 +33,7 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'ignoreCase' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

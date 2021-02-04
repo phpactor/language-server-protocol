@@ -6,41 +6,44 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * The parameter of a `callHierarchy/outgoingCalls` request.
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
+ */
+class CallHierarchyOutgoingCallsParams extends WorkDoneProgressParams
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
      *
-     * @var bool|null
+     * @var CallHierarchyItem
      */
-    public $workDoneProgress;
+    public $item;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * An optional token that a server can use to report work done progress.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var int|string|null
      */
-    public $showMessage;
+    public $workDoneToken;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * An optional token that a server can use to report partial results (e.g. streaming) to
+     * the client.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var int|string|null
      */
-    public $showDocument;
+    public $partialResultToken;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * @param CallHierarchyItem $item
+     * @param int|string|null $workDoneToken
+     * @param int|string|null $partialResultToken
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(CallHierarchyItem $item, $workDoneToken = null, $partialResultToken = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->item = $item;
+        $this->workDoneToken = $workDoneToken;
+        $this->partialResultToken = $partialResultToken;
     }
 
     /**
@@ -50,9 +53,9 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'item' => ['names' => [CallHierarchyItem::class], 'iterable' => false],
+            'workDoneToken' => ['names' => [], 'iterable' => false],
+            'partialResultToken' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

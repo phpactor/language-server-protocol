@@ -6,41 +6,51 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * A pattern to describe in which file operation requests or notifications
+ * the server is interested in.
+ */
+class FileOperationPattern
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The glob pattern to match. Glob patterns can have the following syntax:
+     * - `*` to match one or more characters in a path segment
+     * - `?` to match on one character in a path segment
+     * - `**` to match any number of path segments, including none
+     * - `{}` to group conditions (e.g. `**​/*.{ts,js}` matches all TypeScript and JavaScript files)
+     * - `[]` to declare a range of characters to match in a path segment (e.g., `example.[0-9]` to match on `example.0`, `example.1`, …)
+     * - `[!...]` to negate a range of characters to match in a path segment (e.g., `example.[!0-9]` to match on `example.a`, `example.b`, but not `example.0`)
      *
-     * @var bool|null
+     * @var string
      */
-    public $workDoneProgress;
+    public $glob;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * Whether to match files or folders with this pattern.
+     * 
+     * Matches both if undefined.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var FileOperationPatternKind::*|null
      */
-    public $showMessage;
+    public $matches;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * Additional options used during matching.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var FileOperationPatternOptions|null
      */
-    public $showDocument;
+    public $options;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * @param string $glob
+     * @param FileOperationPatternKind::*|null $matches
+     * @param FileOperationPatternOptions|null $options
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(string $glob, $matches = null, ?FileOperationPatternOptions $options = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->glob = $glob;
+        $this->matches = $matches;
+        $this->options = $options;
     }
 
     /**
@@ -50,9 +60,9 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'glob' => ['names' => [], 'iterable' => false],
+            'matches' => ['names' => [], 'iterable' => false],
+            'options' => ['names' => [FileOperationPatternOptions::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

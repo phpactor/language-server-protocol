@@ -6,41 +6,42 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Mixins (implemented TS interfaces): TextDocumentPositionParams, WorkDoneProgressParams
+ */
+class LinkedEditingRangeParams extends TextDocumentPositionParams
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The text document.
      *
-     * @var bool|null
+     * @var TextDocumentIdentifier
      */
-    public $workDoneProgress;
+    public $textDocument;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The position inside the text document.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var Position
      */
-    public $showMessage;
+    public $position;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * An optional token that a server can use to report work done progress.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var int|string|null
      */
-    public $showDocument;
+    public $workDoneToken;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * @param TextDocumentIdentifier $textDocument
+     * @param Position $position
+     * @param int|string|null $workDoneToken
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(TextDocumentIdentifier $textDocument, Position $position, $workDoneToken = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->textDocument = $textDocument;
+        $this->position = $position;
+        $this->workDoneToken = $workDoneToken;
     }
 
     /**
@@ -50,9 +51,9 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],
+            'position' => ['names' => [Position::class], 'iterable' => false],
+            'workDoneToken' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

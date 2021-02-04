@@ -6,41 +6,32 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ */
+class SemanticTokensLegend
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The token types a server uses.
      *
-     * @var bool|null
+     * @var array<string>
      */
-    public $workDoneProgress;
+    public $tokenTypes;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The token modifiers a server uses.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var array<string>
      */
-    public $showMessage;
+    public $tokenModifiers;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
+     * @param array<string> $tokenTypes
+     * @param array<string> $tokenModifiers
      */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(array $tokenTypes, array $tokenModifiers)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->tokenTypes = $tokenTypes;
+        $this->tokenModifiers = $tokenModifiers;
     }
 
     /**
@@ -50,9 +41,8 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'tokenTypes' => ['names' => [], 'iterable' => true],
+            'tokenModifiers' => ['names' => [], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

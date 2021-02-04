@@ -6,41 +6,52 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Moniker definition to match LSIF 0.5 moniker definition.
+ */
+class Moniker
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The scheme of the moniker. For example tsc or .Net
      *
-     * @var bool|null
+     * @var string
      */
-    public $workDoneProgress;
+    public $scheme;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The identifier of the moniker. The value is opaque in LSIF however
+     * schema owners are allowed to define the structure if they want.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var string
      */
-    public $showMessage;
+    public $identifier;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * The scope in which the moniker is unique
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var mixed
      */
-    public $showDocument;
+    public $unique;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * The moniker kind if known.
+     *
+     * @var mixed|null
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public $kind;
+
+    /**
+     * @param string $scheme
+     * @param string $identifier
+     * @param mixed $unique
+     * @param mixed|null $kind
+     */
+    public function __construct(string $scheme, string $identifier, $unique, $kind = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->scheme = $scheme;
+        $this->identifier = $identifier;
+        $this->unique = $unique;
+        $this->kind = $kind;
     }
 
     /**
@@ -50,9 +61,10 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'scheme' => ['names' => [], 'iterable' => false],
+            'identifier' => ['names' => [], 'iterable' => false],
+            'unique' => ['names' => [], 'iterable' => false],
+            'kind' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

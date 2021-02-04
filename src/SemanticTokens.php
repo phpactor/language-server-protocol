@@ -6,41 +6,35 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ */
+class SemanticTokens
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * An optional result id. If provided and clients support delta updating
+     * the client will include the result id in the next semantic token request.
+     * A server can then instead of computing all semantic tokens again simply
+     * send a delta.
      *
-     * @var bool|null
+     * @var string|null
      */
-    public $workDoneProgress;
+    public $resultId;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The actual tokens.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var array<int>
      */
-    public $showMessage;
+    public $data;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
+     * @param string|null $resultId
+     * @param array<int> $data
      */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(array $data, ?string $resultId = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->resultId = $resultId;
+        $this->data = $data;
     }
 
     /**
@@ -50,9 +44,8 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'resultId' => ['names' => [], 'iterable' => false],
+            'data' => ['names' => [], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

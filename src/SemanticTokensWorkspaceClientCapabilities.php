@@ -6,41 +6,27 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+class SemanticTokensWorkspaceClientCapabilities
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * Whether the client implementation supports a refresh request sent from
+     * the server to the client.
+     * 
+     * Note that this event is global and will force the client to refresh all
+     * semantic tokens currently shown. It should be used with absolute care
+     * and is useful for situation where a server for example detect a project
+     * wide change that requires such a calculation.
      *
      * @var bool|null
      */
-    public $workDoneProgress;
+    public $refreshSupport;
 
     /**
-     * Capabilities specific to the showMessage request.
-     *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @param bool|null $refreshSupport
      */
-    public $showMessage;
-
-    /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
-     */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(?bool $refreshSupport = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->refreshSupport = $refreshSupport;
     }
 
     /**
@@ -50,9 +36,7 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'refreshSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

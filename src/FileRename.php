@@ -6,41 +6,33 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Represents information on a file/folder rename.
+ */
+class FileRename
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * A file:// URI for the original location of the file/folder being renamed.
      *
-     * @var bool|null
+     * @var string
      */
-    public $workDoneProgress;
+    public $oldUri;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * A file:// URI for the new location of the file/folder being renamed.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var string
      */
-    public $showMessage;
+    public $newUri;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
+     * @param string $oldUri
+     * @param string $newUri
      */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(string $oldUri, string $newUri)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->oldUri = $oldUri;
+        $this->newUri = $newUri;
     }
 
     /**
@@ -50,9 +42,8 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'oldUri' => ['names' => [], 'iterable' => false],
+            'newUri' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

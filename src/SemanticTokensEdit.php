@@ -6,41 +6,41 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ */
+class SemanticTokensEdit
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The start offset of the edit.
      *
-     * @var bool|null
+     * @var int
      */
-    public $workDoneProgress;
+    public $start;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The count of elements to remove.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var int
      */
-    public $showMessage;
+    public $deleteCount;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * The elements to insert.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var array<int>|null
      */
-    public $showDocument;
+    public $data;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * @param int $start
+     * @param int $deleteCount
+     * @param array<int>|null $data
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(int $start, int $deleteCount, ?array $data = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->start = $start;
+        $this->deleteCount = $deleteCount;
+        $this->data = $data;
     }
 
     /**
@@ -50,9 +50,9 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'start' => ['names' => [], 'iterable' => false],
+            'deleteCount' => ['names' => [], 'iterable' => false],
+            'data' => ['names' => [], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

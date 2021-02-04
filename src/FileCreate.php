@@ -6,41 +6,24 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Represents information on a file/folder create.
+ */
+class FileCreate
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * A file:// URI for the location of the file/folder being created.
      *
-     * @var bool|null
+     * @var string
      */
-    public $workDoneProgress;
+    public $uri;
 
     /**
-     * Capabilities specific to the showMessage request.
-     *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @param string $uri
      */
-    public $showMessage;
-
-    /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
-     */
-    public $showDocument;
-
-    /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
-     */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(string $uri)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->uri = $uri;
     }
 
     /**
@@ -50,9 +33,7 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'uri' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

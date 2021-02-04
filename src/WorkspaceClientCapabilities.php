@@ -59,7 +59,7 @@ class WorkspaceClientCapabilities
      * Capabilities specific to the semantic token requests scoped to the
      * workspace.
      *
-     * @var mixed|null
+     * @var SemanticTokensWorkspaceClientCapabilities|null
      */
     public $semanticTokens;
 
@@ -76,7 +76,7 @@ class WorkspaceClientCapabilities
      * 
      * Since 3.16.0
      *
-     * @var mixed|null
+     * @var FileOperationClientCapabilities|null
      */
     public $fileOperations;
 
@@ -87,11 +87,11 @@ class WorkspaceClientCapabilities
      * @param DidChangeWatchedFilesClientCapabilities|null $didChangeWatchedFiles
      * @param WorkspaceSymbolClientCapabilities|null $symbol
      * @param ExecuteCommandClientCapabilities|null $executeCommand
-     * @param mixed|null $semanticTokens
+     * @param SemanticTokensWorkspaceClientCapabilities|null $semanticTokens
      * @param CodeLensWorkspaceClientCapabilities|null $codeLens
-     * @param mixed|null $fileOperations
+     * @param FileOperationClientCapabilities|null $fileOperations
      */
-    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null, $semanticTokens = null, ?CodeLensWorkspaceClientCapabilities $codeLens = null, $fileOperations = null)
+    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null, ?SemanticTokensWorkspaceClientCapabilities $semanticTokens = null, ?CodeLensWorkspaceClientCapabilities $codeLens = null, ?FileOperationClientCapabilities $fileOperations = null)
     {
         $this->applyEdit = $applyEdit;
         $this->workspaceEdit = $workspaceEdit;
@@ -117,9 +117,9 @@ class WorkspaceClientCapabilities
             'didChangeWatchedFiles' => ['names' => [DidChangeWatchedFilesClientCapabilities::class], 'iterable' => false],
             'symbol' => ['names' => [WorkspaceSymbolClientCapabilities::class], 'iterable' => false],
             'executeCommand' => ['names' => [ExecuteCommandClientCapabilities::class], 'iterable' => false],
-            'semanticTokens' => ['names' => [], 'iterable' => false],
+            'semanticTokens' => ['names' => [SemanticTokensWorkspaceClientCapabilities::class], 'iterable' => false],
             'codeLens' => ['names' => [CodeLensWorkspaceClientCapabilities::class], 'iterable' => false],
-            'fileOperations' => ['names' => [], 'iterable' => false],
+            'fileOperations' => ['names' => [FileOperationClientCapabilities::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

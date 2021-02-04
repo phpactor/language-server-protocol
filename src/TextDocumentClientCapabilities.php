@@ -168,28 +168,28 @@ class TextDocumentClientCapabilities
     /**
      * Capabilities specific to the various call hierarchy request.
      *
-     * @var mixed|null
+     * @var CallHierarchyClientCapabilities|null
      */
     public $callHierarchy;
 
     /**
      * Capabilities specific to the various semantic token request.
      *
-     * @var mixed|null
+     * @var SemanticTokensClientCapabilities|null
      */
     public $semanticTokens;
 
     /**
      * Capabilities specific to the linked editing range request.
      *
-     * @var mixed|null
+     * @var LinkedEditingRangeClientCapabilities|null
      */
     public $linkedEditingRange;
 
     /**
      * Client capabilities specific to the moniker request.
      *
-     * @var mixed
+     * @var MonikerClientCapabilities
      */
     public $moniker;
 
@@ -216,12 +216,12 @@ class TextDocumentClientCapabilities
      * @param FoldingRangeClientCapabilities|null $foldingRange
      * @param SelectionRangeClientCapabilities|null $selectionRange
      * @param PublishDiagnosticsClientCapabilities|null $publishDiagnostics
-     * @param mixed|null $callHierarchy
-     * @param mixed|null $semanticTokens
-     * @param mixed|null $linkedEditingRange
-     * @param mixed $moniker
+     * @param CallHierarchyClientCapabilities|null $callHierarchy
+     * @param SemanticTokensClientCapabilities|null $semanticTokens
+     * @param LinkedEditingRangeClientCapabilities|null $linkedEditingRange
+     * @param MonikerClientCapabilities $moniker
      */
-    public function __construct($moniker, ?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null, $callHierarchy = null, $semanticTokens = null, $linkedEditingRange = null)
+    public function __construct(MonikerClientCapabilities $moniker, ?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null, ?CallHierarchyClientCapabilities $callHierarchy = null, ?SemanticTokensClientCapabilities $semanticTokens = null, ?LinkedEditingRangeClientCapabilities $linkedEditingRange = null)
     {
         $this->synchronization = $synchronization;
         $this->completion = $completion;
@@ -280,10 +280,10 @@ class TextDocumentClientCapabilities
             'foldingRange' => ['names' => [FoldingRangeClientCapabilities::class], 'iterable' => false],
             'selectionRange' => ['names' => [SelectionRangeClientCapabilities::class], 'iterable' => false],
             'publishDiagnostics' => ['names' => [PublishDiagnosticsClientCapabilities::class], 'iterable' => false],
-            'callHierarchy' => ['names' => [], 'iterable' => false],
-            'semanticTokens' => ['names' => [], 'iterable' => false],
-            'linkedEditingRange' => ['names' => [], 'iterable' => false],
-            'moniker' => ['names' => [], 'iterable' => false],
+            'callHierarchy' => ['names' => [CallHierarchyClientCapabilities::class], 'iterable' => false],
+            'semanticTokens' => ['names' => [SemanticTokensClientCapabilities::class], 'iterable' => false],
+            'linkedEditingRange' => ['names' => [LinkedEditingRangeClientCapabilities::class], 'iterable' => false],
+            'moniker' => ['names' => [MonikerClientCapabilities::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

@@ -6,41 +6,54 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams, PartialResultParams
+ */
+class SemanticTokensDeltaParams extends WorkDoneProgressParams
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The text document.
      *
-     * @var bool|null
+     * @var TextDocumentIdentifier
      */
-    public $workDoneProgress;
+    public $textDocument;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The result id of a previous response. The result Id can either point to a full response
+     * or a delta response depending on what was received last.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var string
      */
-    public $showMessage;
+    public $previousResultId;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * An optional token that a server can use to report work done progress.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var int|string|null
      */
-    public $showDocument;
+    public $workDoneToken;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * An optional token that a server can use to report partial results (e.g. streaming) to
+     * the client.
+     *
+     * @var int|string|null
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public $partialResultToken;
+
+    /**
+     * @param TextDocumentIdentifier $textDocument
+     * @param string $previousResultId
+     * @param int|string|null $workDoneToken
+     * @param int|string|null $partialResultToken
+     */
+    public function __construct(TextDocumentIdentifier $textDocument, string $previousResultId, $workDoneToken = null, $partialResultToken = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->textDocument = $textDocument;
+        $this->previousResultId = $previousResultId;
+        $this->workDoneToken = $workDoneToken;
+        $this->partialResultToken = $partialResultToken;
     }
 
     /**
@@ -50,9 +63,10 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],
+            'previousResultId' => ['names' => [], 'iterable' => false],
+            'workDoneToken' => ['names' => [], 'iterable' => false],
+            'partialResultToken' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

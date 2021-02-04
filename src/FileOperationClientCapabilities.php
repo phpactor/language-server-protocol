@@ -6,41 +6,81 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ * Capabilities relating to events from file operations by the user in the client.
+ * 
+ * These events do not come from the file system, they come from user operations
+ * like renaming a file in the UI.
+ */
+class FileOperationClientCapabilities
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * Whether the client supports dynamic registration for file requests/notifications.
      *
      * @var bool|null
      */
-    public $workDoneProgress;
+    public $dynamicRegistration;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The client has support for sending didCreateFiles notifications.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var bool|null
      */
-    public $showMessage;
+    public $didCreate;
 
     /**
-     * Capabilities specific to the showDocument request.
+     * The client has support for willCreateFiles requests.
      *
-     * @var ShowDocumentClientCapabilities|null
+     * @var bool|null
      */
-    public $showDocument;
+    public $willCreate;
 
     /**
-     * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * The client has support for sending didRenameFiles notifications.
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public $didRename;
+
+    /**
+     * The client has support for willRenameFiles requests.
+     *
+     * @var bool|null
+     */
+    public $willRename;
+
+    /**
+     * The client has support for sending didDeleteFiles notifications.
+     *
+     * @var bool|null
+     */
+    public $didDelete;
+
+    /**
+     * The client has support for willDeleteFiles requests.
+     *
+     * @var bool|null
+     */
+    public $willDelete;
+
+    /**
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $didCreate
+     * @param bool|null $willCreate
+     * @param bool|null $didRename
+     * @param bool|null $willRename
+     * @param bool|null $didDelete
+     * @param bool|null $willDelete
+     */
+    public function __construct(?bool $dynamicRegistration = null, ?bool $didCreate = null, ?bool $willCreate = null, ?bool $didRename = null, ?bool $willRename = null, ?bool $didDelete = null, ?bool $willDelete = null)
     {
-        $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->didCreate = $didCreate;
+        $this->willCreate = $willCreate;
+        $this->didRename = $didRename;
+        $this->willRename = $willRename;
+        $this->didDelete = $didDelete;
+        $this->willDelete = $willDelete;
     }
 
     /**
@@ -50,9 +90,13 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'dynamicRegistration' => ['names' => [], 'iterable' => false],
+            'didCreate' => ['names' => [], 'iterable' => false],
+            'willCreate' => ['names' => [], 'iterable' => false],
+            'didRename' => ['names' => [], 'iterable' => false],
+            'willRename' => ['names' => [], 'iterable' => false],
+            'didDelete' => ['names' => [], 'iterable' => false],
+            'willDelete' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

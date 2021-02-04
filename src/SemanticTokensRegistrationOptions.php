@@ -6,41 +6,72 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ *
+ * Mixins (implemented TS interfaces): TextDocumentRegistrationOptions, SemanticTokensOptions, StaticRegistrationOptions
+ */
+class SemanticTokensRegistrationOptions extends TextDocumentRegistrationOptions
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
+     *
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     */
+    public $documentSelector;
+
+    /**
+     * The legend used by the server
+     *
+     * @var SemanticTokensLegend
+     */
+    public $legend;
+
+    /**
+     * Server supports providing semantic tokens for a specific range
+     * of a document.
+     *
+     * @var bool|array<mixed>|null
+     */
+    public $range;
+
+    /**
+     * Server supports providing semantic tokens for a full document.
+     *
+     * @var bool|array<mixed>|null
+     */
+    public $full;
+
+    /**
      *
      * @var bool|null
      */
     public $workDoneProgress;
 
     /**
-     * Capabilities specific to the showMessage request.
+     * The id used to register the request. The id can be used to deregister
+     * the request again. See also Registration#id.
      *
-     * @var ShowMessageRequestClientCapabilities|null
+     * @var string|null
      */
-    public $showMessage;
+    public $id;
 
     /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
-     */
-    public $showDocument;
-
-    /**
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param SemanticTokensLegend $legend
+     * @param bool|array<mixed>|null $range
+     * @param bool|array<mixed>|null $full
      * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
+     * @param string|null $id
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(SemanticTokensLegend $legend, $documentSelector = null, $range = null, $full = null, ?bool $workDoneProgress = null, ?string $id = null)
     {
+        $this->documentSelector = $documentSelector;
+        $this->legend = $legend;
+        $this->range = $range;
+        $this->full = $full;
         $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
+        $this->id = $id;
     }
 
     /**
@@ -50,9 +81,12 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
+            'documentSelector' => ['names' => [], 'iterable' => false],
+            'legend' => ['names' => [SemanticTokensLegend::class], 'iterable' => false],
+            'range' => ['names' => [], 'iterable' => false],
+            'full' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
+            'id' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

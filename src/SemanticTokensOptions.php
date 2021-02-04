@@ -6,41 +6,52 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WindowClientCapabilities
+/**
+ *
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
+ */
+class SemanticTokensOptions extends WorkDoneProgressOptions
 {
     /**
-     * Whether client supports handling progress notifications. If set
-     * servers are allowed to report in `workDoneProgress` property in the
-     * request specific server capabilities.
+     * The legend used by the server
+     *
+     * @var SemanticTokensLegend
+     */
+    public $legend;
+
+    /**
+     * Server supports providing semantic tokens for a specific range
+     * of a document.
+     *
+     * @var bool|array<mixed>|null
+     */
+    public $range;
+
+    /**
+     * Server supports providing semantic tokens for a full document.
+     *
+     * @var bool|array<mixed>|null
+     */
+    public $full;
+
+    /**
      *
      * @var bool|null
      */
     public $workDoneProgress;
 
     /**
-     * Capabilities specific to the showMessage request.
-     *
-     * @var ShowMessageRequestClientCapabilities|null
-     */
-    public $showMessage;
-
-    /**
-     * Capabilities specific to the showDocument request.
-     *
-     * @var ShowDocumentClientCapabilities|null
-     */
-    public $showDocument;
-
-    /**
+     * @param SemanticTokensLegend $legend
+     * @param bool|array<mixed>|null $range
+     * @param bool|array<mixed>|null $full
      * @param bool|null $workDoneProgress
-     * @param ShowMessageRequestClientCapabilities|null $showMessage
-     * @param ShowDocumentClientCapabilities|null $showDocument
      */
-    public function __construct(?bool $workDoneProgress = null, ?ShowMessageRequestClientCapabilities $showMessage = null, ?ShowDocumentClientCapabilities $showDocument = null)
+    public function __construct(SemanticTokensLegend $legend, $range = null, $full = null, ?bool $workDoneProgress = null)
     {
+        $this->legend = $legend;
+        $this->range = $range;
+        $this->full = $full;
         $this->workDoneProgress = $workDoneProgress;
-        $this->showMessage = $showMessage;
-        $this->showDocument = $showDocument;
     }
 
     /**
@@ -50,9 +61,10 @@ class WindowClientCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
+            'legend' => ['names' => [SemanticTokensLegend::class], 'iterable' => false],
+            'range' => ['names' => [], 'iterable' => false],
+            'full' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
-            'showMessage' => ['names' => [ShowMessageRequestClientCapabilities::class], 'iterable' => false],
-            'showDocument' => ['names' => [ShowDocumentClientCapabilities::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
