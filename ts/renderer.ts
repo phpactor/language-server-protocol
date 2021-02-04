@@ -1,5 +1,6 @@
 import {PhpClass, Property, PhpClassLike, isPhpClass, isPhpInterface, PhpInterface, PhpConstant} from './phpClass';
 import * as inflect from 'inflect';
+import {isUndefined} from 'util';
 
 export class Renderer
 {
@@ -46,9 +47,9 @@ export class Renderer
 
         if (phpClass.mixins.length > 0 || phpClass.docs.length > 0) {
             source.push(`/**`);
-            phpClass.docs.forEach((line: string) => {
-                source.push(` * ${line}`);
-            });
+
+            this.renderDocs(phpClass.docs, source, ' ')
+
             if (phpClass.mixins.length > 0 && phpClass.docs.length > 0) {
                 source.push(` *`);
             }
@@ -75,12 +76,23 @@ export class Renderer
         return source.join("\n");
     }
 
+    renderDocs(docs: string[], source: string[], indent: string): string[] {
+        docs.forEach((line: string) => {
+            if (isUndefined(line)) {
+                return;
+            }
+            line.split("\n").forEach((lineLine: string) => {
+                source.push(indent + `* ${lineLine}`);
+            });
+        });
+
+        return source;
+    }
+
     buildProperties(declaration: PhpClass, source: string[]): void {
         declaration.properties.forEach((property: Property) => {
             source.push(`    /**`);
-            for (const docLine of property.docs) {
-                source.push(`     * ${docLine}`);
-            }
+            this.renderDocs(property.docs, source, '     ');
             source.push(`     *`);
             source.push(`     * @var ${this.renderPropertyType(property)}`);
             source.push(`     */`);
@@ -205,7 +217,7 @@ export class Renderer
         });
 
         classResolutionSource.push('        ];'),
-        classResolutionSource.push(`
+            classResolutionSource.push(`
         foreach ($array as $key => &$value) {
             if (!isset($map[$key])) {
                 if ($allowUnknownKeys) {
