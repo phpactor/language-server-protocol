@@ -20,8 +20,6 @@ class Position
 {
     /**
      * Line position in a document (zero-based).
-     * If a line number is greater than the number of lines in a document, it defaults back to the number of lines in the document.
-     * If a line number is negative, it defaults to 0.
      *
      * @var int
      */
@@ -34,7 +32,6 @@ class Position
      * 
      * If the character value is greater than the line length it defaults back to the
      * line length.
-     * If a line number is negative, it defaults to 0.
      *
      * @var int
      */

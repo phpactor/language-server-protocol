@@ -37,7 +37,7 @@ class CompletionRegistrationOptions extends TextDocumentRegistrationOptions
 
     /**
      * The list of all possible characters that commit a completion. This field can be used
-     * if clients don't support individual commmit characters per completion item. See
+     * if clients don't support individual commit characters per completion item. See
      * `ClientCapabilities.textDocument.completion.completionItem.commitCharactersSupport`
      * 
      * If a server provides both `allCommitCharacters` and commit characters on an individual

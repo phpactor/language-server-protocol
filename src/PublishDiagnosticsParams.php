@@ -21,7 +21,7 @@ class PublishDiagnosticsParams
     /**
      * Optional the version number of the document the diagnostics are published for.
      *
-     * @var int|null
+     * @var integer::*|null
      */
     public $version;
 
@@ -34,10 +34,10 @@ class PublishDiagnosticsParams
 
     /**
      * @param string $uri
-     * @param int|null $version
+     * @param integer::*|null $version
      * @param array<Diagnostic> $diagnostics
      */
-    public function __construct(string $uri, array $diagnostics, ?int $version = null)
+    public function __construct(string $uri, array $diagnostics, $version = null)
     {
         $this->uri = $uri;
         $this->version = $version;

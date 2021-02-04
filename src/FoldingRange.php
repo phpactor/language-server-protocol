@@ -7,12 +7,14 @@ use Exception;
 use RuntimeException;
 
 /**
- * Represents a folding range.
+ * Represents a folding range. To be valid, start and end line must be bigger than zero and smaller
+ * than the number of lines in the document. Clients are free to ignore invalid ranges.
  */
 class FoldingRange
 {
     /**
-     * The zero-based line number from where the folded range starts.
+     * The zero-based start line of the range to fold. The folded area starts after the line's last character.
+     * To be valid, the end must be zero or larger and smaller than the number of lines in the document.
      *
      * @var int
      */
@@ -26,7 +28,8 @@ class FoldingRange
     public $startCharacter;
 
     /**
-     * The zero-based line number where the folded range ends.
+     * The zero-based end line of the range to fold. The folded area ends with the line's last character.
+     * To be valid, the end must be zero or larger and smaller than the number of lines in the document.
      *
      * @var int
      */

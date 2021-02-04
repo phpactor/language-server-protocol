@@ -24,6 +24,14 @@ class CodeActionOptions extends WorkDoneProgressOptions
     public $codeActionKinds;
 
     /**
+     * The server provides support to resolve additional
+     * information for a code action.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
+
+    /**
      *
      * @var bool|null
      */
@@ -31,11 +39,13 @@ class CodeActionOptions extends WorkDoneProgressOptions
 
     /**
      * @param array<string>|null $codeActionKinds
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?array $codeActionKinds = null, ?bool $workDoneProgress = null)
+    public function __construct(?array $codeActionKinds = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->codeActionKinds = $codeActionKinds;
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
@@ -47,6 +57,7 @@ class CodeActionOptions extends WorkDoneProgressOptions
     {
         $map = [
             'codeActionKinds' => ['names' => [], 'iterable' => true],
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

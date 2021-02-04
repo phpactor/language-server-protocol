@@ -30,7 +30,7 @@ class TextDocumentItem
      * The version number of this document (it will increase after each
      * change, including undo/redo).
      *
-     * @var int
+     * @var integer::*
      */
     public $version;
 
@@ -44,10 +44,10 @@ class TextDocumentItem
     /**
      * @param string $uri
      * @param string $languageId
-     * @param int $version
+     * @param integer::* $version
      * @param string $text
      */
-    public function __construct(string $uri, string $languageId, int $version, string $text)
+    public function __construct(string $uri, string $languageId, $version, string $text)
     {
         $this->uri = $uri;
         $this->languageId = $languageId;
