@@ -105,7 +105,7 @@ class CompletionItem
 
     /**
      * The format of the insert text. The format applies to both the `insertText` property
-     * and the `newText` property of a provided `textEdit`. If ommitted defaults to
+     * and the `newText` property of a provided `textEdit`. If omitted defaults to
      * `InsertTextFormat.PlainText`.
      *
      * @var InsertTextFormat::*|null
@@ -113,14 +113,31 @@ class CompletionItem
     public $insertTextFormat;
 
     /**
+     * How whitespace and indentation is handled during completion
+     * item insertion. If ignored the clients default value depends on
+     * the `textDocument.completion.insertTextMode` client capability.
+     *
+     * @var InsertTextMode::*|null
+     */
+    public $insertTextMode;
+
+    /**
      * An [edit](#TextEdit) which is applied to a document when selecting
      * this completion. When an edit is provided the value of
      * [insertText](#CompletionItem.insertText) is ignored.
      * 
-     * *Note:* The text edit's range must be a [single line] and it must contain the position
-     * at which completion has been requested.
+     * Most editors support two different operation when accepting a completion item. One is to insert a
+     * completion text and the other is to replace an existing text with a completion text. Since this can
+     * usually not predetermined by a server it can report both ranges. Clients need to signal support for
+     * `InsertReplaceEdits` via the `textDocument.completion.insertReplaceSupport` client capability
+     * property.
+     * 
+     * *Note 1:* The text edit's range as well as both ranges from a insert replace edit must be a
+     * [single line] and they must contain the position at which completion has been requested.
+     * *Note 2:* If an `InsertReplaceEdit` is returned the edit's insert range must be a prefix of
+     * the edit's replace range, that means it must be contained and starting at the same position.
      *
-     * @var TextEdit|null
+     * @var TextEdit|InsertReplaceEdit|null
      */
     public $textEdit;
 
@@ -156,7 +173,7 @@ class CompletionItem
     public $command;
 
     /**
-     * An data entry field that is preserved on a completion item between
+     * A data entry field that is preserved on a completion item between
      * a [CompletionRequest](#CompletionRequest) and a [CompletionResolveRequest]
      * (#CompletionResolveRequest)
      *
@@ -176,13 +193,14 @@ class CompletionItem
      * @param string|null $filterText
      * @param string|null $insertText
      * @param InsertTextFormat::*|null $insertTextFormat
-     * @param TextEdit|null $textEdit
+     * @param InsertTextMode::*|null $insertTextMode
+     * @param TextEdit|InsertReplaceEdit|null $textEdit
      * @param array<TextEdit>|null $additionalTextEdits
      * @param array<string>|null $commitCharacters
      * @param Command|null $command
      * @param mixed|null $data
      */
-    public function __construct(string $label, $kind = null, ?array $tags = null, ?string $detail = null, $documentation = null, ?bool $deprecated = null, ?bool $preselect = null, ?string $sortText = null, ?string $filterText = null, ?string $insertText = null, $insertTextFormat = null, ?TextEdit $textEdit = null, ?array $additionalTextEdits = null, ?array $commitCharacters = null, ?Command $command = null, $data = null)
+    public function __construct(string $label, $kind = null, ?array $tags = null, ?string $detail = null, $documentation = null, ?bool $deprecated = null, ?bool $preselect = null, ?string $sortText = null, ?string $filterText = null, ?string $insertText = null, $insertTextFormat = null, $insertTextMode = null, $textEdit = null, ?array $additionalTextEdits = null, ?array $commitCharacters = null, ?Command $command = null, $data = null)
     {
         $this->label = $label;
         $this->kind = $kind;
@@ -195,6 +213,7 @@ class CompletionItem
         $this->filterText = $filterText;
         $this->insertText = $insertText;
         $this->insertTextFormat = $insertTextFormat;
+        $this->insertTextMode = $insertTextMode;
         $this->textEdit = $textEdit;
         $this->additionalTextEdits = $additionalTextEdits;
         $this->commitCharacters = $commitCharacters;
@@ -220,7 +239,8 @@ class CompletionItem
             'filterText' => ['names' => [], 'iterable' => false],
             'insertText' => ['names' => [], 'iterable' => false],
             'insertTextFormat' => ['names' => [], 'iterable' => false],
-            'textEdit' => ['names' => [TextEdit::class], 'iterable' => false],
+            'insertTextMode' => ['names' => [], 'iterable' => false],
+            'textEdit' => ['names' => [TextEdit::class, InsertReplaceEdit::class], 'iterable' => false],
             'additionalTextEdits' => ['names' => [TextEdit::class], 'iterable' => true],
             'commitCharacters' => ['names' => [], 'iterable' => true],
             'command' => ['names' => [Command::class], 'iterable' => false],

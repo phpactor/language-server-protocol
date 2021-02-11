@@ -6,20 +6,33 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
+/**
+ * A generic resource operation.
+ */
 class ResourceOperation
 {
     /**
+     * The resource operation kind.
      *
      * @var string
      */
     public $kind;
 
     /**
-     * @param string $kind
+     * An optional annotation identifier describing the operation.
+     *
+     * @var string|null
      */
-    public function __construct(string $kind)
+    public $annotationId;
+
+    /**
+     * @param string $kind
+     * @param string|null $annotationId
+     */
+    public function __construct(string $kind, ?string $annotationId = null)
     {
         $this->kind = $kind;
+        $this->annotationId = $annotationId;
     }
 
     /**
@@ -30,6 +43,7 @@ class ResourceOperation
     {
         $map = [
             'kind' => ['names' => [], 'iterable' => false],
+            'annotationId' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

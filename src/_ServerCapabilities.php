@@ -179,6 +179,41 @@ class _ServerCapabilities
     public $executeCommandProvider;
 
     /**
+     * The server provides call hierarchy support.
+     *
+     * @var bool|CallHierarchyOptions|CallHierarchyRegistrationOptions|null
+     */
+    public $callHierarchyProvider;
+
+    /**
+     * The server provides linked editing range support.
+     *
+     * @var bool|LinkedEditingRangeOptions|LinkedEditingRangeRegistrationOptions|null
+     */
+    public $linkedEditingRangeProvider;
+
+    /**
+     * The server provides semantic tokens support.
+     *
+     * @var SemanticTokensOptions|SemanticTokensRegistrationOptions|null
+     */
+    public $semanticTokensProvider;
+
+    /**
+     * Window specific server capabilities.
+     *
+     * @var array<mixed>|null
+     */
+    public $workspace;
+
+    /**
+     * The server provides moniker support.
+     *
+     * @var bool|MonikerOptions|MonikerRegistrationOptions|null
+     */
+    public $monikerProvider;
+
+    /**
      * Experimental server capabilities.
      *
      * @var mixed|null
@@ -209,9 +244,14 @@ class _ServerCapabilities
      * @param bool|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
      * @param bool|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
      * @param ExecuteCommandOptions|null $executeCommandProvider
+     * @param bool|CallHierarchyOptions|CallHierarchyRegistrationOptions|null $callHierarchyProvider
+     * @param bool|LinkedEditingRangeOptions|LinkedEditingRangeRegistrationOptions|null $linkedEditingRangeProvider
+     * @param SemanticTokensOptions|SemanticTokensRegistrationOptions|null $semanticTokensProvider
+     * @param array<mixed>|null $workspace
+     * @param bool|MonikerOptions|MonikerRegistrationOptions|null $monikerProvider
      * @param mixed|null $experimental
      */
-    public function __construct($textDocumentSync = null, ?CompletionOptions $completionProvider = null, $hoverProvider = null, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider = null, $definitionProvider = null, $typeDefinitionProvider = null, $implementationProvider = null, $referencesProvider = null, $documentHighlightProvider = null, $documentSymbolProvider = null, $codeActionProvider = null, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider = null, $workspaceSymbolProvider = null, $documentFormattingProvider = null, $documentRangeFormattingProvider = null, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider = null, $foldingRangeProvider = null, $selectionRangeProvider = null, ?ExecuteCommandOptions $executeCommandProvider = null, $experimental = null)
+    public function __construct($textDocumentSync = null, ?CompletionOptions $completionProvider = null, $hoverProvider = null, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider = null, $definitionProvider = null, $typeDefinitionProvider = null, $implementationProvider = null, $referencesProvider = null, $documentHighlightProvider = null, $documentSymbolProvider = null, $codeActionProvider = null, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider = null, $workspaceSymbolProvider = null, $documentFormattingProvider = null, $documentRangeFormattingProvider = null, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider = null, $foldingRangeProvider = null, $selectionRangeProvider = null, ?ExecuteCommandOptions $executeCommandProvider = null, $callHierarchyProvider = null, $linkedEditingRangeProvider = null, $semanticTokensProvider = null, ?array $workspace = null, $monikerProvider = null, $experimental = null)
     {
         $this->textDocumentSync = $textDocumentSync;
         $this->completionProvider = $completionProvider;
@@ -236,6 +276,11 @@ class _ServerCapabilities
         $this->foldingRangeProvider = $foldingRangeProvider;
         $this->selectionRangeProvider = $selectionRangeProvider;
         $this->executeCommandProvider = $executeCommandProvider;
+        $this->callHierarchyProvider = $callHierarchyProvider;
+        $this->linkedEditingRangeProvider = $linkedEditingRangeProvider;
+        $this->semanticTokensProvider = $semanticTokensProvider;
+        $this->workspace = $workspace;
+        $this->monikerProvider = $monikerProvider;
         $this->experimental = $experimental;
     }
 
@@ -269,6 +314,11 @@ class _ServerCapabilities
             'foldingRangeProvider' => ['names' => [FoldingRangeOptions::class, FoldingRangeRegistrationOptions::class], 'iterable' => false],
             'selectionRangeProvider' => ['names' => [SelectionRangeOptions::class, SelectionRangeRegistrationOptions::class], 'iterable' => false],
             'executeCommandProvider' => ['names' => [ExecuteCommandOptions::class], 'iterable' => false],
+            'callHierarchyProvider' => ['names' => [CallHierarchyOptions::class, CallHierarchyRegistrationOptions::class], 'iterable' => false],
+            'linkedEditingRangeProvider' => ['names' => [LinkedEditingRangeOptions::class, LinkedEditingRangeRegistrationOptions::class], 'iterable' => false],
+            'semanticTokensProvider' => ['names' => [SemanticTokensOptions::class, SemanticTokensRegistrationOptions::class], 'iterable' => false],
+            'workspace' => ['names' => [], 'iterable' => false],
+            'monikerProvider' => ['names' => [MonikerOptions::class, MonikerRegistrationOptions::class], 'iterable' => false],
             'experimental' => ['names' => [], 'iterable' => false],
         ];
 

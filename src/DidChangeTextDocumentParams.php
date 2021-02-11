@@ -29,7 +29,7 @@ class DidChangeTextDocumentParams
      * 
      * To mirror the content of a document using change events use the following approach:
      * - start with the same initial content
-     * - apply the 'textDocument/didChange' notifications in the order you recevie them.
+     * - apply the 'textDocument/didChange' notifications in the order you receive them.
      * - apply the `TextDocumentContentChangeEvent`s in a single notification in the order
      *    you receive them.
      *

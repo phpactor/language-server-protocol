@@ -17,22 +17,22 @@ class TextDocumentEdit
     /**
      * The text document to change.
      *
-     * @var VersionedTextDocumentIdentifier
+     * @var OptionalVersionedTextDocumentIdentifier
      */
     public $textDocument;
 
     /**
      * The edits to be applied.
      *
-     * @var array<TextEdit>
+     * @var array<(TextEdit|AnnotatedTextEdit)>
      */
     public $edits;
 
     /**
-     * @param VersionedTextDocumentIdentifier $textDocument
-     * @param array<TextEdit> $edits
+     * @param OptionalVersionedTextDocumentIdentifier $textDocument
+     * @param array<(TextEdit|AnnotatedTextEdit)> $edits
      */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, array $edits)
+    public function __construct(OptionalVersionedTextDocumentIdentifier $textDocument, array $edits)
     {
         $this->textDocument = $textDocument;
         $this->edits = $edits;
@@ -45,8 +45,8 @@ class TextDocumentEdit
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'textDocument' => ['names' => [VersionedTextDocumentIdentifier::class], 'iterable' => false],
-            'edits' => ['names' => [TextEdit::class], 'iterable' => true],
+            'textDocument' => ['names' => [OptionalVersionedTextDocumentIdentifier::class], 'iterable' => false],
+            'edits' => ['names' => [], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

@@ -14,6 +14,7 @@ use RuntimeException;
 class RenameFile extends ResourceOperation
 {
     /**
+     * The resource operation kind.
      *
      * @var string
      */
@@ -41,17 +42,26 @@ class RenameFile extends ResourceOperation
     public $options;
 
     /**
+     * An optional annotation identifier describing the operation.
+     *
+     * @var string|null
+     */
+    public $annotationId;
+
+    /**
      * @param string $kind
      * @param string $oldUri
      * @param string $newUri
      * @param RenameFileOptions|null $options
+     * @param string|null $annotationId
      */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null)
+    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
         $this->oldUri = $oldUri;
         $this->newUri = $newUri;
         $this->options = $options;
+        $this->annotationId = $annotationId;
     }
 
     /**
@@ -65,6 +75,7 @@ class RenameFile extends ResourceOperation
             'oldUri' => ['names' => [], 'iterable' => false],
             'newUri' => ['names' => [], 'iterable' => false],
             'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
+            'annotationId' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

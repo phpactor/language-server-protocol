@@ -27,6 +27,13 @@ class SymbolInformation
     public $kind;
 
     /**
+     * Tags for this completion item.
+     *
+     * @var array<SymbolTag::*>|null
+     */
+    public $tags;
+
+    /**
      * Indicates if this symbol is deprecated.
      *
      * @var bool|null
@@ -61,14 +68,16 @@ class SymbolInformation
     /**
      * @param string $name
      * @param SymbolKind::* $kind
+     * @param array<SymbolTag::*>|null $tags
      * @param bool|null $deprecated
      * @param Location $location
      * @param string|null $containerName
      */
-    public function __construct(string $name, $kind, Location $location, ?bool $deprecated = null, ?string $containerName = null)
+    public function __construct(string $name, $kind, Location $location, ?array $tags = null, ?bool $deprecated = null, ?string $containerName = null)
     {
         $this->name = $name;
         $this->kind = $kind;
+        $this->tags = $tags;
         $this->deprecated = $deprecated;
         $this->location = $location;
         $this->containerName = $containerName;
@@ -83,6 +92,7 @@ class SymbolInformation
         $map = [
             'name' => ['names' => [], 'iterable' => false],
             'kind' => ['names' => [], 'iterable' => false],
+            'tags' => ['names' => [], 'iterable' => true],
             'deprecated' => ['names' => [], 'iterable' => false],
             'location' => ['names' => [Location::class], 'iterable' => false],
             'containerName' => ['names' => [], 'iterable' => false],

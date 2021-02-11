@@ -33,6 +33,13 @@ class ClientCapabilities
     public $window;
 
     /**
+     * General client capabilities.
+     *
+     * @var GeneralClientCapabilities|null
+     */
+    public $general;
+
+    /**
      * Experimental client capabilities.
      *
      * @var array<mixed>|null
@@ -43,13 +50,15 @@ class ClientCapabilities
      * @param array<mixed>|null $workspace
      * @param TextDocumentClientCapabilities|null $textDocument
      * @param array<mixed>|null $window
+     * @param GeneralClientCapabilities|null $general
      * @param array<mixed>|null $experimental
      */
-    public function __construct(?array $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?array $experimental = null)
+    public function __construct(?array $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?GeneralClientCapabilities $general = null, ?array $experimental = null)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;
         $this->window = $window;
+        $this->general = $general;
         $this->experimental = $experimental;
     }
 
@@ -63,6 +72,7 @@ class ClientCapabilities
             'workspace' => ['names' => [], 'iterable' => false],
             'textDocument' => ['names' => [TextDocumentClientCapabilities::class], 'iterable' => false],
             'window' => ['names' => [], 'iterable' => false],
+            'general' => ['names' => [GeneralClientCapabilities::class], 'iterable' => false],
             'experimental' => ['names' => [], 'iterable' => false],
         ];
 

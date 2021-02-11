@@ -32,7 +32,7 @@ class TextDocument
      * The version number of this document (it will increase after each
      * change, including undo/redo).
      *
-     * @var int
+     * @var integer::*
      */
     public $version;
 
@@ -46,10 +46,10 @@ class TextDocument
     /**
      * @param string $uri
      * @param string $languageId
-     * @param int $version
+     * @param integer::* $version
      * @param int $lineCount
      */
-    public function __construct(string $uri, string $languageId, int $version, int $lineCount)
+    public function __construct(string $uri, string $languageId, $version, int $lineCount)
     {
         $this->uri = $uri;
         $this->languageId = $languageId;

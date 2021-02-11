@@ -28,9 +28,16 @@ class _ClientCapabilities
     /**
      * Window specific client capabilities.
      *
-     * @var array<mixed>|null
+     * @var WindowClientCapabilities|null
      */
     public $window;
+
+    /**
+     * General client capabilities.
+     *
+     * @var GeneralClientCapabilities|null
+     */
+    public $general;
 
     /**
      * Experimental client capabilities.
@@ -42,14 +49,16 @@ class _ClientCapabilities
     /**
      * @param WorkspaceClientCapabilities|null $workspace
      * @param TextDocumentClientCapabilities|null $textDocument
-     * @param array<mixed>|null $window
+     * @param WindowClientCapabilities|null $window
+     * @param GeneralClientCapabilities|null $general
      * @param array<mixed>|null $experimental
      */
-    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?array $experimental = null)
+    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?WindowClientCapabilities $window = null, ?GeneralClientCapabilities $general = null, ?array $experimental = null)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;
         $this->window = $window;
+        $this->general = $general;
         $this->experimental = $experimental;
     }
 
@@ -62,7 +71,8 @@ class _ClientCapabilities
         $map = [
             'workspace' => ['names' => [WorkspaceClientCapabilities::class], 'iterable' => false],
             'textDocument' => ['names' => [TextDocumentClientCapabilities::class], 'iterable' => false],
-            'window' => ['names' => [], 'iterable' => false],
+            'window' => ['names' => [WindowClientCapabilities::class], 'iterable' => false],
+            'general' => ['names' => [GeneralClientCapabilities::class], 'iterable' => false],
             'experimental' => ['names' => [], 'iterable' => false],
         ];
 

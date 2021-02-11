@@ -26,13 +26,23 @@ class WorkspaceSymbolClientCapabilities
     public $symbolKind;
 
     /**
+     * The client supports tags on `SymbolInformation`.
+     * Clients supporting tags have to handle unknown tags gracefully.
+     *
+     * @var array<mixed>|null
+     */
+    public $tagSupport;
+
+    /**
      * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $symbolKind
+     * @param array<mixed>|null $tagSupport
      */
-    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null)
+    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?array $tagSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;
+        $this->tagSupport = $tagSupport;
     }
 
     /**
@@ -44,6 +54,7 @@ class WorkspaceSymbolClientCapabilities
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'symbolKind' => ['names' => [], 'iterable' => false],
+            'tagSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
