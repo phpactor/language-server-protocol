@@ -7,61 +7,24 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * The parameters sent in file rename requests/notifications.
  */
-class RenameFile extends ResourceOperation
+class RenameFilesParams
 {
     /**
-     * The resource operation kind.
+     * An array of all files/folders renamed in this operation. When a folder is renamed, only
+     * the folder will be included, and not its children.
      *
-     * @var string
+     * @var array<FileRename>
      */
-    public $kind;
+    public $files;
 
     /**
-     * The old (existing) location.
-     *
-     * @var string
+     * @param array<FileRename> $files
      */
-    public $oldUri;
-
-    /**
-     * The new location.
-     *
-     * @var string
-     */
-    public $newUri;
-
-    /**
-     * Rename options.
-     *
-     * @var RenameFileOptions|null
-     */
-    public $options;
-
-    /**
-     * An optional annotation identifier describing the operation.
-     *
-     * @var string|null
-     */
-    public $annotationId;
-
-    /**
-     * @param string $kind
-     * @param string $oldUri
-     * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
-     */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public function __construct(array $files)
     {
-        $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
-        $this->options = $options;
-        $this->annotationId = $annotationId;
+        $this->files = $files;
     }
 
     /**
@@ -71,11 +34,7 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
-            'oldUri' => ['names' => [], 'iterable' => false],
-            'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
+            'files' => ['names' => [FileRename::class], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

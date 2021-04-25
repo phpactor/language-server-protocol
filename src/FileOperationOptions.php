@@ -7,61 +7,68 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * Options for notifications/requests for user operations on files.
  */
-class RenameFile extends ResourceOperation
+class FileOperationOptions
 {
     /**
-     * The resource operation kind.
+     * The server is interested in didCreateFiles notifications.
      *
-     * @var string
+     * @var FileOperationRegistrationOptions|null
      */
-    public $kind;
+    public $didCreate;
 
     /**
-     * The old (existing) location.
+     * The server is interested in willCreateFiles requests.
      *
-     * @var string
+     * @var FileOperationRegistrationOptions|null
      */
-    public $oldUri;
+    public $willCreate;
 
     /**
-     * The new location.
+     * The server is interested in didRenameFiles notifications.
      *
-     * @var string
+     * @var FileOperationRegistrationOptions|null
      */
-    public $newUri;
+    public $didRename;
 
     /**
-     * Rename options.
+     * The server is interested in willRenameFiles requests.
      *
-     * @var RenameFileOptions|null
+     * @var FileOperationRegistrationOptions|null
      */
-    public $options;
+    public $willRename;
 
     /**
-     * An optional annotation identifier describing the operation.
+     * The server is interested in didDeleteFiles file notifications.
      *
-     * @var string|null
+     * @var FileOperationRegistrationOptions|null
      */
-    public $annotationId;
+    public $didDelete;
 
     /**
-     * @param string $kind
-     * @param string $oldUri
-     * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
+     * The server is interested in willDeleteFiles file requests.
+     *
+     * @var FileOperationRegistrationOptions|null
      */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public $willDelete;
+
+    /**
+     * @param FileOperationRegistrationOptions|null $didCreate
+     * @param FileOperationRegistrationOptions|null $willCreate
+     * @param FileOperationRegistrationOptions|null $didRename
+     * @param FileOperationRegistrationOptions|null $willRename
+     * @param FileOperationRegistrationOptions|null $didDelete
+     * @param FileOperationRegistrationOptions|null $willDelete
+     */
+    public function __construct(?FileOperationRegistrationOptions $didCreate = null, ?FileOperationRegistrationOptions $willCreate = null, ?FileOperationRegistrationOptions $didRename = null, ?FileOperationRegistrationOptions $willRename = null, ?FileOperationRegistrationOptions $didDelete = null, ?FileOperationRegistrationOptions $willDelete = null)
     {
-        $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
-        $this->options = $options;
-        $this->annotationId = $annotationId;
+        $this->didCreate = $didCreate;
+        $this->willCreate = $willCreate;
+        $this->didRename = $didRename;
+        $this->willRename = $willRename;
+        $this->didDelete = $didDelete;
+        $this->willDelete = $willDelete;
     }
 
     /**
@@ -71,11 +78,12 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
-            'oldUri' => ['names' => [], 'iterable' => false],
-            'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
+            'didCreate' => ['names' => [FileOperationRegistrationOptions::class], 'iterable' => false],
+            'willCreate' => ['names' => [FileOperationRegistrationOptions::class], 'iterable' => false],
+            'didRename' => ['names' => [FileOperationRegistrationOptions::class], 'iterable' => false],
+            'willRename' => ['names' => [FileOperationRegistrationOptions::class], 'iterable' => false],
+            'didDelete' => ['names' => [FileOperationRegistrationOptions::class], 'iterable' => false],
+            'willDelete' => ['names' => [FileOperationRegistrationOptions::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

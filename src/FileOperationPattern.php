@@ -7,61 +7,50 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * A pattern to describe in which file operation requests or notifications
+ * the server is interested in.
  */
-class RenameFile extends ResourceOperation
+class FileOperationPattern
 {
     /**
-     * The resource operation kind.
+     * The glob pattern to match. Glob patterns can have the following syntax:
+     * - `*` to match one or more characters in a path segment
+     * - `?` to match on one character in a path segment
+     * - `**` to match any number of path segments, including none
+     * - `{}` to group conditions (e.g. `**​/*.{ts,js}` matches all TypeScript and JavaScript files)
+     * - `[]` to declare a range of characters to match in a path segment (e.g., `example.[0-9]` to match on `example.0`, `example.1`, …)
+     * - `[!...]` to negate a range of characters to match in a path segment (e.g., `example.[!0-9]` to match on `example.a`, `example.b`, but not `example.0`)
      *
      * @var string
      */
-    public $kind;
+    public $glob;
 
     /**
-     * The old (existing) location.
+     * Whether to match files or folders with this pattern.
+     * 
+     * Matches both if undefined.
      *
-     * @var string
+     * @var FileOperationPatternKind::*|null
      */
-    public $oldUri;
+    public $matches;
 
     /**
-     * The new location.
+     * Additional options used during matching.
      *
-     * @var string
-     */
-    public $newUri;
-
-    /**
-     * Rename options.
-     *
-     * @var RenameFileOptions|null
+     * @var FileOperationPatternOptions|null
      */
     public $options;
 
     /**
-     * An optional annotation identifier describing the operation.
-     *
-     * @var string|null
+     * @param string $glob
+     * @param FileOperationPatternKind::*|null $matches
+     * @param FileOperationPatternOptions|null $options
      */
-    public $annotationId;
-
-    /**
-     * @param string $kind
-     * @param string $oldUri
-     * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
-     */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public function __construct(string $glob, $matches = null, ?FileOperationPatternOptions $options = null)
     {
-        $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
+        $this->glob = $glob;
+        $this->matches = $matches;
         $this->options = $options;
-        $this->annotationId = $annotationId;
     }
 
     /**
@@ -71,11 +60,9 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
-            'oldUri' => ['names' => [], 'iterable' => false],
-            'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
+            'glob' => ['names' => [], 'iterable' => false],
+            'matches' => ['names' => [], 'iterable' => false],
+            'options' => ['names' => [FileOperationPatternOptions::class], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

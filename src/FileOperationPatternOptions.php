@@ -7,61 +7,23 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * Matching options for the file operation pattern.
  */
-class RenameFile extends ResourceOperation
+class FileOperationPatternOptions
 {
     /**
-     * The resource operation kind.
+     * The pattern should be matched ignoring casing.
      *
-     * @var string
+     * @var bool|null
      */
-    public $kind;
+    public $ignoreCase;
 
     /**
-     * The old (existing) location.
-     *
-     * @var string
+     * @param bool|null $ignoreCase
      */
-    public $oldUri;
-
-    /**
-     * The new location.
-     *
-     * @var string
-     */
-    public $newUri;
-
-    /**
-     * Rename options.
-     *
-     * @var RenameFileOptions|null
-     */
-    public $options;
-
-    /**
-     * An optional annotation identifier describing the operation.
-     *
-     * @var string|null
-     */
-    public $annotationId;
-
-    /**
-     * @param string $kind
-     * @param string $oldUri
-     * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
-     */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public function __construct(?bool $ignoreCase = null)
     {
-        $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
-        $this->options = $options;
-        $this->annotationId = $annotationId;
+        $this->ignoreCase = $ignoreCase;
     }
 
     /**
@@ -71,11 +33,7 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
-            'oldUri' => ['names' => [], 'iterable' => false],
-            'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
+            'ignoreCase' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

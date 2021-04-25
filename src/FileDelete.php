@@ -7,61 +7,23 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * Represents information on a file/folder delete.
  */
-class RenameFile extends ResourceOperation
+class FileDelete
 {
     /**
-     * The resource operation kind.
+     * A file:// URI for the location of the file/folder being deleted.
      *
      * @var string
      */
-    public $kind;
+    public $uri;
 
     /**
-     * The old (existing) location.
-     *
-     * @var string
+     * @param string $uri
      */
-    public $oldUri;
-
-    /**
-     * The new location.
-     *
-     * @var string
-     */
-    public $newUri;
-
-    /**
-     * Rename options.
-     *
-     * @var RenameFileOptions|null
-     */
-    public $options;
-
-    /**
-     * An optional annotation identifier describing the operation.
-     *
-     * @var string|null
-     */
-    public $annotationId;
-
-    /**
-     * @param string $kind
-     * @param string $oldUri
-     * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
-     */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public function __construct(string $uri)
     {
-        $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
-        $this->options = $options;
-        $this->annotationId = $annotationId;
+        $this->uri = $uri;
     }
 
     /**
@@ -71,11 +33,7 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
-            'oldUri' => ['names' => [], 'iterable' => false],
-            'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
+            'uri' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

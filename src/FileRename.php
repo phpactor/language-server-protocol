@@ -7,61 +7,32 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * Represents information on a file/folder rename.
  */
-class RenameFile extends ResourceOperation
+class FileRename
 {
     /**
-     * The resource operation kind.
-     *
-     * @var string
-     */
-    public $kind;
-
-    /**
-     * The old (existing) location.
+     * A file:// URI for the original location of the file/folder being renamed.
      *
      * @var string
      */
     public $oldUri;
 
     /**
-     * The new location.
+     * A file:// URI for the new location of the file/folder being renamed.
      *
      * @var string
      */
     public $newUri;
 
     /**
-     * Rename options.
-     *
-     * @var RenameFileOptions|null
-     */
-    public $options;
-
-    /**
-     * An optional annotation identifier describing the operation.
-     *
-     * @var string|null
-     */
-    public $annotationId;
-
-    /**
-     * @param string $kind
      * @param string $oldUri
      * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
      */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public function __construct(string $oldUri, string $newUri)
     {
-        $this->kind = $kind;
         $this->oldUri = $oldUri;
         $this->newUri = $newUri;
-        $this->options = $options;
-        $this->annotationId = $annotationId;
     }
 
     /**
@@ -71,11 +42,8 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
             'oldUri' => ['names' => [], 'iterable' => false],
             'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

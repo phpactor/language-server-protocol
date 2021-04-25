@@ -7,61 +7,80 @@ use Exception;
 use RuntimeException;
 
 /**
- * Rename file operation
- *
- * Mixins (implemented TS interfaces): ResourceOperation
+ * Capabilities relating to events from file operations by the user in the client.
+ * 
+ * These events do not come from the file system, they come from user operations
+ * like renaming a file in the UI.
  */
-class RenameFile extends ResourceOperation
+class FileOperationClientCapabilities
 {
     /**
-     * The resource operation kind.
+     * Whether the client supports dynamic registration for file requests/notifications.
      *
-     * @var string
+     * @var bool|null
      */
-    public $kind;
+    public $dynamicRegistration;
 
     /**
-     * The old (existing) location.
+     * The client has support for sending didCreateFiles notifications.
      *
-     * @var string
+     * @var bool|null
      */
-    public $oldUri;
+    public $didCreate;
 
     /**
-     * The new location.
+     * The client has support for willCreateFiles requests.
      *
-     * @var string
+     * @var bool|null
      */
-    public $newUri;
+    public $willCreate;
 
     /**
-     * Rename options.
+     * The client has support for sending didRenameFiles notifications.
      *
-     * @var RenameFileOptions|null
+     * @var bool|null
      */
-    public $options;
+    public $didRename;
 
     /**
-     * An optional annotation identifier describing the operation.
+     * The client has support for willRenameFiles requests.
      *
-     * @var string|null
+     * @var bool|null
      */
-    public $annotationId;
+    public $willRename;
 
     /**
-     * @param string $kind
-     * @param string $oldUri
-     * @param string $newUri
-     * @param RenameFileOptions|null $options
-     * @param string|null $annotationId
+     * The client has support for sending didDeleteFiles notifications.
+     *
+     * @var bool|null
      */
-    public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
+    public $didDelete;
+
+    /**
+     * The client has support for willDeleteFiles requests.
+     *
+     * @var bool|null
+     */
+    public $willDelete;
+
+    /**
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $didCreate
+     * @param bool|null $willCreate
+     * @param bool|null $didRename
+     * @param bool|null $willRename
+     * @param bool|null $didDelete
+     * @param bool|null $willDelete
+     */
+    public function __construct(?bool $dynamicRegistration = null, ?bool $didCreate = null, ?bool $willCreate = null, ?bool $didRename = null, ?bool $willRename = null, ?bool $didDelete = null, ?bool $willDelete = null)
     {
-        $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
-        $this->options = $options;
-        $this->annotationId = $annotationId;
+        $this->dynamicRegistration = $dynamicRegistration;
+        $this->didCreate = $didCreate;
+        $this->willCreate = $willCreate;
+        $this->didRename = $didRename;
+        $this->willRename = $willRename;
+        $this->didDelete = $didDelete;
+        $this->willDelete = $willDelete;
     }
 
     /**
@@ -71,11 +90,13 @@ class RenameFile extends ResourceOperation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'kind' => ['names' => [], 'iterable' => false],
-            'oldUri' => ['names' => [], 'iterable' => false],
-            'newUri' => ['names' => [], 'iterable' => false],
-            'options' => ['names' => [RenameFileOptions::class], 'iterable' => false],
-            'annotationId' => ['names' => [], 'iterable' => false],
+            'dynamicRegistration' => ['names' => [], 'iterable' => false],
+            'didCreate' => ['names' => [], 'iterable' => false],
+            'willCreate' => ['names' => [], 'iterable' => false],
+            'didRename' => ['names' => [], 'iterable' => false],
+            'willRename' => ['names' => [], 'iterable' => false],
+            'didDelete' => ['names' => [], 'iterable' => false],
+            'willDelete' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

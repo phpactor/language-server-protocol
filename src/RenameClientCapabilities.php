@@ -24,13 +24,38 @@ class RenameClientCapabilities
     public $prepareSupport;
 
     /**
+     * Client supports the default behavior result.
+     * 
+     * The value indicates the default behavior used by the
+     * client.
+     *
+     * @var PrepareSupportDefaultBehavior::*|null
+     */
+    public $prepareSupportDefaultBehavior;
+
+    /**
+     * Whether th client honors the change annotations in
+     * text edits and resource operations returned via the
+     * rename request's workspace edit by for example presenting
+     * the workspace edit in the user interface and asking
+     * for confirmation.
+     *
+     * @var bool|null
+     */
+    public $honorsChangeAnnotations;
+
+    /**
      * @param bool|null $dynamicRegistration
      * @param bool|null $prepareSupport
+     * @param PrepareSupportDefaultBehavior::*|null $prepareSupportDefaultBehavior
+     * @param bool|null $honorsChangeAnnotations
      */
-    public function __construct(?bool $dynamicRegistration = null, ?bool $prepareSupport = null)
+    public function __construct(?bool $dynamicRegistration = null, ?bool $prepareSupport = null, $prepareSupportDefaultBehavior = null, ?bool $honorsChangeAnnotations = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->prepareSupport = $prepareSupport;
+        $this->prepareSupportDefaultBehavior = $prepareSupportDefaultBehavior;
+        $this->honorsChangeAnnotations = $honorsChangeAnnotations;
     }
 
     /**
@@ -42,6 +67,8 @@ class RenameClientCapabilities
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'prepareSupport' => ['names' => [], 'iterable' => false],
+            'prepareSupportDefaultBehavior' => ['names' => [], 'iterable' => false],
+            'honorsChangeAnnotations' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
