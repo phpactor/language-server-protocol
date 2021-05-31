@@ -9,16 +9,16 @@ import * as path from 'path';
 import {createNodeMap} from './nodeMap';
 
 const paths: string[] = [
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.foldingRange.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.workspaceFolders.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.progress.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.colorProvider.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.configuration.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.declaration.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.typeDefinition.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.implementation.d.ts'),
-    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'protocol.selectionRange.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.foldingRange.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.workspaceFolders.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.progress.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.colorProvider.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.configuration.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.declaration.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.typeDefinition.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.implementation.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.selectionRange.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-types', 'lib', 'umd', 'main.d.ts'),
     path.resolve(__dirname, '../ts/stubs.ts'),
 ];

@@ -106,6 +106,10 @@ export class TypeConverter
         if (isTypeReferenceNode(type) && isIdentifier(type.typeName)) {
             const typeName = type.typeName.escapedText.toString();
 
+            if (typeName === 'uinteger' || typeName === 'integer') {
+                return new PhpType('int', 'int');
+            }
+
             if (this.nodeMap.modules.has(typeName)) {
                 return new PhpType(null, typeName + '::*');
             }

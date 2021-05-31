@@ -125,6 +125,7 @@ export class Property {
     type: PhpType;
     nullable: boolean;
     docs: string[] = [];
+    special: string[] = [];
 }
 
 export class PhpClassResolver
@@ -190,7 +191,7 @@ export class PhpClassResolver
         }
 
         for (const property of declaration.members) {
-
+            let special = [];
             if (!isPropertySignature(property)) {
                 continue;
             }
@@ -199,11 +200,16 @@ export class PhpClassResolver
                 continue;
             }
 
+            if (property.type.getText().match(/DocumentUri/)) {
+                special.push('uri');
+            }
+
             const classProperty: Property = {
                 docs: this.jsDocs(property),
                 name: property.name.escapedText.toString(),
                 type: this.typeConverter.phpType(property.type),
-                nullable: this.isNullable(property)
+                nullable: this.isNullable(property),
+                special
             };
 
             properties.set(classProperty.name, classProperty);

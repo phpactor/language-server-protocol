@@ -47,7 +47,12 @@ export class Renderer
         if (phpClass.mixins.length > 0 || phpClass.docs.length > 0) {
             source.push(`/**`);
             phpClass.docs.forEach((line: string) => {
-                source.push(` * ${line}`);
+                if (typeof line === 'undefined') {
+                    return;
+                }
+                for (const docLine of line.split("\n")) {
+                    source.push(` * ${docLine}`);
+                }
             });
             if (phpClass.mixins.length > 0 && phpClass.docs.length > 0) {
                 source.push(` *`);
@@ -79,7 +84,9 @@ export class Renderer
         declaration.properties.forEach((property: Property) => {
             source.push(`    /**`);
             for (const docLine of property.docs) {
-                source.push(`     * ${docLine}`);
+                for (const docLineLine of docLine.split("\n")) {
+                    source.push(`     * ${docLineLine}`);
+                }
             }
             source.push(`     *`);
             source.push(`     * @var ${this.renderPropertyType(property)}`);
@@ -139,6 +146,11 @@ export class Renderer
         source.push('    {');
 
         declaration.properties.forEach((property: Property) => {
+            // special handling for URIs
+            if (-1 !== property.special.indexOf('uri')) {
+                source.push(`        $this->${property.name} = uridecode($${property.name});`);
+                return;
+            }
             source.push(`        $this->${property.name} = $${property.name};`);
         });
         source.push('    }');
