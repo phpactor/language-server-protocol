@@ -102,7 +102,7 @@ class _InitializeParams extends WorkDoneProgressParams
         $this->clientInfo = $clientInfo;
         $this->locale = $locale;
         $this->rootPath = $rootPath;
-        $this->rootUri = uridecode($rootUri);
+        $this->rootUri = urldecode($rootUri);
         $this->capabilities = $capabilities;
         $this->initializationOptions = $initializationOptions;
         $this->trace = $trace;
@@ -111,7 +111,7 @@ class _InitializeParams extends WorkDoneProgressParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

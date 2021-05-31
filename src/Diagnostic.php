@@ -76,7 +76,7 @@ class Diagnostic
      * A data entry field that is preserved between a `textDocument/publishDiagnostics`
      * notification and `textDocument/codeAction` request.
      *
-     * @var |null
+     * @var mixed|null
      */
     public $data;
 
@@ -89,7 +89,7 @@ class Diagnostic
      * @param string $message
      * @param array<DiagnosticTag::*>|null $tags
      * @param array<DiagnosticRelatedInformation>|null $relatedInformation
-     * @param |null $data
+     * @param mixed|null $data
      */
     public function __construct(Range $range, string $message, $severity = null, $code = null, ?CodeDescription $codeDescription = null, ?string $source = null, ?array $tags = null, ?array $relatedInformation = null, $data = null)
     {
@@ -106,7 +106,7 @@ class Diagnostic
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

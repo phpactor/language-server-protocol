@@ -87,7 +87,7 @@ class CodeAction
      * A data entry field that is preserved on a code action between
      * a `textDocument/codeAction` and a `codeAction/resolve` request.
      *
-     * @var |null
+     * @var mixed|null
      */
     public $data;
 
@@ -99,7 +99,7 @@ class CodeAction
      * @param array<mixed>|null $disabled
      * @param WorkspaceEdit|null $edit
      * @param Command|null $command
-     * @param |null $data
+     * @param mixed|null $data
      */
     public function __construct(string $title, ?string $kind = null, ?array $diagnostics = null, ?bool $isPreferred = null, ?array $disabled = null, ?WorkspaceEdit $edit = null, ?Command $command = null, $data = null)
     {
@@ -115,7 +115,7 @@ class CodeAction
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

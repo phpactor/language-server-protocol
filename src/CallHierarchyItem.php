@@ -66,7 +66,7 @@ class CallHierarchyItem
      * A data entry field that is preserved between a call hierarchy prepare and
      * incoming calls or outgoing calls requests.
      *
-     * @var |null
+     * @var mixed|null
      */
     public $data;
 
@@ -78,7 +78,7 @@ class CallHierarchyItem
      * @param string $uri
      * @param Range $range
      * @param Range $selectionRange
-     * @param |null $data
+     * @param mixed|null $data
      */
     public function __construct(string $name, $kind, string $uri, Range $range, Range $selectionRange, ?array $tags = null, ?string $detail = null, $data = null)
     {
@@ -86,7 +86,7 @@ class CallHierarchyItem
         $this->kind = $kind;
         $this->tags = $tags;
         $this->detail = $detail;
-        $this->uri = uridecode($uri);
+        $this->uri = urldecode($uri);
         $this->range = $range;
         $this->selectionRange = $selectionRange;
         $this->data = $data;
@@ -94,7 +94,7 @@ class CallHierarchyItem
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

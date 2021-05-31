@@ -130,7 +130,7 @@ export class TypeConverter
             return new PhpType(null, 'mixed');
         }
 
-        return new PhpType(null,'');
+        return new PhpType(null,'mixed');
     }
 
     private phpTypeParenthesis(type: ParenthesizedTypeNode): PhpType {

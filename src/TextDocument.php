@@ -51,7 +51,7 @@ class TextDocument
      */
     public function __construct(string $uri, string $languageId, int $version, int $lineCount)
     {
-        $this->uri = uridecode($uri);
+        $this->uri = urldecode($uri);
         $this->languageId = $languageId;
         $this->version = $version;
         $this->lineCount = $lineCount;
@@ -59,7 +59,7 @@ class TextDocument
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

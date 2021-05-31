@@ -100,6 +100,7 @@ class CompletionItemTest extends TestCase
             null,
             null,
             null,
+            null,
             [
                 new TextEdit(
                     new Range(

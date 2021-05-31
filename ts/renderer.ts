@@ -25,7 +25,7 @@ export class Renderer
 
         phpClass.constants.forEach((constant: PhpConstant) => {
             const constName = inflect.underscore(constant.name) as string;
-            source.push(`    public const ${constName.toUpperCase()} = ${constant.rawValue};`);
+            source.push(`    public const ${constName.toUpperCase()} = ${constant.rawValue.replace(/`/g, '\'')};`);
         });
 
         source.push(`}`);
@@ -148,7 +148,7 @@ export class Renderer
         declaration.properties.forEach((property: Property) => {
             // special handling for URIs
             if (-1 !== property.special.indexOf('uri')) {
-                source.push(`        $this->${property.name} = uridecode($${property.name});`);
+                source.push(`        $this->${property.name} = urldecode($${property.name});`);
                 return;
             }
             source.push(`        $this->${property.name} = $${property.name};`);
@@ -173,7 +173,7 @@ export class Renderer
         source.push(`
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

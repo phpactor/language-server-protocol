@@ -34,12 +34,12 @@ class VersionedTextDocumentIdentifier extends TextDocumentIdentifier
     public function __construct(int $version, string $uri)
     {
         $this->version = $version;
-        $this->uri = uridecode($uri);
+        $this->uri = urldecode($uri);
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

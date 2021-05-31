@@ -50,14 +50,14 @@ class DeleteFile extends ResourceOperation
     public function __construct(string $kind, string $uri, ?DeleteFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
-        $this->uri = uridecode($uri);
+        $this->uri = urldecode($uri);
         $this->options = $options;
         $this->annotationId = $annotationId;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

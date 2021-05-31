@@ -30,13 +30,13 @@ class Location
      */
     public function __construct(string $uri, Range $range)
     {
-        $this->uri = uridecode($uri);
+        $this->uri = urldecode($uri);
         $this->range = $range;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

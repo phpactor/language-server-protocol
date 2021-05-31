@@ -39,14 +39,14 @@ class PublishDiagnosticsParams
      */
     public function __construct(string $uri, array $diagnostics, ?int $version = null)
     {
-        $this->uri = uridecode($uri);
+        $this->uri = urldecode($uri);
         $this->version = $version;
         $this->diagnostics = $diagnostics;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
