@@ -14,6 +14,7 @@ use RuntimeException;
 class CreateFile extends ResourceOperation
 {
     /**
+     * The resource operation kind.
      *
      * @var string
      */
@@ -34,15 +35,24 @@ class CreateFile extends ResourceOperation
     public $options;
 
     /**
+     * An optional annotation identifier describing the operation.
+     *
+     * @var string|null
+     */
+    public $annotationId;
+
+    /**
      * @param string $kind
      * @param string $uri
      * @param CreateFileOptions|null $options
+     * @param string|null $annotationId
      */
-    public function __construct(string $kind, string $uri, ?CreateFileOptions $options = null)
+    public function __construct(string $kind, string $uri, ?CreateFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
-        $this->uri = $uri;
+        $this->uri = uridecode($uri);
         $this->options = $options;
+        $this->annotationId = $annotationId;
     }
 
     /**
@@ -55,6 +65,7 @@ class CreateFile extends ResourceOperation
             'kind' => ['names' => [], 'iterable' => false],
             'uri' => ['names' => [], 'iterable' => false],
             'options' => ['names' => [CreateFileOptions::class], 'iterable' => false],
+            'annotationId' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

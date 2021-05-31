@@ -39,7 +39,7 @@ class PublishDiagnosticsParams
      */
     public function __construct(string $uri, array $diagnostics, ?int $version = null)
     {
-        $this->uri = $uri;
+        $this->uri = uridecode($uri);
         $this->version = $version;
         $this->diagnostics = $diagnostics;
     }

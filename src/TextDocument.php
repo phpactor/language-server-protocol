@@ -51,7 +51,7 @@ class TextDocument
      */
     public function __construct(string $uri, string $languageId, int $version, int $lineCount)
     {
-        $this->uri = $uri;
+        $this->uri = uridecode($uri);
         $this->languageId = $languageId;
         $this->version = $version;
         $this->lineCount = $lineCount;

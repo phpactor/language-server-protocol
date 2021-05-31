@@ -49,6 +49,25 @@ class CodeAction
     public $isPreferred;
 
     /**
+     * Marks that the code action cannot currently be applied.
+     * 
+     * Clients should follow the following guidelines regarding disabled code actions:
+     * 
+     *    - Disabled code actions are not shown in automatic [lightbulb](https://code.visualstudio.com/docs/editor/editingevolved#_code-action)
+     *      code action menu.
+     * 
+     *    - Disabled actions are shown as faded out in the code action menu when the user request a more specific type
+     *      of code action, such as refactorings.
+     * 
+     *    - If the user has a [keybinding](https://code.visualstudio.com/docs/editor/refactoring#_keybindings-for-code-actions)
+     *      that auto applies a code action and only a disabled code actions are returned, the client should show the user an
+     *      error message with `reason` in the editor.
+     *
+     * @var array<mixed>|null
+     */
+    public $disabled;
+
+    /**
      * The workspace edit this code action performs.
      *
      * @var WorkspaceEdit|null
@@ -65,21 +84,33 @@ class CodeAction
     public $command;
 
     /**
+     * A data entry field that is preserved on a code action between
+     * a `textDocument/codeAction` and a `codeAction/resolve` request.
+     *
+     * @var |null
+     */
+    public $data;
+
+    /**
      * @param string $title
      * @param string|null $kind
      * @param array<Diagnostic>|null $diagnostics
      * @param bool|null $isPreferred
+     * @param array<mixed>|null $disabled
      * @param WorkspaceEdit|null $edit
      * @param Command|null $command
+     * @param |null $data
      */
-    public function __construct(string $title, ?string $kind = null, ?array $diagnostics = null, ?bool $isPreferred = null, ?WorkspaceEdit $edit = null, ?Command $command = null)
+    public function __construct(string $title, ?string $kind = null, ?array $diagnostics = null, ?bool $isPreferred = null, ?array $disabled = null, ?WorkspaceEdit $edit = null, ?Command $command = null, $data = null)
     {
         $this->title = $title;
         $this->kind = $kind;
         $this->diagnostics = $diagnostics;
         $this->isPreferred = $isPreferred;
+        $this->disabled = $disabled;
         $this->edit = $edit;
         $this->command = $command;
+        $this->data = $data;
     }
 
     /**
@@ -93,8 +124,10 @@ class CodeAction
             'kind' => ['names' => [], 'iterable' => false],
             'diagnostics' => ['names' => [Diagnostic::class], 'iterable' => true],
             'isPreferred' => ['names' => [], 'iterable' => false],
+            'disabled' => ['names' => [], 'iterable' => false],
             'edit' => ['names' => [WorkspaceEdit::class], 'iterable' => false],
             'command' => ['names' => [Command::class], 'iterable' => false],
+            'data' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

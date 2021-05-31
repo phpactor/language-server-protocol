@@ -14,6 +14,7 @@ use RuntimeException;
 class DeleteFile extends ResourceOperation
 {
     /**
+     * The resource operation kind.
      *
      * @var string
      */
@@ -34,15 +35,24 @@ class DeleteFile extends ResourceOperation
     public $options;
 
     /**
+     * An optional annotation identifier describing the operation.
+     *
+     * @var string|null
+     */
+    public $annotationId;
+
+    /**
      * @param string $kind
      * @param string $uri
      * @param DeleteFileOptions|null $options
+     * @param string|null $annotationId
      */
-    public function __construct(string $kind, string $uri, ?DeleteFileOptions $options = null)
+    public function __construct(string $kind, string $uri, ?DeleteFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
-        $this->uri = $uri;
+        $this->uri = uridecode($uri);
         $this->options = $options;
+        $this->annotationId = $annotationId;
     }
 
     /**
@@ -55,6 +65,7 @@ class DeleteFile extends ResourceOperation
             'kind' => ['names' => [], 'iterable' => false],
             'uri' => ['names' => [], 'iterable' => false],
             'options' => ['names' => [DeleteFileOptions::class], 'iterable' => false],
+            'annotationId' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
