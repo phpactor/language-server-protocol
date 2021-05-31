@@ -30,7 +30,7 @@ class CodeLens
     public $command;
 
     /**
-     * An data entry field that is preserved on a code lens item between
+     * A data entry field that is preserved on a code lens item between
      * a [CodeLensRequest](#CodeLensRequest) and a [CodeLensResolveRequest]
      * (#CodeLensResolveRequest)
      *
@@ -52,7 +52,7 @@ class CodeLens
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

@@ -7,33 +7,56 @@ use Exception;
 use RuntimeException;
 
 /**
- * undefined
+ * Additional information that describes document changes.
  */
-class TextDocumentChangeEvent
+class ChangeAnnotation
 {
     /**
-     * The document that has changed.
+     * A human-readable string describing the actual change. The string
+     * is rendered prominent in the user interface.
      *
-     * @var TextDocument
+     * @var string
      */
-    public $document;
+    public $label;
 
     /**
-     * @param TextDocument $document
+     * A flag which indicates that user confirmation is needed
+     * before applying the change.
+     *
+     * @var bool|null
      */
-    public function __construct(TextDocument $document)
+    public $needsConfirmation;
+
+    /**
+     * A human-readable string which is rendered less prominent in
+     * the user interface.
+     *
+     * @var string|null
+     */
+    public $description;
+
+    /**
+     * @param string $label
+     * @param bool|null $needsConfirmation
+     * @param string|null $description
+     */
+    public function __construct(string $label, ?bool $needsConfirmation = null, ?string $description = null)
     {
-        $this->document = $document;
+        $this->label = $label;
+        $this->needsConfirmation = $needsConfirmation;
+        $this->description = $description;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'document' => ['names' => [TextDocument::class], 'iterable' => false],
+            'label' => ['names' => [], 'iterable' => false],
+            'needsConfirmation' => ['names' => [], 'iterable' => false],
+            'description' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

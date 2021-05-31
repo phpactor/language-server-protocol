@@ -32,6 +32,14 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
     public $codeActionKinds;
 
     /**
+     * The server provides support to resolve additional
+     * information for a code action.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
+
+    /**
      *
      * @var bool|null
      */
@@ -40,24 +48,27 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
     /**
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param array<string>|null $codeActionKinds
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector = null, ?array $codeActionKinds = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?array $codeActionKinds = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->codeActionKinds = $codeActionKinds;
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'documentSelector' => ['names' => [], 'iterable' => false],
             'codeActionKinds' => ['names' => [], 'iterable' => true],
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

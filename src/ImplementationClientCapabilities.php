@@ -7,7 +7,6 @@ use Exception;
 use RuntimeException;
 
 /**
- * Since 3.6.0
  */
 class ImplementationClientCapabilities
 {
@@ -22,8 +21,6 @@ class ImplementationClientCapabilities
 
     /**
      * The client supports additional metadata in the form of definition links.
-     * 
-     * Since 3.14.0
      *
      * @var bool|null
      */
@@ -41,7 +38,7 @@ class ImplementationClientCapabilities
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

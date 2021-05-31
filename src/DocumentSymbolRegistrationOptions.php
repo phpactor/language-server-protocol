@@ -22,6 +22,14 @@ class DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions
     public $documentSelector;
 
     /**
+     * A human-readable string that is shown when multiple outlines trees
+     * are shown for the same document.
+     *
+     * @var string|null
+     */
+    public $label;
+
+    /**
      *
      * @var bool|null
      */
@@ -29,22 +37,25 @@ class DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions
 
     /**
      * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param string|null $label
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?string $label = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
+        $this->label = $label;
         $this->workDoneProgress = $workDoneProgress;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'documentSelector' => ['names' => [], 'iterable' => false],
+            'label' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

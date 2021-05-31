@@ -37,24 +37,37 @@ class WorkspaceEdit
     public $documentChanges;
 
     /**
+     * A map of change annotations that can be referenced in `AnnotatedTextEdit`s or create, rename and
+     * delete file / folder operations.
+     * 
+     * Whether clients honor this property depends on the client capability `workspace.changeAnnotationSupport`.
+     *
+     * @var array<mixed>|null
+     */
+    public $changeAnnotations;
+
+    /**
      * @param array<mixed>|null $changes
      * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>|null $documentChanges
+     * @param array<mixed>|null $changeAnnotations
      */
-    public function __construct(?array $changes = null, ?array $documentChanges = null)
+    public function __construct(?array $changes = null, ?array $documentChanges = null, ?array $changeAnnotations = null)
     {
         $this->changes = $changes;
         $this->documentChanges = $documentChanges;
+        $this->changeAnnotations = $changeAnnotations;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'changes' => ['names' => [], 'iterable' => false],
             'documentChanges' => ['names' => [], 'iterable' => true],
+            'changeAnnotations' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

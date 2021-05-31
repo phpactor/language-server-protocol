@@ -44,7 +44,7 @@ class TextDocumentSyncOptions
      * If present save notifications are sent to the server. If omitted the notification should not be
      * sent.
      *
-     * @var SaveOptions|null
+     * @var bool|SaveOptions|null
      */
     public $save;
 
@@ -53,9 +53,9 @@ class TextDocumentSyncOptions
      * @param TextDocumentSyncKind::*|null $change
      * @param bool|null $willSave
      * @param bool|null $willSaveWaitUntil
-     * @param SaveOptions|null $save
+     * @param bool|SaveOptions|null $save
      */
-    public function __construct(?bool $openClose = null, $change = null, ?bool $willSave = null, ?bool $willSaveWaitUntil = null, ?SaveOptions $save = null)
+    public function __construct(?bool $openClose = null, $change = null, ?bool $willSave = null, ?bool $willSaveWaitUntil = null, $save = null)
     {
         $this->openClose = $openClose;
         $this->change = $change;
@@ -66,7 +66,7 @@ class TextDocumentSyncOptions
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

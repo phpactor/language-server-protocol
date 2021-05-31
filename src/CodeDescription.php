@@ -7,43 +7,33 @@ use Exception;
 use RuntimeException;
 
 /**
- * Represents reasons why a text document is saved.
+ * Structure to capture a description for an error code.
  */
-class TextDocumentWillSaveEvent
+class CodeDescription
 {
     /**
-     * The document that will be saved
+     * An URI to open with more information about the diagnostic error.
      *
-     * @var TextDocument
+     * @var string
      */
-    public $document;
+    public $href;
 
     /**
-     * The reason why save was triggered.
-     *
-     * @var 1|2|3
+     * @param string $href
      */
-    public $reason;
-
-    /**
-     * @param TextDocument $document
-     * @param 1|2|3 $reason
-     */
-    public function __construct(TextDocument $document, $reason)
+    public function __construct(string $href)
     {
-        $this->document = $document;
-        $this->reason = $reason;
+        $this->href = $href;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'document' => ['names' => [TextDocument::class], 'iterable' => false],
-            'reason' => ['names' => [], 'iterable' => false],
+            'href' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
