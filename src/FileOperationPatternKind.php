@@ -2,7 +2,8 @@
 
 namespace Phpactor\LanguageServerProtocol;
 
-interface CodeLensRefreshRequest
+interface FileOperationPatternKind
 {
-    public const METHOD = 'workspace/codeLens/refresh';
+    public const FILE = 'file';
+    public const FOLDER = 'folder';
 }

@@ -2,7 +2,7 @@
 
 namespace Phpactor\LanguageServerProtocol;
 
-interface CodeLensRefreshRequest
+interface DidRenameFilesNotification
 {
-    public const METHOD = 'workspace/codeLens/refresh';
+    public const METHOD = 'workspace/didRenameFiles';
 }

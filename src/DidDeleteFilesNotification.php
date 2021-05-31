@@ -2,7 +2,7 @@
 
 namespace Phpactor\LanguageServerProtocol;
 
-interface CodeLensRefreshRequest
+interface DidDeleteFilesNotification
 {
-    public const METHOD = 'workspace/codeLens/refresh';
+    public const METHOD = 'workspace/didDeleteFiles';
 }
