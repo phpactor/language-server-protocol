@@ -36,9 +36,9 @@ class FileSystemWatcher
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'globPattern' => ['names' => [RelativePattern::class], 'iterable' => false],

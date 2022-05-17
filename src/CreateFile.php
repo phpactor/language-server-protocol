@@ -50,16 +50,16 @@ class CreateFile extends ResourceOperation
     public function __construct(string $kind, string $uri, ?CreateFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
-        $this->uri = uridecode($uri);
+        $this->uri = $uri;
         $this->options = $options;
         $this->annotationId = $annotationId;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'kind' => ['names' => [], 'iterable' => false],

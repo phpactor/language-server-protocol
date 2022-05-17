@@ -73,9 +73,9 @@ class GeneralClientCapabilities
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'staleRequestSupport' => ['names' => [], 'iterable' => false],

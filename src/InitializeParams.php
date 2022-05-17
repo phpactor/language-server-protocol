@@ -108,7 +108,7 @@ class InitializeParams
         $this->clientInfo = $clientInfo;
         $this->locale = $locale;
         $this->rootPath = $rootPath;
-        $this->rootUri = uridecode($rootUri);
+        $this->rootUri = $rootUri;
         $this->capabilities = $capabilities;
         $this->initializationOptions = $initializationOptions;
         $this->trace = $trace;
@@ -118,9 +118,9 @@ class InitializeParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'processId' => ['names' => [], 'iterable' => false],

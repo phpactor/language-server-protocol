@@ -62,16 +62,16 @@ class WorkspaceEdit
      */
     public function __construct(?array $changes = null, ?array $documentChanges = null, ?array $changeAnnotations = null)
     {
-        $this->changes = uridecode($changes);
+        $this->changes = $changes;
         $this->documentChanges = $documentChanges;
         $this->changeAnnotations = $changeAnnotations;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'changes' => ['names' => [], 'iterable' => false],

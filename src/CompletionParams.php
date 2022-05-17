@@ -68,9 +68,9 @@ class CompletionParams extends TextDocumentPositionParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'context' => ['names' => [CompletionContext::class], 'iterable' => false],

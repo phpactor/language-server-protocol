@@ -34,14 +34,14 @@ class VersionedTextDocumentIdentifier extends TextDocumentIdentifier
     public function __construct(int $version, string $uri)
     {
         $this->version = $version;
-        $this->uri = uridecode($uri);
+        $this->uri = $uri;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'version' => ['names' => [], 'iterable' => false],

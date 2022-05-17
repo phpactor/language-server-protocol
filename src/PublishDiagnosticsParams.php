@@ -39,16 +39,16 @@ class PublishDiagnosticsParams
      */
     public function __construct(string $uri, array $diagnostics, ?int $version = null)
     {
-        $this->uri = uridecode($uri);
+        $this->uri = $uri;
         $this->version = $version;
         $this->diagnostics = $diagnostics;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'uri' => ['names' => [], 'iterable' => false],

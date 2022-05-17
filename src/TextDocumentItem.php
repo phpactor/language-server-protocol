@@ -49,7 +49,7 @@ class TextDocumentItem
      */
     public function __construct(string $uri, string $languageId, int $version, string $text)
     {
-        $this->uri = uridecode($uri);
+        $this->uri = $uri;
         $this->languageId = $languageId;
         $this->version = $version;
         $this->text = $text;
@@ -57,9 +57,9 @@ class TextDocumentItem
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'uri' => ['names' => [], 'iterable' => false],

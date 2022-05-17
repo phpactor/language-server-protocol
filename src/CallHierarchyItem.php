@@ -86,7 +86,7 @@ class CallHierarchyItem
         $this->kind = $kind;
         $this->tags = $tags;
         $this->detail = $detail;
-        $this->uri = uridecode($uri);
+        $this->uri = $uri;
         $this->range = $range;
         $this->selectionRange = $selectionRange;
         $this->data = $data;
@@ -94,9 +94,9 @@ class CallHierarchyItem
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'name' => ['names' => [], 'iterable' => false],

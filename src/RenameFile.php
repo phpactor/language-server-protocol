@@ -58,17 +58,17 @@ class RenameFile extends ResourceOperation
     public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
-        $this->oldUri = uridecode($oldUri);
-        $this->newUri = uridecode($newUri);
+        $this->oldUri = $oldUri;
+        $this->newUri = $newUri;
         $this->options = $options;
         $this->annotationId = $annotationId;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'kind' => ['names' => [], 'iterable' => false],

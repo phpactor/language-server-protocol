@@ -55,16 +55,16 @@ class LocationLink
     public function __construct(string $targetUri, Range $targetRange, Range $targetSelectionRange, ?Range $originSelectionRange = null)
     {
         $this->originSelectionRange = $originSelectionRange;
-        $this->targetUri = uridecode($targetUri);
+        $this->targetUri = $targetUri;
         $this->targetRange = $targetRange;
         $this->targetSelectionRange = $targetSelectionRange;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'originSelectionRange' => ['names' => [Range::class], 'iterable' => false],
