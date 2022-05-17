@@ -25,7 +25,7 @@ export class Renderer
 
         phpClass.constants.forEach((constant: PhpConstant) => {
             const constName = inflect.underscore(constant.name) as string;
-            source.push(`    public const ${constName.toUpperCase()} = ${constant.rawValue};`);
+            source.push(`    public const ${constName.toUpperCase()} = ${constant.rawValue.replace(/`/g, "'")};`);
         });
 
         source.push(`}`);
@@ -146,11 +146,6 @@ export class Renderer
         source.push('    {');
 
         declaration.properties.forEach((property: Property) => {
-            // special handling for URIs
-            if (-1 !== property.special.indexOf('uri')) {
-                source.push(`        $this->${property.name} = uridecode($${property.name});`);
-                return;
-            }
             source.push(`        $this->${property.name} = $${property.name};`);
         });
         source.push('    }');
@@ -167,15 +162,28 @@ export class Renderer
     }
 
     buildArrayConstructor(declaration: PhpClass, source: string[]): void {
+        if (declaration.properties.size === 0) {
+                source.push(`
+    /**
+     * @param array<string,mixed> $array
+     * @return self
+     */
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    {
+        return new self();
+    }
+            `);
+            return;
+        }
 
-        const normalizerSource = this.buildClassNormalizer(declaration, source).join("\n");
+        const normalizerSource = this.buildClassNormalizer(declaration).join("\n");
 
         source.push(`
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         ${normalizerSource}
         return Invoke::new(self::class, $array);
@@ -203,7 +211,7 @@ export class Renderer
         `);
     }
 
-    buildClassNormalizer(declaration: PhpClass, source: string[]): string[] {
+    buildClassNormalizer(declaration: PhpClass): string[] {
         const classResolutionSource = [
             '$map = [',
         ];

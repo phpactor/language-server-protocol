@@ -86,31 +86,19 @@ class CompletionItemTest extends TestCase
                 'command' => 'my.command',
             ],
         ]);
-
-        self::assertEquals(new CompletionItem(
-            'Foobar',
-            1,
-            null,
-            'This is foobar',
-            new MarkupContent('markdown', 'Foobar'),
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            [
-                new TextEdit(
-                    new Range(
-                        new Position(5, 10),
-                        new Position(10, 10),
-                    ),
-                    'Foobar'
-                )
-            ],
-            null,
-            new Command('Foobar', 'my.command')
-        ), $item);
+        $item = new CompletionItem('Foobar');
+        $item->kind = 1;
+        $item->detail = 'This is foobar';
+        $item->documentation = new MarkupContent('markdown', 'Foobar');
+        $item->additionalTextEdits = [
+            new TextEdit(
+                new Range(
+                    new Position(5, 10),
+                    new Position(10, 10),
+                ),
+                'Foobar'
+            )
+        ];
+        $item->command = new Command('Foobar', 'my.command');
     }
 }
