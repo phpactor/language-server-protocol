@@ -17,9 +17,17 @@ class DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null
      */
     public $documentSelector;
+
+    /**
+     * A human-readable string that is shown when multiple outlines trees
+     * are shown for the same document.
+     *
+     * @var string|null
+     */
+    public $label;
 
     /**
      *
@@ -28,12 +36,14 @@ class DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions
     public $workDoneProgress;
 
     /**
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param string|null $label
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?string $label = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
+        $this->label = $label;
         $this->workDoneProgress = $workDoneProgress;
     }
 
@@ -45,6 +55,7 @@ class DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions
     {
         $map = [
             'documentSelector' => ['names' => [], 'iterable' => false],
+            'label' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

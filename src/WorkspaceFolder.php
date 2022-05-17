@@ -6,6 +6,9 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
+/**
+ * A workspace folder inside a client.
+ */
 class WorkspaceFolder
 {
     /**

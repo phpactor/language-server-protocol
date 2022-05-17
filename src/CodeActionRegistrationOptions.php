@@ -17,7 +17,7 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null
      */
     public $documentSelector;
 
@@ -27,9 +27,17 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
      * The list of kinds may be generic, such as `CodeActionKind.Refactor`, or the server
      * may list out every specific kind they provide.
      *
-     * @var array<string>|null
+     * @var array<CodeActionKind::*>|null
      */
     public $codeActionKinds;
+
+    /**
+     * The server provides support to resolve additional
+     * information for a code action.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
 
     /**
      *
@@ -38,14 +46,16 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
     public $workDoneProgress;
 
     /**
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
-     * @param array<string>|null $codeActionKinds
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<CodeActionKind::*>|null $codeActionKinds
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct($documentSelector = null, ?array $codeActionKinds = null, ?bool $workDoneProgress = null)
+    public function __construct($documentSelector = null, ?array $codeActionKinds = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->documentSelector = $documentSelector;
         $this->codeActionKinds = $codeActionKinds;
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
@@ -58,6 +68,7 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
         $map = [
             'documentSelector' => ['names' => [], 'iterable' => false],
             'codeActionKinds' => ['names' => [], 'iterable' => true],
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

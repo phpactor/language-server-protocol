@@ -20,6 +20,23 @@ class CompletionList
     public $isIncomplete;
 
     /**
+     * In many cases the items of an actual completion result share the same
+     * value for properties like `commitCharacters` or the range of a text
+     * edit. A completion list can therefore define item defaults which will
+     * be used if a completion item itself doesn't specify the value.
+     * 
+     * If a completion list specifies a default value and a completion item
+     * also specifies a corresponding value the one from the item is used.
+     * 
+     * Servers are only allowed to return default values if the client
+     * signals support for this via the `completionList.itemDefaults`
+     * capability.
+     *
+     * @var array<mixed>|null
+     */
+    public $itemDefaults;
+
+    /**
      * The completion items.
      *
      * @var array<CompletionItem>
@@ -28,11 +45,13 @@ class CompletionList
 
     /**
      * @param bool $isIncomplete
+     * @param array<mixed>|null $itemDefaults
      * @param array<CompletionItem> $items
      */
-    public function __construct(bool $isIncomplete, array $items)
+    public function __construct(bool $isIncomplete, array $items, ?array $itemDefaults = null)
     {
         $this->isIncomplete = $isIncomplete;
+        $this->itemDefaults = $itemDefaults;
         $this->items = $items;
     }
 
@@ -44,6 +63,7 @@ class CompletionList
     {
         $map = [
             'isIncomplete' => ['names' => [], 'iterable' => false],
+            'itemDefaults' => ['names' => [], 'iterable' => false],
             'items' => ['names' => [CompletionItem::class], 'iterable' => true],
         ];
 

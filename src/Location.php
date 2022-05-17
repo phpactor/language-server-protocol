@@ -30,7 +30,7 @@ class Location
      */
     public function __construct(string $uri, Range $range)
     {
-        $this->uri = $uri;
+        $this->uri = uridecode($uri);
         $this->range = $range;
     }
 

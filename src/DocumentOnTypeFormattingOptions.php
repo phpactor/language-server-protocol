@@ -12,7 +12,7 @@ use RuntimeException;
 class DocumentOnTypeFormattingOptions
 {
     /**
-     * A character on which formatting should be triggered, like `}`.
+     * A character on which formatting should be triggered, like `{}`.
      *
      * @var string
      */

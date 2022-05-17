@@ -145,25 +145,81 @@ class TextDocumentClientCapabilities
     public $rename;
 
     /**
-     * Capabilities specific to `textDocument/foldingRange` requests.
+     * Capabilities specific to `textDocument/foldingRange` request.
      *
      * @var FoldingRangeClientCapabilities|null
      */
     public $foldingRange;
 
     /**
-     * Capabilities specific to `textDocument/selectionRange` requests
+     * Capabilities specific to `textDocument/selectionRange` request.
      *
      * @var SelectionRangeClientCapabilities|null
      */
     public $selectionRange;
 
     /**
-     * Capabilities specific to `textDocument/publishDiagnostics`.
+     * Capabilities specific to `textDocument/publishDiagnostics` notification.
      *
      * @var PublishDiagnosticsClientCapabilities|null
      */
     public $publishDiagnostics;
+
+    /**
+     * Capabilities specific to the various call hierarchy request.
+     *
+     * @var mixed|null
+     */
+    public $callHierarchy;
+
+    /**
+     * Capabilities specific to the various semantic token request.
+     *
+     * @var mixed|null
+     */
+    public $semanticTokens;
+
+    /**
+     * Capabilities specific to the linked editing range request.
+     *
+     * @var mixed|null
+     */
+    public $linkedEditingRange;
+
+    /**
+     * Client capabilities specific to the moniker request.
+     *
+     * @var mixed|null
+     */
+    public $moniker;
+
+    /**
+     * Capabilities specific to the various type hierarchy requests.
+     *
+     * @var mixed|null
+     */
+    public $typeHierarchy;
+
+    /**
+     * Capabilities specific to the `textDocument/inlineValue` request.
+     *
+     * @var mixed|null
+     */
+    public $inlineValue;
+
+    /**
+     * Capabilities specific to the `textDocument/inlayHint` request.
+     *
+     * @var mixed|null
+     */
+    public $inlayHint;
+
+    /**
+     * Capabilities specific to the diagnostic pull model.
+     *
+     * @var mixed|null
+     */
+    public $diagnostic;
 
     /**
      * @param TextDocumentSyncClientCapabilities|null $synchronization
@@ -188,8 +244,16 @@ class TextDocumentClientCapabilities
      * @param FoldingRangeClientCapabilities|null $foldingRange
      * @param SelectionRangeClientCapabilities|null $selectionRange
      * @param PublishDiagnosticsClientCapabilities|null $publishDiagnostics
+     * @param mixed|null $callHierarchy
+     * @param mixed|null $semanticTokens
+     * @param mixed|null $linkedEditingRange
+     * @param mixed|null $moniker
+     * @param mixed|null $typeHierarchy
+     * @param mixed|null $inlineValue
+     * @param mixed|null $inlayHint
+     * @param mixed|null $diagnostic
      */
-    public function __construct(?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null)
+    public function __construct(?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null, $callHierarchy = null, $semanticTokens = null, $linkedEditingRange = null, $moniker = null, $typeHierarchy = null, $inlineValue = null, $inlayHint = null, $diagnostic = null)
     {
         $this->synchronization = $synchronization;
         $this->completion = $completion;
@@ -213,6 +277,14 @@ class TextDocumentClientCapabilities
         $this->foldingRange = $foldingRange;
         $this->selectionRange = $selectionRange;
         $this->publishDiagnostics = $publishDiagnostics;
+        $this->callHierarchy = $callHierarchy;
+        $this->semanticTokens = $semanticTokens;
+        $this->linkedEditingRange = $linkedEditingRange;
+        $this->moniker = $moniker;
+        $this->typeHierarchy = $typeHierarchy;
+        $this->inlineValue = $inlineValue;
+        $this->inlayHint = $inlayHint;
+        $this->diagnostic = $diagnostic;
     }
 
     /**
@@ -244,6 +316,14 @@ class TextDocumentClientCapabilities
             'foldingRange' => ['names' => [FoldingRangeClientCapabilities::class], 'iterable' => false],
             'selectionRange' => ['names' => [SelectionRangeClientCapabilities::class], 'iterable' => false],
             'publishDiagnostics' => ['names' => [PublishDiagnosticsClientCapabilities::class], 'iterable' => false],
+            'callHierarchy' => ['names' => [], 'iterable' => false],
+            'semanticTokens' => ['names' => [], 'iterable' => false],
+            'linkedEditingRange' => ['names' => [], 'iterable' => false],
+            'moniker' => ['names' => [], 'iterable' => false],
+            'typeHierarchy' => ['names' => [], 'iterable' => false],
+            'inlineValue' => ['names' => [], 'iterable' => false],
+            'inlayHint' => ['names' => [], 'iterable' => false],
+            'diagnostic' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

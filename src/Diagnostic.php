@@ -35,6 +35,14 @@ class Diagnostic
     public $code;
 
     /**
+     * An optional property to describe the error code.
+     * Requires the code field (above) to be present/not null.
+     *
+     * @var CodeDescription|null
+     */
+    public $codeDescription;
+
+    /**
      * A human-readable string describing the source of this
      * diagnostic, e.g. 'typescript' or 'super lint'. It usually
      * appears in the user interface.
@@ -66,23 +74,35 @@ class Diagnostic
     public $relatedInformation;
 
     /**
+     * A data entry field that is preserved between a `textDocument/publishDiagnostics`
+     * notification and `textDocument/codeAction` request.
+     *
+     * @var mixed|null
+     */
+    public $data;
+
+    /**
      * @param Range $range
      * @param DiagnosticSeverity::*|null $severity
      * @param int|string|null $code
+     * @param CodeDescription|null $codeDescription
      * @param string|null $source
      * @param string $message
      * @param array<DiagnosticTag::*>|null $tags
      * @param array<DiagnosticRelatedInformation>|null $relatedInformation
+     * @param mixed|null $data
      */
-    public function __construct(Range $range, string $message, $severity = null, $code = null, ?string $source = null, ?array $tags = null, ?array $relatedInformation = null)
+    public function __construct(Range $range, string $message, $severity = null, $code = null, ?CodeDescription $codeDescription = null, ?string $source = null, ?array $tags = null, ?array $relatedInformation = null, $data = null)
     {
         $this->range = $range;
         $this->severity = $severity;
         $this->code = $code;
+        $this->codeDescription = $codeDescription;
         $this->source = $source;
         $this->message = $message;
         $this->tags = $tags;
         $this->relatedInformation = $relatedInformation;
+        $this->data = $data;
     }
 
     /**
@@ -95,10 +115,12 @@ class Diagnostic
             'range' => ['names' => [Range::class], 'iterable' => false],
             'severity' => ['names' => [], 'iterable' => false],
             'code' => ['names' => [], 'iterable' => false],
+            'codeDescription' => ['names' => [CodeDescription::class], 'iterable' => false],
             'source' => ['names' => [], 'iterable' => false],
             'message' => ['names' => [], 'iterable' => false],
             'tags' => ['names' => [], 'iterable' => true],
             'relatedInformation' => ['names' => [DiagnosticRelatedInformation::class], 'iterable' => true],
+            'data' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

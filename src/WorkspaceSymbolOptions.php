@@ -14,16 +14,26 @@ use RuntimeException;
 class WorkspaceSymbolOptions extends WorkDoneProgressOptions
 {
     /**
+     * The server provides support to resolve additional
+     * information for a workspace symbol.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
+
+    /**
      *
      * @var bool|null
      */
     public $workDoneProgress;
 
     /**
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress = null)
+    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
@@ -34,6 +44,7 @@ class WorkspaceSymbolOptions extends WorkDoneProgressOptions
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

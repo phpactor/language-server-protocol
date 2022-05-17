@@ -18,11 +18,21 @@ class DidChangeWatchedFilesClientCapabilities
     public $dynamicRegistration;
 
     /**
-     * @param bool|null $dynamicRegistration
+     * Whether the client has support for {@link  RelativePattern relative pattern}
+     * or not.
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $dynamicRegistration = null)
+    public $relativePatternSupport;
+
+    /**
+     * @param bool|null $dynamicRegistration
+     * @param bool|null $relativePatternSupport
+     */
+    public function __construct(?bool $dynamicRegistration = null, ?bool $relativePatternSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
+        $this->relativePatternSupport = $relativePatternSupport;
     }
 
     /**
@@ -33,6 +43,7 @@ class DidChangeWatchedFilesClientCapabilities
     {
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
+            'relativePatternSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

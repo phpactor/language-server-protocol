@@ -9,23 +9,11 @@ use RuntimeException;
 /**
  * Represents information about programming constructs like variables, classes,
  * interfaces etc.
+ *
+ * Mixins (implemented TS interfaces): BaseSymbolInformation
  */
-class SymbolInformation
+class SymbolInformation extends BaseSymbolInformation
 {
-    /**
-     * The name of this symbol.
-     *
-     * @var string
-     */
-    public $name;
-
-    /**
-     * The kind of this symbol.
-     *
-     * @var SymbolKind::*
-     */
-    public $kind;
-
     /**
      * Indicates if this symbol is deprecated.
      *
@@ -49,6 +37,27 @@ class SymbolInformation
     public $location;
 
     /**
+     * The name of this symbol.
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * The kind of this symbol.
+     *
+     * @var SymbolKind::*
+     */
+    public $kind;
+
+    /**
+     * Tags for this completion item.
+     *
+     * @var array<SymbolTag::*>|null
+     */
+    public $tags;
+
+    /**
      * The name of the symbol containing this symbol. This information is for
      * user interface purposes (e.g. to render a qualifier in the user interface
      * if necessary). It can't be used to re-infer a hierarchy for the document
@@ -59,18 +68,20 @@ class SymbolInformation
     public $containerName;
 
     /**
-     * @param string $name
-     * @param SymbolKind::* $kind
      * @param bool|null $deprecated
      * @param Location $location
+     * @param string $name
+     * @param SymbolKind::* $kind
+     * @param array<SymbolTag::*>|null $tags
      * @param string|null $containerName
      */
-    public function __construct(string $name, $kind, Location $location, ?bool $deprecated = null, ?string $containerName = null)
+    public function __construct(Location $location, string $name, $kind, ?bool $deprecated = null, ?array $tags = null, ?string $containerName = null)
     {
-        $this->name = $name;
-        $this->kind = $kind;
         $this->deprecated = $deprecated;
         $this->location = $location;
+        $this->name = $name;
+        $this->kind = $kind;
+        $this->tags = $tags;
         $this->containerName = $containerName;
     }
 
@@ -81,10 +92,11 @@ class SymbolInformation
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'name' => ['names' => [], 'iterable' => false],
-            'kind' => ['names' => [], 'iterable' => false],
             'deprecated' => ['names' => [], 'iterable' => false],
             'location' => ['names' => [Location::class], 'iterable' => false],
+            'name' => ['names' => [], 'iterable' => false],
+            'kind' => ['names' => [], 'iterable' => false],
+            'tags' => ['names' => [], 'iterable' => true],
             'containerName' => ['names' => [], 'iterable' => false],
         ];
 

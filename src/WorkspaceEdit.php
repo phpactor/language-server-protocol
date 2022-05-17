@@ -10,6 +10,15 @@ use RuntimeException;
  * A workspace edit represents changes to many resources managed in the workspace. The edit
  * should either provide `changes` or `documentChanges`. If documentChanges are present
  * they are preferred over `changes` if the client can handle versioned document edits.
+ * 
+ * Since version 3.13.0 a workspace edit can contain resource operations as well. If resource
+ * operations are present clients need to execute the operations in the order in which they
+ * are provided. So a workspace edit for example can consist of the following two changes:
+ * (1) a create file a.txt and (2) a text document edit which insert text into file a.txt.
+ * 
+ * An invalid sequence (e.g. (1) delete file a.txt and (2) insert text into file a.txt) will
+ * cause failure of the operation. How the client recovers from the failure is described by
+ * the client capability: `workspace.workspaceEdit.failureHandling`
  */
 class WorkspaceEdit
 {
@@ -37,13 +46,25 @@ class WorkspaceEdit
     public $documentChanges;
 
     /**
+     * A map of change annotations that can be referenced in `AnnotatedTextEdit`s or create, rename and
+     * delete file / folder operations.
+     * 
+     * Whether clients honor this property depends on the client capability `workspace.changeAnnotationSupport`.
+     *
+     * @var array<mixed>|null
+     */
+    public $changeAnnotations;
+
+    /**
      * @param array<mixed>|null $changes
      * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>|null $documentChanges
+     * @param array<mixed>|null $changeAnnotations
      */
-    public function __construct(?array $changes = null, ?array $documentChanges = null)
+    public function __construct(?array $changes = null, ?array $documentChanges = null, ?array $changeAnnotations = null)
     {
-        $this->changes = $changes;
+        $this->changes = uridecode($changes);
         $this->documentChanges = $documentChanges;
+        $this->changeAnnotations = $changeAnnotations;
     }
 
     /**
@@ -55,6 +76,7 @@ class WorkspaceEdit
         $map = [
             'changes' => ['names' => [], 'iterable' => false],
             'documentChanges' => ['names' => [], 'iterable' => true],
+            'changeAnnotations' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

@@ -15,7 +15,7 @@ class ImplementationRegistrationOptions extends TextDocumentRegistrationOptions
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null
      */
     public $documentSelector;
 
@@ -34,7 +34,7 @@ class ImplementationRegistrationOptions extends TextDocumentRegistrationOptions
     public $id;
 
     /**
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param bool|null $workDoneProgress
      * @param string|null $id
      */

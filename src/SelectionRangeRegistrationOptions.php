@@ -21,7 +21,7 @@ class SelectionRangeRegistrationOptions extends SelectionRangeOptions
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null
      */
     public $documentSelector;
 
@@ -35,7 +35,7 @@ class SelectionRangeRegistrationOptions extends SelectionRangeOptions
 
     /**
      * @param bool|null $workDoneProgress
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      * @param string|null $id
      */
     public function __construct(?bool $workDoneProgress = null, $documentSelector = null, ?string $id = null)

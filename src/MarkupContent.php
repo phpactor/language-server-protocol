@@ -17,13 +17,13 @@ use RuntimeException;
  * ```ts
  * let markdown: MarkdownContent = {
  *   kind: MarkupKind.Markdown,
- * value: [
- * 		'# Header',
- * 		'Some text',
- * 		'```typescript',
- * 		'someCode();',
- * 		'```'
- * ].join('\n')
+ *   value: [
+ *     '# Header',
+ *     'Some text',
+ *     '```typescript',
+ *     'someCode();',
+ *     '```'
+ *   ].join('\n')
  * };
  * ```
  * 

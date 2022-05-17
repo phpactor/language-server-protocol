@@ -19,14 +19,19 @@ class DocumentOnTypeFormattingParams
     public $textDocument;
 
     /**
-     * The position at which this request was send.
+     * The position around which the on type formatting should happen.
+     * This is not necessarily the exact position where the character denoted
+     * by the property `ch` got typed.
      *
      * @var Position
      */
     public $position;
 
     /**
-     * The character that has been typed.
+     * The character that has been typed that triggered the formatting
+     * on type request. That is not necessarily the last character that
+     * got inserted into the document since the client could auto insert
+     * characters as well (e.g. like automatic brace completion).
      *
      * @var string
      */

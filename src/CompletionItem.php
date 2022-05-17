@@ -13,13 +13,24 @@ use RuntimeException;
 class CompletionItem
 {
     /**
-     * The label of this completion item. By default
-     * also the text that is inserted when selecting
-     * this completion.
+     * The label of this completion item.
+     * 
+     * The label property is also by default the text that
+     * is inserted when selecting this completion.
+     * 
+     * If label details are provided the label itself should
+     * be an unqualified name of the completion item.
      *
      * @var string
      */
     public $label;
+
+    /**
+     * Additional details for the label
+     *
+     * @var CompletionItemLabelDetails|null
+     */
+    public $labelDetails;
 
     /**
      * The kind of this completion item. Based of the kind
@@ -94,35 +105,74 @@ class CompletionItem
      * 
      * The `insertText` is subject to interpretation by the client side.
      * Some tools might not take the string literally. For example
-     * VS Code when code complete is requested in this example `con<cursor position>`
-     * and a completion item with an `insertText` of `console` is provided it
-     * will only insert `sole`. Therefore it is recommended to use `textEdit` instead
-     * since it avoids additional client side interpretation.
+     * VS Code when code complete is requested in this example
+     * `con<cursor position>` and a completion item with an `insertText` of
+     * `console` is provided it will only insert `sole`. Therefore it is
+     * recommended to use `textEdit` instead since it avoids additional client
+     * side interpretation.
      *
      * @var string|null
      */
     public $insertText;
 
     /**
-     * The format of the insert text. The format applies to both the `insertText` property
-     * and the `newText` property of a provided `textEdit`. If ommitted defaults to
-     * `InsertTextFormat.PlainText`.
+     * The format of the insert text. The format applies to both the
+     * `insertText` property and the `newText` property of a provided
+     * `textEdit`. If omitted defaults to `InsertTextFormat.PlainText`.
+     * 
+     * Please note that the insertTextFormat doesn't apply to
+     * `additionalTextEdits`.
      *
      * @var InsertTextFormat::*|null
      */
     public $insertTextFormat;
 
     /**
+     * How whitespace and indentation is handled during completion
+     * item insertion. If ignored the clients default value depends on
+     * the `textDocument.completion.insertTextMode` client capability.
+     *
+     * @var InsertTextMode::*|null
+     */
+    public $insertTextMode;
+
+    /**
      * An [edit](#TextEdit) which is applied to a document when selecting
      * this completion. When an edit is provided the value of
      * [insertText](#CompletionItem.insertText) is ignored.
      * 
-     * *Note:* The text edit's range must be a [single line] and it must contain the position
+     * Most editors support two different operation when accepting a completion
+     * item. One is to insert a completion text and the other is to replace an
+     * existing text with a completion text. Since this can usually not
+     * predetermined by a server it can report both ranges. Clients need to
+     * signal support for `InsertReplaceEdits` via the
+     * `textDocument.completion.insertReplaceSupport` client capability
+     * property.
+     * 
+     * *Note 1:* The text edit's range as well as both ranges from a insert
+     * replace edit must be a [single line] and they must contain the position
      * at which completion has been requested.
+     * *Note 2:* If an `InsertReplaceEdit` is returned the edit's insert range
+     * must be a prefix of the edit's replace range, that means it must be
+     * contained and starting at the same position.
      *
-     * @var TextEdit|null
+     * @var TextEdit|InsertReplaceEdit|null
      */
     public $textEdit;
+
+    /**
+     * The edit text used if the completion item is part of a CompletionList and
+     * CompletionList defines an item default for the text edit range.
+     * 
+     * Clients will only honor this property if they opt into completion list
+     * item defaults using the capability `completionList.itemDefaults`.
+     * 
+     * If not provided and a list's default range is provided the label
+     * property is used as a text.
+     *
+     * @var string|null
+     */
+    public $textEditText;
 
     /**
      * An optional array of additional [text edits](#TextEdit) that are applied when
@@ -156,9 +206,8 @@ class CompletionItem
     public $command;
 
     /**
-     * An data entry field that is preserved on a completion item between
-     * a [CompletionRequest](#CompletionRequest) and a [CompletionResolveRequest]
-     * (#CompletionResolveRequest)
+     * A data entry field that is preserved on a completion item between a
+     * [CompletionRequest](#CompletionRequest) and a [CompletionResolveRequest](#CompletionResolveRequest).
      *
      * @var mixed|null
      */
@@ -166,6 +215,7 @@ class CompletionItem
 
     /**
      * @param string $label
+     * @param CompletionItemLabelDetails|null $labelDetails
      * @param CompletionItemKind::*|null $kind
      * @param array<CompletionItemTag::*>|null $tags
      * @param string|null $detail
@@ -176,15 +226,18 @@ class CompletionItem
      * @param string|null $filterText
      * @param string|null $insertText
      * @param InsertTextFormat::*|null $insertTextFormat
-     * @param TextEdit|null $textEdit
+     * @param InsertTextMode::*|null $insertTextMode
+     * @param TextEdit|InsertReplaceEdit|null $textEdit
+     * @param string|null $textEditText
      * @param array<TextEdit>|null $additionalTextEdits
      * @param array<string>|null $commitCharacters
      * @param Command|null $command
      * @param mixed|null $data
      */
-    public function __construct(string $label, $kind = null, ?array $tags = null, ?string $detail = null, $documentation = null, ?bool $deprecated = null, ?bool $preselect = null, ?string $sortText = null, ?string $filterText = null, ?string $insertText = null, $insertTextFormat = null, ?TextEdit $textEdit = null, ?array $additionalTextEdits = null, ?array $commitCharacters = null, ?Command $command = null, $data = null)
+    public function __construct(string $label, ?CompletionItemLabelDetails $labelDetails = null, $kind = null, ?array $tags = null, ?string $detail = null, $documentation = null, ?bool $deprecated = null, ?bool $preselect = null, ?string $sortText = null, ?string $filterText = null, ?string $insertText = null, $insertTextFormat = null, $insertTextMode = null, $textEdit = null, ?string $textEditText = null, ?array $additionalTextEdits = null, ?array $commitCharacters = null, ?Command $command = null, $data = null)
     {
         $this->label = $label;
+        $this->labelDetails = $labelDetails;
         $this->kind = $kind;
         $this->tags = $tags;
         $this->detail = $detail;
@@ -195,7 +248,9 @@ class CompletionItem
         $this->filterText = $filterText;
         $this->insertText = $insertText;
         $this->insertTextFormat = $insertTextFormat;
+        $this->insertTextMode = $insertTextMode;
         $this->textEdit = $textEdit;
+        $this->textEditText = $textEditText;
         $this->additionalTextEdits = $additionalTextEdits;
         $this->commitCharacters = $commitCharacters;
         $this->command = $command;
@@ -210,6 +265,7 @@ class CompletionItem
     {
         $map = [
             'label' => ['names' => [], 'iterable' => false],
+            'labelDetails' => ['names' => [CompletionItemLabelDetails::class], 'iterable' => false],
             'kind' => ['names' => [], 'iterable' => false],
             'tags' => ['names' => [], 'iterable' => true],
             'detail' => ['names' => [], 'iterable' => false],
@@ -220,7 +276,9 @@ class CompletionItem
             'filterText' => ['names' => [], 'iterable' => false],
             'insertText' => ['names' => [], 'iterable' => false],
             'insertTextFormat' => ['names' => [], 'iterable' => false],
-            'textEdit' => ['names' => [TextEdit::class], 'iterable' => false],
+            'insertTextMode' => ['names' => [], 'iterable' => false],
+            'textEdit' => ['names' => [TextEdit::class, InsertReplaceEdit::class], 'iterable' => false],
+            'textEditText' => ['names' => [], 'iterable' => false],
             'additionalTextEdits' => ['names' => [TextEdit::class], 'iterable' => true],
             'commitCharacters' => ['names' => [], 'iterable' => true],
             'command' => ['names' => [Command::class], 'iterable' => false],

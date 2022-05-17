@@ -7,17 +7,41 @@ use Exception;
 use RuntimeException;
 
 /**
- * Mixins (implemented TS interfaces): _ServerCapabilities, WorkspaceFoldersServerCapabilities
+ * Defines the capabilities provided by a language
+ * server.
  */
 class ServerCapabilities
 {
     /**
-     * Defines how text documents are synced. Is either a detailed structure defining each notification or
-     * for backwards compatibility the TextDocumentSyncKind number.
+     * The position encoding the server picked from the encodings offered
+     * by the client via the client capability `general.positionEncodings`.
+     * 
+     * If the client didn't provide any position encodings the only valid
+     * value that a server can return is 'utf-16'.
+     * 
+     * If omitted it defaults to 'utf-16'.
+     * 
+     * If for some reason
+     *
+     * @var string|null
+     */
+    public $positionEncoding;
+
+    /**
+     * Defines how text documents are synced. Is either a detailed structure
+     * defining each notification or for backwards compatibility the
+     * TextDocumentSyncKind number.
      *
      * @var TextDocumentSyncOptions|TextDocumentSyncKind::*|null
      */
     public $textDocumentSync;
+
+    /**
+     * Defines how notebook documents are synced.
+     *
+     * @var mixed|mixed|null
+     */
+    public $notebookDocumentSync;
 
     /**
      * The server provides completion support.
@@ -178,6 +202,69 @@ class ServerCapabilities
     public $executeCommandProvider;
 
     /**
+     * The server provides call hierarchy support.
+     *
+     * @var bool|mixed|mixed|null
+     */
+    public $callHierarchyProvider;
+
+    /**
+     * The server provides linked editing range support.
+     *
+     * @var bool|mixed|mixed|null
+     */
+    public $linkedEditingRangeProvider;
+
+    /**
+     * The server provides semantic tokens support.
+     *
+     * @var mixed|mixed|null
+     */
+    public $semanticTokensProvider;
+
+    /**
+     * The server provides moniker support.
+     *
+     * @var bool|mixed|mixed|null
+     */
+    public $monikerProvider;
+
+    /**
+     * The server provides type hierarchy support.
+     *
+     * @var bool|mixed|mixed|null
+     */
+    public $typeHierarchyProvider;
+
+    /**
+     * The server provides inline values.
+     *
+     * @var bool|mixed|mixed|null
+     */
+    public $inlineValueProvider;
+
+    /**
+     * The server provides inlay hints.
+     *
+     * @var bool|mixed|mixed|null
+     */
+    public $inlayHintProvider;
+
+    /**
+     * The server has support for pull model diagnostics.
+     *
+     * @var mixed|mixed|null
+     */
+    public $diagnosticProvider;
+
+    /**
+     * Workspace specific server capabilities.
+     *
+     * @var array<mixed>|null
+     */
+    public $workspace;
+
+    /**
      * Experimental server capabilities.
      *
      * @var mixed|null
@@ -185,14 +272,9 @@ class ServerCapabilities
     public $experimental;
 
     /**
-     * The workspace server capabilities
-     *
-     * @var array<mixed>|null
-     */
-    public $workspace;
-
-    /**
+     * @param string|null $positionEncoding
      * @param TextDocumentSyncOptions|TextDocumentSyncKind::*|null $textDocumentSync
+     * @param mixed|mixed|null $notebookDocumentSync
      * @param CompletionOptions|null $completionProvider
      * @param bool|HoverOptions|null $hoverProvider
      * @param SignatureHelpOptions|null $signatureHelpProvider
@@ -215,12 +297,22 @@ class ServerCapabilities
      * @param bool|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
      * @param bool|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
      * @param ExecuteCommandOptions|null $executeCommandProvider
-     * @param mixed|null $experimental
+     * @param bool|mixed|mixed|null $callHierarchyProvider
+     * @param bool|mixed|mixed|null $linkedEditingRangeProvider
+     * @param mixed|mixed|null $semanticTokensProvider
+     * @param bool|mixed|mixed|null $monikerProvider
+     * @param bool|mixed|mixed|null $typeHierarchyProvider
+     * @param bool|mixed|mixed|null $inlineValueProvider
+     * @param bool|mixed|mixed|null $inlayHintProvider
+     * @param mixed|mixed|null $diagnosticProvider
      * @param array<mixed>|null $workspace
+     * @param mixed|null $experimental
      */
-    public function __construct($textDocumentSync = null, ?CompletionOptions $completionProvider = null, $hoverProvider = null, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider = null, $definitionProvider = null, $typeDefinitionProvider = null, $implementationProvider = null, $referencesProvider = null, $documentHighlightProvider = null, $documentSymbolProvider = null, $codeActionProvider = null, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider = null, $workspaceSymbolProvider = null, $documentFormattingProvider = null, $documentRangeFormattingProvider = null, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider = null, $foldingRangeProvider = null, $selectionRangeProvider = null, ?ExecuteCommandOptions $executeCommandProvider = null, $experimental = null, ?array $workspace = null)
+    public function __construct(?string $positionEncoding = null, $textDocumentSync = null, $notebookDocumentSync = null, ?CompletionOptions $completionProvider = null, $hoverProvider = null, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider = null, $definitionProvider = null, $typeDefinitionProvider = null, $implementationProvider = null, $referencesProvider = null, $documentHighlightProvider = null, $documentSymbolProvider = null, $codeActionProvider = null, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider = null, $workspaceSymbolProvider = null, $documentFormattingProvider = null, $documentRangeFormattingProvider = null, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider = null, $foldingRangeProvider = null, $selectionRangeProvider = null, ?ExecuteCommandOptions $executeCommandProvider = null, $callHierarchyProvider = null, $linkedEditingRangeProvider = null, $semanticTokensProvider = null, $monikerProvider = null, $typeHierarchyProvider = null, $inlineValueProvider = null, $inlayHintProvider = null, $diagnosticProvider = null, ?array $workspace = null, $experimental = null)
     {
+        $this->positionEncoding = $positionEncoding;
         $this->textDocumentSync = $textDocumentSync;
+        $this->notebookDocumentSync = $notebookDocumentSync;
         $this->completionProvider = $completionProvider;
         $this->hoverProvider = $hoverProvider;
         $this->signatureHelpProvider = $signatureHelpProvider;
@@ -243,8 +335,16 @@ class ServerCapabilities
         $this->foldingRangeProvider = $foldingRangeProvider;
         $this->selectionRangeProvider = $selectionRangeProvider;
         $this->executeCommandProvider = $executeCommandProvider;
-        $this->experimental = $experimental;
+        $this->callHierarchyProvider = $callHierarchyProvider;
+        $this->linkedEditingRangeProvider = $linkedEditingRangeProvider;
+        $this->semanticTokensProvider = $semanticTokensProvider;
+        $this->monikerProvider = $monikerProvider;
+        $this->typeHierarchyProvider = $typeHierarchyProvider;
+        $this->inlineValueProvider = $inlineValueProvider;
+        $this->inlayHintProvider = $inlayHintProvider;
+        $this->diagnosticProvider = $diagnosticProvider;
         $this->workspace = $workspace;
+        $this->experimental = $experimental;
     }
 
     /**
@@ -254,7 +354,9 @@ class ServerCapabilities
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
+            'positionEncoding' => ['names' => [], 'iterable' => false],
             'textDocumentSync' => ['names' => [TextDocumentSyncOptions::class], 'iterable' => false],
+            'notebookDocumentSync' => ['names' => [], 'iterable' => false],
             'completionProvider' => ['names' => [CompletionOptions::class], 'iterable' => false],
             'hoverProvider' => ['names' => [HoverOptions::class], 'iterable' => false],
             'signatureHelpProvider' => ['names' => [SignatureHelpOptions::class], 'iterable' => false],
@@ -277,8 +379,16 @@ class ServerCapabilities
             'foldingRangeProvider' => ['names' => [FoldingRangeOptions::class, FoldingRangeRegistrationOptions::class], 'iterable' => false],
             'selectionRangeProvider' => ['names' => [SelectionRangeOptions::class, SelectionRangeRegistrationOptions::class], 'iterable' => false],
             'executeCommandProvider' => ['names' => [ExecuteCommandOptions::class], 'iterable' => false],
-            'experimental' => ['names' => [], 'iterable' => false],
+            'callHierarchyProvider' => ['names' => [], 'iterable' => false],
+            'linkedEditingRangeProvider' => ['names' => [], 'iterable' => false],
+            'semanticTokensProvider' => ['names' => [], 'iterable' => false],
+            'monikerProvider' => ['names' => [], 'iterable' => false],
+            'typeHierarchyProvider' => ['names' => [], 'iterable' => false],
+            'inlineValueProvider' => ['names' => [], 'iterable' => false],
+            'inlayHintProvider' => ['names' => [], 'iterable' => false],
+            'diagnosticProvider' => ['names' => [], 'iterable' => false],
             'workspace' => ['names' => [], 'iterable' => false],
+            'experimental' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
