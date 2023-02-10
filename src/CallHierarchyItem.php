@@ -86,7 +86,7 @@ class CallHierarchyItem
         $this->kind = $kind;
         $this->tags = $tags;
         $this->detail = $detail;
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
         $this->range = $range;
         $this->selectionRange = $selectionRange;
         $this->data = $data;

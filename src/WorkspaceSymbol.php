@@ -75,7 +75,7 @@ class WorkspaceSymbol extends BaseSymbolInformation
      */
     public function __construct($location, string $name, $kind, $data = null, ?array $tags = null, ?string $containerName = null)
     {
-        $this->location = uridecode($location);
+        $this->location = $location;
         $this->data = $data;
         $this->name = $name;
         $this->kind = $kind;

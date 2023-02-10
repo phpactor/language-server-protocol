@@ -23,7 +23,7 @@ class TextDocumentIdentifier
      */
     public function __construct(string $uri)
     {
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
     }
 
     /**

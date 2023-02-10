@@ -38,7 +38,7 @@ class OptionalVersionedTextDocumentIdentifier extends TextDocumentIdentifier
     public function __construct(string $uri, $version = null)
     {
         $this->version = $version;
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
     }
 
     /**

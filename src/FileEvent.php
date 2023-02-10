@@ -31,7 +31,7 @@ class FileEvent
      */
     public function __construct(string $uri, $type)
     {
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
         $this->type = $type;
     }
 

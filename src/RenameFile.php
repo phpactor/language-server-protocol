@@ -58,8 +58,8 @@ class RenameFile extends ResourceOperation
     public function __construct(string $kind, string $oldUri, string $newUri, ?RenameFileOptions $options = null, ?string $annotationId = null)
     {
         $this->kind = $kind;
-        $this->oldUri = $oldUri;
-        $this->newUri = $newUri;
+        $this->oldUri = urldecode($oldUri);
+        $this->newUri = urldecode($newUri);
         $this->options = $options;
         $this->annotationId = $annotationId;
     }
