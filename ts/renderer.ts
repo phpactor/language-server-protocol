@@ -25,7 +25,9 @@ export class Renderer
 
         phpClass.constants.forEach((constant: PhpConstant) => {
             const constName = inflect.underscore(constant.name) as string;
-            source.push(`    public const ${constName.toUpperCase()} = ${constant.rawValue};`);
+            source.push(
+                `    public const ${constName.toUpperCase()} = ${constant.rawValue.replace(/`/g,"'")};`
+            );
         });
 
         source.push(`}`);
