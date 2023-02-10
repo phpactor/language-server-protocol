@@ -7,7 +7,7 @@ use Exception;
 use RuntimeException;
 
 /**
- * The parameters send in a open text document notification
+ * The parameters sent in an open text document notification
  */
 class DidOpenTextDocumentParams
 {
@@ -28,9 +28,9 @@ class DidOpenTextDocumentParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentItem::class], 'iterable' => false],

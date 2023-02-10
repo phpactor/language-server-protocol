@@ -19,151 +19,208 @@ class TextDocumentClientCapabilities
     public $synchronization;
 
     /**
-     * Capabilities specific to the `textDocument/completion`
+     * Capabilities specific to the `textDocument/completion` request.
      *
      * @var CompletionClientCapabilities|null
      */
     public $completion;
 
     /**
-     * Capabilities specific to the `textDocument/hover`
+     * Capabilities specific to the `textDocument/hover` request.
      *
      * @var HoverClientCapabilities|null
      */
     public $hover;
 
     /**
-     * Capabilities specific to the `textDocument/signatureHelp`
+     * Capabilities specific to the `textDocument/signatureHelp` request.
      *
      * @var SignatureHelpClientCapabilities|null
      */
     public $signatureHelp;
 
     /**
-     * Capabilities specific to the `textDocument/declaration`
+     * Capabilities specific to the `textDocument/declaration` request.
      *
      * @var DeclarationClientCapabilities|null
      */
     public $declaration;
 
     /**
-     * Capabilities specific to the `textDocument/definition`
+     * Capabilities specific to the `textDocument/definition` request.
      *
      * @var DefinitionClientCapabilities|null
      */
     public $definition;
 
     /**
-     * Capabilities specific to the `textDocument/typeDefinition`
+     * Capabilities specific to the `textDocument/typeDefinition` request.
      *
      * @var TypeDefinitionClientCapabilities|null
      */
     public $typeDefinition;
 
     /**
-     * Capabilities specific to the `textDocument/implementation`
+     * Capabilities specific to the `textDocument/implementation` request.
      *
      * @var ImplementationClientCapabilities|null
      */
     public $implementation;
 
     /**
-     * Capabilities specific to the `textDocument/references`
+     * Capabilities specific to the `textDocument/references` request.
      *
      * @var ReferenceClientCapabilities|null
      */
     public $references;
 
     /**
-     * Capabilities specific to the `textDocument/documentHighlight`
+     * Capabilities specific to the `textDocument/documentHighlight` request.
      *
      * @var DocumentHighlightClientCapabilities|null
      */
     public $documentHighlight;
 
     /**
-     * Capabilities specific to the `textDocument/documentSymbol`
+     * Capabilities specific to the `textDocument/documentSymbol` request.
      *
      * @var DocumentSymbolClientCapabilities|null
      */
     public $documentSymbol;
 
     /**
-     * Capabilities specific to the `textDocument/codeAction`
+     * Capabilities specific to the `textDocument/codeAction` request.
      *
      * @var CodeActionClientCapabilities|null
      */
     public $codeAction;
 
     /**
-     * Capabilities specific to the `textDocument/codeLens`
+     * Capabilities specific to the `textDocument/codeLens` request.
      *
      * @var CodeLensClientCapabilities|null
      */
     public $codeLens;
 
     /**
-     * Capabilities specific to the `textDocument/documentLink`
+     * Capabilities specific to the `textDocument/documentLink` request.
      *
      * @var DocumentLinkClientCapabilities|null
      */
     public $documentLink;
 
     /**
-     * Capabilities specific to the `textDocument/documentColor`
+     * Capabilities specific to the `textDocument/documentColor` and the
+     * `textDocument/colorPresentation` request.
      *
      * @var DocumentColorClientCapabilities|null
      */
     public $colorProvider;
 
     /**
-     * Capabilities specific to the `textDocument/formatting`
+     * Capabilities specific to the `textDocument/formatting` request.
      *
      * @var DocumentFormattingClientCapabilities|null
      */
     public $formatting;
 
     /**
-     * Capabilities specific to the `textDocument/rangeFormatting`
+     * Capabilities specific to the `textDocument/rangeFormatting` request.
      *
      * @var DocumentRangeFormattingClientCapabilities|null
      */
     public $rangeFormatting;
 
     /**
-     * Capabilities specific to the `textDocument/onTypeFormatting`
+     * Capabilities specific to the `textDocument/onTypeFormatting` request.
      *
      * @var DocumentOnTypeFormattingClientCapabilities|null
      */
     public $onTypeFormatting;
 
     /**
-     * Capabilities specific to the `textDocument/rename`
+     * Capabilities specific to the `textDocument/rename` request.
      *
      * @var RenameClientCapabilities|null
      */
     public $rename;
 
     /**
-     * Capabilities specific to `textDocument/foldingRange` requests.
+     * Capabilities specific to the `textDocument/foldingRange` request.
      *
      * @var FoldingRangeClientCapabilities|null
      */
     public $foldingRange;
 
     /**
-     * Capabilities specific to `textDocument/selectionRange` requests
+     * Capabilities specific to the `textDocument/selectionRange` request.
      *
      * @var SelectionRangeClientCapabilities|null
      */
     public $selectionRange;
 
     /**
-     * Capabilities specific to `textDocument/publishDiagnostics`.
+     * Capabilities specific to the `textDocument/publishDiagnostics` notification.
      *
      * @var PublishDiagnosticsClientCapabilities|null
      */
     public $publishDiagnostics;
+
+    /**
+     * Capabilities specific to the various call hierarchy requests.
+     *
+     * @var mixed|null
+     */
+    public $callHierarchy;
+
+    /**
+     * Capabilities specific to the various semantic token request.
+     *
+     * @var mixed|null
+     */
+    public $semanticTokens;
+
+    /**
+     * Capabilities specific to the `textDocument/linkedEditingRange` request.
+     *
+     * @var mixed|null
+     */
+    public $linkedEditingRange;
+
+    /**
+     * Client capabilities specific to the `textDocument/moniker` request.
+     *
+     * @var mixed|null
+     */
+    public $moniker;
+
+    /**
+     * Capabilities specific to the various type hierarchy requests.
+     *
+     * @var mixed|null
+     */
+    public $typeHierarchy;
+
+    /**
+     * Capabilities specific to the `textDocument/inlineValue` request.
+     *
+     * @var mixed|null
+     */
+    public $inlineValue;
+
+    /**
+     * Capabilities specific to the `textDocument/inlayHint` request.
+     *
+     * @var mixed|null
+     */
+    public $inlayHint;
+
+    /**
+     * Capabilities specific to the diagnostic pull model.
+     *
+     * @var mixed|null
+     */
+    public $diagnostic;
 
     /**
      * @param TextDocumentSyncClientCapabilities|null $synchronization
@@ -188,8 +245,16 @@ class TextDocumentClientCapabilities
      * @param FoldingRangeClientCapabilities|null $foldingRange
      * @param SelectionRangeClientCapabilities|null $selectionRange
      * @param PublishDiagnosticsClientCapabilities|null $publishDiagnostics
+     * @param mixed|null $callHierarchy
+     * @param mixed|null $semanticTokens
+     * @param mixed|null $linkedEditingRange
+     * @param mixed|null $moniker
+     * @param mixed|null $typeHierarchy
+     * @param mixed|null $inlineValue
+     * @param mixed|null $inlayHint
+     * @param mixed|null $diagnostic
      */
-    public function __construct(?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null)
+    public function __construct(?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null, $callHierarchy = null, $semanticTokens = null, $linkedEditingRange = null, $moniker = null, $typeHierarchy = null, $inlineValue = null, $inlayHint = null, $diagnostic = null)
     {
         $this->synchronization = $synchronization;
         $this->completion = $completion;
@@ -213,13 +278,21 @@ class TextDocumentClientCapabilities
         $this->foldingRange = $foldingRange;
         $this->selectionRange = $selectionRange;
         $this->publishDiagnostics = $publishDiagnostics;
+        $this->callHierarchy = $callHierarchy;
+        $this->semanticTokens = $semanticTokens;
+        $this->linkedEditingRange = $linkedEditingRange;
+        $this->moniker = $moniker;
+        $this->typeHierarchy = $typeHierarchy;
+        $this->inlineValue = $inlineValue;
+        $this->inlayHint = $inlayHint;
+        $this->diagnostic = $diagnostic;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'synchronization' => ['names' => [TextDocumentSyncClientCapabilities::class], 'iterable' => false],
@@ -244,6 +317,14 @@ class TextDocumentClientCapabilities
             'foldingRange' => ['names' => [FoldingRangeClientCapabilities::class], 'iterable' => false],
             'selectionRange' => ['names' => [SelectionRangeClientCapabilities::class], 'iterable' => false],
             'publishDiagnostics' => ['names' => [PublishDiagnosticsClientCapabilities::class], 'iterable' => false],
+            'callHierarchy' => ['names' => [], 'iterable' => false],
+            'semanticTokens' => ['names' => [], 'iterable' => false],
+            'linkedEditingRange' => ['names' => [], 'iterable' => false],
+            'moniker' => ['names' => [], 'iterable' => false],
+            'typeHierarchy' => ['names' => [], 'iterable' => false],
+            'inlineValue' => ['names' => [], 'iterable' => false],
+            'inlayHint' => ['names' => [], 'iterable' => false],
+            'diagnostic' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

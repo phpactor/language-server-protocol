@@ -14,7 +14,7 @@ use RuntimeException;
 class SignatureHelpOptions extends WorkDoneProgressOptions
 {
     /**
-     * List of characters that trigger signature help.
+     * List of characters that trigger signature help automatically.
      *
      * @var array<string>|null
      */
@@ -50,9 +50,9 @@ class SignatureHelpOptions extends WorkDoneProgressOptions
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'triggerCharacters' => ['names' => [], 'iterable' => true],

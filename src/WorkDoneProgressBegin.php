@@ -50,7 +50,7 @@ class WorkDoneProgressBegin
      * to ignore the `percentage` value in subsequent in report notifications.
      * 
      * The value should be steadily rising. Clients are free to ignore values
-     * that are not following this rule.
+     * that are not following this rule. The value range is [0, 100].
      *
      * @var int|null
      */
@@ -74,9 +74,9 @@ class WorkDoneProgressBegin
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'kind' => ['names' => [], 'iterable' => false],

@@ -19,9 +19,17 @@ class CodeActionOptions extends WorkDoneProgressOptions
      * The list of kinds may be generic, such as `CodeActionKind.Refactor`, or the server
      * may list out every specific kind they provide.
      *
-     * @var array<string>|null
+     * @var array<CodeActionKind::*>|null
      */
     public $codeActionKinds;
+
+    /**
+     * The server provides support to resolve additional
+     * information for a code action.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
 
     /**
      *
@@ -30,23 +38,26 @@ class CodeActionOptions extends WorkDoneProgressOptions
     public $workDoneProgress;
 
     /**
-     * @param array<string>|null $codeActionKinds
+     * @param array<CodeActionKind::*>|null $codeActionKinds
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?array $codeActionKinds = null, ?bool $workDoneProgress = null)
+    public function __construct(?array $codeActionKinds = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
         $this->codeActionKinds = $codeActionKinds;
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'codeActionKinds' => ['names' => [], 'iterable' => true],
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

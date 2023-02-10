@@ -24,13 +24,13 @@ class TextDocumentChangeRegistrationOptions extends TextDocumentRegistrationOpti
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null
      */
     public $documentSelector;
 
     /**
      * @param TextDocumentSyncKind::* $syncKind
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
      */
     public function __construct($syncKind, $documentSelector = null)
     {
@@ -40,9 +40,9 @@ class TextDocumentChangeRegistrationOptions extends TextDocumentRegistrationOpti
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'syncKind' => ['names' => [], 'iterable' => false],

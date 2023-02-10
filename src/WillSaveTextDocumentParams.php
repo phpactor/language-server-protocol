@@ -7,7 +7,7 @@ use Exception;
 use RuntimeException;
 
 /**
- * The parameters send in a will save text document notification.
+ * The parameters sent in a will save text document notification.
  */
 class WillSaveTextDocumentParams
 {
@@ -37,9 +37,9 @@ class WillSaveTextDocumentParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],

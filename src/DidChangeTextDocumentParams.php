@@ -29,7 +29,7 @@ class DidChangeTextDocumentParams
      * 
      * To mirror the content of a document using change events use the following approach:
      * - start with the same initial content
-     * - apply the 'textDocument/didChange' notifications in the order you recevie them.
+     * - apply the 'textDocument/didChange' notifications in the order you receive them.
      * - apply the `TextDocumentContentChangeEvent`s in a single notification in the order
      *    you receive them.
      *
@@ -49,9 +49,9 @@ class DidChangeTextDocumentParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'textDocument' => ['names' => [VersionedTextDocumentIdentifier::class], 'iterable' => false],

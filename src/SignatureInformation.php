@@ -37,27 +37,39 @@ class SignatureInformation
     public $parameters;
 
     /**
+     * The index of the active parameter.
+     * 
+     * If provided, this is used in place of `SignatureHelp.activeParameter`.
+     *
+     * @var int|null
+     */
+    public $activeParameter;
+
+    /**
      * @param string $label
      * @param string|MarkupContent|null $documentation
      * @param array<ParameterInformation>|null $parameters
+     * @param int|null $activeParameter
      */
-    public function __construct(string $label, $documentation = null, ?array $parameters = null)
+    public function __construct(string $label, $documentation = null, ?array $parameters = null, ?int $activeParameter = null)
     {
         $this->label = $label;
         $this->documentation = $documentation;
         $this->parameters = $parameters;
+        $this->activeParameter = $activeParameter;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'label' => ['names' => [], 'iterable' => false],
             'documentation' => ['names' => [MarkupContent::class], 'iterable' => false],
             'parameters' => ['names' => [ParameterInformation::class], 'iterable' => true],
+            'activeParameter' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

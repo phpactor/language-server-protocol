@@ -14,26 +14,37 @@ use RuntimeException;
 class DocumentSymbolOptions extends WorkDoneProgressOptions
 {
     /**
+     * A human-readable string that is shown when multiple outlines trees
+     * are shown for the same document.
+     *
+     * @var string|null
+     */
+    public $label;
+
+    /**
      *
      * @var bool|null
      */
     public $workDoneProgress;
 
     /**
+     * @param string|null $label
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress = null)
+    public function __construct(?string $label = null, ?bool $workDoneProgress = null)
     {
+        $this->label = $label;
         $this->workDoneProgress = $workDoneProgress;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
+            'label' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

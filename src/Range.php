@@ -22,7 +22,7 @@ use RuntimeException;
 class Range
 {
     /**
-     * The range's start position
+     * The range's start position.
      *
      * @var Position
      */
@@ -47,9 +47,9 @@ class Range
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'start' => ['names' => [Position::class], 'iterable' => false],

@@ -14,26 +14,37 @@ use RuntimeException;
 class WorkspaceSymbolRegistrationOptions extends WorkspaceSymbolOptions
 {
     /**
+     * The server provides support to resolve additional
+     * information for a workspace symbol.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
+
+    /**
      *
      * @var bool|null
      */
     public $workDoneProgress;
 
     /**
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress = null)
+    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

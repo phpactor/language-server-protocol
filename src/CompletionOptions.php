@@ -29,7 +29,7 @@ class CompletionOptions extends WorkDoneProgressOptions
 
     /**
      * The list of all possible characters that commit a completion. This field can be used
-     * if clients don't support individual commmit characters per completion item. See
+     * if clients don't support individual commit characters per completion item. See
      * `ClientCapabilities.textDocument.completion.completionItem.commitCharactersSupport`
      * 
      * If a server provides both `allCommitCharacters` and commit characters on an individual
@@ -48,6 +48,14 @@ class CompletionOptions extends WorkDoneProgressOptions
     public $resolveProvider;
 
     /**
+     * The server supports the following `CompletionItem` specific
+     * capabilities.
+     *
+     * @var array<mixed>|null
+     */
+    public $completionItem;
+
+    /**
      *
      * @var bool|null
      */
@@ -57,26 +65,29 @@ class CompletionOptions extends WorkDoneProgressOptions
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $allCommitCharacters
      * @param bool|null $resolveProvider
+     * @param array<mixed>|null $completionItem
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public function __construct(?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?array $completionItem = null, ?bool $workDoneProgress = null)
     {
         $this->triggerCharacters = $triggerCharacters;
         $this->allCommitCharacters = $allCommitCharacters;
         $this->resolveProvider = $resolveProvider;
+        $this->completionItem = $completionItem;
         $this->workDoneProgress = $workDoneProgress;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'triggerCharacters' => ['names' => [], 'iterable' => true],
             'allCommitCharacters' => ['names' => [], 'iterable' => true],
             'resolveProvider' => ['names' => [], 'iterable' => false],
+            'completionItem' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 

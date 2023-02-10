@@ -12,7 +12,7 @@ use RuntimeException;
 class ColorInformation
 {
     /**
-     * The range in the document where this color appers.
+     * The range in the document where this color appears.
      *
      * @var Range
      */
@@ -37,9 +37,9 @@ class ColorInformation
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'range' => ['names' => [Range::class], 'iterable' => false],

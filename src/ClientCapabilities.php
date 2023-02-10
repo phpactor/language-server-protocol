@@ -7,14 +7,14 @@ use Exception;
 use RuntimeException;
 
 /**
- * Mixins (implemented TS interfaces): _ClientCapabilities, WorkspaceFoldersClientCapabilities, ConfigurationClientCapabilities, WorkDoneProgressClientCapabilities
+ * Defines the capabilities provided by the client.
  */
 class ClientCapabilities
 {
     /**
-     * The workspace client capabilities
+     * Workspace specific client capabilities.
      *
-     * @var array<mixed>|null
+     * @var WorkspaceClientCapabilities|null
      */
     public $workspace;
 
@@ -26,43 +26,63 @@ class ClientCapabilities
     public $textDocument;
 
     /**
+     * Capabilities specific to the notebook document support.
+     *
+     * @var NotebookDocumentClientCapabilities|null
+     */
+    public $notebookDocument;
+
+    /**
      * Window specific client capabilities.
      *
-     * @var array<mixed>|null
+     * @var WindowClientCapabilities|null
      */
     public $window;
 
     /**
+     * General client capabilities.
+     *
+     * @var GeneralClientCapabilities|null
+     */
+    public $general;
+
+    /**
      * Experimental client capabilities.
      *
-     * @var array<mixed>|null
+     * @var mixed|null
      */
     public $experimental;
 
     /**
-     * @param array<mixed>|null $workspace
+     * @param WorkspaceClientCapabilities|null $workspace
      * @param TextDocumentClientCapabilities|null $textDocument
-     * @param array<mixed>|null $window
-     * @param array<mixed>|null $experimental
+     * @param NotebookDocumentClientCapabilities|null $notebookDocument
+     * @param WindowClientCapabilities|null $window
+     * @param GeneralClientCapabilities|null $general
+     * @param mixed|null $experimental
      */
-    public function __construct(?array $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?array $experimental = null)
+    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?NotebookDocumentClientCapabilities $notebookDocument = null, ?WindowClientCapabilities $window = null, ?GeneralClientCapabilities $general = null, $experimental = null)
     {
         $this->workspace = $workspace;
         $this->textDocument = $textDocument;
+        $this->notebookDocument = $notebookDocument;
         $this->window = $window;
+        $this->general = $general;
         $this->experimental = $experimental;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
-            'workspace' => ['names' => [], 'iterable' => false],
+            'workspace' => ['names' => [WorkspaceClientCapabilities::class], 'iterable' => false],
             'textDocument' => ['names' => [TextDocumentClientCapabilities::class], 'iterable' => false],
-            'window' => ['names' => [], 'iterable' => false],
+            'notebookDocument' => ['names' => [NotebookDocumentClientCapabilities::class], 'iterable' => false],
+            'window' => ['names' => [WindowClientCapabilities::class], 'iterable' => false],
+            'general' => ['names' => [GeneralClientCapabilities::class], 'iterable' => false],
             'experimental' => ['names' => [], 'iterable' => false],
         ];
 

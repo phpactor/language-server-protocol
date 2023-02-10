@@ -11,7 +11,7 @@ use RuntimeException;
  * source text, like the number of references, a way to run tests, etc.
  * 
  * A code lens is _unresolved_ when no command is associated to it. For performance
- * reasons the creation of a code lens and resolving should be done to two stages.
+ * reasons the creation of a code lens and resolving should be done in two stages.
  */
 class CodeLens
 {
@@ -30,7 +30,7 @@ class CodeLens
     public $command;
 
     /**
-     * An data entry field that is preserved on a code lens item between
+     * A data entry field that is preserved on a code lens item between
      * a [CodeLensRequest](#CodeLensRequest) and a [CodeLensResolveRequest]
      * (#CodeLensResolveRequest)
      *
@@ -52,9 +52,9 @@ class CodeLens
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'range' => ['names' => [Range::class], 'iterable' => false],

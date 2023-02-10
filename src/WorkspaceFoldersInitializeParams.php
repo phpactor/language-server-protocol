@@ -9,7 +9,11 @@ use RuntimeException;
 class WorkspaceFoldersInitializeParams
 {
     /**
-     * The actual configured workspace folders.
+     * The workspace folders configured in the client when the server starts.
+     * 
+     * This property is only available if the client supports workspace folders.
+     * It can be `null` if the client supports workspace folders but none are
+     * configured.
      *
      * @var array<WorkspaceFolder>|null
      */
@@ -25,9 +29,9 @@ class WorkspaceFoldersInitializeParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'workspaceFolders' => ['names' => [], 'iterable' => false],

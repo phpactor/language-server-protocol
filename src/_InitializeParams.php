@@ -16,6 +16,9 @@ class _InitializeParams extends WorkDoneProgressParams
     /**
      * The process Id of the parent process that started
      * the server.
+     * 
+     * Is `null` if the process has not been started by another process.
+     * If the parent process is not alive then the server should exit.
      *
      * @var int|null
      */
@@ -27,6 +30,18 @@ class _InitializeParams extends WorkDoneProgressParams
      * @var array<mixed>|null
      */
     public $clientInfo;
+
+    /**
+     * The locale the client is currently showing the user interface
+     * in. This must not necessarily be the locale of the operating
+     * system.
+     * 
+     * Uses IETF language tags as the value's syntax
+     * (See https://en.wikipedia.org/wiki/IETF_language_tag)
+     *
+     * @var string|null
+     */
+    public $locale;
 
     /**
      * The rootPath of the workspace. Is null
@@ -62,7 +77,7 @@ class _InitializeParams extends WorkDoneProgressParams
     /**
      * The initial trace setting. If omitted trace is disabled ('off').
      *
-     * @var 'off'|'messages'|'verbose'|null
+     * @var 'off'|'messages'|'compact'|'verbose'|null
      */
     public $trace;
 
@@ -76,17 +91,19 @@ class _InitializeParams extends WorkDoneProgressParams
     /**
      * @param int|null $processId
      * @param array<mixed>|null $clientInfo
+     * @param string|null $locale
      * @param string|null $rootPath
      * @param string|null $rootUri
      * @param ClientCapabilities $capabilities
      * @param mixed|null $initializationOptions
-     * @param 'off'|'messages'|'verbose'|null $trace
+     * @param 'off'|'messages'|'compact'|'verbose'|null $trace
      * @param int|string|null $workDoneToken
      */
-    public function __construct(ClientCapabilities $capabilities, $processId = null, ?array $clientInfo = null, $rootPath = null, $rootUri = null, $initializationOptions = null, $trace = null, $workDoneToken = null)
+    public function __construct(ClientCapabilities $capabilities, $processId = null, ?array $clientInfo = null, ?string $locale = null, $rootPath = null, $rootUri = null, $initializationOptions = null, $trace = null, $workDoneToken = null)
     {
         $this->processId = $processId;
         $this->clientInfo = $clientInfo;
+        $this->locale = $locale;
         $this->rootPath = $rootPath;
         $this->rootUri = $rootUri;
         $this->capabilities = $capabilities;
@@ -97,13 +114,14 @@ class _InitializeParams extends WorkDoneProgressParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'processId' => ['names' => [], 'iterable' => false],
             'clientInfo' => ['names' => [], 'iterable' => false],
+            'locale' => ['names' => [], 'iterable' => false],
             'rootPath' => ['names' => [], 'iterable' => false],
             'rootUri' => ['names' => [], 'iterable' => false],
             'capabilities' => ['names' => [ClientCapabilities::class], 'iterable' => false],

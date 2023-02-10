@@ -16,7 +16,7 @@ class ShowMessageRequestParams
     public $type;
 
     /**
-     * The actual message
+     * The actual message.
      *
      * @var string
      */
@@ -43,9 +43,9 @@ class ShowMessageRequestParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'type' => ['names' => [], 'iterable' => false],

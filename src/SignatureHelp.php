@@ -21,16 +21,28 @@ class SignatureHelp
     public $signatures;
 
     /**
-     * The active signature. Set to `null` if no
-     * signatures exist.
+     * The active signature. If omitted or the value lies outside the
+     * range of `signatures` the value defaults to zero or is ignored if
+     * the `SignatureHelp` has no signatures.
+     * 
+     * Whenever possible implementors should make an active decision about
+     * the active signature and shouldn't rely on a default value.
+     * 
+     * In future version of the protocol this property might become
+     * mandatory to better express this.
      *
      * @var int|null
      */
     public $activeSignature;
 
     /**
-     * The active parameter of the active signature. Set to `null`
-     * if the active signature has no parameters.
+     * The active parameter of the active signature. If omitted or the value
+     * lies outside the range of `signatures[activeSignature].parameters`
+     * defaults to 0 if the active signature has parameters. If
+     * the active signature has no parameters it is ignored.
+     * In future version of the protocol this property might become
+     * mandatory to better express the active parameter if the
+     * active signature does have any.
      *
      * @var int|null
      */
@@ -41,7 +53,7 @@ class SignatureHelp
      * @param int|null $activeSignature
      * @param int|null $activeParameter
      */
-    public function __construct(array $signatures, $activeSignature = null, $activeParameter = null)
+    public function __construct(array $signatures, ?int $activeSignature = null, ?int $activeParameter = null)
     {
         $this->signatures = $signatures;
         $this->activeSignature = $activeSignature;
@@ -50,9 +62,9 @@ class SignatureHelp
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'signatures' => ['names' => [SignatureInformation::class], 'iterable' => true],

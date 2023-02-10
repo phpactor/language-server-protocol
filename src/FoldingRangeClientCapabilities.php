@@ -9,52 +9,75 @@ use RuntimeException;
 class FoldingRangeClientCapabilities
 {
     /**
-     * Whether implementation supports dynamic registration for folding range providers. If this is set to `true`
-     * the client supports the new `FoldingRangeRegistrationOptions` return value for the corresponding server
-     * capability as well.
+     * Whether implementation supports dynamic registration for folding range
+     * providers. If this is set to `true` the client supports the new
+     * `FoldingRangeRegistrationOptions` return value for the corresponding
+     * server capability as well.
      *
      * @var bool|null
      */
     public $dynamicRegistration;
 
     /**
-     * The maximum number of folding ranges that the client prefers to receive per document. The value serves as a
-     * hint, servers are free to follow the limit.
+     * The maximum number of folding ranges that the client prefers to receive
+     * per document. The value serves as a hint, servers are free to follow the
+     * limit.
      *
      * @var int|null
      */
     public $rangeLimit;
 
     /**
-     * If set, the client signals that it only supports folding complete lines. If set, client will
-     * ignore specified `startCharacter` and `endCharacter` properties in a FoldingRange.
+     * If set, the client signals that it only supports folding complete lines.
+     * If set, client will ignore specified `startCharacter` and `endCharacter`
+     * properties in a FoldingRange.
      *
      * @var bool|null
      */
     public $lineFoldingOnly;
 
     /**
+     * Specific options for the folding range kind.
+     *
+     * @var array<mixed>|null
+     */
+    public $foldingRangeKind;
+
+    /**
+     * Specific options for the folding range.
+     *
+     * @var array<mixed>|null
+     */
+    public $foldingRange;
+
+    /**
      * @param bool|null $dynamicRegistration
      * @param int|null $rangeLimit
      * @param bool|null $lineFoldingOnly
+     * @param array<mixed>|null $foldingRangeKind
+     * @param array<mixed>|null $foldingRange
      */
-    public function __construct(?bool $dynamicRegistration = null, ?int $rangeLimit = null, ?bool $lineFoldingOnly = null)
+    public function __construct(?bool $dynamicRegistration = null, ?int $rangeLimit = null, ?bool $lineFoldingOnly = null, ?array $foldingRangeKind = null, ?array $foldingRange = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->rangeLimit = $rangeLimit;
         $this->lineFoldingOnly = $lineFoldingOnly;
+        $this->foldingRangeKind = $foldingRangeKind;
+        $this->foldingRange = $foldingRange;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'rangeLimit' => ['names' => [], 'iterable' => false],
             'lineFoldingOnly' => ['names' => [], 'iterable' => false],
+            'foldingRangeKind' => ['names' => [], 'iterable' => false],
+            'foldingRange' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

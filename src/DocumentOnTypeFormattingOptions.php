@@ -12,7 +12,7 @@ use RuntimeException;
 class DocumentOnTypeFormattingOptions
 {
     /**
-     * A character on which formatting should be triggered, like `}`.
+     * A character on which formatting should be triggered, like `{`.
      *
      * @var string
      */
@@ -37,9 +37,9 @@ class DocumentOnTypeFormattingOptions
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'firstTriggerCharacter' => ['names' => [], 'iterable' => false],

@@ -19,41 +19,65 @@ class DocumentSymbolClientCapabilities
     public $dynamicRegistration;
 
     /**
-     * Specific capabilities for the `SymbolKind`.
+     * Specific capabilities for the `SymbolKind` in the
+     * `textDocument/documentSymbol` request.
      *
      * @var array<mixed>|null
      */
     public $symbolKind;
 
     /**
-     * The client support hierarchical document symbols.
+     * The client supports hierarchical document symbols.
      *
      * @var bool|null
      */
     public $hierarchicalDocumentSymbolSupport;
 
     /**
+     * The client supports tags on `SymbolInformation`. Tags are supported on
+     * `DocumentSymbol` if `hierarchicalDocumentSymbolSupport` is set to true.
+     * Clients supporting tags have to handle unknown tags gracefully.
+     *
+     * @var array<mixed>|null
+     */
+    public $tagSupport;
+
+    /**
+     * The client supports an additional label presented in the UI when
+     * registering a document symbol provider.
+     *
+     * @var bool|null
+     */
+    public $labelSupport;
+
+    /**
      * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $symbolKind
      * @param bool|null $hierarchicalDocumentSymbolSupport
+     * @param array<mixed>|null $tagSupport
+     * @param bool|null $labelSupport
      */
-    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?bool $hierarchicalDocumentSymbolSupport = null)
+    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?bool $hierarchicalDocumentSymbolSupport = null, ?array $tagSupport = null, ?bool $labelSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;
         $this->hierarchicalDocumentSymbolSupport = $hierarchicalDocumentSymbolSupport;
+        $this->tagSupport = $tagSupport;
+        $this->labelSupport = $labelSupport;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'symbolKind' => ['names' => [], 'iterable' => false],
             'hierarchicalDocumentSymbolSupport' => ['names' => [], 'iterable' => false],
+            'tagSupport' => ['names' => [], 'iterable' => false],
+            'labelSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

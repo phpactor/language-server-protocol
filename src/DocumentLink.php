@@ -20,7 +20,7 @@ class DocumentLink
     public $range;
 
     /**
-     * The uri this link points to.
+     * The uri this link points to. If missing a resolve request is sent later.
      *
      * @var string|null
      */
@@ -61,9 +61,9 @@ class DocumentLink
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'range' => ['names' => [Range::class], 'iterable' => false],

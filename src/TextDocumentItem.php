@@ -20,7 +20,7 @@ class TextDocumentItem
     public $uri;
 
     /**
-     * The text document's language identifier
+     * The text document's language identifier.
      *
      * @var string
      */
@@ -57,9 +57,9 @@ class TextDocumentItem
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'uri' => ['names' => [], 'iterable' => false],

@@ -9,28 +9,44 @@ use RuntimeException;
 class WorkspaceFoldersServerCapabilities
 {
     /**
-     * The workspace server capabilities
+     * The server has support for workspace folders
      *
-     * @var array<mixed>|null
+     * @var bool|null
      */
-    public $workspace;
+    public $supported;
 
     /**
-     * @param array<mixed>|null $workspace
+     * Whether the server wants to receive workspace folder
+     * change notifications.
+     * 
+     * If a string is provided the string is treated as an ID
+     * under which the notification is registered on the client
+     * side. The ID can be used to unregister for these events
+     * using the `client/unregisterCapability` request.
+     *
+     * @var string|bool|null
      */
-    public function __construct(?array $workspace = null)
+    public $changeNotifications;
+
+    /**
+     * @param bool|null $supported
+     * @param string|bool|null $changeNotifications
+     */
+    public function __construct(?bool $supported = null, $changeNotifications = null)
     {
-        $this->workspace = $workspace;
+        $this->supported = $supported;
+        $this->changeNotifications = $changeNotifications;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
-            'workspace' => ['names' => [], 'iterable' => false],
+            'supported' => ['names' => [], 'iterable' => false],
+            'changeNotifications' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

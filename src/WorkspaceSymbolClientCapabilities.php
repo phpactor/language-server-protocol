@@ -26,24 +26,47 @@ class WorkspaceSymbolClientCapabilities
     public $symbolKind;
 
     /**
+     * The client supports tags on `SymbolInformation`.
+     * Clients supporting tags have to handle unknown tags gracefully.
+     *
+     * @var array<mixed>|null
+     */
+    public $tagSupport;
+
+    /**
+     * The client support partial workspace symbols. The client will send the
+     * request `workspaceSymbol/resolve` to the server to resolve additional
+     * properties.
+     *
+     * @var array<mixed>|null
+     */
+    public $resolveSupport;
+
+    /**
      * @param bool|null $dynamicRegistration
      * @param array<mixed>|null $symbolKind
+     * @param array<mixed>|null $tagSupport
+     * @param array<mixed>|null $resolveSupport
      */
-    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null)
+    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?array $tagSupport = null, ?array $resolveSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;
+        $this->tagSupport = $tagSupport;
+        $this->resolveSupport = $resolveSupport;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false)
+    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
     {
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'symbolKind' => ['names' => [], 'iterable' => false],
+            'tagSupport' => ['names' => [], 'iterable' => false],
+            'resolveSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
