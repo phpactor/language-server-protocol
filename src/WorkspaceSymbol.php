@@ -75,7 +75,7 @@ class WorkspaceSymbol extends BaseSymbolInformation
      */
     public function __construct($location, string $name, $kind, $data = null, ?array $tags = null, ?string $containerName = null)
     {
-        $this->location = $location;
+        $this->location = uridecode($location);
         $this->data = $data;
         $this->name = $name;
         $this->kind = $kind;
@@ -87,7 +87,7 @@ class WorkspaceSymbol extends BaseSymbolInformation
      * @param array<string,mixed> $array
      * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'location' => ['names' => [Location::class], 'iterable' => false],

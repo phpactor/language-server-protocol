@@ -30,7 +30,7 @@ class ShowMessageRequestClientCapabilities
      * @param array<string,mixed> $array
      * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'messageActionItem' => ['names' => [], 'iterable' => false],

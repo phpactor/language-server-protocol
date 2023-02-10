@@ -4,5 +4,5 @@ namespace Phpactor\LanguageServerProtocol;
 
 interface CodeLensRefreshRequest
 {
-    public const METHOD = 'workspace/codeLens/refresh';
+    public const METHOD = `workspace/codeLens/refresh`;
 }

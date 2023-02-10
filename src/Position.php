@@ -72,7 +72,7 @@ class Position
      * @param array<string,mixed> $array
      * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'line' => ['names' => [], 'iterable' => false],

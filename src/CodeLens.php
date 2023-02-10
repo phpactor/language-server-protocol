@@ -54,7 +54,7 @@ class CodeLens
      * @param array<string,mixed> $array
      * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'range' => ['names' => [Range::class], 'iterable' => false],

@@ -89,7 +89,7 @@ class SymbolInformation extends BaseSymbolInformation
      * @param array<string,mixed> $array
      * @return self
      */
-    public static function fromArray(array $array, bool $allowUnknownKeys = false): self
+    public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'deprecated' => ['names' => [], 'iterable' => false],
