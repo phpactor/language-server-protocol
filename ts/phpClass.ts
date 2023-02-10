@@ -200,7 +200,7 @@ export class PhpClassResolver
                 continue;
             }
 
-            if (property.type.getText().match(/DocumentUri;/)) {
+            if (property.type.getText().match(/^DocumentUri$/)) {
                 special.push('uri');
             }
 
