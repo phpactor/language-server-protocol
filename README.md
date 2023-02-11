@@ -7,26 +7,26 @@ This package _transpiles_ the `vscode-language-server-protocol` library to PHP,
 providing the protocol classes required to create Language Server
 with PHP.
 
+Notes on using the library
+--------------------------
+
+Most (if not all) of the upstream Typescript types have no constructors,
+therefore the argument order of the constructors can change on _every
+release_.
+
+It is therefore **strongly recommended** to use named arguments.
+
 Generation
 ----------
 
-Re-generate the source code with:
+Generating the code:
 
-```
-$ composer integrate
-```
-
-This will:
-
-- Compile the typescript
-- Generate the code
-- Run static analysis
-- Run tests
-
-Other useful commands:
-
+- `npm run generate`: Build and transpile
 - `npm run watch`: Watch and compile on Typescript changes.
-- `nodejs build/transpile.js`: Run the transpiler
+
+Running the PHP tests:
+
+- `composer integrate`
 
 Usage
 -----
@@ -90,4 +90,3 @@ Support
 
 - Create an issue on the main [Phpactor](https://github.com/phpactor/phpactor) repository.
 - Join the `#phpactor` channel on the Slack [Symfony Devs](https://symfony.com/slack-invite) channel.
-
