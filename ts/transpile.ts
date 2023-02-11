@@ -12,6 +12,7 @@ const paths: string[] = [
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.foldingRange.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.workspaceFolder.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.fileOperations.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.progress.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.colorProvider.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.configuration.d.ts'),
