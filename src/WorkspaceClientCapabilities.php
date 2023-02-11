@@ -90,7 +90,7 @@ class WorkspaceClientCapabilities
      * 
      * Since 3.16.0
      *
-     * @var mixed|null
+     * @var FileOperationClientCapabilities|null
      */
     public $fileOperations;
 
@@ -129,12 +129,12 @@ class WorkspaceClientCapabilities
      * @param bool|null $configuration
      * @param mixed|null $semanticTokens
      * @param CodeLensWorkspaceClientCapabilities|null $codeLens
-     * @param mixed|null $fileOperations
+     * @param FileOperationClientCapabilities|null $fileOperations
      * @param mixed|null $inlineValue
      * @param mixed|null $inlayHint
      * @param mixed|null $diagnostics
      */
-    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null, ?bool $workspaceFolders = null, ?bool $configuration = null, $semanticTokens = null, ?CodeLensWorkspaceClientCapabilities $codeLens = null, $fileOperations = null, $inlineValue = null, $inlayHint = null, $diagnostics = null)
+    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null, ?bool $workspaceFolders = null, ?bool $configuration = null, $semanticTokens = null, ?CodeLensWorkspaceClientCapabilities $codeLens = null, ?FileOperationClientCapabilities $fileOperations = null, $inlineValue = null, $inlayHint = null, $diagnostics = null)
     {
         $this->applyEdit = $applyEdit;
         $this->workspaceEdit = $workspaceEdit;
@@ -169,7 +169,7 @@ class WorkspaceClientCapabilities
             'configuration' => ['names' => [], 'iterable' => false],
             'semanticTokens' => ['names' => [], 'iterable' => false],
             'codeLens' => ['names' => [CodeLensWorkspaceClientCapabilities::class], 'iterable' => false],
-            'fileOperations' => ['names' => [], 'iterable' => false],
+            'fileOperations' => ['names' => [FileOperationClientCapabilities::class], 'iterable' => false],
             'inlineValue' => ['names' => [], 'iterable' => false],
             'inlayHint' => ['names' => [], 'iterable' => false],
             'diagnostics' => ['names' => [], 'iterable' => false],
