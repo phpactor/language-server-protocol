@@ -15,7 +15,7 @@ class LocationLink
     /**
      * Span of the origin of this link.
      * 
-     * Used as the underlined span for mouse definition hover. Defaults to the word range at
+     * Used as the underlined span for mouse interaction. Defaults to the word range at
      * the definition position.
      *
      * @var Range|null
@@ -40,7 +40,7 @@ class LocationLink
 
     /**
      * The range that should be selected and revealed when this link is being followed, e.g the name of a function.
-     * Must be contained by the the `targetRange`. See also `DocumentSymbol#range`
+     * Must be contained by the `targetRange`. See also `DocumentSymbol#range`
      *
      * @var Range
      */
@@ -55,14 +55,14 @@ class LocationLink
     public function __construct(string $targetUri, Range $targetRange, Range $targetSelectionRange, ?Range $originSelectionRange = null)
     {
         $this->originSelectionRange = $originSelectionRange;
-        $this->targetUri = $targetUri;
+        $this->targetUri = urldecode($targetUri);
         $this->targetRange = $targetRange;
         $this->targetSelectionRange = $targetSelectionRange;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

@@ -12,42 +12,42 @@ use RuntimeException;
 class FileOperationOptions
 {
     /**
-     * The server is interested in didCreateFiles notifications.
+     * The server is interested in receiving didCreateFiles notifications.
      *
      * @var FileOperationRegistrationOptions|null
      */
     public $didCreate;
 
     /**
-     * The server is interested in willCreateFiles requests.
+     * The server is interested in receiving willCreateFiles requests.
      *
      * @var FileOperationRegistrationOptions|null
      */
     public $willCreate;
 
     /**
-     * The server is interested in didRenameFiles notifications.
+     * The server is interested in receiving didRenameFiles notifications.
      *
      * @var FileOperationRegistrationOptions|null
      */
     public $didRename;
 
     /**
-     * The server is interested in willRenameFiles requests.
+     * The server is interested in receiving willRenameFiles requests.
      *
      * @var FileOperationRegistrationOptions|null
      */
     public $willRename;
 
     /**
-     * The server is interested in didDeleteFiles file notifications.
+     * The server is interested in receiving didDeleteFiles file notifications.
      *
      * @var FileOperationRegistrationOptions|null
      */
     public $didDelete;
 
     /**
-     * The server is interested in willDeleteFiles file requests.
+     * The server is interested in receiving willDeleteFiles file requests.
      *
      * @var FileOperationRegistrationOptions|null
      */
@@ -73,7 +73,7 @@ class FileOperationOptions
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

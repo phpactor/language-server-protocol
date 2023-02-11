@@ -19,7 +19,7 @@ class LogMessageParams
     public $type;
 
     /**
-     * The actual message
+     * The actual message.
      *
      * @var string
      */
@@ -37,7 +37,7 @@ class LogMessageParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

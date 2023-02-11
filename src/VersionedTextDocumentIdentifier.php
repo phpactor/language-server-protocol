@@ -7,20 +7,16 @@ use Exception;
 use RuntimeException;
 
 /**
- * An identifier to denote a specific version of a text document.
+ * A text document identifier to denote a specific version of a text document.
  *
  * Mixins (implemented TS interfaces): TextDocumentIdentifier
  */
 class VersionedTextDocumentIdentifier extends TextDocumentIdentifier
 {
     /**
-     * The version number of this document. If a versioned text document identifier
-     * is sent from the server to the client and the file is not open in the editor
-     * (the server has not received an open notification before) the server can send
-     * `null` to indicate that the version is unknown and the content on disk is the
-     * truth (as speced with document content ownership).
+     * The version number of this document.
      *
-     * @var int|null
+     * @var int
      */
     public $version;
 
@@ -32,18 +28,18 @@ class VersionedTextDocumentIdentifier extends TextDocumentIdentifier
     public $uri;
 
     /**
-     * @param int|null $version
+     * @param int $version
      * @param string $uri
      */
-    public function __construct(string $uri, $version = null)
+    public function __construct(int $version, string $uri)
     {
         $this->version = $version;
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

@@ -20,7 +20,7 @@ class TextDocumentItem
     public $uri;
 
     /**
-     * The text document's language identifier
+     * The text document's language identifier.
      *
      * @var string
      */
@@ -49,7 +49,7 @@ class TextDocumentItem
      */
     public function __construct(string $uri, string $languageId, int $version, string $text)
     {
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
         $this->languageId = $languageId;
         $this->version = $version;
         $this->text = $text;
@@ -57,7 +57,7 @@ class TextDocumentItem
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

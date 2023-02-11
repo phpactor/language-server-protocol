@@ -6,31 +6,35 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WorkDoneProgressClientCapabilities
+/**
+ * The parameters sent in notifications/requests for user-initiated deletes of
+ * files.
+ */
+class DeleteFilesParams
 {
     /**
-     * Window specific client capabilities.
+     * An array of all files/folders deleted in this operation.
      *
-     * @var array<mixed>|null
+     * @var array<FileDelete>
      */
-    public $window;
+    public $files;
 
     /**
-     * @param array<mixed>|null $window
+     * @param array<FileDelete> $files
      */
-    public function __construct(?array $window = null)
+    public function __construct(array $files)
     {
-        $this->window = $window;
+        $this->files = $files;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'window' => ['names' => [], 'iterable' => false],
+            'files' => ['names' => [FileDelete::class], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

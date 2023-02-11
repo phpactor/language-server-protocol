@@ -88,19 +88,19 @@ class CompletionItemTest extends TestCase
         ]);
 
         self::assertEquals(new CompletionItem(
-            'Foobar',
-            1,
-            null,
-            'This is foobar',
-            new MarkupContent('markdown', 'Foobar'),
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            [
+            label: 'Foobar',
+            kind: 1,
+            tags: null,
+            detail: 'This is foobar',
+            documentation: new MarkupContent('markdown', 'Foobar'),
+            deprecated: null,
+            preselect: null,
+            sortText: null,
+            filterText: null,
+            insertText: null,
+            insertTextFormat:null,
+            textEdit: null,
+            additionalTextEdits: [
                 new TextEdit(
                     new Range(
                         new Position(5, 10),
@@ -109,8 +109,8 @@ class CompletionItemTest extends TestCase
                     'Foobar'
                 )
             ],
-            null,
-            new Command('Foobar', 'my.command')
+            commitCharacters: null,
+            command: new Command('Foobar', 'my.command')
         ), $item);
     }
 }

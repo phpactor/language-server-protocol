@@ -17,7 +17,7 @@ class TextDocumentSaveRegistrationOptions extends TextDocumentRegistrationOption
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null
      */
     public $documentSelector;
 
@@ -29,7 +29,7 @@ class TextDocumentSaveRegistrationOptions extends TextDocumentRegistrationOption
     public $includeText;
 
     /**
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null $documentSelector
      * @param bool|null $includeText
      */
     public function __construct($documentSelector = null, ?bool $includeText = null)
@@ -40,7 +40,7 @@ class TextDocumentSaveRegistrationOptions extends TextDocumentRegistrationOption
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

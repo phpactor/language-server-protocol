@@ -7,7 +7,6 @@ use Exception;
 use RuntimeException;
 
 /**
- * Since 3.14.0
  */
 class DeclarationClientCapabilities
 {
@@ -39,7 +38,7 @@ class DeclarationClientCapabilities
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

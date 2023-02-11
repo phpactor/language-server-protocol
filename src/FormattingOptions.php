@@ -26,7 +26,7 @@ class FormattingOptions
     public $insertSpaces;
 
     /**
-     * Trim trailing whitespaces on a line.
+     * Trim trailing whitespace on a line.
      *
      * @var bool|null
      */
@@ -64,7 +64,7 @@ class FormattingOptions
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

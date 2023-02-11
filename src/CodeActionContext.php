@@ -14,7 +14,7 @@ class CodeActionContext
 {
     /**
      * An array of diagnostics known on the client side overlapping the range provided to the
-     * `textDocument/codeAction` request. They are provied so that the server knows which
+     * `textDocument/codeAction` request. They are provided so that the server knows which
      * errors are currently presented to the user for the given range. There is no guarantee
      * that these accurately reflect the error state of the resource. The primary parameter
      * to compute code actions is the provided range.
@@ -29,29 +29,39 @@ class CodeActionContext
      * Actions not of this kind are filtered out by the client before being shown. So servers
      * can omit computing them.
      *
-     * @var array<string>|null
+     * @var array<CodeActionKind::*>|null
      */
     public $only;
 
     /**
-     * @param array<Diagnostic> $diagnostics
-     * @param array<string>|null $only
+     * The reason why code actions were requested.
+     *
+     * @var CodeActionTriggerKind::*|null
      */
-    public function __construct(array $diagnostics, ?array $only = null)
+    public $triggerKind;
+
+    /**
+     * @param array<Diagnostic> $diagnostics
+     * @param array<CodeActionKind::*>|null $only
+     * @param CodeActionTriggerKind::*|null $triggerKind
+     */
+    public function __construct(array $diagnostics, ?array $only = null, $triggerKind = null)
     {
         $this->diagnostics = $diagnostics;
         $this->only = $only;
+        $this->triggerKind = $triggerKind;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'diagnostics' => ['names' => [Diagnostic::class], 'iterable' => true],
             'only' => ['names' => [], 'iterable' => true],
+            'triggerKind' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

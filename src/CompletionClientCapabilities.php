@@ -22,41 +22,62 @@ class CompletionClientCapabilities
      * The client supports the following `CompletionItem` specific
      * capabilities.
      *
-     * @var array<mixed>|null
+     * @var array{snippetSupport:bool,commitCharactersSupport:bool,documentationFormat:array<MarkupKind::*>,deprecatedSupport:bool,preselectSupport:bool,tagSupport:array{valueSet:array<CompletionItemTag::*>},insertReplaceSupport:bool,resolveSupport:array{properties:array<string>},insertTextModeSupport:array{valueSet:array<InsertTextMode::*>},labelDetailsSupport:bool}|null
      */
     public $completionItem;
 
     /**
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<CompletionItemKind::*>}|null
      */
     public $completionItemKind;
 
     /**
+     * Defines how the client handles whitespace and indentation
+     * when accepting a completion item that uses multi line
+     * text in either `insertText` or `textEdit`.
+     *
+     * @var InsertTextMode::*|null
+     */
+    public $insertTextMode;
+
+    /**
      * The client supports to send additional context information for a
-     * `textDocument/completion` requestion.
+     * `textDocument/completion` request.
      *
      * @var bool|null
      */
     public $contextSupport;
 
     /**
-     * @param bool|null $dynamicRegistration
-     * @param array<mixed>|null $completionItem
-     * @param array<mixed>|null $completionItemKind
-     * @param bool|null $contextSupport
+     * The client supports the following `CompletionList` specific
+     * capabilities.
+     *
+     * @var array{itemDefaults:array<string>}|null
      */
-    public function __construct(?bool $dynamicRegistration = null, ?array $completionItem = null, ?array $completionItemKind = null, ?bool $contextSupport = null)
+    public $completionList;
+
+    /**
+     * @param bool|null $dynamicRegistration
+     * @param array{snippetSupport:bool,commitCharactersSupport:bool,documentationFormat:array<MarkupKind::*>,deprecatedSupport:bool,preselectSupport:bool,tagSupport:array{valueSet:array<CompletionItemTag::*>},insertReplaceSupport:bool,resolveSupport:array{properties:array<string>},insertTextModeSupport:array{valueSet:array<InsertTextMode::*>},labelDetailsSupport:bool}|null $completionItem
+     * @param array{valueSet:array<CompletionItemKind::*>}|null $completionItemKind
+     * @param InsertTextMode::*|null $insertTextMode
+     * @param bool|null $contextSupport
+     * @param array{itemDefaults:array<string>}|null $completionList
+     */
+    public function __construct(?bool $dynamicRegistration = null, ?array $completionItem = null, ?array $completionItemKind = null, $insertTextMode = null, ?bool $contextSupport = null, ?array $completionList = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->completionItem = $completionItem;
         $this->completionItemKind = $completionItemKind;
+        $this->insertTextMode = $insertTextMode;
         $this->contextSupport = $contextSupport;
+        $this->completionList = $completionList;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
@@ -64,7 +85,9 @@ class CompletionClientCapabilities
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'completionItem' => ['names' => [], 'iterable' => false],
             'completionItemKind' => ['names' => [], 'iterable' => false],
+            'insertTextMode' => ['names' => [], 'iterable' => false],
             'contextSupport' => ['names' => [], 'iterable' => false],
+            'completionList' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

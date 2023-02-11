@@ -37,6 +37,13 @@ class DocumentSymbol
     public $kind;
 
     /**
+     * Tags for this document symbol.
+     *
+     * @var array<SymbolTag::*>|null
+     */
+    public $tags;
+
+    /**
      * Indicates if this symbol is deprecated.
      *
      * @var bool|null
@@ -45,7 +52,7 @@ class DocumentSymbol
 
     /**
      * The range enclosing this symbol not including leading/trailing whitespace but everything else
-     * like comments. This information is typically used to determine if the the clients cursor is
+     * like comments. This information is typically used to determine if the clients cursor is
      * inside the symbol to reveal in the symbol in the UI.
      *
      * @var Range
@@ -54,7 +61,7 @@ class DocumentSymbol
 
     /**
      * The range that should be selected and revealed when this symbol is being picked, e.g the name of a function.
-     * Must be contained by the the `range`.
+     * Must be contained by the `range`.
      *
      * @var Range
      */
@@ -71,16 +78,18 @@ class DocumentSymbol
      * @param string $name
      * @param string|null $detail
      * @param SymbolKind::* $kind
+     * @param array<SymbolTag::*>|null $tags
      * @param bool|null $deprecated
      * @param Range $range
      * @param Range $selectionRange
      * @param array<DocumentSymbol>|null $children
      */
-    public function __construct(string $name, $kind, Range $range, Range $selectionRange, ?string $detail = null, ?bool $deprecated = null, ?array $children = null)
+    public function __construct(string $name, $kind, Range $range, Range $selectionRange, ?string $detail = null, ?array $tags = null, ?bool $deprecated = null, ?array $children = null)
     {
         $this->name = $name;
         $this->detail = $detail;
         $this->kind = $kind;
+        $this->tags = $tags;
         $this->deprecated = $deprecated;
         $this->range = $range;
         $this->selectionRange = $selectionRange;
@@ -89,7 +98,7 @@ class DocumentSymbol
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
@@ -97,6 +106,7 @@ class DocumentSymbol
             'name' => ['names' => [], 'iterable' => false],
             'detail' => ['names' => [], 'iterable' => false],
             'kind' => ['names' => [], 'iterable' => false],
+            'tags' => ['names' => [], 'iterable' => true],
             'deprecated' => ['names' => [], 'iterable' => false],
             'range' => ['names' => [Range::class], 'iterable' => false],
             'selectionRange' => ['names' => [Range::class], 'iterable' => false],

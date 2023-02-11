@@ -21,29 +21,52 @@ class WorkspaceSymbolClientCapabilities
     /**
      * Specific capabilities for the `SymbolKind` in the `workspace/symbol` request.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<SymbolKind::*>}|null
      */
     public $symbolKind;
 
     /**
-     * @param bool|null $dynamicRegistration
-     * @param array<mixed>|null $symbolKind
+     * The client supports tags on `SymbolInformation`.
+     * Clients supporting tags have to handle unknown tags gracefully.
+     *
+     * @var array{valueSet:array<SymbolTag::*>}|null
      */
-    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null)
+    public $tagSupport;
+
+    /**
+     * The client support partial workspace symbols. The client will send the
+     * request `workspaceSymbol/resolve` to the server to resolve additional
+     * properties.
+     *
+     * @var array{properties:array<string>}|null
+     */
+    public $resolveSupport;
+
+    /**
+     * @param bool|null $dynamicRegistration
+     * @param array{valueSet:array<SymbolKind::*>}|null $symbolKind
+     * @param array{valueSet:array<SymbolTag::*>}|null $tagSupport
+     * @param array{properties:array<string>}|null $resolveSupport
+     */
+    public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?array $tagSupport = null, ?array $resolveSupport = null)
     {
         $this->dynamicRegistration = $dynamicRegistration;
         $this->symbolKind = $symbolKind;
+        $this->tagSupport = $tagSupport;
+        $this->resolveSupport = $resolveSupport;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
             'dynamicRegistration' => ['names' => [], 'iterable' => false],
             'symbolKind' => ['names' => [], 'iterable' => false],
+            'tagSupport' => ['names' => [], 'iterable' => false],
+            'resolveSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

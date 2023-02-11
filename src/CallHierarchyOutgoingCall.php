@@ -7,63 +7,45 @@ use Exception;
 use RuntimeException;
 
 /**
- * Defines the capabilities provided by the client.
+ * Represents an outgoing call, e.g. calling a getter from a method or a method from a constructor etc.
  */
-class _ClientCapabilities
+class CallHierarchyOutgoingCall
 {
     /**
-     * Workspace specific client capabilities.
+     * The item that is called.
      *
-     * @var WorkspaceClientCapabilities|null
+     * @var CallHierarchyItem
      */
-    public $workspace;
+    public $to;
 
     /**
-     * Text document specific client capabilities.
+     * The range at which this item is called. This is the range relative to the caller, e.g the item
+     * passed to [`provideCallHierarchyOutgoingCalls`](#CallHierarchyItemProvider.provideCallHierarchyOutgoingCalls)
+     * and not [`this.to`](#CallHierarchyOutgoingCall.to).
      *
-     * @var TextDocumentClientCapabilities|null
+     * @var array<Range>
      */
-    public $textDocument;
+    public $fromRanges;
 
     /**
-     * Window specific client capabilities.
-     *
-     * @var array<mixed>|null
+     * @param CallHierarchyItem $to
+     * @param array<Range> $fromRanges
      */
-    public $window;
-
-    /**
-     * Experimental client capabilities.
-     *
-     * @var array<mixed>|null
-     */
-    public $experimental;
-
-    /**
-     * @param WorkspaceClientCapabilities|null $workspace
-     * @param TextDocumentClientCapabilities|null $textDocument
-     * @param array<mixed>|null $window
-     * @param array<mixed>|null $experimental
-     */
-    public function __construct(?WorkspaceClientCapabilities $workspace = null, ?TextDocumentClientCapabilities $textDocument = null, ?array $window = null, ?array $experimental = null)
+    public function __construct(CallHierarchyItem $to, array $fromRanges)
     {
-        $this->workspace = $workspace;
-        $this->textDocument = $textDocument;
-        $this->window = $window;
-        $this->experimental = $experimental;
+        $this->to = $to;
+        $this->fromRanges = $fromRanges;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workspace' => ['names' => [WorkspaceClientCapabilities::class], 'iterable' => false],
-            'textDocument' => ['names' => [TextDocumentClientCapabilities::class], 'iterable' => false],
-            'window' => ['names' => [], 'iterable' => false],
-            'experimental' => ['names' => [], 'iterable' => false],
+            'to' => ['names' => [CallHierarchyItem::class], 'iterable' => false],
+            'fromRanges' => ['names' => [Range::class], 'iterable' => true],
         ];
 
         foreach ($array as $key => &$value) {

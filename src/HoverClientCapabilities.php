@@ -16,7 +16,7 @@ class HoverClientCapabilities
     public $dynamicRegistration;
 
     /**
-     * Client supports the follow content formats for the content
+     * Client supports the following content formats for the content
      * property. The order describes the preferred format of the client.
      *
      * @var array<MarkupKind::*>|null
@@ -35,7 +35,7 @@ class HoverClientCapabilities
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

@@ -7,57 +7,46 @@ use Exception;
 use RuntimeException;
 
 /**
- * A response returned from the apply workspace edit request.
+ * A relative pattern is a helper to construct glob patterns that are matched
+ * relatively to a base URI. The common value for a `baseUri` is a workspace
+ * folder root, but it can be another absolute URI as well.
  */
-class ApplyWorkspaceEditResponse
+class RelativePattern
 {
     /**
-     * Indicates whether the edit was applied or not.
+     * A workspace folder or a base URI to which this pattern will be matched
+     * against relatively.
      *
-     * @var bool
+     * @var WorkspaceFolder|string
      */
-    public $applied;
+    public $baseUri;
 
     /**
-     * An optional textual description for why the edit was not applied.
-     * This may be used by the server for diagnostic logging or to provide
-     * a suitable error for a request that triggered the edit.
+     * The actual glob pattern;
      *
-     * @var string|null
+     * @var string
      */
-    public $failureReason;
+    public $pattern;
 
     /**
-     * Depending on the client's failure handling strategy `failedChange` might
-     * contain the index of the change that failed. This property is only available
-     * if the client signals a `failureHandlingStrategy` in its client capabilities.
-     *
-     * @var int|null
+     * @param WorkspaceFolder|string $baseUri
+     * @param string $pattern
      */
-    public $failedChange;
-
-    /**
-     * @param bool $applied
-     * @param string|null $failureReason
-     * @param int|null $failedChange
-     */
-    public function __construct(bool $applied, ?string $failureReason = null, ?int $failedChange = null)
+    public function __construct($baseUri, string $pattern)
     {
-        $this->applied = $applied;
-        $this->failureReason = $failureReason;
-        $this->failedChange = $failedChange;
+        $this->baseUri = $baseUri;
+        $this->pattern = $pattern;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'applied' => ['names' => [], 'iterable' => false],
-            'failureReason' => ['names' => [], 'iterable' => false],
-            'failedChange' => ['names' => [], 'iterable' => false],
+            'baseUri' => ['names' => [WorkspaceFolder::class], 'iterable' => false],
+            'pattern' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

@@ -23,12 +23,12 @@ class TextDocumentIdentifier
      */
     public function __construct(string $uri)
     {
-        $this->uri = $uri;
+        $this->uri = urldecode($uri);
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

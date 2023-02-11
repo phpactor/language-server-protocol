@@ -7,33 +7,95 @@ use Exception;
 use RuntimeException;
 
 /**
- * undefined
+ * A special workspace symbol that supports locations without a range.
+ * 
+ * See also SymbolInformation.
+ *
+ * Mixins (implemented TS interfaces): BaseSymbolInformation
  */
-class TextDocumentChangeEvent
+class WorkspaceSymbol extends BaseSymbolInformation
 {
     /**
-     * The document that has changed.
+     * The location of the symbol. Whether a server is allowed to
+     * return a location without a range depends on the client
+     * capability `workspace.symbol.resolveSupport`.
+     * 
+     * See SymbolInformation#location for more details.
      *
-     * @var TextDocument
+     * @var Location|array{uri:string}
      */
-    public $document;
+    public $location;
 
     /**
-     * @param TextDocument $document
+     * A data entry field that is preserved on a workspace symbol between a
+     * workspace symbol request and a workspace symbol resolve request.
+     *
+     * @var mixed|null
      */
-    public function __construct(TextDocument $document)
+    public $data;
+
+    /**
+     * The name of this symbol.
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * The kind of this symbol.
+     *
+     * @var SymbolKind::*
+     */
+    public $kind;
+
+    /**
+     * Tags for this symbol.
+     *
+     * @var array<SymbolTag::*>|null
+     */
+    public $tags;
+
+    /**
+     * The name of the symbol containing this symbol. This information is for
+     * user interface purposes (e.g. to render a qualifier in the user interface
+     * if necessary). It can't be used to re-infer a hierarchy for the document
+     * symbols.
+     *
+     * @var string|null
+     */
+    public $containerName;
+
+    /**
+     * @param Location|array{uri:string} $location
+     * @param mixed|null $data
+     * @param string $name
+     * @param SymbolKind::* $kind
+     * @param array<SymbolTag::*>|null $tags
+     * @param string|null $containerName
+     */
+    public function __construct($location, string $name, $kind, $data = null, ?array $tags = null, ?string $containerName = null)
     {
-        $this->document = $document;
+        $this->location = $location;
+        $this->data = $data;
+        $this->name = $name;
+        $this->kind = $kind;
+        $this->tags = $tags;
+        $this->containerName = $containerName;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'document' => ['names' => [TextDocument::class], 'iterable' => false],
+            'location' => ['names' => [Location::class], 'iterable' => false],
+            'data' => ['names' => [], 'iterable' => false],
+            'name' => ['names' => [], 'iterable' => false],
+            'kind' => ['names' => [], 'iterable' => false],
+            'tags' => ['names' => [], 'iterable' => true],
+            'containerName' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

@@ -6,31 +6,57 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class ConfigurationClientCapabilities
+/**
+ * Additional information that describes document changes.
+ */
+class ChangeAnnotation
 {
     /**
-     * The workspace client capabilities
+     * A human-readable string describing the actual change. The string
+     * is rendered prominent in the user interface.
      *
-     * @var array<mixed>|null
+     * @var string
      */
-    public $workspace;
+    public $label;
 
     /**
-     * @param array<mixed>|null $workspace
+     * A flag which indicates that user confirmation is needed
+     * before applying the change.
+     *
+     * @var bool|null
      */
-    public function __construct(?array $workspace = null)
+    public $needsConfirmation;
+
+    /**
+     * A human-readable string which is rendered less prominent in
+     * the user interface.
+     *
+     * @var string|null
+     */
+    public $description;
+
+    /**
+     * @param string $label
+     * @param bool|null $needsConfirmation
+     * @param string|null $description
+     */
+    public function __construct(string $label, ?bool $needsConfirmation = null, ?string $description = null)
     {
-        $this->workspace = $workspace;
+        $this->label = $label;
+        $this->needsConfirmation = $needsConfirmation;
+        $this->description = $description;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workspace' => ['names' => [], 'iterable' => false],
+            'label' => ['names' => [], 'iterable' => false],
+            'needsConfirmation' => ['names' => [], 'iterable' => false],
+            'description' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

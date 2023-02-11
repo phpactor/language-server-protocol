@@ -8,12 +8,12 @@ use RuntimeException;
 
 /**
  * A filter to describe in which file operation requests or notifications
- * the server is interested in.
+ * the server is interested in receiving.
  */
 class FileOperationFilter
 {
     /**
-     * A Uri like `file` or `untitled`.
+     * A Uri scheme like `file` or `untitled`.
      *
      * @var string|null
      */
@@ -38,7 +38,7 @@ class FileOperationFilter
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

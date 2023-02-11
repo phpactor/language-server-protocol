@@ -7,14 +7,14 @@ use Exception;
 use RuntimeException;
 
 /**
- * The parameters send in a save text document notification
+ * The parameters sent in a save text document notification
  */
 class DidSaveTextDocumentParams
 {
     /**
-     * The document that was closed.
+     * The document that was saved.
      *
-     * @var VersionedTextDocumentIdentifier
+     * @var TextDocumentIdentifier
      */
     public $textDocument;
 
@@ -27,10 +27,10 @@ class DidSaveTextDocumentParams
     public $text;
 
     /**
-     * @param VersionedTextDocumentIdentifier $textDocument
+     * @param TextDocumentIdentifier $textDocument
      * @param string|null $text
      */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, ?string $text = null)
+    public function __construct(TextDocumentIdentifier $textDocument, ?string $text = null)
     {
         $this->textDocument = $textDocument;
         $this->text = $text;
@@ -38,12 +38,12 @@ class DidSaveTextDocumentParams
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'textDocument' => ['names' => [VersionedTextDocumentIdentifier::class], 'iterable' => false],
+            'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],
             'text' => ['names' => [], 'iterable' => false],
         ];
 

@@ -19,7 +19,8 @@ class Hover
     public $contents;
 
     /**
-     * An optional range
+     * An optional range inside the text document that is used to
+     * visualize the hover, e.g. by changing the background color.
      *
      * @var Range|null
      */
@@ -37,7 +38,7 @@ class Hover
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

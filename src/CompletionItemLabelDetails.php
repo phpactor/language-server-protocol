@@ -6,31 +6,46 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-class WorkspaceFoldersClientCapabilities
+/**
+ * Additional details for a completion item label.
+ */
+class CompletionItemLabelDetails
 {
     /**
-     * The workspace client capabilities
+     * An optional string which is rendered less prominently directly after {@link CompletionItem.label label},
+     * without any spacing. Should be used for function signatures and type annotations.
      *
-     * @var array<mixed>|null
+     * @var string|null
      */
-    public $workspace;
+    public $detail;
 
     /**
-     * @param array<mixed>|null $workspace
+     * An optional string which is rendered less prominently after {@link CompletionItem.detail}. Should be used
+     * for fully qualified names and file paths.
+     *
+     * @var string|null
      */
-    public function __construct(?array $workspace = null)
+    public $description;
+
+    /**
+     * @param string|null $detail
+     * @param string|null $description
+     */
+    public function __construct(?string $detail = null, ?string $description = null)
     {
-        $this->workspace = $workspace;
+        $this->detail = $detail;
+        $this->description = $description;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'workspace' => ['names' => [], 'iterable' => false],
+            'detail' => ['names' => [], 'iterable' => false],
+            'description' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

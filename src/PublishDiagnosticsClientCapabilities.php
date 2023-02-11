@@ -22,33 +22,53 @@ class PublishDiagnosticsClientCapabilities
      * Client supports the tag property to provide meta data about a diagnostic.
      * Clients supporting tags have to handle unknown tags gracefully.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<DiagnosticTag::*>}|null
      */
     public $tagSupport;
 
     /**
      * Whether the client interprets the version property of the
-     * `textDocument/publishDiagnostics` notification`s parameter.
+     * `textDocument/publishDiagnostics` notification's parameter.
      *
      * @var bool|null
      */
     public $versionSupport;
 
     /**
-     * @param bool|null $relatedInformation
-     * @param array<mixed>|null $tagSupport
-     * @param bool|null $versionSupport
+     * Client supports a codeDescription property
+     *
+     * @var bool|null
      */
-    public function __construct(?bool $relatedInformation = null, ?array $tagSupport = null, ?bool $versionSupport = null)
+    public $codeDescriptionSupport;
+
+    /**
+     * Whether code action supports the `data` property which is
+     * preserved between a `textDocument/publishDiagnostics` and
+     * `textDocument/codeAction` request.
+     *
+     * @var bool|null
+     */
+    public $dataSupport;
+
+    /**
+     * @param bool|null $relatedInformation
+     * @param array{valueSet:array<DiagnosticTag::*>}|null $tagSupport
+     * @param bool|null $versionSupport
+     * @param bool|null $codeDescriptionSupport
+     * @param bool|null $dataSupport
+     */
+    public function __construct(?bool $relatedInformation = null, ?array $tagSupport = null, ?bool $versionSupport = null, ?bool $codeDescriptionSupport = null, ?bool $dataSupport = null)
     {
         $this->relatedInformation = $relatedInformation;
         $this->tagSupport = $tagSupport;
         $this->versionSupport = $versionSupport;
+        $this->codeDescriptionSupport = $codeDescriptionSupport;
+        $this->dataSupport = $dataSupport;
     }
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
@@ -56,6 +76,8 @@ class PublishDiagnosticsClientCapabilities
             'relatedInformation' => ['names' => [], 'iterable' => false],
             'tagSupport' => ['names' => [], 'iterable' => false],
             'versionSupport' => ['names' => [], 'iterable' => false],
+            'codeDescriptionSupport' => ['names' => [], 'iterable' => false],
+            'dataSupport' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

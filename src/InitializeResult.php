@@ -21,13 +21,13 @@ class InitializeResult
     /**
      * Information about the server.
      *
-     * @var array<mixed>|null
+     * @var array{name:string,version:string}|null
      */
     public $serverInfo;
 
     /**
      * @param ServerCapabilities $capabilities
-     * @param array<mixed>|null $serverInfo
+     * @param array{name:string,version:string}|null $serverInfo
      */
     public function __construct(ServerCapabilities $capabilities, ?array $serverInfo = null)
     {
@@ -37,7 +37,7 @@ class InitializeResult
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {

@@ -29,7 +29,7 @@ class FileOperationClientCapabilities
     public $didCreate;
 
     /**
-     * The client has support for willCreateFiles requests.
+     * The client has support for sending willCreateFiles requests.
      *
      * @var bool|null
      */
@@ -43,7 +43,7 @@ class FileOperationClientCapabilities
     public $didRename;
 
     /**
-     * The client has support for willRenameFiles requests.
+     * The client has support for sending willRenameFiles requests.
      *
      * @var bool|null
      */
@@ -57,7 +57,7 @@ class FileOperationClientCapabilities
     public $didDelete;
 
     /**
-     * The client has support for willDeleteFiles requests.
+     * The client has support for sending willDeleteFiles requests.
      *
      * @var bool|null
      */
@@ -85,7 +85,7 @@ class FileOperationClientCapabilities
 
     /**
      * @param array<string,mixed> $array
-     * @return static
+     * @return self
      */
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
