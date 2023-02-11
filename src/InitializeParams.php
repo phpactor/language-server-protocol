@@ -25,7 +25,7 @@ class InitializeParams
     /**
      * Information about the client
      *
-     * @var array<mixed>|null
+     * @var array{name:string,version:string}|null
      */
     public $clientInfo;
 
@@ -99,7 +99,7 @@ class InitializeParams
 
     /**
      * @param int|null $processId
-     * @param array<mixed>|null $clientInfo
+     * @param array{name:string,version:string}|null $clientInfo
      * @param string|null $locale
      * @param string|null $rootPath
      * @param string|null $rootUri

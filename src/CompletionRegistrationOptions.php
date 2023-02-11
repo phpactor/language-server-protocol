@@ -17,7 +17,7 @@ class CompletionRegistrationOptions extends TextDocumentRegistrationOptions
      * A document selector to identify the scope of the registration. If set to null
      * the document selector provided on the client side will be used.
      *
-     * @var array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null
+     * @var array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null
      */
     public $documentSelector;
 
@@ -59,7 +59,7 @@ class CompletionRegistrationOptions extends TextDocumentRegistrationOptions
      * The server supports the following `CompletionItem` specific
      * capabilities.
      *
-     * @var array<mixed>|null
+     * @var array{labelDetailsSupport:bool}|null
      */
     public $completionItem;
 
@@ -70,11 +70,11 @@ class CompletionRegistrationOptions extends TextDocumentRegistrationOptions
     public $workDoneProgress;
 
     /**
-     * @param array<(string|array<mixed>|array<mixed>|array<mixed>|array<mixed>)>|null $documentSelector
+     * @param array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null $documentSelector
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $allCommitCharacters
      * @param bool|null $resolveProvider
-     * @param array<mixed>|null $completionItem
+     * @param array{labelDetailsSupport:bool}|null $completionItem
      * @param bool|null $workDoneProgress
      */
     public function __construct($documentSelector = null, ?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?array $completionItem = null, ?bool $workDoneProgress = null)

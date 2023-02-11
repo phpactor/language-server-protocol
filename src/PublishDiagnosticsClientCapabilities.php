@@ -22,7 +22,7 @@ class PublishDiagnosticsClientCapabilities
      * Client supports the tag property to provide meta data about a diagnostic.
      * Clients supporting tags have to handle unknown tags gracefully.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<DiagnosticTag::*>}|null
      */
     public $tagSupport;
 
@@ -52,7 +52,7 @@ class PublishDiagnosticsClientCapabilities
 
     /**
      * @param bool|null $relatedInformation
-     * @param array<mixed>|null $tagSupport
+     * @param array{valueSet:array<DiagnosticTag::*>}|null $tagSupport
      * @param bool|null $versionSupport
      * @param bool|null $codeDescriptionSupport
      * @param bool|null $dataSupport

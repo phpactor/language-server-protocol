@@ -51,7 +51,7 @@ class CompletionOptions extends WorkDoneProgressOptions
      * The server supports the following `CompletionItem` specific
      * capabilities.
      *
-     * @var array<mixed>|null
+     * @var array{labelDetailsSupport:bool}|null
      */
     public $completionItem;
 
@@ -65,7 +65,7 @@ class CompletionOptions extends WorkDoneProgressOptions
      * @param array<string>|null $triggerCharacters
      * @param array<string>|null $allCommitCharacters
      * @param bool|null $resolveProvider
-     * @param array<mixed>|null $completionItem
+     * @param array{labelDetailsSupport:bool}|null $completionItem
      * @param bool|null $workDoneProgress
      */
     public function __construct(?array $triggerCharacters = null, ?array $allCommitCharacters = null, ?bool $resolveProvider = null, ?array $completionItem = null, ?bool $workDoneProgress = null)

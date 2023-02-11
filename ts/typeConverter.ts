@@ -12,6 +12,7 @@ import {
     IntersectionTypeNode,
     isTypeLiteralNode,
     TypeLiteralNode,
+    isPropertySignature,
 } from 'typescript';
 
 import {NodeMap} from './nodeMap';
@@ -77,8 +78,6 @@ export class TypeConverter
             return this.phpTypeTuple(type as TupleTypeNode);
         }
 
-        // TODO: This refers to nested type definitions. We should
-        //       generate a new class in this case for PHP.
         if (isTypeLiteralNode(type)) {
             return this.phpTypeLiteral(type);
         }
@@ -193,9 +192,17 @@ export class TypeConverter
     }
 
     private phpTypeLiteral(type: TypeLiteralNode): PhpType {
-        // TODO: These are sub-types. We could attempt to render a PHPStan
-        //       array-shape here, but it would be better to create a new class.
-        return new PhpType('array', `array<mixed>`);
+        const children: {[name: string]:PhpType} = {};
+        type.forEachChild((child) => {
+            if (!isPropertySignature(child)) {
+                return
+            }
+            children[child.name.getText()] = this.phpType(child.type)
+        })
+
+        return new PhpType('array', `array{${Object.keys(children).map((key) => {
+            return `${key}:${children[key].documented}`
+        }).join(',')}}`);
     }
 }
 

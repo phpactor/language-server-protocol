@@ -22,7 +22,7 @@ class DocumentSymbolClientCapabilities
      * Specific capabilities for the `SymbolKind` in the
      * `textDocument/documentSymbol` request.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<SymbolKind::*>}|null
      */
     public $symbolKind;
 
@@ -38,7 +38,7 @@ class DocumentSymbolClientCapabilities
      * `DocumentSymbol` if `hierarchicalDocumentSymbolSupport` is set to true.
      * Clients supporting tags have to handle unknown tags gracefully.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<SymbolTag::*>}|null
      */
     public $tagSupport;
 
@@ -52,9 +52,9 @@ class DocumentSymbolClientCapabilities
 
     /**
      * @param bool|null $dynamicRegistration
-     * @param array<mixed>|null $symbolKind
+     * @param array{valueSet:array<SymbolKind::*>}|null $symbolKind
      * @param bool|null $hierarchicalDocumentSymbolSupport
-     * @param array<mixed>|null $tagSupport
+     * @param array{valueSet:array<SymbolTag::*>}|null $tagSupport
      * @param bool|null $labelSupport
      */
     public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?bool $hierarchicalDocumentSymbolSupport = null, ?array $tagSupport = null, ?bool $labelSupport = null)

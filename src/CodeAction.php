@@ -63,7 +63,7 @@ class CodeAction
      *      that auto applies a code action and only disabled code actions are returned, the client should show the user an
      *      error message with `reason` in the editor.
      *
-     * @var array<mixed>|null
+     * @var array{reason:string}|null
      */
     public $disabled;
 
@@ -96,7 +96,7 @@ class CodeAction
      * @param CodeActionKind::*|null $kind
      * @param array<Diagnostic>|null $diagnostics
      * @param bool|null $isPreferred
-     * @param array<mixed>|null $disabled
+     * @param array{reason:string}|null $disabled
      * @param WorkspaceEdit|null $edit
      * @param Command|null $command
      * @param mixed|null $data

@@ -25,7 +25,7 @@ class WorkspaceEdit
     /**
      * Holds changes to existing resources.
      *
-     * @var array<mixed>|null
+     * @var array{}|null
      */
     public $changes;
 
@@ -51,14 +51,14 @@ class WorkspaceEdit
      * 
      * Whether clients honor this property depends on the client capability `workspace.changeAnnotationSupport`.
      *
-     * @var array<mixed>|null
+     * @var array{}|null
      */
     public $changeAnnotations;
 
     /**
-     * @param array<mixed>|null $changes
+     * @param array{}|null $changes
      * @param array<(TextDocumentEdit|CreateFile|RenameFile|DeleteFile)>|null $documentChanges
-     * @param array<mixed>|null $changeAnnotations
+     * @param array{}|null $changeAnnotations
      */
     public function __construct(?array $changes = null, ?array $documentChanges = null, ?array $changeAnnotations = null)
     {

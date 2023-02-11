@@ -46,7 +46,7 @@ class WorkspaceEditClientCapabilities
      * Whether the client in general supports change annotations on text edits,
      * create file, rename file and delete file changes.
      *
-     * @var array<mixed>|null
+     * @var array{groupsOnLabel:bool}|null
      */
     public $changeAnnotationSupport;
 
@@ -55,7 +55,7 @@ class WorkspaceEditClientCapabilities
      * @param array<'create'|'rename'|'delete'>|null $resourceOperations
      * @param 'abort'|'transactional'|'undo'|'textOnlyTransactional'|null $failureHandling
      * @param bool|null $normalizesLineEndings
-     * @param array<mixed>|null $changeAnnotationSupport
+     * @param array{groupsOnLabel:bool}|null $changeAnnotationSupport
      */
     public function __construct(?bool $documentChanges = null, ?array $resourceOperations = null, $failureHandling = null, ?bool $normalizesLineEndings = null, ?array $changeAnnotationSupport = null)
     {

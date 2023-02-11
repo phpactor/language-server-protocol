@@ -258,7 +258,7 @@ class ServerCapabilities
     /**
      * Workspace specific server capabilities.
      *
-     * @var array<mixed>|null
+     * @var array{workspaceFolders:WorkspaceFoldersServerCapabilities,fileOperations:FileOperationOptions}|null
      */
     public $workspace;
 
@@ -303,7 +303,7 @@ class ServerCapabilities
      * @param bool|mixed|mixed|null $inlineValueProvider
      * @param bool|mixed|mixed|null $inlayHintProvider
      * @param mixed|mixed|null $diagnosticProvider
-     * @param array<mixed>|null $workspace
+     * @param array{workspaceFolders:WorkspaceFoldersServerCapabilities,fileOperations:FileOperationOptions}|null $workspace
      * @param mixed|null $experimental
      */
     public function __construct(?string $positionEncoding = null, $textDocumentSync = null, $notebookDocumentSync = null, ?CompletionOptions $completionProvider = null, $hoverProvider = null, ?SignatureHelpOptions $signatureHelpProvider = null, $declarationProvider = null, $definitionProvider = null, $typeDefinitionProvider = null, $implementationProvider = null, $referencesProvider = null, $documentHighlightProvider = null, $documentSymbolProvider = null, $codeActionProvider = null, ?CodeLensOptions $codeLensProvider = null, ?DocumentLinkOptions $documentLinkProvider = null, $colorProvider = null, $workspaceSymbolProvider = null, $documentFormattingProvider = null, $documentRangeFormattingProvider = null, ?DocumentOnTypeFormattingOptions $documentOnTypeFormattingProvider = null, $renameProvider = null, $foldingRangeProvider = null, $selectionRangeProvider = null, ?ExecuteCommandOptions $executeCommandProvider = null, $callHierarchyProvider = null, $linkedEditingRangeProvider = null, $semanticTokensProvider = null, $monikerProvider = null, $typeHierarchyProvider = null, $inlineValueProvider = null, $inlayHintProvider = null, $diagnosticProvider = null, ?array $workspace = null, $experimental = null)

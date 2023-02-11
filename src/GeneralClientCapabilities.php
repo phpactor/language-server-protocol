@@ -17,7 +17,7 @@ class GeneralClientCapabilities
      * for which the client will not process the response
      * anymore since the information is outdated).
      *
-     * @var array<mixed>|null
+     * @var array{cancel:bool,retryOnContentModified:array<string>}|null
      */
     public $staleRequestSupport;
 
@@ -58,7 +58,7 @@ class GeneralClientCapabilities
     public $positionEncodings;
 
     /**
-     * @param array<mixed>|null $staleRequestSupport
+     * @param array{cancel:bool,retryOnContentModified:array<string>}|null $staleRequestSupport
      * @param RegularExpressionsClientCapabilities|null $regularExpressions
      * @param MarkdownClientCapabilities|null $markdown
      * @param array<string>|null $positionEncodings

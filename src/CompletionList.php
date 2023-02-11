@@ -35,7 +35,7 @@ class CompletionList
      * signals support for this via the `completionList.itemDefaults`
      * capability.
      *
-     * @var array<mixed>|null
+     * @var array{commitCharacters:array<string>,editRange:Range|array{insert:Range,replace:Range},insertTextFormat:InsertTextFormat::*,insertTextMode:InsertTextMode::*,data:mixed}|null
      */
     public $itemDefaults;
 
@@ -48,7 +48,7 @@ class CompletionList
 
     /**
      * @param bool $isIncomplete
-     * @param array<mixed>|null $itemDefaults
+     * @param array{commitCharacters:array<string>,editRange:Range|array{insert:Range,replace:Range},insertTextFormat:InsertTextFormat::*,insertTextMode:InsertTextMode::*,data:mixed}|null $itemDefaults
      * @param array<CompletionItem> $items
      */
     public function __construct(bool $isIncomplete, array $items, ?array $itemDefaults = null)

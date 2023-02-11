@@ -22,13 +22,13 @@ class CompletionClientCapabilities
      * The client supports the following `CompletionItem` specific
      * capabilities.
      *
-     * @var array<mixed>|null
+     * @var array{snippetSupport:bool,commitCharactersSupport:bool,documentationFormat:array<MarkupKind::*>,deprecatedSupport:bool,preselectSupport:bool,tagSupport:array{valueSet:array<CompletionItemTag::*>},insertReplaceSupport:bool,resolveSupport:array{properties:array<string>},insertTextModeSupport:array{valueSet:array<InsertTextMode::*>},labelDetailsSupport:bool}|null
      */
     public $completionItem;
 
     /**
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<CompletionItemKind::*>}|null
      */
     public $completionItemKind;
 
@@ -53,17 +53,17 @@ class CompletionClientCapabilities
      * The client supports the following `CompletionList` specific
      * capabilities.
      *
-     * @var array<mixed>|null
+     * @var array{itemDefaults:array<string>}|null
      */
     public $completionList;
 
     /**
      * @param bool|null $dynamicRegistration
-     * @param array<mixed>|null $completionItem
-     * @param array<mixed>|null $completionItemKind
+     * @param array{snippetSupport:bool,commitCharactersSupport:bool,documentationFormat:array<MarkupKind::*>,deprecatedSupport:bool,preselectSupport:bool,tagSupport:array{valueSet:array<CompletionItemTag::*>},insertReplaceSupport:bool,resolveSupport:array{properties:array<string>},insertTextModeSupport:array{valueSet:array<InsertTextMode::*>},labelDetailsSupport:bool}|null $completionItem
+     * @param array{valueSet:array<CompletionItemKind::*>}|null $completionItemKind
      * @param InsertTextMode::*|null $insertTextMode
      * @param bool|null $contextSupport
-     * @param array<mixed>|null $completionList
+     * @param array{itemDefaults:array<string>}|null $completionList
      */
     public function __construct(?bool $dynamicRegistration = null, ?array $completionItem = null, ?array $completionItemKind = null, $insertTextMode = null, ?bool $contextSupport = null, ?array $completionList = null)
     {

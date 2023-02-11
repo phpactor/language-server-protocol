@@ -14,12 +14,12 @@ class ShowMessageRequestClientCapabilities
     /**
      * Capabilities specific to the `MessageActionItem` type.
      *
-     * @var array<mixed>|null
+     * @var array{additionalPropertiesSupport:bool}|null
      */
     public $messageActionItem;
 
     /**
-     * @param array<mixed>|null $messageActionItem
+     * @param array{additionalPropertiesSupport:bool}|null $messageActionItem
      */
     public function __construct(?array $messageActionItem = null)
     {

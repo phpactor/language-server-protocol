@@ -39,14 +39,14 @@ class FoldingRangeClientCapabilities
     /**
      * Specific options for the folding range kind.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<FoldingRangeKind::*>}|null
      */
     public $foldingRangeKind;
 
     /**
      * Specific options for the folding range.
      *
-     * @var array<mixed>|null
+     * @var array{collapsedText:bool}|null
      */
     public $foldingRange;
 
@@ -54,8 +54,8 @@ class FoldingRangeClientCapabilities
      * @param bool|null $dynamicRegistration
      * @param int|null $rangeLimit
      * @param bool|null $lineFoldingOnly
-     * @param array<mixed>|null $foldingRangeKind
-     * @param array<mixed>|null $foldingRange
+     * @param array{valueSet:array<FoldingRangeKind::*>}|null $foldingRangeKind
+     * @param array{collapsedText:bool}|null $foldingRange
      */
     public function __construct(?bool $dynamicRegistration = null, ?int $rangeLimit = null, ?bool $lineFoldingOnly = null, ?array $foldingRangeKind = null, ?array $foldingRange = null)
     {

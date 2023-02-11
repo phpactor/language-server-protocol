@@ -22,7 +22,7 @@ class WorkspaceSymbol extends BaseSymbolInformation
      * 
      * See SymbolInformation#location for more details.
      *
-     * @var Location|array<mixed>
+     * @var Location|array{uri:string}
      */
     public $location;
 
@@ -66,7 +66,7 @@ class WorkspaceSymbol extends BaseSymbolInformation
     public $containerName;
 
     /**
-     * @param Location|array<mixed> $location
+     * @param Location|array{uri:string} $location
      * @param mixed|null $data
      * @param string $name
      * @param SymbolKind::* $kind

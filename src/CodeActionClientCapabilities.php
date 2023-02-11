@@ -23,7 +23,7 @@ class CodeActionClientCapabilities
      * response of the `textDocument/codeAction` request. If the property is not
      * set the request can only return `Command` literals.
      *
-     * @var array<mixed>|null
+     * @var array{codeActionKind:array{valueSet:array<CodeActionKind::*>}}|null
      */
     public $codeActionLiteralSupport;
 
@@ -54,7 +54,7 @@ class CodeActionClientCapabilities
      * Whether the client supports resolving additional code action
      * properties via a separate `codeAction/resolve` request.
      *
-     * @var array<mixed>|null
+     * @var array{properties:array<string>}|null
      */
     public $resolveSupport;
 
@@ -71,11 +71,11 @@ class CodeActionClientCapabilities
 
     /**
      * @param bool|null $dynamicRegistration
-     * @param array<mixed>|null $codeActionLiteralSupport
+     * @param array{codeActionKind:array{valueSet:array<CodeActionKind::*>}}|null $codeActionLiteralSupport
      * @param bool|null $isPreferredSupport
      * @param bool|null $disabledSupport
      * @param bool|null $dataSupport
-     * @param array<mixed>|null $resolveSupport
+     * @param array{properties:array<string>}|null $resolveSupport
      * @param bool|null $honorsChangeAnnotations
      */
     public function __construct(?bool $dynamicRegistration = null, ?array $codeActionLiteralSupport = null, ?bool $isPreferredSupport = null, ?bool $disabledSupport = null, ?bool $dataSupport = null, ?array $resolveSupport = null, ?bool $honorsChangeAnnotations = null)

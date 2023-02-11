@@ -21,7 +21,7 @@ class WorkspaceSymbolClientCapabilities
     /**
      * Specific capabilities for the `SymbolKind` in the `workspace/symbol` request.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<SymbolKind::*>}|null
      */
     public $symbolKind;
 
@@ -29,7 +29,7 @@ class WorkspaceSymbolClientCapabilities
      * The client supports tags on `SymbolInformation`.
      * Clients supporting tags have to handle unknown tags gracefully.
      *
-     * @var array<mixed>|null
+     * @var array{valueSet:array<SymbolTag::*>}|null
      */
     public $tagSupport;
 
@@ -38,15 +38,15 @@ class WorkspaceSymbolClientCapabilities
      * request `workspaceSymbol/resolve` to the server to resolve additional
      * properties.
      *
-     * @var array<mixed>|null
+     * @var array{properties:array<string>}|null
      */
     public $resolveSupport;
 
     /**
      * @param bool|null $dynamicRegistration
-     * @param array<mixed>|null $symbolKind
-     * @param array<mixed>|null $tagSupport
-     * @param array<mixed>|null $resolveSupport
+     * @param array{valueSet:array<SymbolKind::*>}|null $symbolKind
+     * @param array{valueSet:array<SymbolTag::*>}|null $tagSupport
+     * @param array{properties:array<string>}|null $resolveSupport
      */
     public function __construct(?bool $dynamicRegistration = null, ?array $symbolKind = null, ?array $tagSupport = null, ?array $resolveSupport = null)
     {
