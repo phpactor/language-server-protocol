@@ -60,13 +60,21 @@ export function createNodeMap(nodes: Node[], filter: RegExp = null): NodeMap {
                 if (constantsFromModule(node).size === 0) {
                     return;
                 }
-                map.modules.set(node.name.text, node);
+
+                // type aliases have priority
+                if (!map.aliases.has(node.name.text)) {
+                    map.modules.set(node.name.text, node);
+                }
                 return;
             }
 
             if (isInterfaceDeclaration(node)) {
-                map.interfaces.set(node.name.escapedText.toString(), node);
-                return;
+
+                // type aliases have priority
+                if (!map.aliases.has(node.name.escapedText.toString())) {
+                    map.interfaces.set(node.name.escapedText.toString(), node);
+                    return;
+                }
             }
         });
 

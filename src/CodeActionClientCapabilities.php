@@ -23,7 +23,7 @@ class CodeActionClientCapabilities
      * response of the `textDocument/codeAction` request. If the property is not
      * set the request can only return `Command` literals.
      *
-     * @var array{codeActionKind:array{valueSet:array<CodeActionKind::*>}}|null
+     * @var array{codeActionKind:array{valueSet:array<string>}}|null
      */
     public $codeActionLiteralSupport;
 
@@ -71,7 +71,7 @@ class CodeActionClientCapabilities
 
     /**
      * @param bool|null $dynamicRegistration
-     * @param array{codeActionKind:array{valueSet:array<CodeActionKind::*>}}|null $codeActionLiteralSupport
+     * @param array{codeActionKind:array{valueSet:array<string>}}|null $codeActionLiteralSupport
      * @param bool|null $isPreferredSupport
      * @param bool|null $disabledSupport
      * @param bool|null $dataSupport

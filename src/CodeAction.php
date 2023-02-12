@@ -26,7 +26,7 @@ class CodeAction
      * 
      * Used to filter code actions.
      *
-     * @var CodeActionKind::*|null
+     * @var string|null
      */
     public $kind;
 
@@ -93,7 +93,7 @@ class CodeAction
 
     /**
      * @param string $title
-     * @param CodeActionKind::*|null $kind
+     * @param string|null $kind
      * @param array<Diagnostic>|null $diagnostics
      * @param bool|null $isPreferred
      * @param array{reason:string}|null $disabled
@@ -101,7 +101,7 @@ class CodeAction
      * @param Command|null $command
      * @param mixed|null $data
      */
-    public function __construct(string $title, $kind = null, ?array $diagnostics = null, ?bool $isPreferred = null, ?array $disabled = null, ?WorkspaceEdit $edit = null, ?Command $command = null, $data = null)
+    public function __construct(string $title, ?string $kind = null, ?array $diagnostics = null, ?bool $isPreferred = null, ?array $disabled = null, ?WorkspaceEdit $edit = null, ?Command $command = null, $data = null)
     {
         $this->title = $title;
         $this->kind = $kind;

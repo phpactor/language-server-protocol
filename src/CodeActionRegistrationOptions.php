@@ -27,7 +27,7 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
      * The list of kinds may be generic, such as `CodeActionKind.Refactor`, or the server
      * may list out every specific kind they provide.
      *
-     * @var array<CodeActionKind::*>|null
+     * @var array<string>|null
      */
     public $codeActionKinds;
 
@@ -47,7 +47,7 @@ class CodeActionRegistrationOptions extends TextDocumentRegistrationOptions
 
     /**
      * @param array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null $documentSelector
-     * @param array<CodeActionKind::*>|null $codeActionKinds
+     * @param array<string>|null $codeActionKinds
      * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */

@@ -29,7 +29,7 @@ class CodeActionContext
      * Actions not of this kind are filtered out by the client before being shown. So servers
      * can omit computing them.
      *
-     * @var array<CodeActionKind::*>|null
+     * @var array<string>|null
      */
     public $only;
 
@@ -42,7 +42,7 @@ class CodeActionContext
 
     /**
      * @param array<Diagnostic> $diagnostics
-     * @param array<CodeActionKind::*>|null $only
+     * @param array<string>|null $only
      * @param CodeActionTriggerKind::*|null $triggerKind
      */
     public function __construct(array $diagnostics, ?array $only = null, $triggerKind = null)
