@@ -244,7 +244,7 @@ class ServerCapabilities
     /**
      * The server provides inlay hints.
      *
-     * @var bool|mixed|mixed|null
+     * @var bool|InlayHintOptions|InlayHintRegistrationOptions|null
      */
     public $inlayHintProvider;
 
@@ -301,7 +301,7 @@ class ServerCapabilities
      * @param bool|mixed|mixed|null $monikerProvider
      * @param bool|mixed|mixed|null $typeHierarchyProvider
      * @param bool|mixed|mixed|null $inlineValueProvider
-     * @param bool|mixed|mixed|null $inlayHintProvider
+     * @param bool|InlayHintOptions|InlayHintRegistrationOptions|null $inlayHintProvider
      * @param mixed|mixed|null $diagnosticProvider
      * @param array{workspaceFolders:WorkspaceFoldersServerCapabilities,fileOperations:FileOperationOptions}|null $workspace
      * @param mixed|null $experimental
@@ -383,7 +383,7 @@ class ServerCapabilities
             'monikerProvider' => ['names' => [], 'iterable' => false],
             'typeHierarchyProvider' => ['names' => [], 'iterable' => false],
             'inlineValueProvider' => ['names' => [], 'iterable' => false],
-            'inlayHintProvider' => ['names' => [], 'iterable' => false],
+            'inlayHintProvider' => ['names' => [InlayHintOptions::class, InlayHintRegistrationOptions::class], 'iterable' => false],
             'diagnosticProvider' => ['names' => [], 'iterable' => false],
             'workspace' => ['names' => [], 'iterable' => false],
             'experimental' => ['names' => [], 'iterable' => false],

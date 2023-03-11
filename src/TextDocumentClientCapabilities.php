@@ -211,7 +211,7 @@ class TextDocumentClientCapabilities
     /**
      * Capabilities specific to the `textDocument/inlayHint` request.
      *
-     * @var mixed|null
+     * @var array{dynamicRegistration:bool,resolveSupport:array{properties:array<string>}}|null
      */
     public $inlayHint;
 
@@ -251,10 +251,10 @@ class TextDocumentClientCapabilities
      * @param mixed|null $moniker
      * @param mixed|null $typeHierarchy
      * @param mixed|null $inlineValue
-     * @param mixed|null $inlayHint
+     * @param array{dynamicRegistration:bool,resolveSupport:array{properties:array<string>}}|null $inlayHint
      * @param mixed|null $diagnostic
      */
-    public function __construct(?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null, $callHierarchy = null, $semanticTokens = null, $linkedEditingRange = null, $moniker = null, $typeHierarchy = null, $inlineValue = null, $inlayHint = null, $diagnostic = null)
+    public function __construct(?TextDocumentSyncClientCapabilities $synchronization = null, ?CompletionClientCapabilities $completion = null, ?HoverClientCapabilities $hover = null, ?SignatureHelpClientCapabilities $signatureHelp = null, ?DeclarationClientCapabilities $declaration = null, ?DefinitionClientCapabilities $definition = null, ?TypeDefinitionClientCapabilities $typeDefinition = null, ?ImplementationClientCapabilities $implementation = null, ?ReferenceClientCapabilities $references = null, ?DocumentHighlightClientCapabilities $documentHighlight = null, ?DocumentSymbolClientCapabilities $documentSymbol = null, ?CodeActionClientCapabilities $codeAction = null, ?CodeLensClientCapabilities $codeLens = null, ?DocumentLinkClientCapabilities $documentLink = null, ?DocumentColorClientCapabilities $colorProvider = null, ?DocumentFormattingClientCapabilities $formatting = null, ?DocumentRangeFormattingClientCapabilities $rangeFormatting = null, ?DocumentOnTypeFormattingClientCapabilities $onTypeFormatting = null, ?RenameClientCapabilities $rename = null, ?FoldingRangeClientCapabilities $foldingRange = null, ?SelectionRangeClientCapabilities $selectionRange = null, ?PublishDiagnosticsClientCapabilities $publishDiagnostics = null, $callHierarchy = null, $semanticTokens = null, $linkedEditingRange = null, $moniker = null, $typeHierarchy = null, $inlineValue = null, ?array $inlayHint = null, $diagnostic = null)
     {
         $this->synchronization = $synchronization;
         $this->completion = $completion;

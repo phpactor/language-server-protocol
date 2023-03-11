@@ -106,7 +106,7 @@ class WorkspaceClientCapabilities
      * Capabilities specific to the inlay hint requests scoped to the
      * workspace.
      *
-     * @var mixed|null
+     * @var array{refreshSupport:bool}|null
      */
     public $inlayHint;
 
@@ -131,10 +131,10 @@ class WorkspaceClientCapabilities
      * @param CodeLensWorkspaceClientCapabilities|null $codeLens
      * @param FileOperationClientCapabilities|null $fileOperations
      * @param mixed|null $inlineValue
-     * @param mixed|null $inlayHint
+     * @param array{refreshSupport:bool}|null $inlayHint
      * @param mixed|null $diagnostics
      */
-    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null, ?bool $workspaceFolders = null, ?bool $configuration = null, $semanticTokens = null, ?CodeLensWorkspaceClientCapabilities $codeLens = null, ?FileOperationClientCapabilities $fileOperations = null, $inlineValue = null, $inlayHint = null, $diagnostics = null)
+    public function __construct(?bool $applyEdit = null, ?WorkspaceEditClientCapabilities $workspaceEdit = null, ?DidChangeConfigurationClientCapabilities $didChangeConfiguration = null, ?DidChangeWatchedFilesClientCapabilities $didChangeWatchedFiles = null, ?WorkspaceSymbolClientCapabilities $symbol = null, ?ExecuteCommandClientCapabilities $executeCommand = null, ?bool $workspaceFolders = null, ?bool $configuration = null, $semanticTokens = null, ?CodeLensWorkspaceClientCapabilities $codeLens = null, ?FileOperationClientCapabilities $fileOperations = null, $inlineValue = null, ?array $inlayHint = null, $diagnostics = null)
     {
         $this->applyEdit = $applyEdit;
         $this->workspaceEdit = $workspaceEdit;
