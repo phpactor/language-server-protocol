@@ -19,11 +19,14 @@ import {
     isExportDeclaration,
     isExportSpecifier,
     HeritageClause,
-    isExpressionWithTypeArguments
+    isExpressionWithTypeArguments,
+    TypeLiteralNode,
+    NodeArray,
+    TypeElement
 } from 'typescript';
 
-import {PhpType, TypeConverter} from './typeConverter';
-import {NodeMap} from './nodeMap';
+import { PhpType, TypeConverter } from './typeConverter';
+import { NodeMap } from './nodeMap';
 
 function forEachDescendant(node, callback) {
     callback(node);
@@ -87,8 +90,7 @@ export class PhpConstant {
     name: string;
     rawValue: string;
 
-    constructor (name: string, rawValue: string)
-    {
+    constructor(name: string, rawValue: string) {
         if (name.toLowerCase() === 'class') {
             name = 'class_';
         }
@@ -108,7 +110,7 @@ export function isPhpClass(phpClass: PhpClassLike): phpClass is PhpClass {
 export class PhpClass extends PhpClassLike {
     kind: string = 'class';
     properties: Properties = new Properties();
-    extends: string|null = null;
+    extends: string | null = null;
     mixins: string[] = [];
 }
 
@@ -128,19 +130,16 @@ export class Property {
     special: string[] = [];
 }
 
-export class PhpClassResolver
-{
+export class PhpClassResolver {
     nodeMap: NodeMap;
     typeConverter: TypeConverter;
 
-    constructor(nodeMap: NodeMap, typeConverter: TypeConverter)
-    {
+    constructor(nodeMap: NodeMap, typeConverter: TypeConverter) {
         this.nodeMap = nodeMap;
         this.typeConverter = typeConverter;
     }
 
-    public fromNodeMap(nodeMap: NodeMap): PhpClasses
-    {
+    public fromNodeMap(nodeMap: NodeMap): PhpClasses {
         const classes = new PhpClasses();
 
         nodeMap.modules.forEach((module: ModuleDeclaration, name: string) => {
@@ -160,11 +159,22 @@ export class PhpClassResolver
             classes.set(name, this.fromIntersectionTypeNode(name, type));
         });
 
+        nodeMap.typeLiterals.forEach((type, name: string) => {
+            classes.set(name, this.fromTypeLiteral(name, type));
+        });
+
         return classes;
     }
 
-    private fromIntersectionTypeNode(name: string, type: IntersectionTypeNode): PhpClass
-    {
+    private fromTypeLiteral(name: string, type: TypeLiteralNode): PhpClass {
+        const phpClass = new PhpClass(name);
+        const properties = this.mapProperties(type.members);
+        phpClass.properties = properties;
+
+        return phpClass;
+    }
+
+    private fromIntersectionTypeNode(name: string, type: IntersectionTypeNode): PhpClass {
         const phpClass = new PhpClass(name);
 
         type.types.forEach((type: TypeNode) => {
@@ -177,9 +187,7 @@ export class PhpClassResolver
     private fromInterface(declaration: InterfaceDeclaration): PhpClass {
 
         const docs = this.jsDocs(declaration);
-        const phpClass = new PhpClass(declaration.name.escapedText.toString(), docs);
-
-        var properties = new Map<string, Property>();
+        let phpClass = new PhpClass(declaration.name.escapedText.toString(), docs);
 
         // change to Set
         const mixins = Array<string>();
@@ -190,7 +198,30 @@ export class PhpClassResolver
             }
         }
 
-        for (const property of declaration.members) {
+        const properties = this.mapProperties(declaration.members);
+
+        if (declaration.heritageClauses) {
+            for (const clause of declaration.heritageClauses) {
+                for (const type of clause.types) {
+                    if (!isIdentifier(type.expression)) {
+                        continue;
+                    }
+
+                    const mixinName = type.expression.escapedText.toString();
+                    mixins.push(mixinName);
+                }
+            }
+        }
+
+        phpClass.properties = properties;
+        phpClass.mixins = mixins;
+
+        return phpClass;
+    }
+
+    private mapProperties(members: NodeArray<TypeElement>): Map<string,Property> {
+        var properties = new Map<string, Property>();
+        for (const property of members) {
             let special = [];
             if (!isPropertySignature(property)) {
                 continue;
@@ -215,26 +246,10 @@ export class PhpClassResolver
             properties.set(classProperty.name, classProperty);
         }
 
-        if (declaration.heritageClauses) {
-            for (const clause of declaration.heritageClauses) {
-                for (const type of clause.types) {
-                    if (!isIdentifier(type.expression)) {
-                        continue;
-                    }
-
-                    const mixinName = type.expression.escapedText.toString();
-                    mixins.push(mixinName);
-                }
-            }
-        }
-
-        phpClass.properties = properties as Properties;
-        phpClass.mixins = mixins;
-
-        return phpClass;
+        return properties;
     }
 
-    private interfaceFromModule(name: string, module: ModuleDeclaration): PhpInterface|null {
+    private interfaceFromModule(name: string, module: ModuleDeclaration): PhpInterface | null {
         const constants = constantsFromModule(module);
 
         if (constants.size === 0) {
@@ -253,13 +268,13 @@ export class PhpClassResolver
             }
             const mixinClass = this.fromInterface(this.nodeMap.interfaces.get(mixinName));
 
-            properties = new Map([ ... properties, ... this.hydateMixins(mixinClass).properties ]);
+            properties = new Map([...properties, ... this.hydateMixins(mixinClass).properties]);
         });
         phpClass.properties = properties;
         return phpClass;
     }
 
-    private jsDocs(property: PropertySignature|InterfaceDeclaration|ModuleDeclaration): string[] {
+    private jsDocs(property: PropertySignature | InterfaceDeclaration | ModuleDeclaration): string[] {
         const jsDocs: JSDoc[] = property['jsDoc'];
         if (!jsDocs) {
             return [];
@@ -295,7 +310,7 @@ export class PhpClassResolver
         return false;
     }
 
-    private resolveClassParent(extendsClause: HeritageClause): string|null {
+    private resolveClassParent(extendsClause: HeritageClause): string | null {
         const types = extendsClause.types.filter((element) => {
             return isExpressionWithTypeArguments(element);
         }).map((element) => {
