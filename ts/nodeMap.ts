@@ -6,7 +6,10 @@ import {
     InterfaceDeclaration,
     isIntersectionTypeNode,
     isModuleDeclaration,
-    ModuleDeclaration
+    ModuleDeclaration,
+    SyntaxKind,
+    TypeLiteralNode,
+    isTypeLiteralNode
 } from 'typescript';
 import {isNull} from 'util';
 import {constantsFromModule} from './phpClass';
@@ -16,6 +19,7 @@ export class NodeMap {
     intersections: IntersectionMap = new IntersectionMap();
     interfaces: InterfaceMap = new InterfaceMap();
     modules: ModuleMap = new ModuleMap();
+    typeLiterals = new TypeLiteralMap();
 
     hasIntersectionOrInterface(name: string) {
         return this.intersections.has(name) || this.interfaces.has(name);
@@ -26,6 +30,8 @@ class TypeAliasMap extends Map<string, TypeNode> {
 }
 
 class IntersectionMap extends Map<string, TypeNode> {
+}
+class TypeLiteralMap extends Map<string, TypeLiteralNode> {
 }
 
 class InterfaceMap extends Map<string, InterfaceDeclaration> {
@@ -50,6 +56,12 @@ export function createNodeMap(nodes: Node[], filter: RegExp = null): NodeMap {
                 if (isIntersectionTypeNode(node.type)) {
                     map.intersections.set(node.name.escapedText.toString(), node.type);
                     return;
+                }
+
+                if (node.name.escapedText.toString() === 'InlayHint') {
+                    if (isTypeLiteralNode(node.type)) {
+                        map.typeLiterals.set(node.name.escapedText.toString(), node.type);
+                    }
                 }
 
                 map.aliases.set(node.name.escapedText.toString(), node.type);

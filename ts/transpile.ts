@@ -22,6 +22,7 @@ const paths: string[] = [
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.selectionRange.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-protocol', 'lib', 'common', 'protocol.inlayHint.d.ts'),
     path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-types', 'lib', 'umd', 'main.d.ts'),
+    path.resolve(__dirname, '..', 'node_modules', 'vscode-languageserver-types', 'lib', 'esm', 'main.d.ts'),
     path.resolve(__dirname, '../ts/stubs.ts'),
 ];
 
