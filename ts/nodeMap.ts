@@ -58,7 +58,7 @@ export function createNodeMap(nodes: Node[], filter: RegExp = null): NodeMap {
                     return;
                 }
 
-                if (node.name.escapedText.toString() === 'InlayHint') {
+                if (['InlayHint', 'InlineValueText', 'InlineValueVariableLookup', 'InlineValueEvaluatableExpression'].includes(node.name.escapedText.toString())) {
                     if (isTypeLiteralNode(node.type)) {
                         map.typeLiterals.set(node.name.escapedText.toString(), node.type);
                     }
