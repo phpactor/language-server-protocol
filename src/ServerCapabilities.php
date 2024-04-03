@@ -237,7 +237,7 @@ class ServerCapabilities
     /**
      * The server provides inline values.
      *
-     * @var bool|mixed|mixed|null
+     * @var bool|WorkDoneProgressOptions|InlineValueRegistrationOptions|null
      */
     public $inlineValueProvider;
 
@@ -300,7 +300,7 @@ class ServerCapabilities
      * @param mixed|mixed|null $semanticTokensProvider
      * @param bool|mixed|mixed|null $monikerProvider
      * @param bool|mixed|mixed|null $typeHierarchyProvider
-     * @param bool|mixed|mixed|null $inlineValueProvider
+     * @param bool|WorkDoneProgressOptions|InlineValueRegistrationOptions|null $inlineValueProvider
      * @param bool|InlayHintOptions|InlayHintRegistrationOptions|null $inlayHintProvider
      * @param mixed|mixed|null $diagnosticProvider
      * @param array{workspaceFolders:WorkspaceFoldersServerCapabilities,fileOperations:FileOperationOptions}|null $workspace
@@ -382,7 +382,7 @@ class ServerCapabilities
             'semanticTokensProvider' => ['names' => [], 'iterable' => false],
             'monikerProvider' => ['names' => [], 'iterable' => false],
             'typeHierarchyProvider' => ['names' => [], 'iterable' => false],
-            'inlineValueProvider' => ['names' => [], 'iterable' => false],
+            'inlineValueProvider' => ['names' => [InlineValueRegistrationOptions::class], 'iterable' => false],
             'inlayHintProvider' => ['names' => [InlayHintOptions::class, InlayHintRegistrationOptions::class], 'iterable' => false],
             'diagnosticProvider' => ['names' => [], 'iterable' => false],
             'workspace' => ['names' => [], 'iterable' => false],

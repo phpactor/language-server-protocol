@@ -7,10 +7,18 @@ use Exception;
 use RuntimeException;
 
 /**
- * Mixins (implemented TS interfaces): WorkDoneProgressOptions, array
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions
  */
 class InlayHintOptions
 {
+    /**
+     * The server provides support to resolve additional
+     * information for an inlay hint item.
+     *
+     * @var bool|null
+     */
+    public $resolveProvider;
+
     /**
      *
      * @var bool|null
@@ -18,10 +26,12 @@ class InlayHintOptions
     public $workDoneProgress;
 
     /**
+     * @param bool|null $resolveProvider
      * @param bool|null $workDoneProgress
      */
-    public function __construct(?bool $workDoneProgress = null)
+    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
     {
+        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
     }
 
@@ -32,6 +42,7 @@ class InlayHintOptions
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
+            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
         ];
 
