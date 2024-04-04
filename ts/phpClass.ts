@@ -13,6 +13,7 @@ import {
     isModuleBlock,
     isVariableDeclarationList,
     isVariableDeclaration,
+    isTypeLiteralNode,
     isLiteralTypeNode,
     isTypeNode,
     forEachChild,
@@ -178,6 +179,12 @@ export class PhpClassResolver {
         const phpClass = new PhpClass(name);
 
         type.types.forEach((type: TypeNode) => {
+            if (isTypeLiteralNode(type)) {
+                let properties = phpClass.properties;
+                properties = new Map([...properties, ... this.mapProperties(type.members)]);
+                phpClass.properties = properties;
+                return;
+            }
             phpClass.mixins.push(this.typeConverter.phpType(type).real);
         });
 

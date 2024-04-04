@@ -7,10 +7,24 @@ use Exception;
 use RuntimeException;
 
 /**
- * Mixins (implemented TS interfaces): WorkDoneProgressParams, array
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
 class InlayHintParams
 {
+    /**
+     * The text document.
+     *
+     * @var TextDocumentIdentifier
+     */
+    public $textDocument;
+
+    /**
+     * The document range for which inlay hints should be computed.
+     *
+     * @var Range
+     */
+    public $range;
+
     /**
      * An optional token that a server can use to report work done progress.
      *
@@ -19,10 +33,14 @@ class InlayHintParams
     public $workDoneToken;
 
     /**
+     * @param TextDocumentIdentifier $textDocument
+     * @param Range $range
      * @param int|string|null $workDoneToken
      */
-    public function __construct($workDoneToken = null)
+    public function __construct(TextDocumentIdentifier $textDocument, Range $range, $workDoneToken = null)
     {
+        $this->textDocument = $textDocument;
+        $this->range = $range;
         $this->workDoneToken = $workDoneToken;
     }
 
@@ -33,6 +51,8 @@ class InlayHintParams
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
+            'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],
+            'range' => ['names' => [Range::class], 'iterable' => false],
             'workDoneToken' => ['names' => [], 'iterable' => false],
         ];
 

@@ -6,33 +6,30 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-/**
- * Mixins (implemented TS interfaces): WorkDoneProgressOptions
- */
-class InlayHintOptions
+class InlineValueText
 {
     /**
-     * The server provides support to resolve additional
-     * information for an inlay hint item.
+     * The document range for which the inline value applies.
      *
-     * @var bool|null
+     * @var Range
      */
-    public $resolveProvider;
+    public $range;
 
     /**
+     * The text of the inline value.
      *
-     * @var bool|null
+     * @var string
      */
-    public $workDoneProgress;
+    public $text;
 
     /**
-     * @param bool|null $resolveProvider
-     * @param bool|null $workDoneProgress
+     * @param Range $range
+     * @param string $text
      */
-    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public function __construct(Range $range, string $text)
     {
-        $this->resolveProvider = $resolveProvider;
-        $this->workDoneProgress = $workDoneProgress;
+        $this->range = $range;
+        $this->text = $text;
     }
 
     /**
@@ -42,8 +39,8 @@ class InlayHintOptions
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'resolveProvider' => ['names' => [], 'iterable' => false],
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
+            'range' => ['names' => [Range::class], 'iterable' => false],
+            'text' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

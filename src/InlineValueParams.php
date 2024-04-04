@@ -7,32 +7,51 @@ use Exception;
 use RuntimeException;
 
 /**
- * Mixins (implemented TS interfaces): WorkDoneProgressOptions
+ * Mixins (implemented TS interfaces): WorkDoneProgressParams
  */
-class InlayHintOptions
+class InlineValueParams
 {
     /**
-     * The server provides support to resolve additional
-     * information for an inlay hint item.
+     * The text document.
      *
-     * @var bool|null
+     * @var TextDocumentIdentifier
      */
-    public $resolveProvider;
+    public $textDocument;
 
     /**
+     * The document range for which inline values should be computed.
      *
-     * @var bool|null
+     * @var Range
      */
-    public $workDoneProgress;
+    public $range;
 
     /**
-     * @param bool|null $resolveProvider
-     * @param bool|null $workDoneProgress
+     * Additional information about the context in which inline values were
+     * requested.
+     *
+     * @var array{frameId:int,stoppedLocation:Range}
      */
-    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public $context;
+
+    /**
+     * An optional token that a server can use to report work done progress.
+     *
+     * @var int|string|null
+     */
+    public $workDoneToken;
+
+    /**
+     * @param TextDocumentIdentifier $textDocument
+     * @param Range $range
+     * @param array{frameId:int,stoppedLocation:Range} $context
+     * @param int|string|null $workDoneToken
+     */
+    public function __construct(TextDocumentIdentifier $textDocument, Range $range, array $context, $workDoneToken = null)
     {
-        $this->resolveProvider = $resolveProvider;
-        $this->workDoneProgress = $workDoneProgress;
+        $this->textDocument = $textDocument;
+        $this->range = $range;
+        $this->context = $context;
+        $this->workDoneToken = $workDoneToken;
     }
 
     /**
@@ -42,8 +61,10 @@ class InlayHintOptions
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'resolveProvider' => ['names' => [], 'iterable' => false],
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
+            'textDocument' => ['names' => [TextDocumentIdentifier::class], 'iterable' => false],
+            'range' => ['names' => [Range::class], 'iterable' => false],
+            'context' => ['names' => [], 'iterable' => false],
+            'workDoneToken' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

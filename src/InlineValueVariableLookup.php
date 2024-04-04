@@ -6,33 +6,40 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-/**
- * Mixins (implemented TS interfaces): WorkDoneProgressOptions
- */
-class InlayHintOptions
+class InlineValueVariableLookup
 {
     /**
-     * The server provides support to resolve additional
-     * information for an inlay hint item.
+     * The document range for which the inline value applies.
+     * The range is used to extract the variable name from the underlying document.
      *
-     * @var bool|null
+     * @var Range
      */
-    public $resolveProvider;
+    public $range;
 
     /**
+     * If specified the name of the variable to look up.
      *
-     * @var bool|null
+     * @var string|null
      */
-    public $workDoneProgress;
+    public $variableName;
 
     /**
-     * @param bool|null $resolveProvider
-     * @param bool|null $workDoneProgress
+     * How to perform the lookup.
+     *
+     * @var bool
      */
-    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public $caseSensitiveLookup;
+
+    /**
+     * @param Range $range
+     * @param string|null $variableName
+     * @param bool $caseSensitiveLookup
+     */
+    public function __construct(Range $range, bool $caseSensitiveLookup, ?string $variableName = null)
     {
-        $this->resolveProvider = $resolveProvider;
-        $this->workDoneProgress = $workDoneProgress;
+        $this->range = $range;
+        $this->variableName = $variableName;
+        $this->caseSensitiveLookup = $caseSensitiveLookup;
     }
 
     /**
@@ -42,8 +49,9 @@ class InlayHintOptions
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'resolveProvider' => ['names' => [], 'iterable' => false],
-            'workDoneProgress' => ['names' => [], 'iterable' => false],
+            'range' => ['names' => [Range::class], 'iterable' => false],
+            'variableName' => ['names' => [], 'iterable' => false],
+            'caseSensitiveLookup' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

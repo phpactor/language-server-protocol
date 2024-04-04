@@ -7,18 +7,10 @@ use Exception;
 use RuntimeException;
 
 /**
- * Mixins (implemented TS interfaces): WorkDoneProgressOptions
+ * Mixins (implemented TS interfaces): WorkDoneProgressOptions, TextDocumentRegistrationOptions, StaticRegistrationOptions
  */
-class InlayHintOptions
+class InlineValueRegistrationOptions
 {
-    /**
-     * The server provides support to resolve additional
-     * information for an inlay hint item.
-     *
-     * @var bool|null
-     */
-    public $resolveProvider;
-
     /**
      *
      * @var bool|null
@@ -26,13 +18,31 @@ class InlayHintOptions
     public $workDoneProgress;
 
     /**
-     * @param bool|null $resolveProvider
-     * @param bool|null $workDoneProgress
+     * A document selector to identify the scope of the registration. If set to null
+     * the document selector provided on the client side will be used.
+     *
+     * @var array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null
      */
-    public function __construct(?bool $resolveProvider = null, ?bool $workDoneProgress = null)
+    public $documentSelector;
+
+    /**
+     * The id used to register the request. The id can be used to deregister
+     * the request again. See also Registration#id.
+     *
+     * @var string|null
+     */
+    public $id;
+
+    /**
+     * @param bool|null $workDoneProgress
+     * @param array<(string|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{language:string,scheme:string,pattern:string}|array{notebook:string|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string}|array{notebookType:string,scheme:string,pattern:string},language:string})>|null $documentSelector
+     * @param string|null $id
+     */
+    public function __construct(?bool $workDoneProgress = null, $documentSelector = null, ?string $id = null)
     {
-        $this->resolveProvider = $resolveProvider;
         $this->workDoneProgress = $workDoneProgress;
+        $this->documentSelector = $documentSelector;
+        $this->id = $id;
     }
 
     /**
@@ -42,8 +52,9 @@ class InlayHintOptions
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'resolveProvider' => ['names' => [], 'iterable' => false],
             'workDoneProgress' => ['names' => [], 'iterable' => false],
+            'documentSelector' => ['names' => [], 'iterable' => false],
+            'id' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
