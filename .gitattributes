@@ -1,0 +1,10 @@
+.gitattributes export-ignore
+.github/ export-ignore
+package-lock.json export-ignore
+package.json export-ignore
+phpstan.neon export-ignore
+phpunit.xml.dist export-ignore
+tests/ export-ignore
+ts/ export-ignore
+tsconfig.json export-ignore
+yarn.lock export-ignore
