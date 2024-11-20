@@ -5,6 +5,9 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Microsoft Corporation"
+        },
+        {
             "name": "Daniel Leech",
             "email": "daniel@dantleech.com"
         }
