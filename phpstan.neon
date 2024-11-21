@@ -2,7 +2,8 @@ parameters:
     level: 7
     paths: [ src ]
     ignoreErrors:
-        - '/If condition is always false/'
-        - '/If condition is always true/'
-        - '/Unreachable statement/'
-
+        - identifier: deadCode.unreachable
+        - identifier: empty.offset
+        - identifier: if.alwaysFalse
+        - identifier: if.alwaysTrue
+        - identifier: method.unused
