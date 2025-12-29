@@ -6,45 +6,39 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-/**
- * The change text document notification's parameters.
- */
-class DidChangeTextDocumentParams
+class TextDocumentContentChangeIncrementalEvent
 {
     /**
-     * The document that did change. The version number points
-     * to the version after all provided content changes have
-     * been applied.
+     * The range of the document that changed.
      *
-     * @var VersionedTextDocumentIdentifier
+     * @var Range
      */
-    public $textDocument;
+    public $range;
 
     /**
-     * The actual content changes. The content changes describe single state changes
-     * to the document. So if there are two content changes c1 (at array index 0) and
-     * c2 (at array index 1) for a document in state S then c1 moves the document from
-     * S to S' and c2 from S' to S''. So c1 is computed on the state S and c2 is computed
-     * on the state S'.
-     * 
-     * To mirror the content of a document using change events use the following approach:
-     * - start with the same initial content
-     * - apply the 'textDocument/didChange' notifications in the order you receive them.
-     * - apply the `TextDocumentContentChangeEvent`s in a single notification in the order
-     *    you receive them.
+     * The optional length of the range that got replaced.
      *
-     * @var array<TextDocumentContentChangeIncrementalEvent|TextDocumentContentChangeFullEvent>
+     * @var int|null
      */
-    public $contentChanges;
+    public $rangeLength;
 
     /**
-     * @param VersionedTextDocumentIdentifier $textDocument
-     * @param array<TextDocumentContentChangeIncrementalEvent|TextDocumentContentChangeFullEvent> $contentChanges
+     * The new text for the provided range.
+     *
+     * @var string
      */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, array $contentChanges)
+    public $text;
+
+    /**
+     * @param Range $range
+     * @param int|null $rangeLength
+     * @param string $text
+     */
+    public function __construct(Range $range, string $text, ?int $rangeLength = null)
     {
-        $this->textDocument = $textDocument;
-        $this->contentChanges = $contentChanges;
+        $this->range = $range;
+        $this->rangeLength = $rangeLength;
+        $this->text = $text;
     }
 
     /**
@@ -54,8 +48,9 @@ class DidChangeTextDocumentParams
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'textDocument' => ['names' => [VersionedTextDocumentIdentifier::class], 'iterable' => false],
-            'contentChanges' => ['names' => [TextDocumentContentChangeIncrementalEvent::class, TextDocumentContentChangeFullEvent::class], 'iterable' => true],
+            'range' => ['names' => [Range::class], 'iterable' => false],
+            'rangeLength' => ['names' => [], 'iterable' => false],
+            'text' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {

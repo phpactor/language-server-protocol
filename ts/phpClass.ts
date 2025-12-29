@@ -23,7 +23,8 @@ import {
     isExpressionWithTypeArguments,
     TypeLiteralNode,
     NodeArray,
-    TypeElement
+    TypeElement,
+    UnionTypeNode
 } from 'typescript';
 
 import { PhpType, TypeConverter } from './typeConverter';
