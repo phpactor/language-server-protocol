@@ -7,9 +7,9 @@ import {
     isIntersectionTypeNode,
     isModuleDeclaration,
     ModuleDeclaration,
-    SyntaxKind,
     TypeLiteralNode,
-    isTypeLiteralNode
+    isTypeLiteralNode,
+    isUnionTypeNode
 } from 'typescript';
 import {isNull} from 'util';
 import {constantsFromModule} from './phpClass';
@@ -17,6 +17,7 @@ import {constantsFromModule} from './phpClass';
 export class NodeMap {
     aliases: TypeAliasMap = new TypeAliasMap();
     intersections: IntersectionMap = new IntersectionMap();
+    unions: UnionMap = new UnionMap();
     interfaces: InterfaceMap = new InterfaceMap();
     modules: ModuleMap = new ModuleMap();
     typeLiterals = new TypeLiteralMap();
@@ -30,6 +31,8 @@ class TypeAliasMap extends Map<string, TypeNode> {
 }
 
 class IntersectionMap extends Map<string, TypeNode> {
+}
+class UnionMap extends Map<string, string[]> {
 }
 class TypeLiteralMap extends Map<string, TypeLiteralNode> {
 }
@@ -58,7 +61,39 @@ export function createNodeMap(nodes: Node[], filter: RegExp = null): NodeMap {
                     return;
                 }
 
-                if (['InlayHint', 'InlineValueText', 'InlineValueVariableLookup', 'InlineValueEvaluatableExpression'].includes(node.name.escapedText.toString())) {
+                if (isUnionTypeNode(node.type)) {
+                    if (node.name.escapedText.toString() ==='TextDocumentContentChangeEvent') {
+
+                        const incremental = node.type.types[0];
+                        const full = node.type.types[1];
+
+                        if (!isTypeLiteralNode(incremental) || !isTypeLiteralNode(full)) {
+                            return;
+                        }
+
+                        map.typeLiterals.set(
+                            'TextDocumentContentChangeIncrementalEvent',
+                            incremental
+                        );
+                        map.typeLiterals.set(
+                            'TextDocumentContentChangeFullEvent',
+                            full
+                        );
+                        map.unions.set(node.name.escapedText.toString(), [
+                            'TextDocumentContentChangeIncrementalEvent',
+                            'TextDocumentContentChangeFullEvent'
+                        ]);
+
+                        return;
+                    }
+                }
+
+                if ([
+                    'InlayHint',
+                    'InlineValueText',
+                    'InlineValueVariableLookup',
+                    'InlineValueEvaluatableExpression'
+                ].includes(node.name.escapedText.toString())) {
                     if (isTypeLiteralNode(node.type)) {
                         map.typeLiterals.set(node.name.escapedText.toString(), node.type);
                     }

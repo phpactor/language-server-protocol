@@ -113,6 +113,18 @@ export class TypeConverter
                 return new PhpType(null, typeName + '::*');
             }
 
+            if (this.nodeMap.unions.has(typeName)) {
+                const classNames = this.nodeMap.unions.get(typeName);
+                const phpTypes = classNames.map(name => {
+                    return this.phpType(this.nodeMap.typeLiterals.get(name));
+                });
+                return new PhpType(
+                    null,
+                    classNames.map((type: string) => { return type; }).join('|'),
+                    classNames as ClassName[]
+                );
+            }
+
             if (this.nodeMap.aliases.has(typeName)) {
                 return this.phpType(this.nodeMap.aliases.get(typeName));
             }

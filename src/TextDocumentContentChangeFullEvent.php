@@ -6,45 +6,21 @@ use DTL\Invoke\Invoke;
 use Exception;
 use RuntimeException;
 
-/**
- * The change text document notification's parameters.
- */
-class DidChangeTextDocumentParams
+class TextDocumentContentChangeFullEvent
 {
     /**
-     * The document that did change. The version number points
-     * to the version after all provided content changes have
-     * been applied.
+     * The new text of the whole document.
      *
-     * @var VersionedTextDocumentIdentifier
+     * @var string
      */
-    public $textDocument;
+    public $text;
 
     /**
-     * The actual content changes. The content changes describe single state changes
-     * to the document. So if there are two content changes c1 (at array index 0) and
-     * c2 (at array index 1) for a document in state S then c1 moves the document from
-     * S to S' and c2 from S' to S''. So c1 is computed on the state S and c2 is computed
-     * on the state S'.
-     * 
-     * To mirror the content of a document using change events use the following approach:
-     * - start with the same initial content
-     * - apply the 'textDocument/didChange' notifications in the order you receive them.
-     * - apply the `TextDocumentContentChangeEvent`s in a single notification in the order
-     *    you receive them.
-     *
-     * @var array<TextDocumentContentChangeIncrementalEvent|TextDocumentContentChangeFullEvent>
+     * @param string $text
      */
-    public $contentChanges;
-
-    /**
-     * @param VersionedTextDocumentIdentifier $textDocument
-     * @param array<TextDocumentContentChangeIncrementalEvent|TextDocumentContentChangeFullEvent> $contentChanges
-     */
-    public function __construct(VersionedTextDocumentIdentifier $textDocument, array $contentChanges)
+    public function __construct(string $text)
     {
-        $this->textDocument = $textDocument;
-        $this->contentChanges = $contentChanges;
+        $this->text = $text;
     }
 
     /**
@@ -54,8 +30,7 @@ class DidChangeTextDocumentParams
     public static function fromArray(array $array, bool $allowUnknownKeys = false)
     {
         $map = [
-            'textDocument' => ['names' => [VersionedTextDocumentIdentifier::class], 'iterable' => false],
-            'contentChanges' => ['names' => [TextDocumentContentChangeIncrementalEvent::class, TextDocumentContentChangeFullEvent::class], 'iterable' => true],
+            'text' => ['names' => [], 'iterable' => false],
         ];
 
         foreach ($array as $key => &$value) {
