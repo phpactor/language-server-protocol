@@ -2,7 +2,7 @@
 
 namespace Phpactor\LanguageServerProtocol;
 
-interface CallHierarchyOutgoingCallsRequest
+interface CallHierarchyPrepareRequest
 {
-    public const METHOD = 'callHierarchy/outgoingCalls';
+    public const METHOD = 'textDocument/prepareCallHierarchy';
 }

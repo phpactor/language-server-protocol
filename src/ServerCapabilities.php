@@ -202,7 +202,7 @@ class ServerCapabilities
     /**
      * The server provides call hierarchy support.
      *
-     * @var bool|mixed|mixed|null
+     * @var bool|CallHierarchyOptions|CallHierarchyRegistrationOptions|null
      */
     public $callHierarchyProvider;
 
@@ -295,7 +295,7 @@ class ServerCapabilities
      * @param bool|FoldingRangeOptions|FoldingRangeRegistrationOptions|null $foldingRangeProvider
      * @param bool|SelectionRangeOptions|SelectionRangeRegistrationOptions|null $selectionRangeProvider
      * @param ExecuteCommandOptions|null $executeCommandProvider
-     * @param bool|mixed|mixed|null $callHierarchyProvider
+     * @param bool|CallHierarchyOptions|CallHierarchyRegistrationOptions|null $callHierarchyProvider
      * @param bool|mixed|mixed|null $linkedEditingRangeProvider
      * @param mixed|mixed|null $semanticTokensProvider
      * @param bool|mixed|mixed|null $monikerProvider
@@ -377,7 +377,7 @@ class ServerCapabilities
             'foldingRangeProvider' => ['names' => [FoldingRangeOptions::class, FoldingRangeRegistrationOptions::class], 'iterable' => false],
             'selectionRangeProvider' => ['names' => [SelectionRangeOptions::class, SelectionRangeRegistrationOptions::class], 'iterable' => false],
             'executeCommandProvider' => ['names' => [ExecuteCommandOptions::class], 'iterable' => false],
-            'callHierarchyProvider' => ['names' => [], 'iterable' => false],
+            'callHierarchyProvider' => ['names' => [CallHierarchyOptions::class, CallHierarchyRegistrationOptions::class], 'iterable' => false],
             'linkedEditingRangeProvider' => ['names' => [], 'iterable' => false],
             'semanticTokensProvider' => ['names' => [], 'iterable' => false],
             'monikerProvider' => ['names' => [], 'iterable' => false],
